@@ -1,7 +1,8 @@
 import igraph
 
-class GraphAPI(object):
-    """ the purpose of the class is to create API for the graph,
+class Graph(object):
+    """using igraph
+    the purpose of the class is to create API for the graph,
     in case we will change the libary
     and for easy access"""
 
@@ -37,7 +38,21 @@ class GraphAPI(object):
         edge=self._g.es.find(ID=id)
         return edge.index
 
+    def checkIfNodeExist(self,driverId,spId,time):
+        """ check if the node already exist """
+        node = self._g.vs.select(driverId_eq=driverId, spId_eq=spId, time_eq=time)
+        if node:
+            return self.findNodeIndexById(node[0].index)
+        else:
+            return None
+
+
     def add_node(self,driverId=None,spId=None,time=None,type='eventNode'):
+        if self.lenNodes: #need to check if the graph is empty
+            nodeId=self.checkIfNodeExist(driverId,spId,time)
+            if nodeId: #in case the node already exist, no need to create it again
+                return nodeId
+
         self._g.add_vertices(1)
         newNodeIndex=self.lenNodes-1
         self._g.vs[newNodeIndex]['ID']=self._idNode
@@ -50,7 +65,7 @@ class GraphAPI(object):
         return self._g.vs[newNodeIndex]['ID']
 
 
-    def add_edge(self,node1Id,node2Id,weight=0,type=None,time=None,distance=None):
+    def add_edge(self,node1Id,node2Id,weight=0,type=None,duration=None,distance=None):
         """ get the id (that we defined) of 2 nodes and the weight between them
         and create new edge"""
         indexNode1=self.findNodeIndexById(node1Id)
@@ -63,7 +78,7 @@ class GraphAPI(object):
         self._g.es[newEdgeindex]['type'] = type
 
         #TODO- add those attibutes by real data
-        self._g.es[newEdgeindex]['time'] = time
+        self._g.es[newEdgeindex]['duration'] = duration
         self._g.es[newEdgeindex]['distance'] = distance
 
         return self._g.es[newEdgeindex]['ID']
@@ -71,7 +86,7 @@ class GraphAPI(object):
 
     def dijkstra(self,source,target,weight='weight'):
         """ find the shortest path from source node to target node
-        IN THE FUTURE
+        #TODO  - IN THE FUTURE
         could get different weight functions for different calculations
         also could work with list of sources and list of targets
         """
@@ -83,23 +98,25 @@ class GraphAPI(object):
 
 
 
-g=GraphAPI()
-x=g.add_node()
-print(x)
-g.add_node()
-g.add_node()
-g.add_node()
-g.add_node()
-g.add_node()
-g.add_edge(0,1,8)
-g.add_edge(0,2)
-g.add_edge(2,3)
-g.add_edge(1,3)
-g.add_edge(3,4)
-g.add_edge(4,5)
-print(list(g._g.es))
 
-print(g.lenEdges)
-print(g.lenNodes)
 
-g.dijkstra(1,5)
+if __name__=='__main__':
+    g=Graph()
+    x=g.add_node()
+    print(x)
+    g.add_node()
+    g.add_node()
+    g.add_node()
+    g.add_node()
+    g.add_node()
+    g.add_edge(0,1,8)
+    g.add_edge(0,2)
+    g.add_edge(2,3)
+    g.add_edge(1,3)
+    g.add_edge(3,4)
+    g.add_edge(4,5)
+    print(list(g._g.es))
+
+    print(g.lenEdges)
+    print(g.lenNodes)
+    g.dijkstra(1,5)
