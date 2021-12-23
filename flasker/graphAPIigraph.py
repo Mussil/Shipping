@@ -1,4 +1,12 @@
 import igraph
+import datetime
+
+
+def addMin(tm, min):
+    """ get a dateTime object and minutes
+    :return their sum"""
+    tm = tm + datetime.timedelta(minutes=min)
+    return tm
 
 class Graph(object):
     """using igraph
@@ -6,10 +14,13 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime=0):
+    def __init__(self,stopTime=1):
         self._g=igraph.Graph(directed=True)
-        self.stopTime=stopTime
+        self.stopTimeMin=stopTime
 
+        #TODO - think if i need this IDs ,
+        # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
+        # and anyway meanwhile i use the index stright after i get it so it won't changes and there is no use for the artifical IDs
         self._idNode=0 #the next empty ID for a new node
         self._idEdge=0 #the next empty ID for a new Edge
 
@@ -26,30 +37,57 @@ class Graph(object):
     def lenNodes(self):
         return self._g.vcount()
 
-    def findNodeIndexById(self,id):
+    def _findNodeIndexById(self,id):
         """ the function get id (that we defined) of node
-        and return its index that igraph created"""
+        :return its index that igraph created"""
         vertex=self._g.vs.find(ID=id)
         return vertex.index
 
-    def findEdgeIndexById(self,id):
+    def _findEdgeIndexById(self,id):
         """ the function get id (that we defined) of edge
-        and return its index that igraph created"""
+        :return its index that igraph created"""
         edge=self._g.es.find(ID=id)
         return edge.index
 
-    def checkIfNodeExist(self,driverId,spId,time):
+    def getNodesId(self):
+        """ :return an iterator of the IDs of all the nodes """
+        return iter(self._g.vs['ID'])
+
+
+    def getNodesSameSPAboveTime(self,idNode):
+        """ :return an iterator of the IDs of all the nodes that:
+         has the same service point - SP as the input
+         the time is after the time from the input + stop time """
+        node=self._g.vs.select(ID_eq=idNode)
+        spId=node['spId'][0]
+        if not spId:
+            return
+        time=node['time'][0]
+
+        timePlusStopTime=addMin(time,self.stopTimeMin)
+
+        matchNodes=self._g.vs.select(spId_eq=spId,time_ge=timePlusStopTime)
+        matchNodesId=list(map(lambda x: x['ID'] , matchNodes))
+        if matchNodesId:
+            return matchNodesId[0]
+        else:
+            return None
+
+
+
+
+    def _checkIfNodeExist(self,driverId,spId,time):
         """ check if the node already exist """
         node = self._g.vs.select(driverId_eq=driverId, spId_eq=spId, time_eq=time)
         if node:
-            return self.findNodeIndexById(node[0].index)
+            return self._findNodeIndexById(node[0].index)
         else:
             return None
 
 
     def add_node(self,driverId=None,spId=None,time=None,type='eventNode'):
         if self.lenNodes: #need to check if the graph is empty
-            nodeId=self.checkIfNodeExist(driverId,spId,time)
+            nodeId=self._checkIfNodeExist(driverId,spId,time)
             if nodeId: #in case the node already exist, no need to create it again
                 return nodeId
 
@@ -68,8 +106,8 @@ class Graph(object):
     def add_edge(self,node1Id,node2Id,weight=0,type=None,duration=None,distance=None):
         """ get the id (that we defined) of 2 nodes and the weight between them
         and create new edge"""
-        indexNode1=self.findNodeIndexById(node1Id)
-        indexNode2=self.findNodeIndexById(node2Id)
+        indexNode1=self._findNodeIndexById(node1Id)
+        indexNode2=self._findNodeIndexById(node2Id)
         self._g.add_edges([(indexNode1,indexNode2)]) #add the edge
         newEdgeindex=self.lenEdges-1
         self._g.es[newEdgeindex]['ID']=self._idEdge
@@ -95,6 +133,7 @@ class Graph(object):
         # for n in path[0]:
         #     print("{}".format(self._g.vs[n]['ID']),end=',')
         return path[0]
+
 
 
 

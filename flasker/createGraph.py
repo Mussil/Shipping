@@ -1,16 +1,15 @@
-
-from flasker.graphAPIigraph import Graph
 import datetime
+
+from flasker.graphAPIigraph import Graph, addMin
 
 g=Graph()
 
 
 
-def addMin(tm, min):
-    tm = tm + datetime.timedelta(minutes=min)
-    return tm
 
-def createTravelEdges(route):
+def createTravelEdges(g,route):
+    """ this function get a route of a driver and crate all the travel edges related to this path
+    also it creates the nodes for the path A.K.A event nodes"""
     path=route['path']
     startTime=route['start']
     driver=route['driver']
@@ -32,8 +31,21 @@ def createTravelEdges(route):
         g.add_edge(node1, node2,type='TravelEdge')
 
 
+def createStayEdges(g):
+    """ this function will create esges between existing nodes of the same service point
+    the edges are from the earlier time to the later"""
+    for node in g.getNodesId():
+        node2=g.getNodesSameSPAboveTime(node)
+        if not node2:
+            continue
+        # TODO- add to the edge the weight
+        g.add_edge(node, node2,type='StayEdge')
+
+
+
 def draw(g):
     """ visualize the graph """
+    #TODO- use only the API and not _g
     import networkx as nx
     import matplotlib.pyplot as plt
     g=g._g
@@ -61,14 +73,15 @@ if __name__=='__main__':
         'start': datetime.datetime(2022, 1, 1, 23, 21),
         'path': [1, 2, 3, 4, 5]
     }
-    createTravelEdges(route1)
+    createTravelEdges(g,route1)
     route2 = {
         'driver': 'Dani',
         'start': datetime.datetime(2022, 1, 1, 12, 0),
-        'path': [3, 6, 7]
+        'path': [3,4 ,6, 7]
     }
-    createTravelEdges(route2)
-    # draw(g)
+    createTravelEdges(g,route2)
+    createStayEdges(g)
+    draw(g)
 
 
     # x=list(g._g.es)
