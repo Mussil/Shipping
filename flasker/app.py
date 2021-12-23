@@ -11,7 +11,14 @@ app = Flask(__name__)
 def map():
     return render_template('map.html')
 
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
+# @app.route('/hello/')
+# @app.route('/hello/<name>')
+# def hello(name=None):
+#     return render_template('hello.html', name=name)
+
+from flasker.graphDraft import drive
+
+@app.route('/graph/')
+def hello():
+    drive()
+    return 'graph try'
