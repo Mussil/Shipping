@@ -14,9 +14,10 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime=1):
+    def __init__(self,stopTime=1,numberOfSP=10):
         self._g=igraph.Graph(directed=True)
         self.stopTimeMin=stopTime
+        self.numberOfSP=numberOfSP
 
         #TODO - think if i need this IDs ,
         # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
@@ -53,12 +54,19 @@ class Graph(object):
         """ :return an iterator of the IDs of all the nodes """
         return iter(self._g.vs['ID'])
 
+    def getNodesIdEventNodes(self):
+        return self._g.vs.select(type_eq='eventNode')['ID']
+
+    def getDestinationNodeIdSameSP(self,id):
+        node=self._g.vs.select(ID_eq=id)
+        spId=node['spId'][0]
+        return self._g.vs.find(type_eq='destinationNode',spId_eq=spId)['ID']
 
     def getNodesSameSPAboveTime(self,idNode):
         """ :return an iterator of the IDs of all the nodes that:
          has the same service point - SP as the input
          the time is after the time from the input + stop time """
-        node=self._g.vs.select(ID_eq=idNode)
+        node=self._g.vs.select(ID_eq=idNode,type_eq='eventNode')
         spId=node['spId'][0]
         if not spId:
             return
@@ -66,12 +74,12 @@ class Graph(object):
 
         timePlusStopTime=addMin(time,self.stopTimeMin)
 
-        matchNodes=self._g.vs.select(spId_eq=spId,time_ge=timePlusStopTime)
+        matchNodes=self._g.vs.select(spId_eq=spId,time_ge=timePlusStopTime,type_eq='eventNode')
         matchNodesId=list(map(lambda x: x['ID'] , matchNodes))
-        if matchNodesId:
-            return matchNodesId[0]
-        else:
-            return None
+
+        return matchNodesId
+
+
 
 
 
@@ -103,7 +111,7 @@ class Graph(object):
         return self._g.vs[newNodeIndex]['ID']
 
 
-    def add_edge(self,node1Id,node2Id,weight=0,type=None,duration=None,distance=None):
+    def add_edge(self,node1Id,node2Id,weight=0,type=None,duration=0,distance=0):
         """ get the id (that we defined) of 2 nodes and the weight between them
         and create new edge"""
         indexNode1=self._findNodeIndexById(node1Id)
@@ -122,17 +130,43 @@ class Graph(object):
         return self._g.es[newEdgeindex]['ID']
 
 
-    def dijkstra(self,source,target,weight='weight'):
+    def _dijkstra(self,source,target,weight):
         """ find the shortest path from source node to target node
         #TODO  - IN THE FUTURE
         could get different weight functions for different calculations
         also could work with list of sources and list of targets
         """
+
+        #todo - handle error
+        # RuntimeWarning: Couldn't reach some vertices at src/paths/dijkstra.c:441
         weights=self._g.es[weight]
         path = self._g.get_shortest_paths(source, to=target,weights=weights)
+        print(path)
+
         # for n in path[0]:
         #     print("{}".format(self._g.vs[n]['ID']),end=',')
         return path[0]
+
+
+    def getDetailsShortestPath(self,source,target,minTime,weight='weight'):
+        """
+        :parameter source - spId of the source service point
+        :parameter target - spId of the target service point
+        :parameter minTime - DateTime of the arrive of a new parcel, only later nodes are accepted
+        :parameter weight - the name of the weight function
+
+        :returns the shortest path by dijkstra algorithm
+        """
+
+        #find node which has minimum time and the same sp source
+        sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
+        minimumSource=min(sameSp, key=lambda x: x['time'])
+        sourceID=minimumSource.index
+        targetID=self._g.vs.find(spId_eq=target,type_eq='destinationNode')
+        path=self._dijkstra(sourceID,targetID,weight)
+        #todo- return the deatils of the path
+        print(path)
+        # print(path)
 
 
 
@@ -158,4 +192,4 @@ if __name__=='__main__':
 
     print(g.lenEdges)
     print(g.lenNodes)
-    g.dijkstra(1,5)
+    # g.dijkstra(1,5)

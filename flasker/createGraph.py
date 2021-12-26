@@ -35,11 +35,25 @@ def createStayEdges(g):
     """ this function will create esges between existing nodes of the same service point
     the edges are from the earlier time to the later"""
     for node in g.getNodesId():
-        node2=g.getNodesSameSPAboveTime(node)
-        if not node2:
-            continue
-        # TODO- add to the edge the weight
-        g.add_edge(node, node2,type='StayEdge')
+        listNode2=g.getNodesSameSPAboveTime(node)
+
+        for node2 in listNode2:
+            # TODO- add to the edge the weight
+            g.add_edge(node, node2,type='StayEdge')
+
+def createDestinationEdges(g):
+
+    def createDestinationNodes(g):
+        numberOfSP=g.numberOfSP
+        for sp in range(1,numberOfSP+1):
+            g.add_node(None, sp, None,type='destinationNode')
+
+    createDestinationNodes(g)
+
+    idAllEventNodes=g.getNodesIdEventNodes()
+    for id in idAllEventNodes:
+        id2=g.getDestinationNodeIdSameSP(id)
+        g.add_edge(id, id2,type='DestinationEdge')
 
 
 
@@ -51,17 +65,41 @@ def draw(g):
     g=g._g
     G = g.to_networkx()
     labels={}
+    nodeColors=[]
+
     for i,x in enumerate(g.vs):
         labels[i]=x.attributes()
+        if x.attributes()['type']=='eventNode':
+            # nodeColors.append('red')
+            if x.attributes()['driverId']=='John':
+                nodeColors.append('red')
+            if x.attributes()['driverId'] == 'Dani':
+                nodeColors.append('orange')
+            if x.attributes()['driverId'] == 'Mia':
+                nodeColors.append('yellow')
+
+        elif x.attributes()['type']=='destinationNode':
+            nodeColors.append('black')
+        else:
+            nodeColors.append('green')
+
 
     edgeLabels={}
+    # edgeColors=[]
     for i,x in enumerate(g.es):
         edgeLabels[(x.source,x.target)]=x.attributes()
+        # if x.attributes()['type']=='StayEdge':
+        #     edgeColors.append('yellow')
+        # elif x.attributes()['type']=='TravelEdge':
+        #     edgeColors.append('red')
+        # elif x.attributes()['type'] == 'DestinationEdge':
+        #     edgeColors.append('blue')
+
     layout=nx.shell_layout(G)
-    nx.draw_networkx_nodes(G,pos=layout)
-    nx.draw_networkx_edges(G,pos=layout)
+    nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
+    nx.draw_networkx_edges(G,pos=layout,)
     nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
-    nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=4)
+    nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=4,alpha=0.4)
 
     plt.show()
 
@@ -77,11 +115,19 @@ if __name__=='__main__':
     route2 = {
         'driver': 'Dani',
         'start': datetime.datetime(2022, 1, 1, 12, 0),
-        'path': [3,4 ,6, 7]
+        'path': [3,4 ,6, 1,7]
     }
     createTravelEdges(g,route2)
+    # route3 = {
+    #     'driver': 'Mia',
+    #     'start': datetime.datetime(2022, 1, 1, 13, 40),
+    #     'path': [3,4 ]
+    # }
+    # createTravelEdges(g,route3)
     createStayEdges(g)
+    createDestinationEdges(g)
     draw(g)
+    g.getDetailsShortestPath(6,5,datetime.datetime(2022, 1, 1, 1, 0))
 
 
     # x=list(g._g.es)
