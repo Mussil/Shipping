@@ -51,9 +51,9 @@ class Graph(object):
         edge=self._g.es.find(ID=id)
         return edge.index
 
-    def getNodesId(self):
-        """ :return an iterator of the IDs of all the nodes """
-        return iter(self._g.vs['ID'])
+    def getNodesIdAndTime(self):
+        """ :return an iterator of the IDs of all the nodes and their time """
+        return iter((self._g.vs['ID'],self._g.vs['time']))
 
     def getNodesIdEventNodes(self):
         return self._g.vs.select(type_eq='eventNode')['ID']
@@ -76,10 +76,9 @@ class Graph(object):
         timePlusStopTime=addMin(time,self.stopTimeMin)
 
         matchNodes=self._g.vs.select(spId_eq=spId,time_ge=timePlusStopTime,type_eq='eventNode')
-        matchNodesId=list(map(lambda x: x['ID'] , matchNodes))
-
-        return matchNodesId
-
+        # matchNodesId=iter(map(lambda x: x['ID'] , matchNodes))
+        # return matchNodesId
+        return iter((matchNodes['ID'],matchNodes['time']))
 
 
 
@@ -94,7 +93,7 @@ class Graph(object):
             return None
 
 
-    def add_node(self,driverId=None,spId=None,time=None,type='eventNode'):
+    def add_node(self,driverId=None,spId=None,time=None,type=None):
         if self.lenNodes: #need to check if the graph is empty
             nodeId=self._checkIfNodeExist(driverId,spId,time)
             if nodeId: #in case the node already exist, no need to create it again
