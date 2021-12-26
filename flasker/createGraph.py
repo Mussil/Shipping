@@ -1,7 +1,7 @@
 import datetime
 
 from flasker.graphAPIigraph import Graph, addMin
-
+from flasker.dist_time_calc import calcDistTime
 g=Graph()
 
 
@@ -16,11 +16,19 @@ def createTravelEdges(g,route):
 
     #travel edges
     node1 = g.add_node(driver, path[0], startTime)
-    #TODO- change the time from 10 min to be the correct time
+    #TODO- work with rutis function
+    # duration, distance=calcDistTime(path[0],path[1],startTime)
+    # print(startTime)
+    # print(duration, distance)
+    # new_time = addMin(startTime,round(duration))
+    # print(new_time)
+
+
     new_time = addMin(startTime,10)
+
     node2 = g.add_node(driver, path[1], new_time)
     #TODO- add to the edge the weight , duration and distance
-    g.add_edge(node1, node2, type='TravelEdge')
+    g.add_edge(node1, node2, type='travelEdge')
 
     for sp1,sp2 in zip(path[1:-1],path[2:]):
         node1=g.add_node(driver,sp1,new_time)
@@ -28,7 +36,7 @@ def createTravelEdges(g,route):
         new_time = addMin(new_time, 10)
         node2=g.add_node(driver,sp2,new_time)
         # TODO- add to the edge the weight , duration and distance
-        g.add_edge(node1, node2,type='TravelEdge')
+        g.add_edge(node1, node2,type='travelEdge')
 
 
 def createStayEdges(g):
@@ -39,7 +47,7 @@ def createStayEdges(g):
 
         for node2 in listNode2:
             # TODO- add to the edge the weight
-            g.add_edge(node, node2,type='StayEdge')
+            g.add_edge(node, node2,type='stayEdge')
 
 def createDestinationEdges(g):
 
@@ -53,7 +61,7 @@ def createDestinationEdges(g):
     idAllEventNodes=g.getNodesIdEventNodes()
     for id in idAllEventNodes:
         id2=g.getDestinationNodeIdSameSP(id)
-        g.add_edge(id, id2,type='DestinationEdge')
+        g.add_edge(id, id2,type='destinationEdge')
 
 
 
@@ -85,27 +93,37 @@ def draw(g):
 
 
     edgeLabels={}
-    # edgeColors=[]
+    edgeColors={}
     for i,x in enumerate(g.es):
         edgeLabels[(x.source,x.target)]=x.attributes()
-        # if x.attributes()['type']=='StayEdge':
-        #     edgeColors.append('yellow')
-        # elif x.attributes()['type']=='TravelEdge':
-        #     edgeColors.append('red')
-        # elif x.attributes()['type'] == 'DestinationEdge':
-        #     edgeColors.append('blue')
+        if x.attributes()['type']=='stayEdge':
+            edgeColors[(x.source,x.target)]=('yellow')
+        elif x.attributes()['type']=='travelEdge':
+            edgeColors[(x.source,x.target)]=('red')
+        elif x.attributes()['type'] == 'destinationEdge':
+            edgeColors[(x.source,x.target)]=('black')
 
     layout=nx.shell_layout(G)
     nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
-    nx.draw_networkx_edges(G,pos=layout,)
+    nx.draw_networkx_edges(G,pos=layout,edgelist=edgeColors.keys(),edge_color=edgeColors.values())
     nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
-    nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=4,alpha=0.4)
+    nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=5,alpha=0.6)
 
     plt.show()
 
 
+def buildGraph(routes):
+    g = Graph()
+    for route in routes:
+        createTravelEdges(g, route1)
+    createStayEdges(g)
+    createDestinationEdges(g)
+    return g
+
+
 
 if __name__=='__main__':
+
     route1 = {
         'driver': 'John',
         'start': datetime.datetime(2022, 1, 1, 23, 21),
@@ -126,8 +144,10 @@ if __name__=='__main__':
     # createTravelEdges(g,route3)
     createStayEdges(g)
     createDestinationEdges(g)
+    g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
     draw(g)
     g.getDetailsShortestPath(6,5,datetime.datetime(2022, 1, 1, 1, 0))
+    g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0))
 
 
     # x=list(g._g.es)

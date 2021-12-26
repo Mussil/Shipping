@@ -1,3 +1,4 @@
+import warnings
 import igraph
 import datetime
 
@@ -14,10 +15,15 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime=1,numberOfSP=10):
+    def __init__(self,stopTime=1,numberOfSP=10,maxDriver=5,maxTimeMin=400,maxDistanceMeters = 10000):
         self._g=igraph.Graph(directed=True)
         self.stopTimeMin=stopTime
         self.numberOfSP=numberOfSP
+
+        # max
+        self.maxDriver= maxDriver
+        self.maxTimeMin=maxTimeMin
+        self.maxDistanceMeters= maxDistanceMeters
 
         #TODO - think if i need this IDs ,
         # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
@@ -25,11 +31,6 @@ class Graph(object):
         self._idNode=0 #the next empty ID for a new node
         self._idEdge=0 #the next empty ID for a new Edge
 
-        #TODO - think if the dicts are really necessary
-        # nodes dictionaries
-        # self._idNode_Location={}
-        # self._idNode_SP={}
-        # self._idNode_Time={}
 
     @property
     def lenEdges(self):
@@ -123,7 +124,6 @@ class Graph(object):
         self._g.es[newEdgeindex]['weight'] = weight #add the weight to the edge
         self._g.es[newEdgeindex]['type'] = type
 
-        #TODO- add those attibutes by real data
         self._g.es[newEdgeindex]['duration'] = duration
         self._g.es[newEdgeindex]['distance'] = distance
 
@@ -137,11 +137,10 @@ class Graph(object):
         also could work with list of sources and list of targets
         """
 
-        #todo - handle error
-        # RuntimeWarning: Couldn't reach some vertices at src/paths/dijkstra.c:441
+        # suppress warnings
+        warnings.filterwarnings('ignore') #in case there is no path to the destination
         weights=self._g.es[weight]
         path = self._g.get_shortest_paths(source, to=target,weights=weights)
-        print(path)
 
         # for n in path[0]:
         #     print("{}".format(self._g.vs[n]['ID']),end=',')
@@ -162,11 +161,71 @@ class Graph(object):
         sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
         minimumSource=min(sameSp, key=lambda x: x['time'])
         sourceID=minimumSource.index
-        targetID=self._g.vs.find(spId_eq=target,type_eq='destinationNode')
+        targetID=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
         path=self._dijkstra(sourceID,targetID,weight)
         #todo- return the deatils of the path
         print(path)
-        # print(path)
+        for n in path:
+            print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+
+        print()
+
+
+
+    def addWeights(self,nameOfWeight='weight',A='time',B='driver',C='distance',alph=0,beta=0):
+
+        def getMaxOfPriority(A):
+            if A=='driver':
+                return self.maxDriver
+            elif A=='time':
+                return self.maxTimeMin
+            elif A=='distance':
+                return self.maxDistanceMeters
+
+
+        maxB=getMaxOfPriority(B)
+        maxC=getMaxOfPriority(C)
+
+        weightC=1
+        weightB=maxC-beta
+        weightA=(maxB-alph)*weightB
+
+        def getWeightDriver():
+            if A=='driver':
+                return weightA
+            elif B=='driver':
+                return weightB
+            elif C=='driver':
+                return weightC
+        def getWeightTime():
+            if A=='time':
+                return weightA
+            elif B=='time':
+                return weightB
+            elif C=='time':
+                return weightC
+        def getWeightDistance():
+            if A=='distance':
+                return weightA
+            elif B=='distance':
+                return weightB
+            elif C=='distance':
+                return weightC
+        es=self._g.es
+        weightDriver=getWeightDriver()
+        weightTime=getWeightTime()
+        weightDistance=getWeightDistance()
+        for i,edge in enumerate(es):
+            duration = es[i]['duration']
+            distance = es[i]['distance']
+
+            if edge['type']=='destinationEdge':
+                es[i][nameOfWeight]=0
+            elif edge['type']=='stayEdge':
+                es[i][nameOfWeight]=weightDriver+weightTime*duration
+            elif edge['type']=='travelEdge':
+                es[i][nameOfWeight]=weightTime* duration+ weightDistance*distance
+
 
 
 
