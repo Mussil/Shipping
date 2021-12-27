@@ -42,10 +42,8 @@
 
         // Continue to draw and pan the map by calling `add()`
         // until `pointsAdded` reaches 360.
-        if (++pointsAdded < 100) window.setTimeout(add, 100);
+        if (++pointsAdded < 100) window.setTimeout(add, 300);
     }
-
-
 
     var marker = L.marker([31.790432720080467 , 34.63724819562294], {
         icon: L.mapbox.marker.icon({
@@ -63,6 +61,28 @@
 
 
     marker.addTo(map);
+
+    // function calculateRoute(geomFrom, geomTo) {
+
+    //     var lngFrom = geomFrom.geometry.coordinates[0]
+    //     var latFrom = geomFrom.geometry.coordinates[1]
+
+    //     var lngTo = geomTo.geometry.coordinates[0]  
+    //     var latTo = geomTo.geometry.coordinates[1]
+
+    //     $.get('https://api.mapbox.com/directions/v5/mapbox/cycling/' + lngFrom + ',' + latFrom + ';' + lngTo + ',' + latTo + '?access_token=pk.eyJ1IjoicHJheWVyIiwiYSI6ImI3OGRjZjcyY2JiZTUzODMwZWUxZDdiNjRiMWE4NjI5In0.zETX-x6-XPpAv3zt4MiFwg', 
+    //     function( data ) {
+    //         var coords = polyline.decode(data.routes[0].geometry);
+    //         var line = L.polyline(coords).addTo(mapTwo);
+    //     });  
+    // };
+
+
 </script>
 </body>
 </html>
+
+
+
+
+
