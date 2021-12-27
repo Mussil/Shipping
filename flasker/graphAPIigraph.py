@@ -53,7 +53,7 @@ class Graph(object):
 
     def getNodesIdAndTime(self):
         """ :return an iterator of the IDs of all the nodes and their time """
-        return iter((self._g.vs['ID'],self._g.vs['time']))
+        return zip(self._g.vs['ID'],self._g.vs['time']) #pairs of id and time of all the nodes
 
     def getNodesIdEventNodes(self):
         return self._g.vs.select(type_eq='eventNode')['ID']
@@ -64,21 +64,29 @@ class Graph(object):
         return self._g.vs.find(type_eq='destinationNode',spId_eq=spId)['ID']
 
     def getNodesSameSPAboveTime(self,idNode):
-        """ :return an iterator of the IDs of all the nodes that:
+        """ :return an iterator of the IDs and time of all the nodes that:
          has the same service point - SP as the input
          the time is after the time from the input + stop time """
-        node=self._g.vs.select(ID_eq=idNode,type_eq='eventNode')
-        spId=node['spId'][0]
-        if not spId:
+        # node=self._g.vs.select(ID_eq=idNode,type_eq='eventNode')
+        # print(node['spId'])
+
+        try:
+            node = self._g.vs.find(ID_eq=idNode, type_eq='eventNode') #from id to know the spId
+        except ValueError:
             return
-        time=node['time'][0]
+        # print(node['spId'])
+        # spId=node['spId'][0]
+        # if not spId:
+        #     return
+        # time=node['time'][0]
+        spId=node['spId']
+        time=node['time']
 
         timePlusStopTime=addMin(time,self.stopTimeMin)
 
         matchNodes=self._g.vs.select(spId_eq=spId,time_ge=timePlusStopTime,type_eq='eventNode')
-        # matchNodesId=iter(map(lambda x: x['ID'] , matchNodes))
-        # return matchNodesId
-        return iter((matchNodes['ID'],matchNodes['time']))
+
+        return zip(matchNodes['ID'],matchNodes['time']) #pairs of id and time of all the nodes that has the same sp and later time
 
 
 
@@ -86,15 +94,19 @@ class Graph(object):
 
     def _checkIfNodeExist(self,driverId,spId,time):
         """ check if the node already exist """
-        node = self._g.vs.select(driverId_eq=driverId, spId_eq=spId, time_eq=time)
-        if node:
-            return self._findNodeIndexById(node[0].index)
-        else:
+        try:
+            node = self._g.vs.find(driverId_eq=driverId, spId_eq=spId, time_eq=time)
+            return node['ID']
+        except ValueError:
             return None
+        # if node:
+        #     return self._findNodeIndexById(node[0].index)
+        # else:
+        #     return None
 
 
     def add_node(self,driverId=None,spId=None,time=None,type=None):
-        if self.lenNodes: #need to check if the graph is empty
+        if self.lenNodes: #need to check if the graph is empty, otherwise will throw error
             nodeId=self._checkIfNodeExist(driverId,spId,time)
             if nodeId: #in case the node already exist, no need to create it again
                 return nodeId
@@ -111,8 +123,8 @@ class Graph(object):
         return self._g.vs[newNodeIndex]['ID']
 
 
-    def add_edge(self,node1Id,node2Id,weight=0,type=None,duration=0,distance=0):
-        """ get the id (that we defined) of 2 nodes and the weight between them
+    def add_edge(self,node1Id,node2Id,type=None,duration=0,distance=0):
+        """ get the id (that we defined) of 2 nodes
         and create new edge"""
         indexNode1=self._findNodeIndexById(node1Id)
         indexNode2=self._findNodeIndexById(node2Id)
@@ -120,7 +132,6 @@ class Graph(object):
         newEdgeindex=self.lenEdges-1
         self._g.es[newEdgeindex]['ID']=self._idEdge
         self._idEdge+=1 #increase the id for the next new edge
-        self._g.es[newEdgeindex]['weight'] = weight #add the weight to the edge
         self._g.es[newEdgeindex]['type'] = type
 
         self._g.es[newEdgeindex]['duration'] = duration
@@ -130,10 +141,8 @@ class Graph(object):
 
 
     def _dijkstra(self,source,target,weight):
-        """ find the shortest path from source node to target node
-        #TODO  - IN THE FUTURE
+        """ find the shortest path from source index node to target index node
         could get different weight functions for different calculations
-        also could work with list of sources and list of targets
         """
 
         # suppress warnings
@@ -141,12 +150,10 @@ class Graph(object):
         weights=self._g.es[weight]
         path = self._g.get_shortest_paths(source, to=target,weights=weights)
 
-        # for n in path[0]:
-        #     print("{}".format(self._g.vs[n]['ID']),end=',')
         return path[0]
 
 
-    def getDetailsShortestPath(self,source,target,minTime,weight='weight'):
+    def getDetailsShortestPath(self,source,target,minTime,weight):
         """
         :parameter source - spId of the source service point
         :parameter target - spId of the target service point
@@ -159,19 +166,15 @@ class Graph(object):
         #find node which has minimum time and the same sp source
         sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
         minimumSource=min(sameSp, key=lambda x: x['time'])
-        sourceID=minimumSource.index
-        targetID=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
-        path=self._dijkstra(sourceID,targetID,weight)
+        sourceInedx=minimumSource.index
+        targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
+        path=self._dijkstra(sourceInedx,targetIndex,weight)
         #todo- return the deatils of the path
         print(path)
         for n in path:
             print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
 
-        print()
-
-
-
-    def addWeights(self,nameOfWeight='weight',A='time',B='driver',C='distance',alph=0,beta=0):
+    def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 
         def getMaxOfPriority(A):
             if A=='driver':
@@ -247,6 +250,7 @@ if __name__=='__main__':
     g.add_edge(3,4)
     g.add_edge(4,5)
     print(list(g._g.es))
+    print("--")
 
     print(g.lenEdges)
     print(g.lenNodes)
