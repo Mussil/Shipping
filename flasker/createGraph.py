@@ -1,7 +1,7 @@
 import datetime
 
 from flasker.graphAPIigraph import Graph, addMin
-from flasker.dist_time_calc import calcDistTime
+from flasker.pathCalc import calcDistTime
 
 g=Graph()
 
@@ -93,6 +93,7 @@ if __name__=='__main__':
     createDestinationEdges(g)
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
     g.draw()
-    g.getDetailsShortestPath(6,3,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    path=g.getDetailsShortestPath(6,3,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    # print(path)
+    # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
 

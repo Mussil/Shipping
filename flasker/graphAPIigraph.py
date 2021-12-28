@@ -2,6 +2,8 @@ import warnings
 import igraph
 import datetime
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def addMin(tm, min):
     """ get a dateTime object and minutes
@@ -171,8 +173,11 @@ class Graph(object):
         path=self._dijkstra(sourceInedx,targetIndex,weight)
         #todo- return the deatils of the path
         print(path)
+        pathSpDriver=[]
         for n in path:
+            pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
             print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+        return pathSpDriver
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 
@@ -230,62 +235,72 @@ class Graph(object):
 
 
 
-    def _draftDraw(self):
-
-
-        """ visualize the graph """
-        import networkx as nx
-        g=self._g
-
-        G = g.to_networkx()
-        labels={}
-        nodeColors=[]
-
-        for i,x in enumerate(g.vs):
-            labels[i]=x.attributes()
-            if x.attributes()['type']=='eventNode':
-                # nodeColors.append('red')
-                if x.attributes()['driverId']=='John':
-                    nodeColors.append('red')
-                if x.attributes()['driverId'] == 'Dani':
-                    nodeColors.append('orange')
-                if x.attributes()['driverId'] == 'Mia':
-                    nodeColors.append('yellow')
-
-            elif x.attributes()['type']=='destinationNode':
-                nodeColors.append('black')
-            else:
-                nodeColors.append('green')
-
-
-        edgeLabels={}
-        edgeColors={}
-        for i,x in enumerate(g.es):
-            edgeLabels[(x.source,x.target)]=x.attributes()
-            if x.attributes()['type']=='stayEdge':
-                edgeColors[(x.source,x.target)]=('yellow')
-            elif x.attributes()['type']=='travelEdge':
-                edgeColors[(x.source,x.target)]=('red')
-            elif x.attributes()['type'] == 'destinationEdge':
-                edgeColors[(x.source,x.target)]=('black')
-
-        layout=nx.shell_layout(G)
-        nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
-        nx.draw_networkx_edges(G,pos=layout,edgelist=edgeColors.keys(),edge_color=edgeColors.values())
-        nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
-        nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=5,alpha=0.6)
-
-        plt.show()
+    # def _draftDraw(self):
+    #
+    #
+    #     """ visualize the graph """
+    #     import networkx as nx
+    #     g=self._g
+    #
+    #     G = g.to_networkx()
+    #     labels={}
+    #     nodeColors=[]
+    #
+    #     for i,x in enumerate(g.vs):
+    #         labels[i]=x.attributes()
+    #         if x.attributes()['type']=='eventNode':
+    #             # nodeColors.append('red')
+    #             if x.attributes()['driverId']=='John':
+    #                 nodeColors.append('red')
+    #             if x.attributes()['driverId'] == 'Dani':
+    #                 nodeColors.append('orange')
+    #             if x.attributes()['driverId'] == 'Mia':
+    #                 nodeColors.append('yellow')
+    #
+    #         elif x.attributes()['type']=='destinationNode':
+    #             nodeColors.append('black')
+    #         else:
+    #             nodeColors.append('green')
+    #
+    #
+    #     edgeLabels={}
+    #     edgeColors={}
+    #     for i,x in enumerate(g.es):
+    #         edgeLabels[(x.source,x.target)]=x.attributes()
+    #         if x.attributes()['type']=='stayEdge':
+    #             edgeColors[(x.source,x.target)]=('yellow')
+    #         elif x.attributes()['type']=='travelEdge':
+    #             edgeColors[(x.source,x.target)]=('red')
+    #         elif x.attributes()['type'] == 'destinationEdge':
+    #             edgeColors[(x.source,x.target)]=('black')
+    #
+    #     layout=nx.shell_layout(G)
+    #     nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
+    #     nx.draw_networkx_edges(G,pos=layout,edgelist=edgeColors.keys(),edge_color=edgeColors.values())
+    #     nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
+    #     nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=5,alpha=0.6)
+    #
+    #     plt.show()
 
     def draw(self):
-        #edge label (km,hours)
+        #edge label (meters,minutes)
         #color of node represnt driver
         #name of node represnt service point
 
         #todo : add time of node
         g=self._g
 
+        #TODO: make the colors of the drivers to be more generic
+        # driversName = set(g.vs["driverId"])#for all the unique names
+        # colors = list(np.random.choice(range(256), size=len(driversName)))
+        # colors=tuple((np.random.randint(256),) + (np.random.randint(256),) +(np.random.randint(256),)+(np.random.randint(256),) for name in driversName)
+        # color_node_dict=dict(zip(driversName,colors))
+        # print(color_node_dict)
+        # print(igraph.drawing.colors.known_colors)
+
         color_node_dict = {'John': 'blue', 'Dani': 'green', 'Mia':'pink',None:'grey'}
+
+
         shape_node_dict={'eventNode':'circle', 'destinationNode' :'rectangle'}
 
         color_edge_dict={'travelEdge':'black', 'stayEdge':'yellow', 'destinationEdge':'grey'}
@@ -299,7 +314,7 @@ class Graph(object):
         visual_style["vertex_label"] = g.vs["spId"]
 
         #edges
-        visual_style["edge_label"] = list(zip(map(lambda x : round(x/1000,2) ,g.es["distance"]),map(lambda x : round(x/60,2) ,g.es["duration"])))
+        visual_style["edge_label"] = list(zip(g.es["distance"],g.es["duration"]))
         visual_style["edge_color"] = [color_edge_dict[type] for type in g.es["type"]]
 
         visual_style["layout"] = layout
