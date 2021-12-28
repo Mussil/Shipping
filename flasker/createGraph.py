@@ -2,6 +2,7 @@ import datetime
 
 from flasker.graphAPIigraph import Graph, addMin
 from flasker.dist_time_calc import calcDistTime
+
 g=Graph()
 
 
@@ -56,51 +57,6 @@ def createDestinationEdges(g):
 
 
 
-def draw(g):
-    """ visualize the graph """
-    #TODO- use only the API and not _g
-    import networkx as nx
-    import matplotlib.pyplot as plt
-    g=g._g
-    G = g.to_networkx()
-    labels={}
-    nodeColors=[]
-
-    for i,x in enumerate(g.vs):
-        labels[i]=x.attributes()
-        if x.attributes()['type']=='eventNode':
-            # nodeColors.append('red')
-            if x.attributes()['driverId']=='John':
-                nodeColors.append('red')
-            if x.attributes()['driverId'] == 'Dani':
-                nodeColors.append('orange')
-            if x.attributes()['driverId'] == 'Mia':
-                nodeColors.append('yellow')
-
-        elif x.attributes()['type']=='destinationNode':
-            nodeColors.append('black')
-        else:
-            nodeColors.append('green')
-
-
-    edgeLabels={}
-    edgeColors={}
-    for i,x in enumerate(g.es):
-        edgeLabels[(x.source,x.target)]=x.attributes()
-        if x.attributes()['type']=='stayEdge':
-            edgeColors[(x.source,x.target)]=('yellow')
-        elif x.attributes()['type']=='travelEdge':
-            edgeColors[(x.source,x.target)]=('red')
-        elif x.attributes()['type'] == 'destinationEdge':
-            edgeColors[(x.source,x.target)]=('black')
-
-    layout=nx.shell_layout(G)
-    nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
-    nx.draw_networkx_edges(G,pos=layout,edgelist=edgeColors.keys(),edge_color=edgeColors.values())
-    nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
-    nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=5,alpha=0.6)
-
-    plt.show()
 
 
 def buildGraph(routes):
@@ -136,14 +92,7 @@ if __name__=='__main__':
     createStayEdges(g)
     createDestinationEdges(g)
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
-    draw(g)
+    g.draw()
     g.getDetailsShortestPath(6,3,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
     g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
 
-
-    # x=list(g._g.es)
-    # y=g._g.vs
-    # for edge in g._g.es:
-    #     print(edge)
-    #     print(y[edge.source].attributes(),y[edge.target].attributes())
-    #     print( )
