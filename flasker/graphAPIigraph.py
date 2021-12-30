@@ -3,13 +3,9 @@ import igraph
 import datetime
 import matplotlib.pyplot as plt
 import numpy as np
+from flasker.helpers import addMin
 
 
-def addMin(tm, min):
-    """ get a dateTime object and minutes
-    :return their sum"""
-    tm = tm + datetime.timedelta(minutes=min)
-    return tm
 
 class Graph(object):
     """using igraph
@@ -17,7 +13,7 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime=1,numberOfSP=7,maxDriver=5,maxTimeMin=400,maxDistanceMeters = 10000):
+    def __init__(self,stopTime,numberOfSP,maxDriver,maxTimeMin,maxDistanceMeters ):
         self._g=igraph.Graph(directed=True)
         self.stopTimeMin=stopTime
         self.numberOfSP=numberOfSP
@@ -142,7 +138,7 @@ class Graph(object):
         return self._g.es[newEdgeindex]['ID']
 
 
-    def _dijkstra(self,source,target,weight):
+    def _dijkstra(self,source,target,weight,output='vpath'):
         """ find the shortest path from source index node to target index node
         could get different weight functions for different calculations
         """
@@ -150,10 +146,35 @@ class Graph(object):
         # suppress warnings
         warnings.filterwarnings('ignore') #in case there is no path to the destination
         weights=self._g.es[weight]
-        path = self._g.get_shortest_paths(source, to=target,weights=weights)
-
+        path = self._g.get_shortest_paths(source, to=target,weights=weights,mode=igraph.OUT,output=output)
         return path[0]
 
+
+
+
+    def _manySourcesDijkstra(self,sources,target,weight):
+        """find the source from all the sources that will provide the minimum path"""
+        def calcSumWeightsOfPath(path):
+            weights = self._g.es[weight]
+            sumOfPath = sum(map(lambda edge: weights[edge], path))
+            return sumOfPath
+
+        minSum=float('inf')
+        for source in sources:
+            path = self._dijkstra(source, target, weight,output='epath')
+            if path:
+                tempSum=calcSumWeightsOfPath(path)
+                if tempSum<minSum:
+                    minSum=tempSum
+                    minSource=source
+
+                #just to ceck- need to be delted
+                # path = self._dijkstra(source, target, weight,output='vpath')
+                # for n in path:
+                #     print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+                # print(tempSum)
+
+        return self._dijkstra(minSource, target, weight,output='vpath')
 
     def getDetailsShortestPath(self,source,target,minTime,weight):
         """
@@ -167,10 +188,14 @@ class Graph(object):
 
         #find node which has minimum time and the same sp source
         sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
-        minimumSource=min(sameSp, key=lambda x: x['time'])
-        sourceInedx=minimumSource.index
+        #TODO : decide if one source or many: the next are for only one source
+        # minimumSource=min(sameSp, key=lambda x: x['time'])
+        # sourceInedx=minimumSource.index
+        # path=self._dijkstra(sourceInedx,targetIndex,weight)
+        sourcesIndex=list(map(lambda vertex: vertex.index,sameSp))
         targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
-        path=self._dijkstra(sourceInedx,targetIndex,weight)
+        path=self._manySourcesDijkstra(sourcesIndex,targetIndex,weight)
+
         #todo- return the deatils of the path
         print(path)
         pathSpDriver=[]
@@ -235,59 +260,12 @@ class Graph(object):
 
 
 
-    # def _draftDraw(self):
-    #
-    #
-    #     """ visualize the graph """
-    #     import networkx as nx
-    #     g=self._g
-    #
-    #     G = g.to_networkx()
-    #     labels={}
-    #     nodeColors=[]
-    #
-    #     for i,x in enumerate(g.vs):
-    #         labels[i]=x.attributes()
-    #         if x.attributes()['type']=='eventNode':
-    #             # nodeColors.append('red')
-    #             if x.attributes()['driverId']=='John':
-    #                 nodeColors.append('red')
-    #             if x.attributes()['driverId'] == 'Dani':
-    #                 nodeColors.append('orange')
-    #             if x.attributes()['driverId'] == 'Mia':
-    #                 nodeColors.append('yellow')
-    #
-    #         elif x.attributes()['type']=='destinationNode':
-    #             nodeColors.append('black')
-    #         else:
-    #             nodeColors.append('green')
-    #
-    #
-    #     edgeLabels={}
-    #     edgeColors={}
-    #     for i,x in enumerate(g.es):
-    #         edgeLabels[(x.source,x.target)]=x.attributes()
-    #         if x.attributes()['type']=='stayEdge':
-    #             edgeColors[(x.source,x.target)]=('yellow')
-    #         elif x.attributes()['type']=='travelEdge':
-    #             edgeColors[(x.source,x.target)]=('red')
-    #         elif x.attributes()['type'] == 'destinationEdge':
-    #             edgeColors[(x.source,x.target)]=('black')
-    #
-    #     layout=nx.shell_layout(G)
-    #     nx.draw_networkx_nodes(G,pos=layout,node_color=nodeColors)
-    #     nx.draw_networkx_edges(G,pos=layout,edgelist=edgeColors.keys(),edge_color=edgeColors.values())
-    #     nx.draw_networkx_labels(G,pos=layout ,labels=labels,font_size=4)
-    #     nx.draw_networkx_edge_labels(G,pos=layout ,edge_labels=edgeLabels,font_size=5,alpha=0.6)
-    #
-    #     plt.show()
 
     def draw(self):
         #edge label (meters,minutes)
         #color of node represnt driver
         #name of node represnt service point
 
-        #todo : add time of node
         g=self._g
 
         #TODO: make the colors of the drivers to be more generic
@@ -308,18 +286,29 @@ class Graph(object):
 
         visual_style = {}
         #vetrex
-        visual_style["vertex_size"] = 20
+        visual_style["vertex_size"] = 40
         visual_style["vertex_shape"] = [shape_node_dict[type] for type in g.vs["type"]]
         visual_style["vertex_color"] = [color_node_dict[name] for name in g.vs["driverId"]]
-        visual_style["vertex_label"] = g.vs["spId"]
+
+        vertex_id_time=[]
+        for spId,time in zip(g.vs['spId'],g.vs['time']):
+            if time:
+                vertex_id_time.append(str(spId)+'\n'+str(time.time())[0:5])
+            else :
+                vertex_id_time.append(str(spId))
+        visual_style["vertex_label"] = vertex_id_time
+        # visual_style["vertex_label"] =  g.vs["spId"]
 
         #edges
-        visual_style["edge_label"] = list(zip(g.es["distance"],g.es["duration"]))
+        visual_style["edge_label"] = list(map(lambda x: '' if x==(0,0) else x, zip(g.es["distance"],map(lambda x: round(x),g.es["duration"])))) #if the edge is (0,0) print nothing, in case of destination edges
         visual_style["edge_color"] = [color_edge_dict[type] for type in g.es["type"]]
+        visual_style["edge_label_color"] = [color_edge_dict[type] for type in g.es["type"]]
+
+        visual_style["edge_curved"] = 0.03
 
         visual_style["layout"] = layout
 
-        igraph.plot(g, **visual_style,target='graphImage.SVG',)
+        igraph.plot(g, **visual_style,target='graphImage.png',margin = 40)
 
 
 if __name__=='__main__':
