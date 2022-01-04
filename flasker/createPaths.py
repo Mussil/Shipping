@@ -11,8 +11,8 @@ def createRandomPaths(numDrivers,maxSp):
         path['driver']=i+1 #the name of the driver
         path['start']=addMin(initialDate,random.randint(0, minutesInDay)) #add to inital day some random minutes
         numOfSp=random.randint(2, maxSp)
-        print(numOfSp)
-        print(maxSp)
+        # print(numOfSp)
+        # print(maxSp)
 
         path['path']=random.sample(range(1,maxSp+1), numOfSp)
         paths.append(path)

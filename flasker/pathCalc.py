@@ -51,16 +51,26 @@ def calcDistTime(org, dst, search_time):
     region = 'IL'  # Israel
     org_coords = list2stringCoordinates(stations[org]['geometry']['coordinates'])
     dst_coords = list2stringCoordinates(stations[dst]['geometry']['coordinates'])
-    route = WazeRouteCalculator.WazeRouteCalculator(org_coords, dst_coords, region)
+    retry_cnt = 0
+    while retry_cnt < 5:
+        try:
+            route = WazeRouteCalculator.WazeRouteCalculator(org_coords, dst_coords, region)
 
-    real_time = datetime.datetime.now()
-    time = ((search_time-real_time).total_seconds())/ 60.0
-    res = route.calc_route_info(time_delta = round(time), real_time=False)
+            real_time = datetime.datetime.now()
+            time = ((search_time - real_time).total_seconds()) / 60.0
+            res = route.calc_route_info(time_delta=round(time), real_time=False)
 
-    route_time = res[0]
-    route_distance = KM2meter(res[1])
+            route_time = res[0]
+            route_distance = KM2meter(res[1])
 
-    return round(route_time), round(route_distance)
+            retry_cnt = 5  # if no error - get out of loop
+        except WazeRouteCalculator.WRCError as err:
+            retry_cnt += 1
+            print(f"Waze Server Error (#{retry_cnt}), Retrying, Type-{err}")
+
+    return route_time, route_distance
+
+    # return round(route_time), round(route_distance)
 
 stations = initStations()
 
