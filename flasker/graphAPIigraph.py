@@ -210,7 +210,6 @@ class Graph(object):
 
         sourceIndex=self._g.vs.find(ID_eq=startNode,type_eq='startNode').index
         targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
-        #TODO : delete temp node and edges
 
         path=self._dijkstra(sourceIndex,targetIndex,weight)
 
@@ -220,11 +219,15 @@ class Graph(object):
         # path=self._manySourcesDijkstra(sourcesIndex,targetIndex,weight)
 
         #TODO: return the deatils of the path
-        print(path)
+        # print(path)
         pathSpDriver=[]
         for n in path:
             pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
-            print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+            # print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+
+        #TODO : delete temp node and edges
+        self._g.delete_vertices(self._findNodeIndexById(startNode))
+
         return pathSpDriver
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):

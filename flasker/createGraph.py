@@ -3,7 +3,7 @@ import datetime
 from flasker.createPaths import createRandomPaths
 from flasker.graphAPIigraph import Graph
 from flasker.pathCalc import calcDistTime
-from flasker.helpers import  addMin
+from flasker.helpers import addMin
 
 
 
@@ -60,10 +60,10 @@ def createDestinationEdges(g):
 
 
 
-def buildGraph(routes,maxDrivers,maxSp):
+def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
     # g = Graph()
     #TODO: change the parms to real one
-    g = Graph(stopTime=1, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=400, maxDistanceMeters=10000)
+    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters)
 
     for route in routes:
         createTravelEdges(g, route)
@@ -79,7 +79,7 @@ if __name__=='__main__':
     route1 = {
         'driver': 'John',
         'start': datetime.datetime(2022, 1, 1, 23, 21),
-        'path': [1,  3,2, 4]
+        'path': [1,3,2, 4]
     }
     createTravelEdges(g,route1)
     route2 = {
@@ -99,7 +99,7 @@ if __name__=='__main__':
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
     g.draw()
     path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    # path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    # path=g.getDetailsShortestPath(3,6,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
 
     # print(path)
     # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
@@ -108,3 +108,4 @@ if __name__=='__main__':
     # # print(routes)
     # g=buildGraph(routes,maxSp=20,maxDrivers=5)
     # g.draw()
+
