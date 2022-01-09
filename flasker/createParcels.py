@@ -5,6 +5,7 @@ from flasker.helpers import addMin,initialDate,minutesInDay
 import random
 
 def createRandomParcels(numParcels, maxSp):
+    print("CREATING RANDOM PARCELS")
     paths = []
 
     for i in range(numParcels):

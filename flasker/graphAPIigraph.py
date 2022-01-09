@@ -218,17 +218,32 @@ class Graph(object):
         # sourcesIndex=list(map(lambda vertex: vertex.index,sameSp))
         # path=self._manySourcesDijkstra(sourcesIndex,targetIndex,weight)
 
-        #TODO: return the deatils of the path
-        # print(path)
+
         pathSpDriver=[]
+        allSPid=[]
+        allDriversID=[]
+
         for n in path:
-            pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
+            allSPid.append(self._g.vs[n]['spId'])
+            allDriversID.append(self._g.vs[n]['driverId'])
+            # pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
             # print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+        pathSpDriver=list(zip(allSPid,allDriversID))
+        # edges=[]
+        totalDuration=0
+        totalDistance=0
+        totalDrivers=len(set(allDriversID[1:-1]))#exlude the destination and start nodes
+        for id1, id2 in zip(path[0:-1], path[1:]):
+            # edges.append((id1,id2))
+            totalDuration+=self._g.es.find(_source=id1,_target=id2)['duration']
+            totalDistance+=self._g.es.find(_source=id1,_target=id2)['distance']
+
+
 
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
 
-        return pathSpDriver
+        return pathSpDriver,totalDistance,totalDuration,totalDrivers
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 

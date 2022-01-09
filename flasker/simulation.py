@@ -1,15 +1,18 @@
-from flasker.createPaths import createRandomPaths
+from flasker.createPaths import createRandomPaths, createPathsByHP
 from flasker.createGraph import buildGraph
 from flasker.createParcels import createRandomParcels
 
 
 def run():
-    numDrivers = 20
-    maxSp = 70
+    numDrivers = 13
+    numberOfSP = 20
     numParcels=15
-    routes=createRandomPaths(numDrivers=numDrivers, numSP=maxSp,maxStops=10)
-    parcels=createRandomParcels(numParcels=numParcels, maxSp=maxSp)
-    g=buildGraph(routes=routes,maxSp=maxSp,maxDrivers=numDrivers,stopTime=1,maxTimeMin=400,maxDistanceMeters=10000)
+    maxStopsPerDriver=12
+    # routes=createRandomPaths(numDrivers=numDrivers, numSP=maxSp,maxStops=10)
+    routes=createPathsByHP(numberOfSP,maxStops=maxStopsPerDriver,numDrivers=numDrivers)
+
+    parcels=createRandomParcels(numParcels=numParcels, maxSp=numberOfSP)
+    g=buildGraph(routes=routes,maxSp=numberOfSP,maxDrivers=numDrivers,stopTime=1,maxTimeMin=400,maxDistanceMeters=10000)
 
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
 

@@ -1,4 +1,6 @@
 import json
+import time
+
 import WazeRouteCalculator
 import logging
 import datetime
@@ -57,14 +59,18 @@ def calcDistTime(org, dst, search_time):
             route = WazeRouteCalculator.WazeRouteCalculator(org_coords, dst_coords, region)
 
             real_time = datetime.datetime.now()
-            time = ((search_time - real_time).total_seconds()) / 60.0
-            res = route.calc_route_info(time_delta=round(time), real_time=False)
+            _time = ((search_time - real_time).total_seconds()) / 60.0
+            res = route.calc_route_info(time_delta=round(_time), real_time=False)
 
             route_time = res[0]
             route_distance = KM2meter(res[1])
 
             retry_cnt = 5  # if no error - get out of loop
         except WazeRouteCalculator.WRCError as err:
+            retry_cnt += 1
+            print(f"Waze Server Error (#{retry_cnt}), Retrying, Type-{err}")
+        except Exception as err:
+            time.sleep(5)  # Delays for 5 seconds
             retry_cnt += 1
             print(f"Waze Server Error (#{retry_cnt}), Retrying, Type-{err}")
 

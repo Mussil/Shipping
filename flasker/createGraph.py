@@ -61,6 +61,7 @@ def createDestinationEdges(g):
 
 
 def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
+    print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
     #TODO: change the parms to real one
     g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters)
@@ -97,9 +98,11 @@ if __name__=='__main__':
     createStayEdges(g)
     createDestinationEdges(g)
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
-    g.draw()
+    # g.draw()
     path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    # path=g.getDetailsShortestPath(3,6,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    print(path)
+    path=g.getDetailsShortestPath(4,2,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    print(path)
 
     # print(path)
     # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
