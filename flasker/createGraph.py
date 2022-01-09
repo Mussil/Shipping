@@ -3,7 +3,7 @@ import datetime
 from flasker.createPaths import createRandomPaths
 from flasker.graphAPIigraph import Graph
 from flasker.pathCalc import calcDistTime
-from flasker.helpers import  addMin
+from flasker.helpers import addMin
 
 
 
@@ -60,10 +60,11 @@ def createDestinationEdges(g):
 
 
 
-def buildGraph(routes,maxDrivers,maxSp):
+def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
+    print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
     #TODO: change the parms to real one
-    g = Graph(stopTime=1, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=400, maxDistanceMeters=10000)
+    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters)
 
     for route in routes:
         createTravelEdges(g, route)
@@ -74,38 +75,40 @@ def buildGraph(routes,maxDrivers,maxSp):
 
 
 if __name__=='__main__':
-    # g = Graph(stopTime=1, numberOfSP=7, maxDriver=5, maxTimeMin=400, maxDistanceMeters=10000)
-    #
-    # route1 = {
-    #     'driver': 'John',
-    #     'start': datetime.datetime(2022, 1, 1, 23, 21),
-    #     'path': [1,  3,2, 4]
-    # }
-    # createTravelEdges(g,route1)
-    # route2 = {
-    #     'driver': 'Dani',
-    #     'start': datetime.datetime(2022, 1, 1, 12, 0),
-    #     'path': [3,4 ,6, 1]
-    # }
-    # createTravelEdges(g,route2)
-    # route3 = {
-    #     'driver': 'Mia',
-    #     'start': datetime.datetime(2022, 1, 1, 13, 40),
-    #     'path': [4 ,1]
-    # }
-    # createTravelEdges(g,route3)
-    # createStayEdges(g)
-    # createDestinationEdges(g)
-    # g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',C='time',B='driver',A='distance',alph=0,beta=0)
-    # g.draw()
-    # # path=g.getDetailsShortestPath(6,3,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    # path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    #
-    # # print(path)
-    # # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    g = Graph(stopTime=1, numberOfSP=7, maxDriver=5, maxTimeMin=400, maxDistanceMeters=10000)
 
-    #TODO:  fix the random paths
-    routes=createRandomPaths(numDrivers=5, maxSp=20)
-    print(routes)
-    g=buildGraph(routes,maxSp=20,maxDrivers=5)
-    g.draw()
+    route1 = {
+        'driver': 'John',
+        'start': datetime.datetime(2022, 1, 1, 23, 21),
+        'path': [1,3,2, 4]
+    }
+    createTravelEdges(g,route1)
+    route2 = {
+        'driver': 'Dani',
+        'start': datetime.datetime(2022, 1, 1, 12, 0),
+        'path': [3,4 ,6, 1]
+    }
+    createTravelEdges(g,route2)
+    route3 = {
+            'driver': 'Mia',
+            'start': datetime.datetime(2022, 1, 1, 13, 40),
+            'path': [4 ,1]
+        }
+    createTravelEdges(g,route3)
+    createStayEdges(g)
+    createDestinationEdges(g)
+    g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
+    # g.draw()
+    path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    print(path)
+    path=g.getDetailsShortestPath(4,2,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    print(path)
+
+    # print(path)
+    # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+
+    # routes=createRandomPaths(numDrivers=5, maxSp=20)
+    # # print(routes)
+    # g=buildGraph(routes,maxSp=20,maxDrivers=5)
+    # g.draw()
+

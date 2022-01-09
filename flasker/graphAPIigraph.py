@@ -23,6 +23,9 @@ class Graph(object):
         self.maxTimeMin=maxTimeMin
         self.maxDistanceMeters= maxDistanceMeters
 
+        #weights priority
+        self.nameOfWeights={}
+
         #TODO - think if i need this IDs ,
         # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
         # and anyway meanwhile i use the index stright after i get it so it won't changes and there is no use for the artifical IDs
@@ -151,30 +154,44 @@ class Graph(object):
 
 
 
+    #
+    # def _manySourcesDijkstra(self,sources,target,weight):
+    #     """find the source from all the sources that will provide the minimum path"""
+    #     def calcSumWeightsOfPath(path):
+    #         weights = self._g.es[weight]
+    #         sumOfPath = sum(map(lambda edge: weights[edge], path))
+    #         return sumOfPath
+    #
+    #     minSum=float('inf')
+    #     for source in sources:
+    #         path = self._dijkstra(source, target, weight,output='epath')
+    #         if path:
+    #             tempSum=calcSumWeightsOfPath(path)
+    #             if tempSum<minSum:
+    #                 minSum=tempSum
+    #                 minSource=source
+    #
+    #             #just to ceck- need to be delted
+    #             # path = self._dijkstra(source, target, weight,output='vpath')
+    #             # for n in path:
+    #             #     print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+    #             # print(tempSum)
+    #
+    #     return self._dijkstra(minSource, target, weight,output='vpath')
 
-    def _manySourcesDijkstra(self,sources,target,weight):
-        """find the source from all the sources that will provide the minimum path"""
-        def calcSumWeightsOfPath(path):
-            weights = self._g.es[weight]
-            sumOfPath = sum(map(lambda edge: weights[edge], path))
-            return sumOfPath
+    def _addStartNodeEdges(self,spId,time,otherNodes,weightName):
+        #add startNode
+        startNode=self.add_node(driverId=None,spId=spId,time=time, type='startNode')
+        #add startEdges
+        for node in otherNodes['ID']:
+            timeOfNode=self._g.vs.find(ID_eq=node)['time']
+            duration=(timeOfNode-time).total_seconds() / 60.0 #working with minutes
+            edge=self.add_edge(startNode,node,type='startEdge',duration=duration,distance=0)
 
-        minSum=float('inf')
-        for source in sources:
-            path = self._dijkstra(source, target, weight,output='epath')
-            if path:
-                tempSum=calcSumWeightsOfPath(path)
-                if tempSum<minSum:
-                    minSum=tempSum
-                    minSource=source
+            #add weight to edge
+            self._g.es.find(ID_eq=edge, type_eq='startEdge')[weightName]=self.nameOfWeights[weightName]['weightTime']*duration
 
-                #just to ceck- need to be delted
-                # path = self._dijkstra(source, target, weight,output='vpath')
-                # for n in path:
-                #     print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
-                # print(tempSum)
-
-        return self._dijkstra(minSource, target, weight,output='vpath')
+        return startNode
 
     def getDetailsShortestPath(self,source,target,minTime,weight):
         """
@@ -186,23 +203,47 @@ class Graph(object):
         :returns the shortest path by dijkstra algorithm
         """
 
-        #find node which has minimum time and the same sp source
-        sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
-        #TODO : decide if one source or many: the next are for only one source
-        # minimumSource=min(sameSp, key=lambda x: x['time'])
-        # sourceInedx=minimumSource.index
-        # path=self._dijkstra(sourceInedx,targetIndex,weight)
-        sourcesIndex=list(map(lambda vertex: vertex.index,sameSp))
-        targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
-        path=self._manySourcesDijkstra(sourcesIndex,targetIndex,weight)
 
-        #todo- return the deatils of the path
-        print(path)
+        #find node which has is larger that minTime and the same sp source
+        sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
+        startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSp,weightName=weight)
+
+        sourceIndex=self._g.vs.find(ID_eq=startNode,type_eq='startNode').index
+        targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
+
+        path=self._dijkstra(sourceIndex,targetIndex,weight)
+
+
+        #the next 2 lines are for many sources
+        # sourcesIndex=list(map(lambda vertex: vertex.index,sameSp))
+        # path=self._manySourcesDijkstra(sourcesIndex,targetIndex,weight)
+
+
         pathSpDriver=[]
+        allSPid=[]
+        allDriversID=[]
+
         for n in path:
-            pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
-            print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
-        return pathSpDriver
+            allSPid.append(self._g.vs[n]['spId'])
+            allDriversID.append(self._g.vs[n]['driverId'])
+            # pathSpDriver.append((self._g.vs[n]['spId'],self._g.vs[n]['driverId']))
+            # print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
+        pathSpDriver=list(zip(allSPid,allDriversID))
+        # edges=[]
+        totalDuration=0
+        totalDistance=0
+        totalDrivers=len(set(allDriversID[1:-1]))#exlude the destination and start nodes
+        for id1, id2 in zip(path[0:-1], path[1:]):
+            # edges.append((id1,id2))
+            totalDuration+=self._g.es.find(_source=id1,_target=id2)['duration']
+            totalDistance+=self._g.es.find(_source=id1,_target=id2)['distance']
+
+
+
+        #TODO : delete temp node and edges
+        self._g.delete_vertices(self._findNodeIndexById(startNode))
+
+        return pathSpDriver,totalDistance,totalDuration,totalDrivers
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 
@@ -258,8 +299,10 @@ class Graph(object):
             elif edge['type']=='travelEdge':
                 es[i][nameOfWeight]=weightTime* duration+ weightDistance*distance
 
-
-
+        self.nameOfWeights[nameOfWeight]={'weightDriver': weightDriver,
+                                          'weightTime':weightTime,
+                                          'weightDistance':weightDistance
+                                          }
 
     def draw(self):
         #edge label (meters,minutes)

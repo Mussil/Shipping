@@ -1,7 +1,7 @@
 import datetime
 
 
-initialDate=datetime.datetime(2022, 1, 1, 0, 0)
+initialDate=datetime.datetime(2022, 1, 2, 0, 0)
 minutesInDay=1440-1
 
 def addMin(tm, min):
