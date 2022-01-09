@@ -5,6 +5,7 @@
     <title>A simple map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <!-- <script type="text/javascript" src="servicePointGlobal.geojson"></script> -->
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
@@ -20,49 +21,66 @@
         .setView([31.790432720080467 , 34.63724819562294 ], 13.5)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
-    // Add a new line to the map with no points.
-    var polyline = L.polyline([]).addTo(map);
+    L.marker([31.790432720080467 , 34.63724819562294], {icon: L.mapbox.marker.icon({'marker-color': '#f86767'})}).addTo(map);
+    // var geojson = JSON.parse(servicePointGlobal);
 
-    // Keep a tally of how many points we've added to the map.
-    var pointsAdded = 0;
-
-    // Start drawing the polyline.
-    add();
-
-    function add() {
-
-        // `addLatLng` takes a new latLng coordinate and puts it at the end of the
-        // line. You optionally pull points from your data or generate them. Here
-        // we make a sine wave with some math.
-        polyline.addLatLng(
-            L.latLng( 31.790432720080467+pointsAdded/2000, 34.63724819562294 +pointsAdded/2000));
-
-        // // Pan the map along with where the line is being added.
-        // map.setView([0, pointsAdded], 3);
-
-        // Continue to draw and pan the map by calling `add()`
-        // until `pointsAdded` reaches 360.
-        if (++pointsAdded < 100) window.setTimeout(add, 100);
-    }
+    // const geojson = [
+    //     {
+    //         type: 'Feature',
+    //         geometry: {
+    //         type: 'Point',
+    //         coordinates: [34.662988739863771, 31.775372518434079]
+    //         }
+    //     },
+    //     {
+    //         type: 'Feature',
+    //         geometry: {
+    //         type: 'Point',
+    //         coordinates: [ 34.625755753851195, 31.78355915328936]
+    //         }
+    //     }
+    // ];
 
 
-
-    var marker = L.marker([31.790432720080467 , 34.63724819562294], {
-        icon: L.mapbox.marker.icon({
-            'marker-color': '#f86767'
-        })
-    });
-
-    var t = 0;
-    window.setInterval(function() {
-        // Making a lissajous curve just for fun.
-        // Create your own animated path here.
-        marker.setLatLng(L.latLng(31.790432720080467+pointsAdded/2000, 34.63724819562294 +pointsAdded/2000));
-        t += 0.1;
-    }, 50);
+    // const myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
+    // mapGeo.scrollWheelZoom.disable();
 
 
-    marker.addTo(map);
+
+    // // Add a new line to the map with no points.
+    // var polyline = L.polyline([]).addTo(map);
+
+    // // Keep a tally of how many points we've added to the map.
+    // var pointsAdded = 0;
+
+    // // Start drawing the polyline.
+    // add();
+
+    // function add() {
+
+    //     // `addLatLng` takes a new latLng coordinate and puts it at the end of the
+    //     // line. You optionally pull points from your data or generate them. Here
+    //     // we make a sine wave with some math.
+    //     polyline.addLatLng(
+    //         L.latLng( 31.790432720080467+pointsAdded/2000, 34.63724819562294 +pointsAdded/2000));
+
+    //     // // Pan the map along with where the line is being added.
+    //     // map.setView([0, pointsAdded], 3);
+
+    //     // Continue to draw and pan the map by calling `add()`
+    //     // until `pointsAdded` reaches 360.
+    //     if (++pointsAdded < 100) window.setTimeout(add, 100);
+    // }
+
+    // var t = 0;
+    // window.setInterval(function() {
+    //     // Making a lissajous curve just for fun.
+    //     // Create your own animated path here.
+    //     marker.setLatLng(L.latLng(31.790432720080467+pointsAdded/2000, 34.63724819562294 +pointsAdded/2000));
+    //     t += 0.1;
+    // }, 50);
+
+
 </script>
 </body>
 </html>

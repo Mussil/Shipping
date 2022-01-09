@@ -1,9 +1,9 @@
+import WazeRouteCalculator
 import json
 import time
-
-import WazeRouteCalculator
-import logging
 import datetime
+
+from flasker.helpers import initialDate
 
 def list2stringCoordinates(lst):
     ''' :return: converted list to string  '''
@@ -15,9 +15,7 @@ def KM2meter(distance):
 
 def initStations():
     '''
-    :return:
-        1. dict of all stations
-        2. service obj for directions calc
+    :return: dict of all stations
     '''
 
     path = 'servicePointGlobal.geojson'
@@ -26,16 +24,14 @@ def initStations():
         stationsJson = json.load(stationsFile)
 
     stationsJson = stationsJson["features"]
-    # print(stationsJson)
 
     stationsDict = {}
     for station in stationsJson:
         stationsDict[station['properties']['fid']] = station
-    # print(stationsDict)
 
     return stationsDict
 
-def calcDistTime(org, dst, search_time):
+def getDistTime(org, dst, search_time):
     '''
         :param org: origin station name
         :param dst: destination station name
@@ -45,27 +41,23 @@ def calcDistTime(org, dst, search_time):
             route-distance between 2 points in meters
     '''
 
-    # logger = logging.getLogger('WazeRouteCalculator.WazeRouteCalculator')
-    # logger.setLevel(logging.DEBUG)
-    # handler = logging.StreamHandler()
-    # logger.addHandler(handler)
-
     region = 'IL'  # Israel
     org_coords = list2stringCoordinates(stations[org]['geometry']['coordinates'])
     dst_coords = list2stringCoordinates(stations[dst]['geometry']['coordinates'])
+
     retry_cnt = 0
     while retry_cnt < 5:
         try:
             route = WazeRouteCalculator.WazeRouteCalculator(org_coords, dst_coords, region)
 
             real_time = datetime.datetime.now()
-            _time = ((search_time - real_time).total_seconds()) / 60.0
-            res = route.calc_route_info(time_delta=round(_time), real_time=False)
+            _time = ((search_time-real_time).total_seconds())/ 60.0
+            res = route.calc_route_info(time_delta = round(_time), real_time=False)
 
             route_time = res[0]
             route_distance = KM2meter(res[1])
 
-            retry_cnt = 5  # if no error - get out of loop
+            retry_cnt = 5 # if no error - get out of loop
         except WazeRouteCalculator.WRCError as err:
             retry_cnt += 1
             print(f"Waze Server Error (#{retry_cnt}), Retrying, Type-{err}")
@@ -76,9 +68,87 @@ def calcDistTime(org, dst, search_time):
 
     return route_time, route_distance
 
-    # return round(route_time), round(route_distance)
+def stationTimes(station_name, station2):
+    '''
+    :param station_name: name of station
+    :return: calc destination from station to all other stations
+    '''
 
-stations = initStations()
+    stationsJson = {}
 
-# time, dis = calcDistTime(1, 70, datetime.datetime(2021, 12, 28, 12, 0))
-# print(time, dis)
+    for hour in range(0, 24):
+        time0, dis0 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 0))
+        time5, dis5 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 5))
+        time10, dis10 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 10))
+        time15, dis15 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 15))
+        time20, dis20 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 20))
+        time25, dis25 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 25))
+        time30, dis30 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 30))
+        time35, dis35 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 35))
+        time40, dis40 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 40))
+        time45, dis45 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 45))
+        time50, dis50 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 50))
+        time55, dis55 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 55))
+
+        stationHourJson = {f'{hour}:00': (time0, dis0),
+                            f'{hour}:05': (time5, dis5),
+                            f'{hour}:10': (time10, dis10),
+                            f'{hour}:15': (time15, dis15),
+                            f'{hour}:20': (time20, dis20),
+                            f'{hour}:25': (time25, dis25),
+                            f'{hour}:30': (time30, dis30),
+                            f'{hour}:35': (time35, dis35),
+                            f'{hour}:40': (time40, dis40),
+                            f'{hour}:45': (time45, dis45),
+                            f'{hour}:50': (time50, dis50),
+                            f'{hour}:55': (time55, dis55)
+                            }
+
+        stationsJson.update(stationHourJson)
+
+    # print(stationsJson)
+    return stationsJson
+
+def stationsCalc():
+    '''
+    :return: initialization of all files and creating them
+    '''
+
+    with open(f"stationsFiles/stations.json", "w") as file:
+        try:
+            station_data = json.load(file)
+            file.truncate()
+        except:
+            station_data = {}
+        json.dump(station_data, file)
+
+        for station1 in range(1, 71):  # start stations
+
+            for station2 in range(1, 71):  # end stations
+
+                if station1 != station2:
+                    station_data.update({f'{station1}-{station2}':stationTimes(station1, station2)})
+                    print(station_data)
+                    file.seek(0)
+                    json.dump(station_data, file)
+
+def calcTimeDist(org, dst, search_time):
+    '''
+    :param org: origin station
+    :param dst: destination station
+    :param search_time: time search
+    :return: meters and min bewteen 2 stations
+    '''
+    with open(f"stationsFiles/{org}.json", "r") as file:
+        data = json.load(file)
+        return data[f'{org}-{dst}']
+
+
+if __name__ == '__main__':
+
+    # initialize stations from geojson file
+    stations = initStations()
+    stationsCalc()
+
+    # call func for calc time & route between 2 stations
+    # print(calcTimeDist(1, 2, "yuyu"))
