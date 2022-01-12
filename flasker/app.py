@@ -16,9 +16,7 @@ def map():
 # def hello(name=None):
 #     return render_template('hello.html', name=name)
 
-from flasker.graphDraft import drive
 
 @app.route('/graph/')
 def hello():
-    drive()
     return 'graph try'

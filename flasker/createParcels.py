@@ -14,9 +14,8 @@ def createRandomParcels(numParcels, maxSp):
         path['source'] ,path['target']= random.sample(range(1, maxSp + 1), 2)
         paths.append(path)
 
-    # TODO: save paths to file (in directory)
 
-    with open('parcelsRandomFile.json', 'w', encoding='utf-8') as f:
+    with open('parcels/parcelsRandomFile.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=str)
 
     return paths
