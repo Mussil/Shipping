@@ -1,4 +1,9 @@
+import datetime
 import json
+from pprint import pprint
+
+from mapbox import Directions
+from helpers import access_token
 
 class SP:
     def __init__(self, path):
@@ -31,8 +36,11 @@ class SP:
         return self.stations
 
 
+
+
 path = 'servicePointGlobal.geojson'
 sp=SP(path)
 
 if __name__=='__main__':
-    print(sp.listOfFidCoords())
+    pass
+

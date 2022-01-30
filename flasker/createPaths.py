@@ -11,6 +11,7 @@ from flasker.pathCalc import calcDistTime
 import pickle
 from shapely.geometry import Point, LineString
 from mapbox import Directions
+from helpers import access_token
 
 # from flasker.spFile import getStationDeatils, coordinatesAllSp
 from SPutils import sp
@@ -115,10 +116,9 @@ def createRandomPaths(numDrivers,numSP,maxStops):
 
 
 def getPathMapBox(origin,destination):
-    access_token='pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ'
     service = Directions(access_token=access_token)
     response = service.directions([origin, destination],'mapbox/driving')
-    print(response.status_code)
+    # print(response.status_code)
     driving_routes = response.geojson()
     line=driving_routes['features'][0]['geometry']['coordinates']
     # print(driving_routes)
@@ -140,7 +140,7 @@ def getPathMapBox(origin,destination):
 
     # print(pointDistFromStart)
     sortedPoints=sorted(pointDistFromStart,key=lambda x: x[2])
-    print(list(map(lambda x: x[0],sortedPoints)))
+    # print(list(map(lambda x: x[0],sortedPoints)))
     spNames=list(map(lambda x: x[1],sortedPoints))
     return spNames
     # newPoints=list(map(lambda x: (x[0],x[1]),sortedPoints))
