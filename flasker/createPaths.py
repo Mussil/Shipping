@@ -12,6 +12,8 @@ import pickle
 from shapely.geometry import Point, LineString
 from mapbox import Directions
 
+# from flasker.spFile import getStationDeatils, coordinatesAllSp
+from SPutils import sp
 
 def createRandomPaths(numDrivers,numSP,maxStops):
     paths=[]
@@ -123,11 +125,14 @@ def getPathMapBox(origin,destination):
     # print(json.dumps(line))
     # print()
 
-    coordList=coordinatesAllSp()
+    # coordList=coordinatesAllSp()
+    coordList=sp.listOfFidCoords()
     line = LineString(line)
 
     pointDistFromStart=[]
-    originPoint=Point(origin['geometry']['coordinates'])
+    # originPoint=Point(origin['geometry']['coordinates'])
+    originPoint=Point(origin)
+
     for id,point in coordList:
         point2 = Point(point)
         if line.distance(point2) < 1e-3 :
@@ -144,30 +149,6 @@ def getPathMapBox(origin,destination):
 
 
 
-def getStationDeatils(num):
-    #todo: temp function , need to be in diffrent file and to be written difrently
-    path='servicePointGlobal.geojson'
-    with open(path, 'r') as stationsFile:
-        stationsJson = json.load(stationsFile)
-
-    stationsJson = stationsJson["features"]
-
-    return stationsJson[num - 1]
-
-def coordinatesAllSp():
-    '''
-    #TODO: put this function in diffrent file
-    #TODO: make sure it work efficentyly
-    :return:
-    '''
-    path='servicePointGlobal.geojson'
-    with open(path, 'r') as stationsFile:
-        stationsJson = json.load(stationsFile)
-    coordList=[]
-    stationsJson = stationsJson["features"]
-    for feature in stationsJson:
-        coordList.append((feature['properties']['fid'],feature['geometry']['coordinates']))
-    return coordList
 
 
 
@@ -180,8 +161,12 @@ def createPaths(numDrivers,numSP):
         path['start']=addMin(initialDate,random.randint(0, minutesInDay)) #add to inital day some random minutes
         originSp,destinationSp=random.sample(range(1,numSP+1), 2)
 
-        origin = getStationDeatils(originSp)
-        destination = getStationDeatils(destinationSp)
+        # origin = getStationDeatils(originSp)
+        # destination = getStationDeatils(destinationSp)
+
+        origin = sp.getStationCoords(originSp)
+        destination = sp.getStationCoords(destinationSp)
+
 
         path['path']=getPathMapBox(origin, destination)
         paths.append(path)
