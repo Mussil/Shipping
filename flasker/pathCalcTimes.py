@@ -2,9 +2,6 @@ import WazeRouteCalculator
 import json
 import time
 import datetime
-from helpers import access_token
-
-from mapbox import Directions
 
 from flasker.helpers import initialDate
 
@@ -71,8 +68,11 @@ def getDistTime(org, dst, search_time):
 
     return route_time, route_distance
 
-
-def stationTimes(station_name, station2):
+def stationTimesCalc(station_name, station2):
+    '''
+    :param station_name: name of station
+    :return: calc destination from station to all other stations
+    '''
 
     stationsJson = {}
 
@@ -110,41 +110,41 @@ def stationTimes(station_name, station2):
     # print(stationsJson)
     return stationsJson
 
+def stationTimes(station_name):
+    '''
+    :param station_name: name of station
+    :return: calc destination from station to all other stations
+    '''
+    with open(f"stationsFilesTimes/{station_name}.json", "w") as file:
+        my_json = {}
+        json.dump(my_json, file)
+
+        station_data = {}
+        for station2 in range(1, 71): # end stations
+
+            if station_name != station2:
+                    station_data.update({f'{station_name}-{station2}': stationTimesCalc(station_name, station2)})
+                    print(station_data[f'{station_name}-{station2}'])
+        my_json.update(station_data)
+        # print(my_json)
+        file.seek(0)
+        json.dump(my_json, file)
 
 def stationsCalc():
     '''
     :return: initialization of all files and creating them
     '''
-
-    with open(f"stationsFilesTimes/stations.json", "w") as file:
-        try:
-            station_data = json.load(file)
-            file.truncate()
-        except:
-            station_data = {}
-        json.dump(station_data, file)
-
-        for station1 in range(1, 71):  # start stations
-
-            for station2 in range(1, 71):  # end stations
-
-                if station1 != station2:
-                    station_data.update({f'{station1}-{station2}':stationTimes(station1, station2)})
-                    print(station_data)
-                    file.seek(0)
-                    json.dump(station_data, file)
+    for station1 in range(1, 71):  # start stations
+        stationTimes(station1)
 
 def calcTimeDist(org, dst, search_time):
-
     '''
     :param org: origin station
     :param dst: destination station
     :param search_time: time search
     :return: meters and min bewteen 2 stations
     '''
-
-    with open(f"stationsFilesNoTimes/{org}.json", "r") as file:
-
+    with open(f"stationsFiles/{org}.json", "r") as file:
         data = json.load(file)
         return data[f'{org}-{dst}']
 
@@ -152,25 +152,8 @@ def calcTimeDist(org, dst, search_time):
 if __name__ == '__main__':
 
     # initialize stations from geojson file
-    # stations = initStations()
-    # stationsCalc()
+    stations = initStations()
+    stationsCalc()
 
     # call func for calc time & route between 2 stations
     # print(calcTimeDist(1, 2, "yuyu"))
-
-
-    service = Directions(access_token=access_token)
-    origin=[ 34.662988739863771, 31.775372518434079 ]
-    destination=[ 34.64964109429728, 31.807683758598237 ]
-    timee=datetime.datetime(2022, 1, 11, 7, 14)
-    response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
-    print(response.status_code)
-    driving_routes = response.geojson()
-    print(driving_routes['features'][0]['properties'])
-
-
-    timee=datetime.datetime(2022, 1, 11, 12, 0)
-    response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
-    print(response.status_code)
-    driving_routes = response.geojson()
-    print(driving_routes['features'][0]['properties'])
