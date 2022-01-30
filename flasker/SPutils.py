@@ -17,12 +17,18 @@ class SP:
         return stations
 
     def getStationCoords(self,fid):
-        return self. stations[fid]
+        return self.stations[fid]
 
     def listOfFidCoords(self):
         return self.stations.items()
 
+    def getStationsDict(self):
+        for station in self.stations:
+            first_coord = self.stations[station][1]
+            second_coord = self.stations[station][0]
+            self.stations[station] = [first_coord, second_coord]
 
+        return self.stations
 
 
 path = 'servicePointGlobal.geojson'

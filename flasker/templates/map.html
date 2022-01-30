@@ -5,8 +5,8 @@
     <title>A simple map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-
 
     <style>
         body { margin:0; padding:0; }
@@ -22,10 +22,25 @@
             cursor: pointer;
         }
 
+        .sidebar {
+            position: absolute;
+            margin: 20px 20px 30px 20px;
+            width: 15%;
+            top: 0;
+            bottom: 0;
+            padding: 20px;
+            background-color: #fff;
+            overflow-y: scroll;
+        }
+
     </style>
 </head>
 <body>
-<div id='map'></div>
+    <div id="map"></div>
+    <!-- <div class="sidebar">
+    <h1>Reports</h1>
+    <div id="reports"></div> -->
+    <!-- </div> -->
 
 <script>
     L.mapbox.accessToken = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ';
@@ -34,24 +49,46 @@
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
 
-    var data = JSON.parse('{{ stations | tojson | safe }}');
-    // console.log(data);
+    var data = JSON.parse('{{stations|tojson|safe}}');
 
     // add markers to map
-    for (const feature of data.features) {
-        // create a HTML element for each feature
-        const el = document.createElement('div');
-        el.className = 'marker';
+    for (const station of data) {
 
         // make a marker for each feature and add to the map
-        new L.marker(feature.geometry.coordinates, {
+        new L.marker(station, {
             icon: L.mapbox.marker.icon({
                 'marker-color': '#f86767'
             })})
             .addTo(map);
     }
 
+    calculateRoute(data[0], data[40]);
 
+    // var polyline = new L.Polyline([
+    //     [data[0][0], data[0][1]],
+    //     [data[41][0], data[41][1]],
+    //     [data[42][0], data[42][1]]
+
+    // ]).addTo(map);
+
+    function calculateRoute(geomFrom, geomTo) {
+
+        var lngFrom = geomFrom[0]
+        var latFrom = geomFrom[1]
+
+        var lngTo = geomTo[0]  
+        var latTo = geomTo[1]
+
+        $.get('https://api.mapbox.com/directions/v5/mapbox/driving/' + lngFrom + ',' + latFrom + ';' + lngTo + ',' + latTo + '?access_token=pk.eyJ1IjoicHJheWVyIiwiYSI6ImI3OGRjZjcyY2JiZTUzODMwZWUxZDdiNjRiMWE4NjI5In0.zETX-x6-XPpAv3zt4MiFwg', 
+        function( data1 ) {
+            var coords = polyline.decode(data1.routes[0].geometry);
+            var line = L.polyline(coords).addTo(mapTwo);
+        });  
+    };
+
+    
+
+    
 </script>
 </body>
 </html>
