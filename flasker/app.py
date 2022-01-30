@@ -12,7 +12,7 @@ app = Flask(__name__)
 def map():
     with open("servicePointGlobal.geojson", "r") as file:
         data = json.load(file)
-        
+
         return render_template('map.html', stations=data)
 
 # @app.route('/hello/')
@@ -22,7 +22,4 @@ def map():
 
 # from flasker.graphDraft import drive
 
-# @app.route('/graph/')
-# def hello():
-#     drive()
-#     return 'graph try'
+
