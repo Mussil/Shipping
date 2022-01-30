@@ -1,16 +1,16 @@
-from flasker.createPaths import createRandomPaths, createPathsByHP
+from flasker.createPaths import createRandomPaths, createPaths
 from flasker.createGraph import buildGraph
 from flasker.createParcels import createRandomParcels
 
 
 def run():
     numDrivers = 13
-    numberOfSP = 20
+    numberOfSP = 70
     numParcels=15
     maxStopsPerDriver=15
-    # routes=createRandomPaths(numDrivers=numDrivers, numSP=maxSp,maxStops=10)
-    routes=createPathsByHP(numberOfSP,maxStops=maxStopsPerDriver,numDrivers=numDrivers)
-
+    # routes=createRandomPaths(numDrivers=numDrivers, numSP=numberOfSP,maxStops=10)
+    routes=createPaths(numSP=numberOfSP,numDrivers=numDrivers)
+    print(routes)
     parcels=createRandomParcels(numParcels=numParcels, maxSp=numberOfSP)
     g=buildGraph(routes=routes,maxSp=numberOfSP,maxDrivers=numDrivers,stopTime=1,maxTimeMin=400,maxDistanceMeters=10000)
 

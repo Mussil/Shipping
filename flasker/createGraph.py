@@ -46,7 +46,7 @@ def createDestinationEdges(g):
 
     def createDestinationNodes(g):
         numberOfSP=g.numberOfSP
-        for sp in range(1,numberOfSP+1): #TODO: more general approch of knowing the sp numbers
+        for sp in range(1,numberOfSP+1):
             g.add_node(driverId=None, spId=sp, time=None, type='destinationNode')
 
     createDestinationNodes(g)

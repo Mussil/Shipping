@@ -2,6 +2,9 @@ import WazeRouteCalculator
 import json
 import time
 import datetime
+from helpers import access_token
+
+from mapbox import Directions
 
 from flasker.helpers import initialDate
 
@@ -110,8 +113,25 @@ def calcDistTime(org, dst, search_time):
 if __name__ == '__main__':
 
     # initialize stations from geojson file
-    stations = initStations()
+    # stations = initStations()
     # stationsCalc()
 
     # call func for calc time & route between 2 stations
     # print(calcTimeDist(1, 2, "yuyu"))
+
+
+    service = Directions(access_token=access_token)
+    origin=[ 34.662988739863771, 31.775372518434079 ]
+    destination=[ 34.64964109429728, 31.807683758598237 ]
+    timee=datetime.datetime(2022, 1, 11, 7, 14)
+    response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
+    print(response.status_code)
+    driving_routes = response.geojson()
+    print(driving_routes['features'][0]['properties'])
+
+
+    timee=datetime.datetime(2022, 1, 11, 12, 0)
+    response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
+    print(response.status_code)
+    driving_routes = response.geojson()
+    print(driving_routes['features'][0]['properties'])
