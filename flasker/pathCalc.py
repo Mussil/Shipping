@@ -68,11 +68,8 @@ def getDistTime(org, dst, search_time):
 
     return route_time, route_distance
 
+
 def stationTimes(station_name, station2):
-    '''
-    :param station_name: name of station
-    :return: calc destination from station to all other stations
-    '''
 
     stationsJson = {}
 
@@ -110,6 +107,7 @@ def stationTimes(station_name, station2):
     # print(stationsJson)
     return stationsJson
 
+
 def stationsCalc():
     '''
     :return: initialization of all files and creating them
@@ -134,13 +132,16 @@ def stationsCalc():
                     json.dump(station_data, file)
 
 def calcTimeDist(org, dst, search_time):
+
     '''
     :param org: origin station
     :param dst: destination station
     :param search_time: time search
     :return: meters and min bewteen 2 stations
     '''
-    with open(f"stationsFiles/{org}.json", "r") as file:
+
+    with open(f"stationsFilesNoTimes/{org}.json", "r") as file:
+
         data = json.load(file)
         return data[f'{org}-{dst}']
 
@@ -149,7 +150,3 @@ if __name__ == '__main__':
 
     # initialize stations from geojson file
     stations = initStations()
-    stationsCalc()
-
-    # call func for calc time & route between 2 stations
-    # print(calcTimeDist(1, 2, "yuyu"))

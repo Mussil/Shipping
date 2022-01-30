@@ -7,7 +7,7 @@ def run():
     numDrivers = 13
     numberOfSP = 20
     numParcels=15
-    maxStopsPerDriver=12
+    maxStopsPerDriver=15
     # routes=createRandomPaths(numDrivers=numDrivers, numSP=maxSp,maxStops=10)
     routes=createPathsByHP(numberOfSP,maxStops=maxStopsPerDriver,numDrivers=numDrivers)
 

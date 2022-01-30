@@ -33,6 +33,7 @@
         .setView([31.790432720080467 , 34.63724819562294 ], 13.5)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
+
     var data = JSON.parse('{{ stations | tojson | safe }}');
     // console.log(data);
 
@@ -49,6 +50,7 @@
             })})
             .addTo(map);
     }
+
 
 </script>
 </body>
