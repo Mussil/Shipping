@@ -73,80 +73,41 @@ def getDistTime(org, dst, search_time):
 
     return route_time, route_distance
 
+def stationTimes(station_name):
+    '''
+    :param station_name: name of station
+    :return: calc destination from station to all other stations
+    '''
+    with open(f"stationsFiles/{station_name}.json", "w") as file:
+        my_json = {}
+        json.dump(my_json, file)
 
-def stationTimes(station_name, station2):
+        stationsJson = {}
+        for station2 in range(1, 71): # end stations
 
-    stationsJson = {}
+            if station_name != station2:
+                stationsJson[f'{station_name}-{station2}'] = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, 12, 0))
 
-    for hour in range(0, 24):
-        time0, dis0 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 0))
-        # time5, dis5 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 5))
-        # time10, dis10 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 10))
-        # time15, dis15 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 15))
-        # time20, dis20 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 20))
-        # time25, dis25 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 25))
-        time30, dis30 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 30))
-        # time35, dis35 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 35))
-        # time40, dis40 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 40))
-        # time45, dis45 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 45))
-        # time50, dis50 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 50))
-        # time55, dis55 = getDistTime(station_name, station2, datetime.datetime(initialDate.year, initialDate.month, initialDate.day, hour, 55))
-
-        # stationHourJson = {f'{hour}:00': (time0, dis0),
-        #                     f'{hour}:05': (time5, dis5),
-        #                     f'{hour}:10': (time10, dis10),
-        #                     f'{hour}:15': (time15, dis15),
-        #                     f'{hour}:20': (time20, dis20),
-        #                     f'{hour}:25': (time25, dis25),
-        #                     f'{hour}:30': (time30, dis30),
-        #                     f'{hour}:35': (time35, dis35),
-        #                     f'{hour}:40': (time40, dis40),
-        #                     f'{hour}:45': (time45, dis45),
-        #                     f'{hour}:50': (time50, dis50),
-        #                     f'{hour}:55': (time55, dis55)
-        #                     }
-
-        stationHourJson = {f'{hour}:00': (time0, dis0),f'{hour}:30': (time30, dis30)}
-        stationsJson.update(stationHourJson)
-
-    # print(stationsJson)
-    return stationsJson
-
+        my_json.update(stationsJson)
+        print(my_json)
+        file.seek(0)
+        json.dump(my_json, file)
 
 def stationsCalc():
     '''
     :return: initialization of all files and creating them
     '''
+    for station1 in range(1, 71):  # start stations
+        stationTimes(station1)
 
-    with open(f"stationsFilesTimes/stations.json", "w") as file:
-        try:
-            station_data = json.load(file)
-            file.truncate()
-        except:
-            station_data = {}
-        json.dump(station_data, file)
-
-        for station1 in range(1, 71):  # start stations
-
-            for station2 in range(1, 71):  # end stations
-
-                if station1 != station2:
-                    station_data.update({f'{station1}-{station2}':stationTimes(station1, station2)})
-                    print(station_data)
-                    file.seek(0)
-                    json.dump(station_data, file)
-
-def calcTimeDist(org, dst, search_time):
-
+def calcDistTime(org, dst, search_time):
     '''
     :param org: origin station
     :param dst: destination station
     :param search_time: time search
     :return: meters and min bewteen 2 stations
     '''
-
     with open(f"stationsFilesNoTimes/{org}.json", "r") as file:
-
         data = json.load(file)
         return data[f'{org}-{dst}']
 
@@ -176,47 +137,45 @@ if __name__ == '__main__':
     response = service.directions([origin, destination],'mapbox/driving',depart_at=datetime.datetime.timestamp(timee))
     # print(response.status_code)
     driving_routes = response.geojson()
-
     print("mapbox")
     # print(driving_routes['features'][0]['properties'])
     print(f"duration: {driving_routes['features'][0]['properties']['duration']/60}")
     print(f"length: {driving_routes['features'][0]['properties']['distance']}")
 
-    import json
-    import os
+    # import json
+    # import os
 
-    from here_location_services import routing_api
+    # from here_location_services import routing_api
 
-    # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
-    RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
+    # # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
+    # RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
 
-    address = "Invalidenstr 116, 10115 Berlin, Germany"
-    geo = RoutingApi.route(
-        transport_mode= 'car',
-        origin=origin,
-        destination= destination,
-    departure_time=departure_time,
-    return_results = ['summary','typicalDuration'], #  typicalDuration - duration with typical traffic information for the given time of day
-
-    )
-    # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
-    # print(geo)
-    # geo=json.loads(geo.text)
-    # print(geo.status_code)
-    # pprint(geo.json())
-    print("here")
-    print(f"typicalDuration: {geo.json()['routes'][0]['sections'][0]['summary']['typicalDuration']/60}")
-    print(f"length: {geo.json()['routes'][0]['sections'][0]['summary']['length']}")
-
-    # print(json.loads(geo.text))
-
-    # geo = ls.route(
-    #     transport_mode= str,
+    # address = "Invalidenstr 116, 10115 Berlin, Germany"
+    # geo = RoutingApi.route(
+    #     transport_mode= 'car',
     #     origin=origin,
     #     destination= destination,
-    #    )
-    # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+    # departure_time=departure_time,
+    # return_results = ['summary','typicalDuration'], #  typicalDuration - duration with typical traffic information for the given time of day
 
-    print("waze")
-    print(getDistTime(29, 21, departure_time))
+    # )
+    # # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+    # # print(geo)
+    # # geo=json.loads(geo.text)
+    # # print(geo.status_code)
+    # # pprint(geo.json())
+    # print("here")
+    # print(f"typicalDuration: {geo.json()['routes'][0]['sections'][0]['summary']['typicalDuration']/60}")
+    # print(f"length: {geo.json()['routes'][0]['sections'][0]['summary']['length']}")
 
+    # # print(json.loads(geo.text))
+
+    # # geo = ls.route(
+    # #     transport_mode= str,
+    # #     origin=origin,
+    # #     destination= destination,
+    # #    )
+    # # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+
+    # print("waze")
+    # print(getDistTime(29, 21, departure_time))

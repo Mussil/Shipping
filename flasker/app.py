@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask
 from flask import render_template
 from flasker.SPutils import sp
