@@ -48,8 +48,38 @@
         .setView([31.790432720080467 , 34.63724819562294 ], 13.5)
         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
-
     var data = JSON.parse('{{stations|tojson|safe}}');
+
+    var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
+    var client = new HttpClient();
+    client.get('https://api.mapbox.com/directions/v5/mapbox/driving/34.666929602032738,31.811967981669021;34.619748736651466,31.772700974698733?geometries=geojson&overview=full&access_token=pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ', function(response) {
+    var x=JSON.parse(response)['routes'][0]['geometry']['coordinates']
+    console.log(x);
+
+    for (let i = 0; i < x.length-1; i++) {
+        // console.log(x[i][0], x[i][1])
+        // if (i==0 || i==x.length-1){
+        //     L.marker([x[i][1], x[i][0]], {icon: L.mapbox.marker.icon({'marker-color': 'yellow'})}).addTo(map);
+        // }
+        // else{
+        //     L.marker([x[i][1], x[i][0]], {icon: L.mapbox.marker.icon({'marker-color': '#f86767'})}).addTo(map);
+        // }    
+
+        // var polyline = L.polyline([[ x[i][1], x[i][0] ], {color: 'red'}).addTo(map);
+        var polyline = L.polyline([[ x[i][1], x[i][0] ], [ x[i+1][1], x[i+1][0] ]], {color: 'red'}).addTo(map);
+        }
+    });
 
 
     // add markers to map
@@ -62,33 +92,7 @@
             })})
             .addTo(map);
     }
-
-    calculateRoute(data[0], data[40]);
-
-    // var polyline = new L.Polyline([
-    //     [data[0][0], data[0][1]],
-    //     [data[41][0], data[41][1]],
-    //     [data[42][0], data[42][1]]
-
-    // ]).addTo(map);
-
-    function calculateRoute(geomFrom, geomTo) {
-
-        var lngFrom = geomFrom[0]
-        var latFrom = geomFrom[1]
-
-        var lngTo = geomTo[0]  
-        var latTo = geomTo[1]
-
-        $.get('https://api.mapbox.com/directions/v5/mapbox/driving/' + lngFrom + ',' + latFrom + ';' + lngTo + ',' + latTo + '?access_token=pk.eyJ1IjoicHJheWVyIiwiYSI6ImI3OGRjZjcyY2JiZTUzODMwZWUxZDdiNjRiMWE4NjI5In0.zETX-x6-XPpAv3zt4MiFwg', 
-        function( data1 ) {
-            var coords = polyline.decode(data1.routes[0].geometry);
-            var line = L.polyline(coords).addTo(mapTwo);
-        });  
-    };
-
     
-
     
 </script>
 </body>

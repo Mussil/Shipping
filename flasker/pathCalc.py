@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import WazeRouteCalculator
 import json
 import time
@@ -151,8 +153,9 @@ def calcTimeDist(org, dst, search_time):
 
 if __name__ == '__main__':
 
+    LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA"
     # initialize stations from geojson file
-    # stations = initStations()
+    stations = initStations()
     # stationsCalc()
 
     # call func for calc time & route between 2 stations
@@ -160,17 +163,60 @@ if __name__ == '__main__':
 
 
     service = Directions(access_token=access_token)
-    origin=[ 34.662988739863771, 31.775372518434079 ]
-    destination=[ 34.64964109429728, 31.807683758598237 ]
+    origin=[34.619748736651466, 31.772700974698733][::-1]
+    destination=[34.666929602032738, 31.811967981669021][::-1]
     timee=datetime.datetime(2022, 1, 11, 7, 14)
     response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
-    print(response.status_code)
+    # print(response.status_code)
     driving_routes = response.geojson()
-    print(driving_routes['features'][0]['properties'])
+    # print(driving_routes['features'][0]['properties'])
 
 
-    timee=datetime.datetime(2022, 1, 11, 12, 0)
-    response = service.directions([origin, destination],'mapbox/driving-traffic',depart_at=datetime.datetime.timestamp(timee))
-    print(response.status_code)
+    departure_time=datetime.datetime(2022, 1, 2, 9, 0)
+    response = service.directions([origin, destination],'mapbox/driving',depart_at=datetime.datetime.timestamp(timee))
+    # print(response.status_code)
     driving_routes = response.geojson()
-    print(driving_routes['features'][0]['properties'])
+
+    print("mapbox")
+    # print(driving_routes['features'][0]['properties'])
+    print(f"duration: {driving_routes['features'][0]['properties']['duration']/60}")
+    print(f"length: {driving_routes['features'][0]['properties']['distance']}")
+
+    import json
+    import os
+
+    from here_location_services import routing_api
+
+    # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
+    RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
+
+    address = "Invalidenstr 116, 10115 Berlin, Germany"
+    geo = RoutingApi.route(
+        transport_mode= 'car',
+        origin=origin,
+        destination= destination,
+    departure_time=departure_time,
+    return_results = ['summary','typicalDuration'], #  typicalDuration - duration with typical traffic information for the given time of day
+
+    )
+    # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+    # print(geo)
+    # geo=json.loads(geo.text)
+    # print(geo.status_code)
+    # pprint(geo.json())
+    print("here")
+    print(f"typicalDuration: {geo.json()['routes'][0]['sections'][0]['summary']['typicalDuration']/60}")
+    print(f"length: {geo.json()['routes'][0]['sections'][0]['summary']['length']}")
+
+    # print(json.loads(geo.text))
+
+    # geo = ls.route(
+    #     transport_mode= str,
+    #     origin=origin,
+    #     destination= destination,
+    #    )
+    # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+
+    print("waze")
+    print(getDistTime(29, 21, departure_time))
+
