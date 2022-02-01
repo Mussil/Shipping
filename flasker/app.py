@@ -11,7 +11,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def map():
-    return render_template('map.html',stations=list(sp.getStationsDict().values()))
+    path1 = [15, 14, 6, 7, 17, 8, 18, 19] #  TODO: send this temp path to client and represent it
+    return render_template('map.html',stations=list(sp.getStationsDict().values()), path=path1)
 
 
 # @app.route('/hello/')

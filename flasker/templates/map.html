@@ -6,12 +6,13 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <!-- <script src='/flasker/js/map.js'></script> -->
 
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
-    
+
 </head>
 <body>
 <div id='map'></div>
@@ -24,47 +25,67 @@
 
     var data = JSON.parse('{{stations|tojson|safe}}');
 
-    var HttpClient = function() {
-    this.get = function(aUrl, aCallback) {
-        var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
-        }
-
-        anHttpRequest.open( "GET", aUrl, true );            
-        anHttpRequest.send( null );
-    }
-    }
-    var client = new HttpClient();
-    client.get('https://api.mapbox.com/directions/v5/mapbox/driving/34.666929602032738,31.811967981669021;34.619748736651466,31.772700974698733?geometries=geojson&overview=full&access_token=pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ', function(response) {
-    var x=JSON.parse(response)['routes'][0]['geometry']['coordinates']
-    console.log(x);
-
-    for (let i = 0; i < x.length-1; i++) {
-        // console.log(x[i][0], x[i][1])
-        // if (i==0 || i==x.length-1){
-        //     L.marker([x[i][1], x[i][0]], {icon: L.mapbox.marker.icon({'marker-color': 'yellow'})}).addTo(map);
-        // }
-        // else{
-        //     L.marker([x[i][1], x[i][0]], {icon: L.mapbox.marker.icon({'marker-color': '#f86767'})}).addTo(map);
-        // }    
-
-        // var polyline = L.polyline([[ x[i][1], x[i][0] ], {color: 'red'}).addTo(map);
-        var polyline = L.polyline([[ x[i][1], x[i][0] ], [ x[i+1][1], x[i+1][0] ]], {color: 'red'}).addTo(map);
-        }
-    });
-
+    // var route = JSON.parse('{{ path|tojson|safe }}');
+    // var route_coordinates = []
+    // ---------------------------
+    
     // add markers to map
     for (const station of data) {
 
             // make a marker for each feature and add to the map
-            new L.marker(station, {
-                icon: L.mapbox.marker.icon({
-                    'marker-color': '#f86767'
-                })})
-                .addTo(map);
-   }
+         new L.marker(station, {
+            icon: L.mapbox.marker.icon({
+                'marker-color': '#f86767'
+            })})
+            .addTo(map);
+    }
+
+    var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() {
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+            aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );
+        anHttpRequest.send( null );
+        }
+    }
+        
+    var client = new HttpClient();
+
+    route=[[ 34.652679781804473, 31.796535816090561 ],[ 34.652910807464501, 31.796622836740987 ],[ 34.658266577330146, 31.809519878530601 ], [ 34.659984568147479, 31.80985125376073 ],[ 34.65680726524424, 31.811224410665826 ],[ 34.659916660604992, 31.810352776309365 ],[ 34.654529037201335, 31.812626772099204 ],[ 34.655515096723022, 31.814776676211519 ]]
+    let path_coordinates = "";
+    for(let i=0; i<route.length; i++){
+            
+            if(i === route.length-1){
+                path_coordinates += `${route[i][0]},${route[i][1]}`;
+                console.log(path_coordinates);
+                drawRouteBetween2points(path_coordinates);
+                console.log(route[0]);
+            }
+            else{
+                path_coordinates += `${route[i][0]},${route[i][1]};`;
+            }
+    }
+
+    function drawRouteBetween2points(path_route) {
+        client.get('https://api.mapbox.com/directions/v5/mapbox/driving/'+path_route+'?geometries=geojson&overview=full&access_token=pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ',
+        function(response) {
+            var x=JSON.parse(response)['routes'][0]['geometry']['coordinates']
+            // console.log(x);
+
+            for (let i = 0; i < x.length-1; i++) {
+                var polyline = L.polyline([[ x[i][1], x[i][0] ], [ x[i+1][1], x[i+1][0] ]], {color: 'red'}).addTo(map);
+            }
+        });
+    }
+    
+    
+
+
+  
 
 </script>
 </body>

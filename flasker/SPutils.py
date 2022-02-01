@@ -3,7 +3,7 @@ import json
 from pprint import pprint
 
 from mapbox import Directions
-from helpers import access_token
+from flasker.helpers import access_token
 
 class SP:
     def __init__(self, path):
