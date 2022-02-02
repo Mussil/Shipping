@@ -114,7 +114,7 @@ def calcDistTime(org, dst, search_time):
 
 if __name__ == '__main__':
 
-    LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA"
+    LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA" #here api
     # initialize stations from geojson file
     stations = initStations()
     # stationsCalc()
@@ -142,17 +142,37 @@ if __name__ == '__main__':
     print(f"duration: {driving_routes['features'][0]['properties']['duration']/60}")
     print(f"length: {driving_routes['features'][0]['properties']['distance']}")
 
-    # import json
-    # import os
+    import json
+    import os
 
-    # from here_location_services import routing_api
+    from here_location_services import routing_api
 
-    # # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
-    # RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
+    # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
+    RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
 
     # address = "Invalidenstr 116, 10115 Berlin, Germany"
-    # geo = RoutingApi.route(
-    #     transport_mode= 'car',
+    geo = RoutingApi.route(
+        transport_mode= 'car',
+        origin=origin,
+        destination= destination,
+    departure_time=departure_time,
+    return_results = ['summary','typicalDuration'], #  typicalDuration - duration with typical traffic information for the given time of day
+
+    )
+    # print(json.dumps(geo.to_geojson(), indent=2, sort_keys=True))
+    # print(geo)
+    # geo=json.loads(geo.text)
+    # print(geo.status_code)
+    # pprint(geo.json())
+    print("here")
+    print(f"typicalDuration: {geo.json()['routes'][0]['sections'][0]['summary']['typicalDuration']/60}")
+    print(f"length: {geo.json()['routes'][0]['sections'][0]['summary']['length']}")
+
+    # print(json.loads(geo.text))
+
+    # geo = ls.route(
+    #     transport_mode= str,
+
     #     origin=origin,
     #     destination= destination,
     # departure_time=departure_time,

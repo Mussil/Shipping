@@ -25,19 +25,26 @@
 
     var data = JSON.parse('{{stations|tojson|safe}}');
 
+    var route = JSON.parse('{{path|tojson|safe}}');
+
     // var route = JSON.parse('{{ path|tojson|safe }}');
     // var route_coordinates = []
     // ---------------------------
     
     // add markers to map
-    for (const station of data) {
 
+    var i=1
+    for (const station of data) {
+        station.reverse()
             // make a marker for each feature and add to the map
          new L.marker(station, {
             icon: L.mapbox.marker.icon({
-                'marker-color': '#f86767'
+                'marker-color': '#f86767',
+                'marker-symbol'	: i,
+                'marker-size': 'small'
             })})
             .addTo(map);
+        i=i+1
     }
 
     var HttpClient = function() {
@@ -55,7 +62,8 @@
         
     var client = new HttpClient();
 
-    route=[[ 34.652679781804473, 31.796535816090561 ],[ 34.652910807464501, 31.796622836740987 ],[ 34.658266577330146, 31.809519878530601 ], [ 34.659984568147479, 31.80985125376073 ],[ 34.65680726524424, 31.811224410665826 ],[ 34.659916660604992, 31.810352776309365 ],[ 34.654529037201335, 31.812626772099204 ],[ 34.655515096723022, 31.814776676211519 ]]
+    // route=[[ 34.652679781804473, 31.796535816090561 ],[ 34.652910807464501, 31.796622836740987 ],[ 34.658266577330146, 31.809519878530601 ], [ 34.659984568147479, 31.80985125376073 ],[ 34.65680726524424, 31.811224410665826 ],[ 34.659916660604992, 31.810352776309365 ],[ 34.654529037201335, 31.812626772099204 ],[ 34.655515096723022, 31.814776676211519 ]]
+
     let path_coordinates = "";
     for(let i=0; i<route.length; i++){
             
@@ -81,11 +89,17 @@
             }
         });
     }
-    
-    
 
-
-  
+    for (let i = 0; i < route.length; i++) {
+        // console.log(x[i][0], x[i][1])
+        if (i==0 || i==route.length-1){
+            L.marker([route[i][1], route[i][0]], {icon: L.mapbox.marker.icon({'marker-color': 'yellow'})}).addTo(map);
+        }
+        else{
+            L.marker([route[i][1], route[i][0]], {icon: L.mapbox.marker.icon({'marker-color': 'green'})}).addTo(map);
+        }
+    }
+    
 
 </script>
 </body>

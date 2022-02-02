@@ -2,18 +2,18 @@ import datetime
 import json
 import random
 from collections import OrderedDict
+from pprint import pprint
 
 import networkx as nx
+from collections import defaultdict
 
-from flasker.helpers import addMin,initialDate,minutesInDay
+from flasker.helpers import addMin,initialDate,minutesInDay,access_token
 import igraph
 from flasker.pathCalc import calcDistTime
 import pickle
 from shapely.geometry import Point, LineString
 from mapbox import Directions
-from helpers import access_token
 
-# from flasker.spFile import getStationDeatils, coordinatesAllSp
 from SPutils import sp
 
 def createRandomPaths(numDrivers,numSP,maxStops):
@@ -115,7 +115,13 @@ def createRandomPaths(numDrivers,numSP,maxStops):
 
 
 
-def getPathMapBox(origin,destination):
+def getPathMapBoxLine(origin,destination):
+    '''
+    :param origin: coords of orignal point
+    :param destination: coords of destination point
+    :return: stations that are around the path between orgin and dest
+    the calc is based on stations that are closed to the line , air point of view, not realted to the roads and what really close by time or km
+    '''
     service = Directions(access_token=access_token)
     response = service.directions([origin, destination],'mapbox/driving')
     # print(response.status_code)
@@ -126,7 +132,7 @@ def getPathMapBox(origin,destination):
     # print()
 
     # coordList=coordinatesAllSp()
-    coordList=sp.listOfFidCoords()
+    coordList=sp.getListOfFidCoords()
     line = LineString(line)
 
     pointDistFromStart=[]
@@ -138,21 +144,80 @@ def getPathMapBox(origin,destination):
         if line.distance(point2) < 1e-3 :
             pointDistFromStart.append((point,id,originPoint.distance(point2)))
 
-    # print(pointDistFromStart)
     sortedPoints=sorted(pointDistFromStart,key=lambda x: x[2])
-    # print(list(map(lambda x: x[0],sortedPoints)))
     spNames=list(map(lambda x: x[1],sortedPoints))
     return spNames
-    # newPoints=list(map(lambda x: (x[0],x[1]),sortedPoints))
-    # print(newPoints)
+
+
+
+def getPathMapBoxKM(origin,destination):
+    '''
+    :param origin: coords of orignal point
+    :param destination: coords of destination point
+    :return: stations that are around the path between orgin and dest
+    the calc is based on stations that are closed (by km) to points in the paths
+    '''
+    service = Directions(access_token=access_token)
+    response = service.directions([origin, destination],'mapbox/driving',overview='full')#annotations = ['distance']
+    driving_routes = response.geojson()
+    line=driving_routes['features'][0]['geometry']['coordinates']
+    # print(driving_routes['features'][0]['properties']['distance'])
+    coordList=sp.getListOfFidCoords()
+
+    pointDistFromStart=[]
+    dictId=defaultdict(list)
+    for point in line:
+        for id,stationCoords in coordList:
+            response = service.directions([point,stationCoords], 'mapbox/driving',annotations = ['distance'])
+            driving_routes = response.geojson()
+            dist=driving_routes['features'][0]['properties']['distance']
+            if dist <= 300 :
+                pointDistFromStart.append((stationCoords,id,dist))
+                dictId[id].append((stationCoords,id,dist))
+    # print(dictId)
+    # print()
+    keys=dictId.values()
+    print("keys")
+    print(keys)
+    # print(keys)
+    notDup=[]
+    for lis in keys:
+        # print(lis)
+        mini=min(lis,key=lambda x:x[2])
+        notDup.append(mini)
+    print("notDup")
+    print(notDup)
+    # print(notDup)
+    # print()
+    # print(pointDistFromStart)
+    # sortedPoints=sorted(notDup,key=lambda x: x[2])
+    total=[]
+    for point in pointDistFromStart:
+        print(point)
+        if point in notDup and point not in total:
+            total.append(point)
+    spNames=list(map(lambda x: x[1],total))
+    return spNames
+
+    # print(line)
+    # pointDistFromStart=[]
+    # # originPoint=Point(origin['geometry']['coordinates'])
+    # originPoint=Point(origin)
+    #
+    # for id,point in coordList:
+    #     point2 = Point(point)
+    #     if line.distance(point2) < 1e-3 :
+    #         pointDistFromStart.append((point,id,originPoint.distance(point2)))
+    #
+    # sortedPoints=sorted(pointDistFromStart,key=lambda x: x[2])
+    # spNames=list(map(lambda x: x[1],sortedPoints))
+    # return spNames
 
 
 
 
 
-
-
-def createPaths(numDrivers,numSP):
+def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     paths=[]
 
     for i in range(numDrivers):
@@ -168,7 +233,7 @@ def createPaths(numDrivers,numSP):
         destination = sp.getStationCoords(destinationSp)
 
 
-        path['path']=getPathMapBox(origin, destination)
+        path['path']=funGetPathMapBox(origin, destination)
         paths.append(path)
 
     with open('paths/pathsFile.json', 'w', encoding='utf-8') as f:
@@ -183,7 +248,37 @@ if __name__=='__main__':
     # createPathsByDijkstra(g,numDrivers,numberOfSP)
     # createPathsByHP(numberOfSP,maxStops=15,numDrivers=numDrivers)
 
-    createPaths(numDrivers=numDrivers, numSP=numberOfSP)
+    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)
+    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxKM)
 
+    origin = sp.getStationCoords(1)
+    destination = sp.getStationCoords(19)
+    linePaths=getPathMapBoxLine(origin,destination)
+    print(linePaths)
+    lineCoords=[]
+    for point in linePaths:
+        lineCoords.append(sp.getStationCoords(point))
+    print(lineCoords)
 
-    # print(driving_routes['features'][0]['geometry'])
+    # kmPaths=getPathMapBoxKM(origin,destination)
+    # print(kmPaths)
+    # kmCoords=[]
+    # for point in kmPaths:
+    #     kmCoords.append(sp.getStationCoords(point))
+    # print(kmCoords)
+
+    # randomPath=[
+    #     17,
+    #     10,
+    #     4,
+    #     15,
+    #     12,
+    #     14,
+    #     11,
+    #     13,
+    #     18
+    # ]
+    # randCoords=[]
+    # for point in randomPath:
+    #     randCoords.append(sp.getStationCoords(point))
+    # print(randCoords)
