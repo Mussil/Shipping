@@ -114,7 +114,7 @@ def calcDistTime(org, dst, search_time):
 
 if __name__ == '__main__':
 
-    LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA"
+    LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA" #here api
     # initialize stations from geojson file
     stations = initStations()
     # stationsCalc()
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     # LS_API_KEY = os.environ.get("LS_API_KEY")  # Get API KEY from environment.
     RoutingApi = routing_api.RoutingApi(api_key=LS_API_KEY)
 
-    address = "Invalidenstr 116, 10115 Berlin, Germany"
+    # address = "Invalidenstr 116, 10115 Berlin, Germany"
     geo = RoutingApi.route(
         transport_mode= 'car',
         origin=origin,

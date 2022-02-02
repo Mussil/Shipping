@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="try to add the here API">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/SPutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/SPutils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/pathCalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/pathCalc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/paths/pathsFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/pathsFileLine.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/map.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +72,7 @@
       <recent name="C:\Users\student\Desktop\web\venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pathCalc">
+  <component name="RunManager" selected="Python.simulation">
     <configuration name="SPutils (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -177,10 +184,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.pathCalc" />
+        <item itemvalue="Python.simulation" />
         <item itemvalue="Python.createPaths" />
+        <item itemvalue="Python.pathCalc" />
+        <item itemvalue="Python.pathCalc" />
         <item itemvalue="Python.pathCalc" />
       </list>
     </recent_temporary>
@@ -352,5 +359,16 @@
     <MESSAGE value="create a class for SP API" />
     <MESSAGE value="try to add the here API" />
     <option name="LAST_COMMIT_MESSAGE" value="try to add the here API" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../Program Files/Python37/Lib/site-packages/mapbox/services/directions.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
