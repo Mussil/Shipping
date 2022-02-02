@@ -65,10 +65,8 @@ if __name__ == '__main__':
                         "lng": -122.336427
                     }
                 ],
-                "regionDefinition": {
-                    "type": "world"
-                },
-                "departureTime": "2018-12-19T18:23:45+0100"
+
+                "departureTime": "2022-01-27T08:00:00+11"
              }
 
     x = requests.post(base_url, json=payload)
@@ -89,4 +87,13 @@ if __name__ == '__main__':
     #
     # # pretty print
     # print(json.dumps(response, indent=4))
+
+lineCoords=[[34.65267978180447, 31.79653581609056], [34.6529108074645, 31.796622836740987], [34.658266577330146, 31.8095198785306], [34.65998456814748, 31.80985125376073], [34.65680726524424, 31.811224410665826], [34.65991666060499, 31.810352776309365], [34.654529037201335, 31.812626772099204], [34.65551509672302, 31.81477667621152]]
+lineCoords=[[34.66692960203274, 31.81196798166902], [34.66580413952755, 31.811076052698642], [34.6529108074645, 31.796622836740987], [34.65267978180447, 31.79653581609056], [34.63339201093926, 31.76932374718557], [34.61974873665147, 31.772700974698733]]
+stringPoints=";".join(list(map(lambda coords: ",".join([str(x) for x in coords]),lineCoords)))
+x = requests.get("https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"+
+        stringPoints+"?access_token=pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ")
+waypoints=x.json()['waypoints']
+locs=list(map(lambda x: x['location'],sorte
+
 
