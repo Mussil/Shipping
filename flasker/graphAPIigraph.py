@@ -13,7 +13,7 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime,numberOfSP,maxDriver,maxTimeMin,maxDistanceMeters ):
+    def __init__(self,stopTime,numberOfSP,maxDriver,maxTimeMin,maxDistanceMeters,costDrivers,costDistance ):
         self._g=igraph.Graph(directed=True)
         self.stopTimeMin=stopTime
         self.numberOfSP=numberOfSP
@@ -23,8 +23,17 @@ class Graph(object):
         self.maxTimeMin=maxTimeMin
         self.maxDistanceMeters= maxDistanceMeters
 
+        #costs
+        self.costDrivers=costDrivers
+        self.costDistance=costDistance
+
         #weights priority
         self.nameOfWeights={}
+
+        #amount of parcel each driver takes
+        self.driverNumParcels={k: 0 for k in range(1,maxDriver+1)}
+        self.driverDistParcels={k: 0 for k in range(1,maxDriver+1)}
+
 
         #TODO - think if i need this IDs ,
         # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
@@ -137,6 +146,7 @@ class Graph(object):
 
         self._g.es[newEdgeindex]['duration'] = duration
         self._g.es[newEdgeindex]['distance'] = distance
+        self._g.es[newEdgeindex]['parcels'] = 0
 
         return self._g.es[newEdgeindex]['ID']
 
@@ -233,18 +243,58 @@ class Graph(object):
         totalDuration=0
         totalDistance=0
         totalDrivers=len(set(allDriversID[1:-1]))#exlude the destination and start nodes
+        for driverId in set(allDriversID[1:-1]):
+            self.driverNumParcels[driverId]+=1
+
         for id1, id2 in zip(path[0:-1], path[1:]):
             # edges.append((id1,id2))
-            totalDuration+=self._g.es.find(_source=id1,_target=id2)['duration']
-            totalDistance+=self._g.es.find(_source=id1,_target=id2)['distance']
+            edge=self._g.es.find(_source=id1,_target=id2)
+            totalDuration+=edge['duration']
+            totalDistance+=edge['distance']
 
+            #add amount of parcel for edge
+            if edge['type']=='travelEdge':
+                edge['parcels']+=1
+                # print(edge)
 
 
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
 
+        payMax=totalDistance* self.costDistance+totalDrivers*self.costDrivers
         # return pathSpDriver,totalDistance,totalDuration,totalDrivers
-        return {'path': pathSpDriver,'totalDistance':totalDistance,'totalDuration':totalDuration,'totalDrivers':totalDrivers }
+        return {'path': pathSpDriver,'totalDistance':totalDistance,'totalDuration':totalDuration,'totalDrivers':totalDrivers,'payMax':payMax }
+
+
+    def payParcel(self,pathSpDriver,totalDrivers):
+        '''
+        :param pathSpDriver: list of tuples (spId,driverId) of the path of the parcel
+        :return: the actual cost of the parcel
+        '''
+        indexes=[]
+        for spId,driverId in pathSpDriver:
+            indexes.append(self._g.vs.find(spId_eq=spId,driverId=driverId).index)
+        cost=0
+        for id1, id2 in zip(indexes[1:-1], indexes[2:]):
+            #parcel pay
+            edge=self._g.es.find(_source=id1,_target=id2)
+            distance=edge['distance']
+            parcels=edge['parcels']
+            division=0
+            if parcels  != 0 :
+                division = distance / parcels
+            cost+=division
+
+            #driver reward
+            driverId=self._g.vs.find(id1)['driverId']
+            self.driverDistParcels[driverId]+=division
+
+        cost*=self.costDistance
+        cost+=totalDrivers* self.costDrivers
+        return cost
+
+    def rewardDriver(self,driverId):
+        return self.driverNumParcels[driverId]*self.costDrivers+ self.driverDistParcels[driverId]*self.costDistance
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 

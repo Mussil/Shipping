@@ -15,11 +15,14 @@ def run():
     parcelFile=1
 
     numberOfSP = sp.numOfSP
-    numParcels=15
+    numParcels=1
+
+    costDistance = 0.001
+    costDrivers = 3
+
+    nameOfWeight = 'weightPriortyTimeDriverDistance'
 
     # routes=createPaths(numSP=numberOfSP,numDrivers=numDrivers)
-
-
     with open(f'paths/numDrivers{numDrivers}/pathsFile{pathFile}.json') as json_file:
         routes = json.load(json_file,object_hook=convertStrToDate)
         # print(routes)
@@ -29,8 +32,8 @@ def run():
         parcels = json.load(json_file,object_hook=convertStrToDate)
         # print(parcels)
 
-    g=buildGraph(routes=routes,maxSp=numberOfSP,maxDrivers=numDrivers,stopTime=1,maxTimeMin=400,maxDistanceMeters=10000)
-    g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
+    g=buildGraph(routes=routes,maxSp=numberOfSP,maxDrivers=numDrivers,stopTime=1,maxTimeMin=400,maxDistanceMeters=10000,costDistance=costDistance,costDrivers=costDrivers)
+    g.addWeights(nameOfWeight=nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0)
 
 
     resultDict={}
@@ -38,12 +41,25 @@ def run():
         source=parcel['source']
         target=parcel['target']
         time=parcel['startTime']
-        path = g.getDetailsShortestPath(source, target, time,weight='weightPriortyTimeDriverDistance')
-        resultDict[parcel['idParcel']]=path
+        dictOfPatcel = g.getDetailsShortestPath(source, target, time,weight=nameOfWeight)
+        resultDict[parcel['idParcel']]=dictOfPatcel
+
+
 
     with open(f'results/parcels{numParcels}.{parcelFile}Paths{numDrivers}.{pathFile}.json','w') as json_file:
         json.dump(resultDict,json_file,indent=4)
 
+
+
+
+    #actual cost at the end
+    for parcel in resultDict.values():
+        print(g.payParcel(parcel['path'],parcel['totalDrivers']))
+
+    print('-----------------------------')
+    #reward for drivers
+    for driver in range(1,numDrivers):
+        print(g.rewardDriver(driver))
 
 if __name__=='__main__':
     run()

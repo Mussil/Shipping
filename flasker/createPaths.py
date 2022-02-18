@@ -328,6 +328,6 @@ def optimize(wayFid):
 
 if __name__=='__main__':
     numberOfSP=70
-    numDrivers=20
+    numDrivers=30
 
     createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)

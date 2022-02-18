@@ -42,6 +42,6 @@ def createRandomParcels(numParcels, maxSp):
     return paths
 
 if __name__=='__main__':
-    numParcels=15
+    numParcels=1
     maxSp = sp.numOfSP
     createRandomParcels(numParcels, maxSp)

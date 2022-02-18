@@ -60,11 +60,11 @@ def createDestinationEdges(g):
 
 
 
-def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
+def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters,costDistance,costDrivers):
     print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
     #TODO: change the parms to real one
-    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters)
+    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,costDistance=costDistance,costDrivers=costDrivers)
 
     for route in routes:
         createTravelEdges(g, route)

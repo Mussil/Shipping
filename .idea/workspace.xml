@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="save results of files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/createGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createGraph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createParcels.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createParcels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/results/parcels1Paths15.1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/paths/numDrivers20/pathsFile1.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/numDrivers20/pathsFile1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,16 +135,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pathCalc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="graphAPIigraph" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/pathCalc.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/graphAPIigraph.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -175,18 +179,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.createPaths" />
-      <item itemvalue="Python.pathCalc" />
       <item itemvalue="Python.simulation" />
       <item itemvalue="Python.SPutils (1)" />
       <item itemvalue="Python.createParcels" />
+      <item itemvalue="Python.graphAPIigraph" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.simulation" />
-        <item itemvalue="Python.createPaths" />
         <item itemvalue="Python.createParcels" />
+        <item itemvalue="Python.createPaths" />
+        <item itemvalue="Python.graphAPIigraph" />
         <item itemvalue="Python.SPutils (1)" />
-        <item itemvalue="Python.pathCalc" />
       </list>
     </recent_temporary>
   </component>
@@ -332,7 +336,13 @@
       <option name="presentableId" value="LOCAL‎00022" />
       <updated>1645176412111</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL‎00023" summary="save results of files">
+      <created>1645178645804</created>
+      <option name="number" value="LOCAL‎00023" />
+      <option name="presentableId" value="LOCAL‎00023" />
+      <updated>1645178645804</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
