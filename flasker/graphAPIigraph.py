@@ -243,7 +243,8 @@ class Graph(object):
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
 
-        return pathSpDriver,totalDistance,totalDuration,totalDrivers
+        # return pathSpDriver,totalDistance,totalDuration,totalDrivers
+        return {'path': pathSpDriver,'totalDistance':totalDistance,'totalDuration':totalDuration,'totalDrivers':totalDrivers }
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 

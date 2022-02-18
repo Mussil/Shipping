@@ -4,11 +4,10 @@ import WazeRouteCalculator
 import json
 import time
 import datetime
-from helpers import access_token
 
 from mapbox import Directions
 
-from flasker.helpers import initialDate
+from flasker.helpers import initialDate,access_token
 
 def list2stringCoordinates(lst):
     ''' :return: converted list to string  '''
@@ -113,6 +112,7 @@ def calcDistTime(org, dst, search_time):
 
 
 if __name__ == '__main__':
+
 
     LS_API_KEY = "SFCT9i7qKVVOKzVComo6TZLudYgIqVFdGEVzG7rGgeA" #here api
     # initialize stations from geojson file

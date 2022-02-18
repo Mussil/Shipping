@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="try to add the here API">
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add the stations to the map and send vis flask the coords of route and show them on the map">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/SPutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/SPutils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/createParcels.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createParcels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/pathCalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/pathCalc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/paths/pathsFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/pathsFileLine.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/paths/pathRandomFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathRandomFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/paths/pathTSPFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathTSPFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/paths/pathsFileLine.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathsFileLine.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/map.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/flasker" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -66,10 +75,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\student\Desktop\web\flasker" />
+      <recent name="C:\Users\student\Desktop\web\flasker\paths\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
       <recent name="C:\Users\student\Desktop\web\flasker\paths" />
       <recent name="C:\Users\student\Desktop\web" />
-      <recent name="C:\Users\student\Desktop\web\venv" />
     </key>
   </component>
   <component name="RunManager" selected="Python.simulation">
@@ -94,7 +103,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SPutils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="createParcels" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -102,11 +111,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker/templates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\student\Desktop\web\flasker\SPutils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/createParcels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -119,9 +128,6 @@
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -179,15 +185,15 @@
       <item itemvalue="Python.createPaths" />
       <item itemvalue="Python.pathCalc" />
       <item itemvalue="Python.simulation" />
-      <item itemvalue="Python.SPutils" />
       <item itemvalue="Python.SPutils (1)" />
+      <item itemvalue="Python.createParcels" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.simulation" />
         <item itemvalue="Python.createPaths" />
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.pathCalc" />
+        <item itemvalue="Python.createParcels" />
+        <item itemvalue="Python.SPutils (1)" />
         <item itemvalue="Python.pathCalc" />
       </list>
     </recent_temporary>
@@ -322,7 +328,13 @@
       <option name="presentableId" value="LOCAL‎00020" />
       <updated>1643636566387</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL‎00021" summary="add the stations to the map and send vis flask the coords of route and show them on the map">
+      <created>1643805680633</created>
+      <option name="number" value="LOCAL‎00021" />
+      <option name="presentableId" value="LOCAL‎00021" />
+      <updated>1643805680633</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,7 +370,8 @@
     <MESSAGE value="paths by random origin, destination and the points on the way" />
     <MESSAGE value="create a class for SP API" />
     <MESSAGE value="try to add the here API" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to add the here API" />
+    <MESSAGE value="add the stations to the map and send vis flask the coords of route and show them on the map" />
+    <option name="LAST_COMMIT_MESSAGE" value="add the stations to the map and send vis flask the coords of route and show them on the map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

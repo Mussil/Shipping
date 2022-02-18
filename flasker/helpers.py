@@ -1,5 +1,5 @@
 import datetime
-
+import json
 
 initialDate=datetime.datetime(2022, 1, 2, 0, 0)
 minutesInDay=1440-1
@@ -11,3 +11,26 @@ def addMin(tm, min):
     :return their sum"""
     tm = tm + datetime.timedelta(minutes=min)
     return tm
+
+def listCorrdsToString(listCoords):
+    stringPoints=";".join(list(map(lambda coords: ",".join([str(x) for x in coords]),listCoords)))
+    return stringPoints
+
+# class DatetimeEncoder(json.JSONEncoder):
+#     def default(self, obj):
+#         try:
+#             return super().default(obj)
+#         except TypeError:
+#             return str(obj)
+
+def convertDateToStr(o):
+    if isinstance(o, datetime.datetime):
+        return datetime.datetime.strftime(o, '%Y-%m-%d %H:%M:%S')
+
+def convertStrToDate(json_dict):
+    for (key, value) in json_dict.items():
+        try:
+            json_dict[key] = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+        except:
+            pass
+    return json_dict
