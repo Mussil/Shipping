@@ -300,8 +300,6 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     while os.path.exists(f'{path}/pathsFile{i}.json'):
         i+=1
 
-
-
     with open(f'{path}/pathsFile{i}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
     return paths

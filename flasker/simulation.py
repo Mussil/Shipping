@@ -10,17 +10,22 @@ from flasker.helpers import convertStrToDate
 
 
 def run():
-    numDrivers = 40
+    numDrivers = 20
+    pathFile=1
+    parcelFile=1
+
     numberOfSP = sp.numOfSP
     numParcels=15
 
     # routes=createPaths(numSP=numberOfSP,numDrivers=numDrivers)
-    with open('paths/numDrivers20/pathsFile1.json') as json_file:
+
+
+    with open(f'paths/numDrivers{numDrivers}/pathsFile{pathFile}.json') as json_file:
         routes = json.load(json_file,object_hook=convertStrToDate)
         # print(routes)
 
     # parcels=createRandomParcels(numParcels=numParcels, maxSp=numberOfSP)
-    with open('parcels/parcelsRandomFile1.json') as json_file:
+    with open(f'parcels/numParcels{numParcels}/parcelsFile{parcelFile}.json') as json_file:
         parcels = json.load(json_file,object_hook=convertStrToDate)
         # print(parcels)
 
@@ -33,14 +38,10 @@ def run():
         source=parcel['source']
         target=parcel['target']
         time=parcel['startTime']
-
         path = g.getDetailsShortestPath(source, target, time,weight='weightPriortyTimeDriverDistance')
-        # print("-----")
-        # print(parcel)
-        # print(path)
         resultDict[parcel['idParcel']]=path
 
-    with open('results/parcels1Paths15.1.json','w') as json_file:
+    with open(f'results/parcels{numParcels}.{parcelFile}Paths{numDrivers}.{pathFile}.json','w') as json_file:
         json.dump(resultDict,json_file,indent=4)
 
 

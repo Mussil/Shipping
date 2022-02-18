@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add the stations to the map and send vis flask the coords of route and show them on the map">
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="save results of files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/SPutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/SPutils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createParcels.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createParcels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/pathCalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/pathCalc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/paths/pathRandomFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathRandomFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/paths/pathTSPFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathTSPFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/paths/pathsFileLine.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/temp/pathsFileLine.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/parcels/parcelsRandomFile1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/results/parcels1Paths15.1.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/map.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +326,13 @@
       <option name="presentableId" value="LOCAL‎00021" />
       <updated>1643805680633</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL‎00022" summary="save results of files">
+      <created>1645176412110</created>
+      <option name="number" value="LOCAL‎00022" />
+      <option name="presentableId" value="LOCAL‎00022" />
+      <updated>1645176412111</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +369,8 @@
     <MESSAGE value="create a class for SP API" />
     <MESSAGE value="try to add the here API" />
     <MESSAGE value="add the stations to the map and send vis flask the coords of route and show them on the map" />
-    <option name="LAST_COMMIT_MESSAGE" value="add the stations to the map and send vis flask the coords of route and show them on the map" />
+    <MESSAGE value="save results of files" />
+    <option name="LAST_COMMIT_MESSAGE" value="save results of files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

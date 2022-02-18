@@ -17,11 +17,26 @@ def createRandomParcels(numParcels, maxSp):
         path['source'] ,path['target']= random.sample(range(1, maxSp + 1), 2)
         paths.append(path)
 
-    i=1
-    while os.path.exists(f'parcels/parcelsRandomFile{i}.json'):
-        i+=1
+    # i=1
+    # while os.path.exists(f'parcels/parcelsRandomFile{i}.json'):
+    #     i+=1
+    #
+    # with open(f'parcels/parcelsRandomFile{i}.json', 'w', encoding='utf-8') as f:
+    #     json.dump(paths, f, indent=4, default=convertDateToStr)
+    #
+    # return paths
 
-    with open(f'parcels/parcelsRandomFile{i}.json', 'w', encoding='utf-8') as f:
+
+    path=f'parcels/numParcels{numParcels}'
+    # Check whether the specified path exists or not
+    isExist = os.path.exists(path)
+    if not isExist:
+        # Create a new directory because it does not exist
+        os.makedirs(path)
+    i=1
+    while os.path.exists(f'parcels/numParcels{numParcels}/parcelsFile{i}.json'):
+        i+=1
+    with open(f'parcels/numParcels{numParcels}/parcelsFile{i}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
 
     return paths
