@@ -244,6 +244,7 @@ class Graph(object):
         totalDistance=0
         totalDrivers=len(set(allDriversID[1:-1]))#exlude the destination and start nodes
         for driverId in set(allDriversID[1:-1]):
+            # print(self.driverNumParcels)
             self.driverNumParcels[driverId]+=1
 
         for id1, id2 in zip(path[0:-1], path[1:]):

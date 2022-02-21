@@ -103,7 +103,7 @@ def getPathMapBoxLine(origin,destination):
 
     # print(pointDistFromStart)
     while len(pointDistFromStart) >12:
-        print(pointDistFromStart)
+        # print(pointDistFromStart)
         pointDistFromStart.remove(max(pointDistFromStart,key=lambda x:x[3]))
 
     sortedPoints=sorted(pointDistFromStart,key=lambda x: x[2])
@@ -288,22 +288,46 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
 
 
         path['path']=funGetPathMapBox(origin, destination)
+        path['times']=getTimesOfPath( path['path'], path['start'])
         paths.append(path)
 
-    path=f'paths/numDrivers{numDrivers}'
-    # Check whether the specified path exists or not
-    isExist = os.path.exists(path)
-    if not isExist:
-        # Create a new directory because it does not exist
-        os.makedirs(path)
-    i=1
-    while os.path.exists(f'{path}/pathsFile{i}.json'):
-        i+=1
+    #seprate to many dircatory and files
+    # path=f'paths/numDrivers{numDrivers}'
+    # # Check whether the specified path exists or not
+    # isExist = os.path.exists(path)
+    # if not isExist:
+    #     # Create a new directory because it does not exist
+    #     os.makedirs(path)
+    # i=1
+    # while os.path.exists(f'{path}/pathsFile{i}.json'):
+    #     i+=1
+    #
+    # with open(f'{path}/pathsFile{i}.json', 'w', encoding='utf-8') as f:
+    #     json.dump(paths, f, indent=4, default=convertDateToStr)
+    # return paths
 
-    with open(f'{path}/pathsFile{i}.json', 'w', encoding='utf-8') as f:
+    #one big file
+    with open(f'paths/uniformDistribution.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
     return paths
 
+
+def getTimesOfPath(path,startTime):
+    '''
+    :param path: list of names of sp
+    :param path: datetime obj of the start time of the path
+    :return: the time that the driver get to each sp
+    '''
+    times=[]
+    times.append(startTime)
+    for i in range(len(path)-1): #no need for the first one
+        tempTime=times[i]
+        duration, _ = calcDistTime(path[i], path[i+1],tempTime )
+        new_time = addMin(tempTime,duration)
+        times.append(new_time)
+    # print(path)
+    # print(times)
+    return times
 
 def optimize(wayFid):
     wayCoords = sp.listFidToCorrds(wayFid)
@@ -314,7 +338,19 @@ def optimize(wayFid):
                      + access_token
                      + "&roundtrip=false&source=first&destination=last"
                      )
-    # print(x.json())
+    # print(x.status_code)
+
+    # errors:
+    while (x.status_code!=200):
+        print(x.json())
+        time.sleep(1)
+        x = requests.get("https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
+                         + stringPoints
+                         + "?access_token="
+                         + access_token
+                         + "&roundtrip=false&source=first&destination=last"
+                         )
+
     waypoints = x.json()['waypoints']
     # print(x.json())
     fids = []
@@ -327,7 +363,9 @@ def optimize(wayFid):
 
 
 if __name__=='__main__':
-    numberOfSP=70
-    numDrivers=30
+    numberOfSP=sp.numOfSP
+    numDrivers=10000
+
+
 
     createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)

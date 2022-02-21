@@ -26,22 +26,28 @@ def createRandomParcels(numParcels, maxSp):
     #
     # return paths
 
+    #seprate to many dircatory and files
+    # path=f'parcels/numParcels{numParcels}'
+    # # Check whether the specified path exists or not
+    # isExist = os.path.exists(path)
+    # if not isExist:
+    #     # Create a new directory because it does not exist
+    #     os.makedirs(path)
+    # i=1
+    # while os.path.exists(f'parcels/numParcels{numParcels}/parcelsFile{i}.json'):
+    #     i+=1
+    # with open(f'parcels/numParcels{numParcels}/parcelsFile{i}.json', 'w', encoding='utf-8') as f:
+    #     json.dump(paths, f, indent=4, default=convertDateToStr)
+    #
+    # return paths
 
-    path=f'parcels/numParcels{numParcels}'
-    # Check whether the specified path exists or not
-    isExist = os.path.exists(path)
-    if not isExist:
-        # Create a new directory because it does not exist
-        os.makedirs(path)
-    i=1
-    while os.path.exists(f'parcels/numParcels{numParcels}/parcelsFile{i}.json'):
-        i+=1
-    with open(f'parcels/numParcels{numParcels}/parcelsFile{i}.json', 'w', encoding='utf-8') as f:
+
+    #one big file
+    with open(f'parcels/uniformDistribution{numParcels}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
-
     return paths
 
 if __name__=='__main__':
-    numParcels=1
+    numParcels=100000
     maxSp = sp.numOfSP
     createRandomParcels(numParcels, maxSp)

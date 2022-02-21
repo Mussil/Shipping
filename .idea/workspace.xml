@@ -4,14 +4,154 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="save results of files">
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="pay_parcels, reward_drivers and payMax">
+      <change afterPath="$PROJECT_DIR$/flasker/plots.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/10.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/11.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/12.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/13.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/14.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/15.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/16.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/17.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/18.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/19.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/20.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/21.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/22.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/23.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/24.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/25.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/26.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/27.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/28.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/29.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/30.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/32.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/33.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/34.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/35.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/36.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/37.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/38.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/39.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/40.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/41.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/42.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/43.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/44.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/45.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/46.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/47.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/48.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/49.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/50.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/51.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/52.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/53.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/54.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/55.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/56.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/57.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/58.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/59.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/60.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/61.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/62.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/63.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/64.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/65.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/66.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/67.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/68.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/69.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/70.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flasker/stationsFiles/9.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/createGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createGraph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createParcels.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createParcels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/paths/numDrivers20/pathsFile1.json" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/paths/numDrivers20/pathsFile1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/pathCalc.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/pathCalc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/11.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/12.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/14.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/15.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/17.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/18.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/19.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/20.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/21.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/22.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/25.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/26.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/27.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/28.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/29.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/30.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/31.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/32.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/33.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/34.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/35.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/36.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/37.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/38.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/39.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/40.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/41.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/42.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/43.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/44.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/45.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/46.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/47.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/48.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/49.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/50.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/51.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/52.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/53.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/54.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/55.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/56.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/57.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/58.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/59.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/60.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/61.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/62.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/63.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/64.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/65.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/66.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/67.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/68.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/69.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/70.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/stationsFilesNoTimes/9.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,35 +207,14 @@
       <recent name="C:\Users\student\Desktop\web\flasker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\student\Desktop\web\flasker\results\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker" />
       <recent name="C:\Users\student\Desktop\web\flasker\paths\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
       <recent name="C:\Users\student\Desktop\web\flasker\paths" />
-      <recent name="C:\Users\student\Desktop\web" />
     </key>
   </component>
   <component name="RunManager" selected="Python.simulation">
-    <configuration name="SPutils (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/SPutils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="createParcels" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,6 +275,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="plots" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/plots.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="simulation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,17 +320,17 @@
     <list>
       <item itemvalue="Python.createPaths" />
       <item itemvalue="Python.simulation" />
-      <item itemvalue="Python.SPutils (1)" />
       <item itemvalue="Python.createParcels" />
       <item itemvalue="Python.graphAPIigraph" />
+      <item itemvalue="Python.plots" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.simulation" />
+        <item itemvalue="Python.plots" />
         <item itemvalue="Python.createParcels" />
         <item itemvalue="Python.createPaths" />
         <item itemvalue="Python.graphAPIigraph" />
-        <item itemvalue="Python.SPutils (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -342,7 +482,13 @@
       <option name="presentableId" value="LOCAL‎00023" />
       <updated>1645178645804</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎00024" summary="pay_parcels, reward_drivers and payMax">
+      <created>1645187545889</created>
+      <option name="number" value="LOCAL‎00024" />
+      <option name="presentableId" value="LOCAL‎00024" />
+      <updated>1645187545889</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +526,8 @@
     <MESSAGE value="try to add the here API" />
     <MESSAGE value="add the stations to the map and send vis flask the coords of route and show them on the map" />
     <MESSAGE value="save results of files" />
-    <option name="LAST_COMMIT_MESSAGE" value="save results of files" />
+    <MESSAGE value="pay_parcels, reward_drivers and payMax" />
+    <option name="LAST_COMMIT_MESSAGE" value="pay_parcels, reward_drivers and payMax" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
