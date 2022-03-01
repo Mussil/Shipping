@@ -31,8 +31,9 @@ class Graph(object):
         self.nameOfWeights={}
 
         #amount of parcel each driver takes
-        self.driverNumParcels={k: 0 for k in range(1,maxDriver+1)}
-        self.driverDistParcels={k: 0 for k in range(1,maxDriver+1)}
+        # self.driverNumParcels={k: 0 for k in range(1,maxDriver+1)}
+        # self.driverDistParcels={k: 0 for k in range(1,maxDriver+1)}
+        self.clearForNewRound()
 
 
         #TODO - think if i need this IDs ,
@@ -356,6 +357,11 @@ class Graph(object):
                                           'weightDistance':weightDistance
                                           }
 
+
+    def clearForNewRound(self):
+        self.driverNumParcels={k: 0 for k in range(1,self.maxDriver+1)}
+        self.driverDistParcels={k: 0 for k in range(1,self.maxDriver+1)}
+
     def draw(self):
         #edge label (meters,minutes)
         #color of node represnt driver
@@ -376,7 +382,7 @@ class Graph(object):
 
         shape_node_dict={'eventNode':'circle', 'destinationNode' :'rectangle'}
 
-        color_edge_dict={'travelEdge':'black', 'stayEdge':'yellow', 'destinationEdge':'grey'}
+        color_edge_dict={'travelEdge':'black', 'stayEdge':'gold', 'destinationEdge':'grey'}
         layout = g.layout("tree")
 
         visual_style = {}
@@ -403,7 +409,7 @@ class Graph(object):
 
         visual_style["layout"] = layout
 
-        igraph.plot(g, **visual_style,target='graphImage.png',margin = 40)
+        igraph.plot(g, **visual_style,target='graphImage.svg',margin = 70)
 
 
 if __name__=='__main__':

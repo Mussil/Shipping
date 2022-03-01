@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import random
+random.seed()
 import statistics
 
 from flasker.SPutils import sp
@@ -134,6 +135,13 @@ def amountOfSucc(resultDict):
             succ+=1
     return succ
 
+def profitAvg(resultDict):
+    profit=[]
+    for dict in resultDict.values():
+        if dict['payMax'] > 0:
+            profit.append(dict['payActual']/dict['payMax'])
+    return statistics.median(profit)
+
 def results(numParcels):
     numDrivers=0
     step=100
@@ -141,22 +149,27 @@ def results(numParcels):
     succsListAvg=[]
     succsListMedian=[]
     amountOfDrivers=[]
-    while(numDrivers<=1000):
+    profitsMedian=[]
+    while(numDrivers<1000):
         numDrivers+=step
         resultsPerAmount=[]
+        profits = []
         for i in range(10):
             resultDict=simulate(numParcels=numParcels,numDrivers=numDrivers)
             succ=amountOfSucc(resultDict)
             resultsPerAmount.append(succ/numParcels)
+            profits.append(profitAvg(resultDict))
 
         succsListAvg.append(statistics.mean(resultsPerAmount))
         succsListMedian.append(statistics.median(resultsPerAmount))
+        profitsMedian.append(statistics.median(profits))
 
         amountOfDrivers.append(numDrivers)
 
         print(succsListAvg)
         print(succsListMedian)
         print(amountOfDrivers)
+        print(profitsMedian)
 
     return succsListAvg,amountOfDrivers
 
@@ -340,12 +353,16 @@ def simulate6(numDrivers,numParcels):
     path=f'results/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_DriverTimeDistance.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
+
+
+
+
 if __name__=='__main__':
     # numDrivers=50
     numParcels=50
     # simulate(numDrivers,numParcels)
 
 
-    # x,y=results(numParcels)
+    x,y=results(numParcels)
 
-    resultDict = simulate6(numParcels=100, numDrivers=200)
+    # resultDict = simulate6(numParcels=100, numDrivers=200)

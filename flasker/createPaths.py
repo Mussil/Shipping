@@ -275,6 +275,10 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     paths=[]
 
     for i in range(numDrivers):
+
+        # if i%10==0:
+        #     print(i)
+        #     time.sleep(3)
         path={}
         path['driver']=i+1 #the name of the driver
         path['start']=addMin(initialDate,random.randint(0, minutesInDay)) #add to inital day some random minutes
@@ -286,8 +290,18 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
         origin = sp.getStationCoords(originSp)
         destination = sp.getStationCoords(destinationSp)
 
+        flag=1
+        while flag:
+            try:
+                path['path']=funGetPathMapBox(origin, destination)
+                flag=0
+            except:
+                print("Connection refused by the server..")
+                print("Let me sleep for 5 seconds")
+                time.sleep(5)
+                print("Was a nice sleep, now let me continue...")
+                continue
 
-        path['path']=funGetPathMapBox(origin, destination)
         path['times']=getTimesOfPath( path['path'], path['start'])
         paths.append(path)
 
@@ -307,7 +321,7 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     # return paths
 
     #one big file
-    with open(f'paths/uniformDistribution.json', 'w', encoding='utf-8') as f:
+    with open(f'paths/uniformDistribution{numDrivers}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
     return paths
 
@@ -343,7 +357,7 @@ def optimize(wayFid):
     # errors:
     while (x.status_code!=200):
         print(x.json())
-        time.sleep(1)
+        # time.sleep(2)
         x = requests.get("https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
                          + stringPoints
                          + "?access_token="

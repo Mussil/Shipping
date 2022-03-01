@@ -135,68 +135,83 @@ def calcDistTime(org, dst, search_time):
 
         else:
             hour = int(hour)
+            min = int(min)
 
-            if hour >= 1 and hour < 4:
-                first = data[f'{org}-{dst}']['1:30']
-                second = data[f'{org}-{dst}']['4:30']
+            if hour >= 1 and hour < 4: # middle 3:00
+                if hour <= 2 or (hour == 3 and min == 0):
+                    return data[f'{org}-{dst}']['1:30']
+                return data[f'{org}-{dst}']['4:30']
 
-            elif hour >= 4 and hour < 6:
-                first = data[f'{org}-{dst}']['4:30']
-                second = data[f'{org}-{dst}']['6:00']
+            elif hour >= 4 and hour < 6: # middle 5:15
+                if hour <= 4 or (hour == 5 and min <= 15):
+                    return data[f'{org}-{dst}']['4:30']
+                return data[f'{org}-{dst}']['6:00']
 
             elif hour >= 6 and hour < 7:
-                first = data[f'{org}-{dst}']['6:00']
-                second = data[f'{org}-{dst}']['7:00']
+                if hour == 6 and min <= 30:
+                    return data[f'{org}-{dst}']['6:00']
+                return data[f'{org}-{dst}']['7:00']
 
             elif hour >= 7 and hour < 8:
-                first = data[f'{org}-{dst}']['7:00']
-                second = data[f'{org}-{dst}']['8:00']
+                if hour == 7 and min <= 30:
+                    return data[f'{org}-{dst}']['7:00']
+                return data[f'{org}-{dst}']['8:00']
 
             elif hour >= 8 and hour < 9:
-                first = data[f'{org}-{dst}']['8:00']
-                second = data[f'{org}-{dst}']['9:00']
+                if hour == 8 and min <= 30:
+                    return data[f'{org}-{dst}']['8:00']
+                return data[f'{org}-{dst}']['9:00']
 
             elif hour >= 9 and hour < 10:
-                first = data[f'{org}-{dst}']['9:00']
-                second = data[f'{org}-{dst}']['10:00']
+                if hour == 9 and min <= 30:
+                    return data[f'{org}-{dst}']['9:00']
+                return data[f'{org}-{dst}']['10:00']
 
             elif hour >= 10 and hour < 11:
-                first = data[f'{org}-{dst}']['10:00']
-                second = data[f'{org}-{dst}']['11:00']
+                if hour == 10 and min <= 30:
+                    return data[f'{org}-{dst}']['10:00']
+                return data[f'{org}-{dst}']['11:00']
 
             elif hour >= 11 and hour < 12:
-                first = data[f'{org}-{dst}']['11:00']
-                second = data[f'{org}-{dst}']['12:00']
+                if hour == 11 and min <= 30:
+                    return data[f'{org}-{dst}']['11:00']
+                return data[f'{org}-{dst}']['12:00']
 
             elif hour >= 12 and hour < 13:
-                first = data[f'{org}-{dst}']['12:00']
-                second = data[f'{org}-{dst}']['13:30']
+                if hour == 12 and min <= 30:
+                    return data[f'{org}-{dst}']['12:00']
+                return data[f'{org}-{dst}']['13:30']
 
             elif hour >= 13 and hour < 15:
-                first = data[f'{org}-{dst}']['13:30']
-                second = data[f'{org}-{dst}']['15:30']
+                if hour <= 14 or (hour == 14 and min <= 30):
+                    return data[f'{org}-{dst}']['13:30']
+                return data[f'{org}-{dst}']['15:30']
 
             elif hour >= 15 and hour < 16:
-                first = data[f'{org}-{dst}']['15:30']
-                second = data[f'{org}-{dst}']['16:30']
+                if hour == 15 and min >= 30:
+                    return data[f'{org}-{dst}']['15:30']
+                return data[f'{org}-{dst}']['16:30']
 
             elif hour >= 16 and hour < 18:
-                first = data[f'{org}-{dst}']['16:30']
-                second = data[f'{org}-{dst}']['18:30']
+                if hour <= 17 or (hour == 17 and min <= 30):
+                    return data[f'{org}-{dst}']['16:30']
+                return data[f'{org}-{dst}']['18:30']
 
             elif hour >= 18 and hour < 21:
-                first = data[f'{org}-{dst}']['18:30']
-                second = data[f'{org}-{dst}']['21:00']
+                if hour < 19 or (hour == 19 and min <= 55):
+                    return data[f'{org}-{dst}']['18:30']
+                return data[f'{org}-{dst}']['21:00']
 
             elif hour >= 21 and hour < 23:
-                first = data[f'{org}-{dst}']['21:00']
-                second = data[f'{org}-{dst}']['23:00']
+                if hour < 22 :
+                    return data[f'{org}-{dst}']['21:00']
+                return data[f'{org}-{dst}']['23:00']
 
-            else:
-                first = data[f'{org}-{dst}']['23:00']
-                second = data[f'{org}-{dst}']['1:30']
+            elif hour == 0 and min <= 25:
+                return data[f'{org}-{dst}']['23:00']
 
-            return [(first[0]+second[0])/2, (first[1]+second[1])/2]
+            return data[f'{org}-{dst}']['1:30']
+
 
 def addWazeCalls(hours_lst):
     for station1 in range(1, 71):
@@ -214,6 +229,7 @@ def addWazeCalls(hours_lst):
             print("Done with", station1, station2)
 
 if __name__ == '__main__':
+    pass
 
     # Run these lines if you want to recalculate hours or add hours to files (!)
 
@@ -227,8 +243,6 @@ if __name__ == '__main__':
     # addWazeCalls(['6:00', '10:00', '11:00'])
 
     # call func for calc time & route between 2 stations
-    print(calcDistTime(46, 1, datetime.datetime(2018, 3, 13, 3, 36)))
-
-
+    # print(calcDistTime(46, 1, datetime.datetime(2018, 3, 13, 3, 36)))
 
 

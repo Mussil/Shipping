@@ -3,8 +3,8 @@ import json
 
 initialDate=datetime.datetime(2022, 1, 2, 0, 0)
 minutesInDay=1440-1
-access_token = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ'
-
+# access_token = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ' #Mussi
+access_token='pk.eyJ1IjoicmxldmkxMjkzIiwiYSI6ImNrenh0bnh0MjA0eG0ydm8zajJ6ZW9odXcifQ.loa-SroNLMPU0Px4LkBOzA' #Rachel
 
 def addMin(tm, min):
     """ get a dateTime object and minutes
