@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flasker.SPutils import sp
 import datetime
+import time
 import json
 
 app = Flask(__name__)
@@ -13,7 +14,6 @@ def showMapForAll():
                 {
                     "driver": 1,
                     "start": datetime.datetime(2022, 1, 2, 3, 29, 0),
-                    # "start":  3,
 
                     "path": [
                         21,
@@ -25,26 +25,18 @@ def showMapForAll():
                         41
                     ],
                     "times": [
-                        datetime.datetime(2022, 1, 2, 3, 29, 0),
-                        datetime.datetime(2022, 1, 2, 3, 29, 31),
-                        datetime.datetime(2022, 1, 2, 3, 32, 29),
-                        datetime.datetime(2022, 1, 2, 3, 32, 59),
-                        datetime.datetime(2022, 1, 2, 3, 33, 38),
-                        datetime.datetime(2022, 1, 2, 3, 35, 2),
-                        datetime.datetime(2022, 1, 2, 3, 37, 50),
-                        # "2022-01-02 03:29:00",
-                        # "2022-01-02 03:29:31",
-                        # "2022-01-02 03:32:29",
-                        # "2022-01-02 03:32:59",
-                        # "2022-01-02 03:33:38",
-                        # "2022-01-02 03:35:02",
-                        # "2022-01-02 03:37:50"
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 10, 0).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 10, 31).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 11, 29).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 12, 59).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 13, 38).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 13, 45).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 23, 59, 5).timetuple())) * 1000
                     ]
                 },
                 {
                     "driver": 2,
-                    "start": datetime.datetime(2022, 1, 2, 9, 38, 0),
-                    # "start":  1,
+                    "start": datetime.datetime(2022, 1, 2, 21, 38, 0),
                     "path": [
                         62,
                         14,
@@ -52,20 +44,14 @@ def showMapForAll():
                         13
                     ],
                     "times": [
-                        datetime.datetime(2022, 1, 2, 9, 38, 0),
-                        datetime.datetime(2022, 1, 2, 9, 45, 59),
-                        datetime.datetime(2022, 1, 2, 9, 46, 2),
-                        datetime.datetime(2022, 1, 2, 9, 54, 57),
-                        # "2022-01-02 09:38:00",
-                        # "2022-01-02 09:45:59",
-                        # "2022-01-02 09:46:02",
-                        # "2022-01-02 09:54:57"
-                    ]
+                        int(time.mktime( datetime.datetime(2022, 3, 3, 21, 10, 3).timetuple())) * 1000,
+                        int(time.mktime( datetime.datetime(2022, 3, 3, 21, 10, 25).timetuple())) * 1000,
+                        int(time.mktime( datetime.datetime(2022, 3, 3, 21, 11, 28).timetuple())) * 1000,
+                        int(time.mktime( datetime.datetime(2022, 3, 3, 23, 59, 57).timetuple())) * 1000                   ]
                 },
                 {
                     "driver": 3,
-                    "start": datetime.datetime(2022, 1, 2, 23, 52, 0),
-                    # "start":  4,
+                    "start": datetime.datetime(2022, 3, 1, 23, 52, 0),
                     "path": [
                         6,
                         4,
@@ -74,16 +60,11 @@ def showMapForAll():
                         69
                     ],
                     "times": [
-                        datetime.datetime(2022, 1, 2, 23, 52, 0),
-                        datetime.datetime(2022, 1, 2, 23, 54, 46),
-                        datetime.datetime(2022, 1, 2, 23, 59, 33),
-                        datetime.datetime(2022, 1, 2, 23, 59, 36),
-                        datetime.datetime(2022, 1, 2, 0, 6, 23),
-                        # "2022-01-02 23:52:00",
-                        # "2022-01-02 23:54:46",
-                        # "2022-01-02 23:59:33",
-                        # "2022-01-02 23:59:36",
-                        # "2022-01-03 00:06:23"
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 12, 0).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 12, 46).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 13, 33).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 13, 36).timetuple())) * 1000,
+                        int(time.mktime(datetime.datetime(2022, 3, 3, 21, 59, 0).timetuple())) * 1000
                     ]
                 }
             ]
