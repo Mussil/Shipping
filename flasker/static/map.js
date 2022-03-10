@@ -6,16 +6,32 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
+let INITIAL_DATE = new Date(2021, 12, 2, 9, 18, 0, 0); // 7.3.2022
+const MIN_TO_SEC_RATIO = 1; //TODO: FIX IT TO 4!!! MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
+const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
 let map = L.mapbox.map('map')
     .setView([31.790432720080467 , 34.63724819562294 ], 14)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
+/**
+ * @param {*} date 
+ * @param {*} minutes 
+ * @returns 
+ */
+function add_minutes(date , minutes) {
+    return new Date(date.getTime() + minutes * 60000);
+}
+
+/**
+ * @param {*} stations 
+ */
 const addStations2map = (stations) => {
 
     for (const station in stations) {
-        coord=stations[station];
+        coord=SP2Coords(station);
         coord.reverse();
+
         new L.marker(coord, {
             icon: L.mapbox.marker.icon({
                 'marker-color': '#f86767',
@@ -77,16 +93,32 @@ function displayRoute(coordinates) {
 /**
  * @param {[number-lat, number-lon]} coords
  */
-function displayDriver(coords) {
+function displayDriver(coords, driverNum) {
     return new L.marker(new L.LatLng(coords[1], coords[0]), {
         icon: L.mapbox.marker.icon({
             'marker-size': 'medium',
-            'marker-symbol': 'car',
+            'marker-symbol': driverNum,
             'marker-color': 'yellow',
         })
     }).addTo(map);
 }
 
+/**
+ * @param {*} coords 
+ * @param {*} parcelNum  
+ */
+function displayParcel(coords, parcelNum) {
+    const num = parcelNum;
+    const marker = new L.marker(new L.LatLng(coords[0], coords[1]), {
+        icon: L.mapbox.marker.icon({
+            'marker-size': 'small',
+            'marker-symbol': 'post', //'post' for packages symbol
+            'marker-color': 'white'
+        })
+    }).addTo(map);
+    marker.bindPopup(num);
+    return marker;  
+}
 
 /**
  * 
@@ -94,9 +126,9 @@ function displayDriver(coords) {
  * @param {number[]} activeDrivers 
  */
 function newActiveRoutes(routes, activeDrivers) {
-    const now = Date.now();
+    const now = INITIAL_DATE.getTime();
     return routes.filter((route) => {
-                    return route.times[0] < now &&
+                    return route.times[0] <= now &&
                     now < route.times[route.times.length - 1] &&
                     !(activeDrivers.findIndex(d => d.driver === route.driver) > -1)
                 });
@@ -109,6 +141,13 @@ function removeCompleteRoutes(layers) {
     layers.forEach((layer) =>
         map.removeLayer(layer)
     );
+}
+
+/**
+ * @param {icon} icon 
+ */
+function removeIcon(icon){
+    map.removeLayer(icon);
 }
 
 
@@ -125,7 +164,7 @@ async function navigateFromPointToPoint(driver, geojson, time) {
         function tick(){
             driver.setLatLng(L.latLng(geojson.coordinates[j][1],geojson.coordinates[j][0]));
             if (++j < geojson.coordinates.length) {
-                setTimeout(tick, time * 100);
+                setTimeout(tick, time * (MIN_TO_SEC_RATIO/SEC_IN_MIN));
             } else {
                 res();
             }
@@ -140,26 +179,31 @@ async function navigateFromPointToPoint(driver, geojson, time) {
 async function animateRoutes(route, newDriver) {
 
     for (let index = 0; index < route.path.length - 1; index++) {
-        const timeDelta = Math.floor((route.times[index+1] - route.times[index]) / 10000);
+        const timeDelta = (route.times[index+1] - route.times[index]);
         const coordDelta = newDriver.coordinates[index];
         const travelTimeRatio = Math.floor(timeDelta/coordDelta.coordinates.length);
-
+        
         await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio);
     }
 
-    // after all route animation - delete route 
+    console.log("harrrayyyyy")
+
+    // after all route animation - delete route & thier drivers icons
     removeCompleteRoutes(newDriver.layers);
+    removeIcon(newDriver.driverIcon);
 }
 
 async function refreshRoutes(routes, activeDrivers) {
     const newActive = newActiveRoutes(routes, activeDrivers);
+    console.log(newActive);
+
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
         const coordinates = await getRoutCoordinates(points);
 
         // add path & car icon to the map
         const layers = displayRoute(coordinates);
-        const driverIcon = displayDriver(coordinates[0].coordinates[0]);
+        const driverIcon = displayDriver(coordinates[0].coordinates[0], route.driver);
         
         const newDriver = {
             driver: route.driver,
@@ -171,22 +215,58 @@ async function refreshRoutes(routes, activeDrivers) {
 
         animateRoutes(route, newDriver);
     });
+}
 
+/**
+ * find new parcels to move on map
+ * @param {*} parcels 
+ */
+function newActiveParcels(parcels, newActiveParcels) {
+    const now = INITIAL_DATE.getTime();
+    return Object.keys(parcels).filter((parcelNum) => {        
+        return parcels[parcelNum]["startTime"] <= now &&
+        // !newActiveParcels.includes({parcelNum});
+        !(newActiveParcels.findIndex(p => p.num === parcelNum) > -1);
+    });
+}
+
+/**
+ * show parcels on map in specific time
+ * @param {*} results
+ */
+function refreshParcels(results, activeParcels) {
+    const newActive =  newActiveParcels(results, activeParcels);
+    newActive.forEach((parcelName) => {
+        const layer = displayParcel(SP2Coords(results[parcelName].path[0][0]), parcelName);
+        
+        const newParcel = {
+            num: parcelName,
+            layer: layer,
+        };
+
+        activeParcels.push(newParcel);
+    });
 }
 
 const main = async () => {
 
     let routes = JSON.parse(document.getElementById("map").dataset.routes);
-    console.log(routes);
+    let results = JSON.parse(document.getElementById("map").dataset.results);
+    
     let activeDrivers = [];
+    let activeParcels = [];
 
     refreshRoutes(routes, activeDrivers);
+    refreshParcels(results, activeParcels);
 
     setInterval(() => {
         refreshRoutes(routes, activeDrivers);
-        console.log(activeDrivers);
+        refreshParcels(results, activeParcels);
+        INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
+        
+        console.log(INITIAL_DATE);
 
-    }, 1000 * 60);
+    }, 1000 * MIN_TO_SEC_RATIO);
     
     addStations2map(stations);
 
