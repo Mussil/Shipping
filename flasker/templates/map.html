@@ -12,11 +12,12 @@
 
   <title>JavaScript Mapbox Project</title>
 </head>
-<body onload="clockTime()">
+<body>
     
     <div id="map" data-stations='{{stations|tojson}}' data-routes='{{paths|tojson}}' data-results='{{results|tojson}}'></div>
     <div class="map-overlay" id="clock" ></div>
     <div class="map-overlay" id="active-data"></div>
+    
     <script src="static/map.js"></script>
   
 </body>

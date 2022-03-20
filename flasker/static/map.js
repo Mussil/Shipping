@@ -26,18 +26,27 @@ function add_minutes(date , minutes) {
 /**
  * @param {*} stations 
  */
-function addStations2map(stations){
+function addStations2map(stations, stationsMarkers){
 
     for (const station in stations) {
         coord=SP2Coords(station);
         coord.reverse();
 
-        new L.marker(coord, {
-            icon: L.mapbox.marker.icon({
-                'marker-color': '#f86767',
-                'marker-symbol'	: station, // TODO: 'post' symbol for packages :)
-                'marker-size': 'small'
-            })}).addTo(map);
+        const layer = new L.marker(coord, {
+                        icon: L.mapbox.marker.icon({
+                            'marker-color': '#f86767',
+                            'marker-symbol'	: station, // TODO: 'post' symbol for packages :)
+                            'marker-size': 'small'
+                        })}).addTo(map);
+        
+        const station_obj = {
+            layer: layer,
+            num: station,
+            coords: coord,
+            currentParcels:0,
+        }
+
+        stationsMarkers.push(station_obj);
     }
 
 };
@@ -191,7 +200,7 @@ function removeOutdatedDriver(activeDrivers, driver) {
     setTimeout(function(){
         activeDrivers.splice(driverIndex, 1);
     }, 1000);
-       
+
 }
 
 /**
@@ -294,6 +303,7 @@ function refreshParcels(results, activeParcels, routes) {
             parcelIcon: parcelIcon,
             path: results[parcelName].path,
             finishPathTime: parcelFinishTime,
+            currentStation: (results[parcelName].path.length > 0) ? results[parcelName].path[0][0] : null,
         };
 
         activeParcels.push(newParcel);
@@ -341,26 +351,24 @@ function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
  * update the text-box on map to show activeDrivers
  * @param {*} activeDrivers 
  */
-function updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels) {
-    // active drivers
-    const driversNow = activeDrivers.map((d) => {
-        return d.driver;
-    });
+function updateHTML(activeDrivers, results, arrivedSuccessfullyParcels) {
 
-    // active parcels
-    const parcelsNow = activeParcels.map((p) => {
-        return p.num;
-    });
+    console.log(results);
+    
+    // active drivers
+    const driversNow = activeDrivers.length;
 
     // arrived parcels
-    const parcelOld = arrivedSuccessfullyParcels.map((p) => {
-        return p.num;
-    });
+    const arrivedParcels = arrivedSuccessfullyParcels.length;
 
-    
-    // if(activeNow){
-    //     document.getElementById("active-drivers").innerHTML = "<h4>active drivers</h4>" + "<br />" + activeNow;
-    // }
+    // active parcels
+    const unArrivedParcels = Object.keys(results).length - arrivedParcels;
+
+    const data1 = `<h4>① active drivers : ${driversNow}</h4><br/>`; 
+    const data2 = `<h4>② unarrived parcels : ${unArrivedParcels}</h4><br/>`; 
+    const data3 = `<h4>③ arrived parcels : ${arrivedParcels}</h4>`; 
+
+    document.getElementById("active-data").innerHTML = data1 + data2 + data3;
 }
 
 const main = async () => {
@@ -368,12 +376,17 @@ const main = async () => {
     let routes = JSON.parse(document.getElementById("map").dataset.routes);
     let results = JSON.parse(document.getElementById("map").dataset.results);
     
+    let stationsMarkers = [];
     let activeDrivers = [];
     let activeParcels = [];
     let arrivedSuccessfullyParcels = [];
 
+    addStations2map(stations, stationsMarkers);
     refreshRoutes(routes, activeDrivers, activeParcels);
     refreshParcels(results, activeParcels, routes);
+    clockTime();
+
+    // console.table(stations);
 
     setInterval(() => {
 
@@ -383,17 +396,17 @@ const main = async () => {
         refreshParcels(results, activeParcels, routes);
         removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels);
         
-        updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels);
+        // update html data
+        updateHTML(activeDrivers, results, arrivedSuccessfullyParcels);
+        clockTime();
         
-        // console.log(activeParcels, '----');
-        // console.log(activeDrivers, '^^^^^^');
-        // console.log(arrivedSuccessfullyParcels, '++++');
+        console.log(activeParcels, '----');
+        console.log(activeDrivers, '^^^^^^');
+        console.log(arrivedSuccessfullyParcels, '++++');
 
     }, 1000 * MIN_TO_SEC_RATIO);
     
-    addStations2map(stations);
 
-    console.log(activeDrivers);
 }; 
 
 main();
