@@ -191,10 +191,10 @@ def comparePriority(numDrivers):
                 diffDict[i][nameOfWeight].append(statistics.mean(diff))
                 ratioDict[i][nameOfWeight].append(statistics.mean(ratio))
 
-    path=f'results/comparePriority{numDrivers}Diff'
+    path= f'resultsNonUniform/comparePriority{numDrivers}Diff'
     with open(f'{path}.json', 'w') as json_file:
         json.dump(diffDict, json_file, indent=4)
-    path=f'results/comparePriority{numDrivers}Ratio'
+    path= f'resultsNonUniform/comparePriority{numDrivers}Ratio'
     with open(f'{path}.json', 'w') as json_file:
         json.dump(ratioDict, json_file, indent=4)
 
@@ -216,8 +216,8 @@ def compareDurations(parcels):
         durationsTimeDriverDistance.append(statistics.mean(results.getListDuration()))
         results=graphSimulator.sendParcelsBySameWeight(parcels,'weightPriortyDriverDistanceTime')
         durationsDriverDistanceTime.append(statistics.mean(results.getListDuration()))
-        # results=graphSimulator.sendParcelsBySameWeight(parcels,'weightPriortyTimeDistanceDriver')
-        # durationsTimeDistanceDriver.append(statistics.mean(results.getListDuration()))
+        # resultsNonUniform=graphSimulator.sendParcelsBySameWeight(parcels,'weightPriortyTimeDistanceDriver')
+        # durationsTimeDistanceDriver.append(statistics.mean(resultsNonUniform.getListDuration()))
 
     plotDuration(driversRange,durationsRandom,durationsTimeDriverDistance,durationsDriverDistanceTime)
 
@@ -241,7 +241,7 @@ def func1(graphSimulator):
         payActualAvg.append(statistics.mean(payActual))
         payActualMedian.append(statistics.median(payActual))
 
-        # results.printResult()
+        # resultsNonUniform.printResult()
     print(payMaxAvg)
     print(payMaxMedian)
     print(payActualAvg)
@@ -290,7 +290,7 @@ def func3(parcels):
 def buildDB():
     numParcels=300
     parcels=chooseParcels(numParcels)
-    with open(f'results/300parcels/parcelsFile.json', 'w', encoding='utf-8') as f:
+    with open(f'resultsNonUniform/300parcels/parcelsFile.json', 'w', encoding='utf-8') as f:
         json.dump(parcels, f, indent=4,default=convertDateToStr)
 
 
@@ -306,7 +306,7 @@ def buildDB():
                                        costDistance=costDistance, costDrivers=costDrivers)
 
             # Check whether the specified path exists or not
-            path=f'results/300parcels/results/{numDrivers}'
+            path= f'resultsNonUniform/300parcels/results/{numDrivers}'
             isExist = os.path.exists(path)
             if not isExist:
                 # Create a new directory because it does not exist
@@ -327,7 +327,7 @@ def buildDB():
 
             #save the drivers details
             # Check whether the specified path exists or not
-            path=f'results/300parcels/driversDB/{numDrivers}'
+            path= f'resultsNonUniform/300parcels/driversDB/{numDrivers}'
             isExist = os.path.exists(path)
             if not isExist:
                 # Create a new directory because it does not exist
@@ -345,7 +345,7 @@ def buildDBpostCreationWithWeights():
     this function add the weight and save it also for the same data
     :return:
     '''
-    with open(f'results/db300parcels/parcelsFile.json') as json_file:
+    with open(f'resultsNonUniform/db300parcels/parcelsFile.json') as json_file:
         parcels = json.load(json_file, object_hook=convertStrToDate)
 
 
@@ -355,7 +355,7 @@ def buildDBpostCreationWithWeights():
     for i in range(100):
 
         for numDrivers in driversRange:
-            path=f'results/db300parcels/driversDB/{numDrivers}'
+            path= f'resultsNonUniform/db300parcels/driversDB/{numDrivers}'
             with open(f'{path}/{i}.json') as json_file:
                 drivers = json.load(json_file, object_hook=convertStrToDate)
 
@@ -364,7 +364,7 @@ def buildDBpostCreationWithWeights():
                                        costDistance=costDistance, costDrivers=costDrivers)
 
             # Check whether the specified path exists or not
-            path=f'results/db300parcels/{numDrivers}'
+            path= f'resultsNonUniform/db300parcels/{numDrivers}'
             isExist = os.path.exists(path)
             if not isExist:
                 # Create a new directory because it does not exist
@@ -387,7 +387,7 @@ def DBsucc(numParcels):
 
     def DBsuccOneIndex(index):
         for numDrivers in driversRange:
-            with open(f'results/{numParcels}parcels/results/{numDrivers}/{index}.json') as json_file:
+            with open(f'resultsNonUniform/{numParcels}parcels/results/{numDrivers}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             succ = results.getAmountOfSucc()
@@ -414,8 +414,8 @@ if __name__=='__main__':
 
     numParcels=300
     # parcels=chooseParcels(numParcels)
-    # results=graphSimulator.sendParcelsByRandomWeight(parcels)
-    # pprint(results)
+    # resultsNonUniform=graphSimulator.sendParcelsByRandomWeight(parcels)
+    # pprint(resultsNonUniform)
 
     # func1(graphSimulator)
     # func2(graphSimulator)

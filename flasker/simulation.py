@@ -39,7 +39,7 @@ def run(routes,parcels,numDrivers,numParcels,numberOfSP,costDistance,costDrivers
         resultDict[parcel['idParcel']]=dictOfParcel
 
     #no save for now
-    # path=f'results/parcels{numParcels}paths{numDrivers}'
+    # path=f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     # i=1
     # while os.path.exists(f'{path}_{i}.json'):
     #     i+=1
@@ -47,7 +47,7 @@ def run(routes,parcels,numDrivers,numParcels,numberOfSP,costDistance,costDrivers
     #     json.dump(resultDict, json_file, indent=4)
 
     #seprate files
-    # with open(f'results/parcels{numParcels}.{parcelFile}Paths{numDrivers}.{pathFile}.json','w') as json_file:
+    # with open(f'resultsNonUniform/parcels{numParcels}.{parcelFile}Paths{numDrivers}.{pathFile}.json','w') as json_file:
     #     json.dump(resultDict,json_file,indent=4)
 
 
@@ -65,7 +65,7 @@ def run(routes,parcels,numDrivers,numParcels,numberOfSP,costDistance,costDrivers
         pass
 
 
-    # path=f'results/parcels{numParcels}paths{numDrivers}'
+    # path=f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     # i=1
     # while os.path.exists(f'{path}_{i}.json'):
     #     i+=1
@@ -231,7 +231,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_TimeDriverDistance.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 
@@ -255,7 +255,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_TimeDistanceDriver.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 
@@ -280,7 +280,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_DistanceDriverTime.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 # -----------------------------
@@ -303,7 +303,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_DistanceTimeDriver.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 
@@ -327,7 +327,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_DriverDistanceTime.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 # -----------------------------
@@ -350,7 +350,7 @@ def simulate6(numDrivers,numParcels):
         maxTimeMin=maxTimeMin,
         maxDistanceMeters=maxDistanceMeters,
         weight=weight)
-    path=f'results/parcels{numParcels}paths{numDrivers}'
+    path= f'resultsNonUniform/parcels{numParcels}paths{numDrivers}'
     with open(f'{path}_DriverTimeDistance.json', 'w') as json_file:
         json.dump(resultDict, json_file, indent=4)
 

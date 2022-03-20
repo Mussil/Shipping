@@ -63,11 +63,21 @@ def createDestinationEdges(g):
 def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters,costDistance,costDrivers):
     print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
-    #TODO: change the parms to real one
     g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,costDistance=costDistance,costDrivers=costDrivers)
 
     for route in routes:
         createTravelEdges(g, route)
+    # -----the same edges in next day this porpse of loop is to duble the drivers to next day (same drivers)------
+    # for route in routes:
+    #     route2= {}
+    #     route2['driver']=route['driver']+len(routes)
+    #     route2['start']=addMin(route['start'],1440)
+    #     route2['path']=route['path']
+    #     route2['times']=[]
+    #     for time in route['times']:
+    #         route2['times'].append(addMin(time,1440))
+    #     createTravelEdges(g, route2)
+
     createStayEdges(g)
     createDestinationEdges(g)
     return g

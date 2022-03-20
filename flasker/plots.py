@@ -221,7 +221,7 @@ def plotDBduration(numParcels,dictWeightDriversList):
 
 
     plt.title(f'{numParcels} parcels')
-    plt.ylabel('Duration average in hours')
+    plt.ylabel('Average duration in hours')
     yRange=range(int(minimum-int(minimum%60)),int(maximum),30)
     def addZero2Str(x):
         if x==0:
@@ -246,7 +246,7 @@ def plotDBdistance(numParcels,dictWeightDriversList):
 
 
     plt.title(f'{numParcels} parcels')
-    plt.ylabel('Distance average in meters')
+    plt.ylabel('Average distance in meters')
     plt.xlabel('Number of drivers')
     plt.legend()
     plt.show()
@@ -268,6 +268,28 @@ def plotDBdiffCost(numParcels,dictWeightDriversList):
     plt.xlabel('Number of drivers')
     plt.legend()
     plt.show()
+
+
+
+def plotDBddiffCost(numDrivers,dictWeightDriversList):
+
+    for nameOfWeight,dictDriversList in dictWeightDriversList.items():
+        myList = dictDriversList.items()
+        myList = sorted(myList)
+        x, y = zip(*myList)
+        avg=list(map(lambda lis:statistics.mean(lis),y))
+        plt.plot(x,avg,label=prettyNames[nameOfWeight])
+
+
+    parcelsRange=range(50,501,50)
+
+    plt.title(f'{numDrivers} drivers')
+    plt.ylabel('Average difference between maximum and actual cost cost')
+    plt.xlabel('Number of parcels')
+    plt.xticks(parcelsRange, parcelsRange)
+    plt.legend()
+    plt.show()
+
 
 if __name__=='__main__':
 

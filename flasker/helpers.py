@@ -2,7 +2,7 @@ import datetime
 import json
 
 initialDate=datetime.datetime(2022, 1, 2, 0, 0)
-minutesInDay=1440-1
+minutesInDay=1440
 # access_token = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ' #Mussi
 access_token='pk.eyJ1IjoicmxldmkxMjkzIiwiYSI6ImNrenh0bnh0MjA0eG0ydm8zajJ6ZW9odXcifQ.loa-SroNLMPU0Px4LkBOzA' #Rachel
 
@@ -30,7 +30,10 @@ def convertDateToStr(o):
 def convertStrToDate(json_dict):
     for (key, value) in json_dict.items():
         try:
-            json_dict[key] = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+            if type(value) == list:
+                json_dict[key]=list(map(lambda x:datetime.datetime.strptime(x, '%Y-%m-%d %H:%M:%S'), json_dict[key]))
+            else:
+                json_dict[key] = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
         except:
             pass
     return json_dict

@@ -276,12 +276,9 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
 
     for i in range(numDrivers):
 
-        # if i%10==0:
-        #     print(i)
-        #     time.sleep(3)
         path={}
         path['driver']=i+1 #the name of the driver
-        path['start']=addMin(initialDate,random.randint(0, minutesInDay)) #add to inital day some random minutes
+        path['start']=addMin(initialDate,random.randint(0, minutesInDay*2)) #add to inital day some random minutes
         originSp,destinationSp=random.sample(range(1,numSP+1), 2)
 
         # origin = getStationDeatils(originSp)
@@ -321,7 +318,7 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     # return paths
 
     #one big file
-    with open(f'paths/uniformDistribution{numDrivers}.json', 'w', encoding='utf-8') as f:
+    with open(f'paths/uniformDistribution2days{numDrivers}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
     return paths
 

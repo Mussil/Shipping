@@ -161,7 +161,8 @@ class Graph(object):
         warnings.filterwarnings('ignore') #in case there is no path to the destination
         weights=self._g.es[weight]
         path = self._g.get_shortest_paths(source, to=target,weights=weights,mode=igraph.OUT,output=output)
-        return path[0]
+        # return path[0]
+        return path
 
 
 
@@ -182,7 +183,7 @@ class Graph(object):
     #                 minSum=tempSum
     #                 minSource=source
     #
-    #             #just to ceck- need to be delted
+    #             #just to check- need to be delted
     #             # path = self._dijkstra(source, target, weight,output='vpath')
     #             # for n in path:
     #             #     print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
@@ -204,6 +205,27 @@ class Graph(object):
 
         return startNode
 
+    def _addDestinationNodeEdgesTime(self,spId,time,otherNodes,weightName):
+        '''
+        this function create node of the temp destination sp that is 24 hour after the parcel arrive,
+        all the nodes with the same sp that their time is before, would direct to this node
+        :return:
+        '''
+
+        #add destNode
+        destNode=self.add_node(driverId=None,spId=spId,time=time,type='destinationTimeNode')
+        #add destEdges
+        for node in otherNodes['ID']:
+            edge=self.add_edge(node,destNode,type='destinationTimeEdge')
+
+            # add weight to edge
+            self._g.es.find(ID_eq=edge, type_eq='destinationTimeEdge')[weightName]=0
+
+        return destNode
+
+
+
+
     def getDetailsShortestPath(self,source,target,minTime,weight):
         """
         :parameter source - spId of the source service point
@@ -216,13 +238,35 @@ class Graph(object):
 
 
         #find node which has is larger that minTime and the same sp source
-        sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
-        startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSp,weightName=weight)
-
+        sameSpSource=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
+        startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSpSource,weightName=weight)
         sourceIndex=self._g.vs.find(ID_eq=startNode,type_eq='startNode').index
-        targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
+
+        maxTime=addMin(minTime,1440)
+        sameSpTarget=self._g.vs.select(spId_eq=target,type_eq='eventNode',time_le=maxTime)
+        destNode=self._addDestinationNodeEdgesTime(spId=target,time=maxTime,otherNodes=sameSpTarget,weightName=weight)
+        targetIndex=self._g.vs.find(ID_eq=destNode,type_eq='destinationTimeNode').index
+        # targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
 
         path=self._dijkstra(sourceIndex,targetIndex,weight)
+        # fullPath=path
+        path=path[0]
+
+        # # my try 0f 6/3/22
+        # # print(path)
+        # print('---------------------')
+        # print(fullPath)
+        # print('************')
+        #
+        # path2 = self._dijkstra(sourceIndex, None, weight)
+        # if not path: #no route for the parcel in the first 24 hours
+        #     print('X')
+        #     print(path2)
+        # else:
+        #     print('V')
+        #     print(path2)
+
+
 
 
         #the next 2 lines are for many sources
@@ -262,10 +306,16 @@ class Graph(object):
 
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
+        self._g.delete_vertices(self._findNodeIndexById(destNode))
 
         payMax=totalDistance* self.costDistance+totalDrivers*self.costDrivers
         # return pathSpDriver,totalDistance,totalDuration,totalDrivers
-        return {'path': pathSpDriver,'totalDistance':totalDistance,'totalDuration':totalDuration,'totalDrivers':totalDrivers,'payMax':payMax }
+        return {'path': pathSpDriver,
+                'startTime' :minTime,
+                'totalDistance':totalDistance,
+                'totalDuration':totalDuration,
+                'totalDrivers':totalDrivers,
+                'payMax':payMax }
 
 
     def payParcel(self,pathSpDriver,totalDrivers):
@@ -412,24 +462,3 @@ class Graph(object):
         igraph.plot(g, **visual_style,target='graphImage.svg',margin = 70)
 
 
-if __name__=='__main__':
-    g=Graph()
-    x=g.add_node()
-    print(x)
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_edge(0,1,8)
-    g.add_edge(0,2)
-    g.add_edge(2,3)
-    g.add_edge(1,3)
-    g.add_edge(3,4)
-    g.add_edge(4,5)
-    print(list(g._g.es))
-    print("--")
-
-    print(g.lenEdges)
-    print(g.lenNodes)
-    # g.dijkstra(1,5)
