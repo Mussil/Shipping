@@ -1,5 +1,6 @@
 import datetime
 import json
+import time
 
 initialDate=datetime.datetime(2022, 1, 2, 0, 0)
 minutesInDay=1440
@@ -37,3 +38,27 @@ def convertStrToDate(json_dict):
         except:
             pass
     return json_dict
+
+
+def convertStrToDateJSForamt(json_dict):
+
+    def str2date(x):
+        return int(time.mktime(datetime.datetime.strptime(x, '%Y-%m-%d %H:%M:%S').timetuple())) * 1000
+
+    for (key, value) in json_dict.items():
+        try:
+            if type(value) == list:
+                json_dict[key]=list(map(lambda x:str2date(x), json_dict[key]))
+            else:
+                json_dict[key] = str2date(value)
+        except:
+            pass
+    return json_dict
+
+def getDemoFiles():
+    with open(f'demo300drivers.json') as json_file:
+        drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    with open(f'demo300driversResults.json') as json_file:
+        results = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    return drivers,results
+
