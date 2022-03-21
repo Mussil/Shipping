@@ -13,7 +13,7 @@ class Graph(object):
     in case we will change the libary
     and for easy access"""
 
-    def __init__(self,stopTime,numberOfSP,maxDriver,maxTimeMin,maxDistanceMeters ):
+    def __init__(self,stopTime,numberOfSP,maxDriver,maxTimeMin,maxDistanceMeters,costDrivers,costDistance ):
         self._g=igraph.Graph(directed=True)
         self.stopTimeMin=stopTime
         self.numberOfSP=numberOfSP
@@ -23,8 +23,18 @@ class Graph(object):
         self.maxTimeMin=maxTimeMin
         self.maxDistanceMeters= maxDistanceMeters
 
+        #costs
+        self.costDrivers=costDrivers
+        self.costDistance=costDistance
+
         #weights priority
         self.nameOfWeights={}
+
+        #amount of parcel each driver takes
+        # self.driverNumParcels={k: 0 for k in range(1,maxDriver+1)}
+        # self.driverDistParcels={k: 0 for k in range(1,maxDriver+1)}
+        self.clearForNewRound()
+
 
         #TODO - think if i need this IDs ,
         # beacuse i am not deleting nodes from the graph so the indexs not suppose to change
@@ -137,6 +147,7 @@ class Graph(object):
 
         self._g.es[newEdgeindex]['duration'] = duration
         self._g.es[newEdgeindex]['distance'] = distance
+        self._g.es[newEdgeindex]['parcels'] = 0
 
         return self._g.es[newEdgeindex]['ID']
 
@@ -150,7 +161,8 @@ class Graph(object):
         warnings.filterwarnings('ignore') #in case there is no path to the destination
         weights=self._g.es[weight]
         path = self._g.get_shortest_paths(source, to=target,weights=weights,mode=igraph.OUT,output=output)
-        return path[0]
+        # return path[0]
+        return path
 
 
 
@@ -171,7 +183,7 @@ class Graph(object):
     #                 minSum=tempSum
     #                 minSource=source
     #
-    #             #just to ceck- need to be delted
+    #             #just to check- need to be delted
     #             # path = self._dijkstra(source, target, weight,output='vpath')
     #             # for n in path:
     #             #     print(f" sp={self._g.vs[n]['spId']}, driver={self._g.vs[n]['driverId']}")
@@ -193,6 +205,27 @@ class Graph(object):
 
         return startNode
 
+    def _addDestinationNodeEdgesTime(self,spId,time,otherNodes,weightName):
+        '''
+        this function create node of the temp destination sp that is 24 hour after the parcel arrive,
+        all the nodes with the same sp that their time is before, would direct to this node
+        :return:
+        '''
+
+        #add destNode
+        destNode=self.add_node(driverId=None,spId=spId,time=time,type='destinationTimeNode')
+        #add destEdges
+        for node in otherNodes['ID']:
+            edge=self.add_edge(node,destNode,type='destinationTimeEdge')
+
+            # add weight to edge
+            self._g.es.find(ID_eq=edge, type_eq='destinationTimeEdge')[weightName]=0
+
+        return destNode
+
+
+
+
     def getDetailsShortestPath(self,source,target,minTime,weight):
         """
         :parameter source - spId of the source service point
@@ -205,13 +238,35 @@ class Graph(object):
 
 
         #find node which has is larger that minTime and the same sp source
-        sameSp=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
-        startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSp,weightName=weight)
-
+        sameSpSource=self._g.vs.select(spId_eq=source,type_eq='eventNode',time_ge=minTime)
+        startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSpSource,weightName=weight)
         sourceIndex=self._g.vs.find(ID_eq=startNode,type_eq='startNode').index
-        targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
+
+        maxTime=addMin(minTime,1440)
+        sameSpTarget=self._g.vs.select(spId_eq=target,type_eq='eventNode',time_le=maxTime)
+        destNode=self._addDestinationNodeEdgesTime(spId=target,time=maxTime,otherNodes=sameSpTarget,weightName=weight)
+        targetIndex=self._g.vs.find(ID_eq=destNode,type_eq='destinationTimeNode').index
+        # targetIndex=self._g.vs.find(spId_eq=target,type_eq='destinationNode').index
 
         path=self._dijkstra(sourceIndex,targetIndex,weight)
+        # fullPath=path
+        path=path[0]
+
+        # # my try 0f 6/3/22
+        # # print(path)
+        # print('---------------------')
+        # print(fullPath)
+        # print('************')
+        #
+        # path2 = self._dijkstra(sourceIndex, None, weight)
+        # if not path: #no route for the parcel in the first 24 hours
+        #     print('X')
+        #     print(path2)
+        # else:
+        #     print('V')
+        #     print(path2)
+
+
 
 
         #the next 2 lines are for many sources
@@ -233,17 +288,65 @@ class Graph(object):
         totalDuration=0
         totalDistance=0
         totalDrivers=len(set(allDriversID[1:-1]))#exlude the destination and start nodes
+        for driverId in set(allDriversID[1:-1]):
+            # print(self.driverNumParcels)
+            self.driverNumParcels[driverId]+=1
+
         for id1, id2 in zip(path[0:-1], path[1:]):
             # edges.append((id1,id2))
-            totalDuration+=self._g.es.find(_source=id1,_target=id2)['duration']
-            totalDistance+=self._g.es.find(_source=id1,_target=id2)['distance']
+            edge=self._g.es.find(_source=id1,_target=id2)
+            totalDuration+=edge['duration']
+            totalDistance+=edge['distance']
 
+            #add amount of parcel for edge
+            if edge['type']=='travelEdge':
+                edge['parcels']+=1
+                # print(edge)
 
 
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
+        self._g.delete_vertices(self._findNodeIndexById(destNode))
 
-        return pathSpDriver,totalDistance,totalDuration,totalDrivers
+        payMax=totalDistance* self.costDistance+totalDrivers*self.costDrivers
+        # return pathSpDriver,totalDistance,totalDuration,totalDrivers
+        return {'path': pathSpDriver,
+                'startTime' :minTime,
+                'totalDistance':totalDistance,
+                'totalDuration':totalDuration,
+                'totalDrivers':totalDrivers,
+                'payMax':payMax }
+
+
+    def payParcel(self,pathSpDriver,totalDrivers):
+        '''
+        :param pathSpDriver: list of tuples (spId,driverId) of the path of the parcel
+        :return: the actual cost of the parcel
+        '''
+        indexes=[]
+        for spId,driverId in pathSpDriver:
+            indexes.append(self._g.vs.find(spId_eq=spId,driverId=driverId).index)
+        cost=0
+        for id1, id2 in zip(indexes[1:-1], indexes[2:]):
+            #parcel pay
+            edge=self._g.es.find(_source=id1,_target=id2)
+            distance=edge['distance']
+            parcels=edge['parcels']
+            division=0
+            if parcels  != 0 :
+                division = distance / parcels
+            cost+=division
+
+            #driver reward
+            driverId=self._g.vs.find(id1)['driverId']
+            self.driverDistParcels[driverId]+=division
+
+        cost*=self.costDistance
+        cost+=totalDrivers* self.costDrivers
+        return cost
+
+    def rewardDriver(self,driverId):
+        return self.driverNumParcels[driverId]*self.costDrivers+ self.driverDistParcels[driverId]*self.costDistance
 
     def addWeights(self,nameOfWeight,A='time',B='driver',C='distance',alph=0,beta=0):
 
@@ -304,6 +407,11 @@ class Graph(object):
                                           'weightDistance':weightDistance
                                           }
 
+
+    def clearForNewRound(self):
+        self.driverNumParcels={k: 0 for k in range(1,self.maxDriver+1)}
+        self.driverDistParcels={k: 0 for k in range(1,self.maxDriver+1)}
+
     def draw(self):
         #edge label (meters,minutes)
         #color of node represnt driver
@@ -324,7 +432,7 @@ class Graph(object):
 
         shape_node_dict={'eventNode':'circle', 'destinationNode' :'rectangle'}
 
-        color_edge_dict={'travelEdge':'black', 'stayEdge':'yellow', 'destinationEdge':'grey'}
+        color_edge_dict={'travelEdge':'black', 'stayEdge':'gold', 'destinationEdge':'grey'}
         layout = g.layout("tree")
 
         visual_style = {}
@@ -351,27 +459,6 @@ class Graph(object):
 
         visual_style["layout"] = layout
 
-        igraph.plot(g, **visual_style,target='graphImage.png',margin = 40)
+        igraph.plot(g, **visual_style,target='graphImage.svg',margin = 70)
 
 
-if __name__=='__main__':
-    g=Graph()
-    x=g.add_node()
-    print(x)
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_node()
-    g.add_edge(0,1,8)
-    g.add_edge(0,2)
-    g.add_edge(2,3)
-    g.add_edge(1,3)
-    g.add_edge(3,4)
-    g.add_edge(4,5)
-    print(list(g._g.es))
-    print("--")
-
-    print(g.lenEdges)
-    print(g.lenNodes)
-    # g.dijkstra(1,5)

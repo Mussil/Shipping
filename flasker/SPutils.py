@@ -3,11 +3,12 @@ import json
 from pprint import pprint
 
 from mapbox import Directions
-from helpers import access_token
+# from flasker.helpers import access_token
 
 class SP:
     def __init__(self, path):
         self.stations = self._json2DictSP(path)
+        self.numOfSP=len(self.stations)
 
     def _json2DictSP(self, path):
         with open(path, 'r') as stationsFile:
@@ -22,13 +23,20 @@ class SP:
         return stations
 
     def getStationCoords(self,fid):
-        return self. stations[fid]
+        return self.stations[fid]
 
-    def listOfFidCoords(self):
+    def getListOfFidCoords(self):
         return self.stations.items()
 
+    def getListOfCoords(self):
+        return self.stations.values()
 
+    def getDictFidCoords(self):
+        return self.stations
 
+    def listFidToCorrds(self,listFid):
+        listCoords = list(map(lambda x: sp.getStationCoords(x), listFid))
+        return listCoords
 
 
 
@@ -37,4 +45,7 @@ sp=SP(path)
 
 if __name__=='__main__':
     pass
+
+
+
 

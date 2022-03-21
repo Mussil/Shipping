@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="try to add the here API">
-      <change beforePath="$PROJECT_DIR$/flasker/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/map.html" afterDir="false" />
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="demo files for the cilent side">
+      <change afterPath="$PROJECT_DIR$/flasker/demoParcelsFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/simulationNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulationNew.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +39,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="22P2TSxLRIW7EyUOmxYjcDirAvW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -50,23 +53,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/flasker" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\student\Desktop\web\flasker" />
+      <recent name="C:\Users\student\Desktop\web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\student\Desktop\web\flasker" />
+      <recent name="C:\Users\student\Desktop\web\flasker\results\temp" />
+      <recent name="C:\Users\student\Desktop\web\flasker\paths\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
       <recent name="C:\Users\student\Desktop\web\flasker\paths" />
-      <recent name="C:\Users\student\Desktop\web" />
-      <recent name="C:\Users\student\Desktop\web\venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pathCalc">
-    <configuration name="SPutils (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.helpers">
+    <configuration name="helpers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -78,7 +82,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/SPutils.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/helpers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -87,28 +91,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SPutils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker/templates" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\student\Desktop\web\flasker\SPutils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="createPaths" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="plots" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -120,7 +103,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/createPaths.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/plots.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -129,25 +112,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pathCalc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/pathCalc.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="simulation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="simulation2.1-copyForShabbat (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -159,7 +124,49 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/simulation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/simulation2.1-copyForShabbat.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulation2.1-copyForShabbat" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\student\Desktop\web\flasker\simulation2.1-copyForShabbat.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulationNew (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/simulationNew.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -169,19 +176,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.createPaths" />
-      <item itemvalue="Python.pathCalc" />
-      <item itemvalue="Python.simulation" />
-      <item itemvalue="Python.SPutils" />
-      <item itemvalue="Python.SPutils (1)" />
+      <item itemvalue="Python.simulation2.1-copyForShabbat" />
+      <item itemvalue="Python.simulation2.1-copyForShabbat (1)" />
+      <item itemvalue="Python.simulationNew (1)" />
+      <item itemvalue="Python.plots" />
+      <item itemvalue="Python.helpers" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.pathCalc" />
-        <item itemvalue="Python.createPaths" />
-        <item itemvalue="Python.pathCalc" />
+        <item itemvalue="Python.helpers" />
+        <item itemvalue="Python.simulationNew (1)" />
+        <item itemvalue="Python.plots" />
+        <item itemvalue="Python.simulation2.1-copyForShabbat (1)" />
+        <item itemvalue="Python.simulation2.1-copyForShabbat" />
       </list>
     </recent_temporary>
   </component>
@@ -315,7 +322,55 @@
       <option name="presentableId" value="LOCAL‎00020" />
       <updated>1643636566387</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL‎00021" summary="add the stations to the map and send vis flask the coords of route and show them on the map">
+      <created>1643805680633</created>
+      <option name="number" value="LOCAL‎00021" />
+      <option name="presentableId" value="LOCAL‎00021" />
+      <updated>1643805680633</updated>
+    </task>
+    <task id="LOCAL‎00022" summary="save results of files">
+      <created>1645176412110</created>
+      <option name="number" value="LOCAL‎00022" />
+      <option name="presentableId" value="LOCAL‎00022" />
+      <updated>1645176412111</updated>
+    </task>
+    <task id="LOCAL‎00023" summary="save results of files">
+      <created>1645178645804</created>
+      <option name="number" value="LOCAL‎00023" />
+      <option name="presentableId" value="LOCAL‎00023" />
+      <updated>1645178645804</updated>
+    </task>
+    <task id="LOCAL‎00024" summary="pay_parcels, reward_drivers and payMax">
+      <created>1645187545889</created>
+      <option name="number" value="LOCAL‎00024" />
+      <option name="presentableId" value="LOCAL‎00024" />
+      <updated>1645187545889</updated>
+    </task>
+    <task id="LOCAL‎00025" summary="analyze">
+      <created>1645463079682</created>
+      <option name="number" value="LOCAL‎00025" />
+      <option name="presentableId" value="LOCAL‎00025" />
+      <updated>1645463079682</updated>
+    </task>
+    <task id="LOCAL‎00026" summary="analyze">
+      <created>1646145179169</created>
+      <option name="number" value="LOCAL‎00026" />
+      <option name="presentableId" value="LOCAL‎00026" />
+      <updated>1646145179169</updated>
+    </task>
+    <task id="LOCAL‎00027" summary="simulations analyze">
+      <created>1647775599149</created>
+      <option name="number" value="LOCAL‎00027" />
+      <option name="presentableId" value="LOCAL‎00027" />
+      <updated>1647775599149</updated>
+    </task>
+    <task id="LOCAL‎00028" summary="demo files for the cilent side">
+      <created>1647776837403</created>
+      <option name="number" value="LOCAL‎00028" />
+      <option name="presentableId" value="LOCAL‎00028" />
+      <updated>1647776837403</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,6 +406,23 @@
     <MESSAGE value="paths by random origin, destination and the points on the way" />
     <MESSAGE value="create a class for SP API" />
     <MESSAGE value="try to add the here API" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to add the here API" />
+    <MESSAGE value="add the stations to the map and send vis flask the coords of route and show them on the map" />
+    <MESSAGE value="save results of files" />
+    <MESSAGE value="pay_parcels, reward_drivers and payMax" />
+    <MESSAGE value="analyze" />
+    <MESSAGE value="simulations analyze" />
+    <MESSAGE value="demo files for the cilent side" />
+    <option name="LAST_COMMIT_MESSAGE" value="demo files for the cilent side" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../../../Program Files/Python37/Lib/site-packages/mapbox/services/directions.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
