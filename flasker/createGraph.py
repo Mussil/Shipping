@@ -60,14 +60,24 @@ def createDestinationEdges(g):
 
 
 
-def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
+def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters,costDistance,costDrivers):
     print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
-    #TODO: change the parms to real one
-    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters)
+    g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,costDistance=costDistance,costDrivers=costDrivers)
 
     for route in routes:
         createTravelEdges(g, route)
+    # -----the same edges in next day this porpse of loop is to duble the drivers to next day (same drivers)------
+    # for route in routes:
+    #     route2= {}
+    #     route2['driver']=route['driver']+len(routes)
+    #     route2['start']=addMin(route['start'],1440)
+    #     route2['path']=route['path']
+    #     route2['times']=[]
+    #     for time in route['times']:
+    #         route2['times'].append(addMin(time,1440))
+    #     createTravelEdges(g, route2)
+
     createStayEdges(g)
     createDestinationEdges(g)
     return g
@@ -75,22 +85,22 @@ def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters):
 
 
 if __name__=='__main__':
-    g = Graph(stopTime=1, numberOfSP=7, maxDriver=5, maxTimeMin=400, maxDistanceMeters=10000)
+    g = Graph(stopTime=1, numberOfSP=7, maxDriver=5, maxTimeMin=400, maxDistanceMeters=10000,costDistance = 0.001,costDrivers = 3)
 
     route1 = {
-        'driver': 'John',
+        'driver': 1,
         'start': datetime.datetime(2022, 1, 1, 23, 21),
         'path': [1,3,2, 4]
     }
     createTravelEdges(g,route1)
     route2 = {
-        'driver': 'Dani',
+        'driver': 2,
         'start': datetime.datetime(2022, 1, 1, 12, 0),
         'path': [3,4 ,6, 1]
     }
     createTravelEdges(g,route2)
     route3 = {
-            'driver': 'Mia',
+            'driver': 3,
             'start': datetime.datetime(2022, 1, 1, 13, 40),
             'path': [4 ,1]
         }
@@ -99,10 +109,11 @@ if __name__=='__main__':
     createDestinationEdges(g)
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
     # g.draw()
-    path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 11, 50),weight='weightPriortyTimeDriverDistance')
     print(path)
-    path=g.getDetailsShortestPath(4,2,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
-    print(path)
+    # path=g.getDetailsShortestPath(4,2,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
+    # print(path)
+#################
 
     # print(path)
     # g.getDetailsShortestPath(2,1,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')

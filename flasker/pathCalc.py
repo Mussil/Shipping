@@ -229,9 +229,9 @@ def addWazeCalls(hours_lst):
             print("Done with", station1, station2)
 
 if __name__ == '__main__':
+    pass
 
     # Run these lines if you want to recalculate hours or add hours to files (!)
-
     # initialize stations from geojson file
     # stations = initStations()
 
@@ -242,7 +242,8 @@ if __name__ == '__main__':
     # addWazeCalls(['6:00', '10:00', '11:00'])
 
     # call func for calc time & route between 2 stations
-    print(calcDistTime(46, 1, datetime.datetime(2018, 3, 13, 3, 36)))
+
+    # print(calcDistTime(46, 1, datetime.datetime(2018, 3, 13, 3, 36)))
 
 
 
