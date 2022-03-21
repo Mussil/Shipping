@@ -60,5 +60,6 @@ def getDemoFiles():
         drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
     with open(f'demo300driversResults.json') as json_file:
         results = json.load(json_file,object_hook=convertStrToDateJSForamt)
-    return drivers,results
-
+    with open(f'demoParcelsFile.json') as json_file:
+        parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)
+    return drivers,results,parcels

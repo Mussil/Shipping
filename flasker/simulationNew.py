@@ -169,7 +169,7 @@ def buildDBsameParcels(numParcels,folderName):
                                        costDistance=costDistance, costDrivers=costDrivers)
 
             # Check whether the specified path exists or not
-            path=f'{prePath}/resultsNonUniform/{numDrivers}'
+            path=f'{prePath}/results/{numDrivers}'
             isExist = os.path.exists(path)
             if not isExist:
                 # Create a new directory because it does not exist
@@ -251,7 +251,7 @@ def DBpsucc(numParcels,folderName):
 
     def DBsuccOneIndex(index):
         for numDrivers in driversRange:
-            with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}.json') as json_file:
+            with open(f'{prePath}/results/{numDrivers}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             succ = results.getAmountOfSucc()
@@ -275,7 +275,7 @@ def DBpduration(numParcels,folderName):
     def DBdurationOneIndex(index):
         for numDrivers in driversRange:
             dictResults = dictResultsAllWeight['random']
-            with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}.json') as json_file:
+            with open(f'{prePath}/results/{numDrivers}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             listDuration = results.getListDuration()
@@ -284,7 +284,7 @@ def DBpduration(numParcels,folderName):
             letter='a'
             for weightName in Simulator.namesOfWeights:
                 dictResults=dictResultsAllWeight[weightName]
-                with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}{letter}.json') as json_file:
+                with open(f'{prePath}/results/{numDrivers}/{index}{letter}.json') as json_file:
                     results = json.load(json_file)
                 results = Result(results)
                 listDuration = results.getListDuration()
@@ -312,7 +312,7 @@ def DBpdistance(numParcels,folderName):
     def DBdistanceOneIndex(index):
         for numDrivers in driversRange:
             dictResults = dictResultsAllWeight['random']
-            with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}.json') as json_file:
+            with open(f'{prePath}/results/{numDrivers}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             listDistance = results.getListDistance()
@@ -321,7 +321,7 @@ def DBpdistance(numParcels,folderName):
             letter='a'
             for weightName in Simulator.namesOfWeights:
                 dictResults=dictResultsAllWeight[weightName]
-                with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}{letter}.json') as json_file:
+                with open(f'{prePath}/results/{numDrivers}/{index}{letter}.json') as json_file:
                     results = json.load(json_file)
                 results = Result(results)
                 listDistance = results.getListDistance()
@@ -346,7 +346,7 @@ def DBpdiffCost(numParcels):
     def DBdiffCostOneIndex(index):
         for numDrivers in driversRange:
             dictResults = dictResultsAllWeight['random']
-            with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}.json') as json_file:
+            with open(f'{prePath}/results/{numDrivers}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             listPayMax = results.getListPayMax()
@@ -357,7 +357,7 @@ def DBpdiffCost(numParcels):
             letter='a'
             for weightName in Simulator.namesOfWeights:
                 dictResults=dictResultsAllWeight[weightName]
-                with open(f'{prePath}/resultsNonUniform/{numDrivers}/{index}{letter}.json') as json_file:
+                with open(f'{prePath}/results/{numDrivers}/{index}{letter}.json') as json_file:
                     results = json.load(json_file)
                 results = Result(results)
                 listPayMax = results.getListPayMax()
@@ -397,7 +397,7 @@ def buildDBsameDrivers(numDrivers,folderName):
             parcels = chooseParcels(numParcels)
 
             # Check whether the specified path exists or not
-            path=f'{prePath}/resultsNonUniform/{numParcels}'
+            path=f'{prePath}/results/{numParcels}'
             isExist = os.path.exists(path)
             if not isExist:
                 # Create a new directory because it does not exist
@@ -436,7 +436,7 @@ def DBddiffCost(numDrivers,folderName):
     def DBdiffCostOneIndex(index):
         for numParcels in parcelsRange:
             dictResults = dictResultsAllWeight['random']
-            with open(f'{prePath}/resultsNonUniform/{numParcels}/{index}.json') as json_file:
+            with open(f'{prePath}/results/{numParcels}/{index}.json') as json_file:
                 results = json.load(json_file)
             results = Result(results)
             listPayMax = results.getListPayMax()
@@ -447,7 +447,7 @@ def DBddiffCost(numDrivers,folderName):
             letter='a'
             for weightName in Simulator.namesOfWeights:
                 dictResults=dictResultsAllWeight[weightName]
-                with open(f'{prePath}/resultsNonUniform/{numParcels}/{index}{letter}.json') as json_file:
+                with open(f'{prePath}/results/{numParcels}/{index}{letter}.json') as json_file:
                     results = json.load(json_file)
                 results = Result(results)
                 listPayMax = results.getListPayMax()
