@@ -6,8 +6,8 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 11, 4, 0, 0); // 2.1.2022
-const MIN_TO_SEC_RATIO = 1; //TODO: FIX IT TO 4!!! MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
+let INITIAL_DATE = new Date(2021, 12, 2, 3, 39, 0, 0); // 2.1.2022
+const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
 let map = L.mapbox.map('map')
@@ -43,7 +43,7 @@ function addStations2map(stations, stationsMarkers){
             layer: layer,
             num: station,
             coords: coord,
-            currentParcels:0,
+            currentParcels:[],
         }
 
         stationsMarkers.push(station_obj);
@@ -96,7 +96,14 @@ async function getRoutCoordinates(points) {
  * @param {Array<[]number, number>[]} polyLine 
  */
 function displayRoute(coordinates) {
-    return coordinates.map((path) => new L.geoJson(path).addTo(map));
+    let allRoute = [];
+    coordinates.map(path => {
+        for (let index = 0; index < path.coordinates.length - 1; index++) {
+            const geojson = {'coordinates': [path.coordinates[index], path.coordinates[index+1]], 'type': 'LineString'}; 
+            allRoute.push(new L.geoJson(geojson).addTo(map));    
+        }
+    });
+    return allRoute;
 }
 
 /**
@@ -166,7 +173,7 @@ function removeIcon(icon){
  * @param {*} geojson 
  * @param {*} time
  */
-async function navigateFromPointToPoint(driver, geojson, time, parcels2Pass) {
+async function navigateFromPointToPoint(driver, geojson, time, parcels2Pass, layers) {
     return new Promise(res => {
         let j = 0;
         tick();
@@ -177,6 +184,7 @@ async function navigateFromPointToPoint(driver, geojson, time, parcels2Pass) {
             });
 
             if (++j < geojson.coordinates.length) {
+                removeIcon(layers.shift())
                 setTimeout(tick, time * (MIN_TO_SEC_RATIO/SEC_IN_MIN));
             } else {
                 res();
@@ -207,12 +215,16 @@ function removeOutdatedDriver(activeDrivers, driver) {
  * @param {{driver: x, path: Array(4), start:--, times: Array(4)}} route 
  * @param {{driver: x, layers: Array(y), driverIcon: e, coordinates: Array[[],[],...]}} newDriver 
  */
-async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
+async function animateRoutes(route, newDriver, activeParcels, activeDrivers, stationsMarkers) {
 
     for (let index = 0; index < route.path.length - 1; index++) {
         const timeDelta = (route.times[index+1] - route.times[index]);
         const coordDelta = newDriver.coordinates[index];
         const travelTimeRatio = Math.floor(timeDelta/coordDelta.coordinates.length);
+
+        // update current stations with new parcels 
+        const s1 = route.path[index];
+        const s2 = route.path[index+1];
 
         let parcels2Pass = activeParcels.filter((parcel) => {
             const driverNum = route.driver;
@@ -230,23 +242,23 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
             }
         });
         
-        await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio, parcels2Pass);
-        // removeIcon(newDriver.layers[index]);
+        await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio, parcels2Pass, newDriver.layers);
+
+        // TODO: write here an await function of updating stations popup current parcels using s1, s2, parcels2pass, stationsMarkers
     }
 
     console.log("harrrayyyyy");
 
     // after all route animation - delete route & thier drivers icons
-    removeCompleteRoutes(newDriver.layers);
     removeIcon(newDriver.driverIcon);
     removeOutdatedDriver(activeDrivers, newDriver);
 }
 
-async function refreshRoutes(routes, activeDrivers, activeParcels) {
+async function refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers) {
     const newActive = newActiveRoutes(routes, activeDrivers);
 
-    console.log("***active drivers:", activeDrivers);
-    console.log("**new active:", newActive);
+    // console.log("***active drivers:", activeDrivers);
+    // console.log("**new active:", newActive);
 
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
@@ -264,7 +276,7 @@ async function refreshRoutes(routes, activeDrivers, activeParcels) {
         };
         activeDrivers.push(newDriver);
 
-        animateRoutes(route, newDriver, activeParcels, activeDrivers);
+        animateRoutes(route, newDriver, activeParcels, activeDrivers, stationsMarkers);
     });
 }
 
@@ -353,7 +365,7 @@ function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
  */
 function updateHTML(activeDrivers, results, arrivedSuccessfullyParcels) {
 
-    console.log(results);
+    // console.log(results);
     
     // active drivers
     const driversNow = activeDrivers.length;
@@ -382,7 +394,7 @@ const main = async () => {
     let arrivedSuccessfullyParcels = [];
 
     addStations2map(stations, stationsMarkers);
-    refreshRoutes(routes, activeDrivers, activeParcels);
+    refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers);
     refreshParcels(results, activeParcels, routes);
     clockTime();
 
@@ -392,7 +404,7 @@ const main = async () => {
 
         INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
 
-        refreshRoutes(routes, activeDrivers, activeParcels);
+        refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers);
         refreshParcels(results, activeParcels, routes);
         removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels);
         
@@ -400,9 +412,9 @@ const main = async () => {
         updateHTML(activeDrivers, results, arrivedSuccessfullyParcels);
         clockTime();
         
-        console.log(activeParcels, '----');
-        console.log(activeDrivers, '^^^^^^');
-        console.log(arrivedSuccessfullyParcels, '++++');
+        // console.log(activeParcels, '----');
+        // console.log(activeDrivers, '^^^^^^');
+        // console.log(arrivedSuccessfullyParcels, '++++');
 
     }, 1000 * MIN_TO_SEC_RATIO);
     

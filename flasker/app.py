@@ -140,4 +140,4 @@ def ProcessUserinfo(drivers: int, parcels: int):
     print(drivers, parcels)
     print()
     
-    # return('/')
+    return('/')
