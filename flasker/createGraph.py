@@ -47,8 +47,7 @@ def createDestinationEdges(g):
     def createDestinationNodes(g):
         numberOfSP=g.numberOfSP
         for sp in range(1,numberOfSP+1):
-            g.add_node(driverId=None, spId=sp, time=None, type='destinationNode')
-
+            node=g.add_node(driverId=None, spId=sp, time=None, type='destinationNode')
     createDestinationNodes(g)
 
     idAllEventNodes=g.getNodesIdEventNodes()
@@ -61,7 +60,7 @@ def createDestinationEdges(g):
 
 
 def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters,costDistance,costDrivers):
-    print('BUILDING THE TIME EXPANDED GRAPH')
+    # print('BUILDING THE TIME EXPANDED GRAPH')
     # g = Graph()
     g = Graph(stopTime=stopTime, numberOfSP=maxSp, maxDriver=maxDrivers, maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,costDistance=costDistance,costDrivers=costDrivers)
 
@@ -79,7 +78,7 @@ def buildGraph(routes,maxDrivers,maxSp,stopTime,maxTimeMin,maxDistanceMeters,cos
     #     createTravelEdges(g, route2)
 
     createStayEdges(g)
-    createDestinationEdges(g)
+    # createDestinationEdges(g)
     return g
 
 

@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 import os
 import random
@@ -26,7 +27,7 @@ def chooseParcels(numParcels):
     return sampleParcels
 
 def chooseRoutes(numDrivers):
-    with open(f'paths/uniformDistribution10000.json') as json_file:
+    with open(f'paths/uniformDistribution2days10000.json') as json_file:
         routes = json.load(json_file, object_hook=convertStrToDate)
 
     sampleRoutes = random.sample(routes, numDrivers)
@@ -71,6 +72,7 @@ class Simulator():
             time = parcel['startTime']
             dictOfParcel = self.g.getDetailsShortestPath(source, target, time, weight=nameOfWeight)
             resultDict[parcel['idParcel']] = dictOfParcel
+
 
         # actual cost at the end
         for parcel in resultDict.values():
@@ -149,18 +151,17 @@ class Result():
 def buildDBsameParcels(numParcels,folderName):
     prePath=f'{folderName}/{numParcels}parcels'
 
-    # parcels=chooseParcels(numParcels)
+    parcels=chooseParcels(numParcels)
     # same parcels as before:
-    with open(f'results2days/300parcels/parcelsFile.json') as json_file:
-        parcels = json.load(json_file, object_hook=convertStrToDate)
+    # with open(f'results2days/300parcels/parcelsFile.json') as json_file:
+    #     parcels = json.load(json_file, object_hook=convertStrToDate)
     with open(f'{prePath}/parcelsFile.json', 'w', encoding='utf-8') as f:
         json.dump(parcels, f, indent=4,default=convertDateToStr)
 
 
-    driversRange=range(100,601,100)
 
 
-    for i in range(100):
+    for i in range(numRuns):
 
         for numDrivers in driversRange:
             drivers = chooseRoutes(numDrivers)
@@ -245,7 +246,6 @@ def buildDBsameParcels(numParcels,folderName):
 
 
 def DBpsucc(numParcels,folderName):
-    driversRange=range(100,601,100)
     dictResults={name : [] for name in driversRange}
     prePath=f'{folderName}/{numParcels}parcels'
 
@@ -258,7 +258,7 @@ def DBpsucc(numParcels,folderName):
             dictResults[numDrivers].append(succ / numParcels)
         return dictResults
 
-    for i in range(100):
+    for i in range(numRuns):
         DBsuccOneIndex(index=str(i))
 
     plotDBSucc(numParcels,dictResults)
@@ -267,7 +267,6 @@ def DBpsucc(numParcels,folderName):
 def DBpduration(numParcels,folderName):
     prePath=f'{folderName}/{numParcels}parcels'
 
-    driversRange=range(100,601,100)
     dictResultsAllWeight={weightName: {numDrivers : [] for numDrivers in driversRange}for weightName in Simulator.namesOfWeights}
     dictResultsAllWeight['random']={numDrivers : [] for numDrivers in driversRange}
     # dictResults={numDrivers : [] for numDrivers in driversRange}
@@ -295,7 +294,7 @@ def DBpduration(numParcels,folderName):
 
         return dictResults
 
-    for i in range(100):
+    for i in range(numRuns):
         DBdurationOneIndex(index=str(i))
 
     plotDBduration(numParcels,dictResultsAllWeight)
@@ -304,7 +303,6 @@ def DBpduration(numParcels,folderName):
 def DBpdistance(numParcels,folderName):
     prePath=f'{folderName}/{numParcels}parcels'
 
-    driversRange=range(100,601,100)
     dictResultsAllWeight={weightName: {numDrivers : [] for numDrivers in driversRange}for weightName in Simulator.namesOfWeights}
     dictResultsAllWeight['random']={numDrivers : [] for numDrivers in driversRange}
     # dictResults={numDrivers : [] for numDrivers in driversRange}
@@ -332,14 +330,13 @@ def DBpdistance(numParcels,folderName):
 
         return dictResults
 
-    for i in range(100):
+    for i in range(numRuns):
         DBdistanceOneIndex(index=str(i))
 
     plotDBdistance(numParcels,dictResultsAllWeight)
 
 def DBpdiffCost(numParcels):
     prePath=f'{folderName}/{numParcels}parcels'
-    driversRange=range(100,601,100)
     dictResultsAllWeight={weightName: {numDrivers : [] for numDrivers in driversRange}for weightName in Simulator.namesOfWeights}
     dictResultsAllWeight['random']={numDrivers : [] for numDrivers in driversRange}
 
@@ -371,7 +368,7 @@ def DBpdiffCost(numParcels):
 
         return dictResults
 
-    for i in range(100):
+    for i in range(numRuns):
         DBdiffCostOneIndex(index=str(i))
 
     plotDBdiffCost(numParcels,dictResultsAllWeight)
@@ -390,7 +387,7 @@ def buildDBsameDrivers(numDrivers,folderName):
 
     parcelsRange=range(50,501,50)
 
-    for i in range(100):
+    for i in range(numRuns):
 
         for numParcels in parcelsRange:
 
@@ -461,7 +458,7 @@ def DBddiffCost(numDrivers,folderName):
 
         return dictResults
 
-    for i in range(100):
+    for i in range(numRuns):
         DBdiffCostOneIndex(index=str(i))
 
     plotDBddiffCost(numParcels,dictResultsAllWeight)
@@ -475,7 +472,6 @@ def succ(numParcels):
     succsListMedian = []
     succsListStdev = []
 
-    driversRange=range(100,601,100)
 
     for numDrivers in driversRange:
         resultsPerAmount = []
@@ -495,32 +491,104 @@ def succ(numParcels):
 
     plotSucc(driversRange,succsListAvg,succsListMedian,succsListStdev)
 
+
+
+def createPreDrivers(folderName):
+    # create all pre drivers
+    for i in range(numRuns):
+        for numDrivers in driversRange:
+            drivers = chooseRoutes(numDrivers)
+            # Check whether the specified path exists or not
+            path = f'{folderName}/driversDB/{numDrivers}'
+            isExist = os.path.exists(path)
+            if not isExist:
+                os.makedirs(path)
+
+            with open(f'{path}/{i}.json', 'w', encoding='utf-8') as f:
+                json.dump(drivers, f, indent=4, default=convertDateToStr)
+
+def createPreParcels(folderName):
+    # create all pre parcels
+    path = f'{folderName}/parcelsDB'
+    isExist = os.path.exists(path)
+    if not isExist:
+        os.makedirs(path)
+    for numParcels in parcelsRange:
+        parcels=chooseParcels(numParcels)
+        with open(f'{path}/{numParcels}.json', 'w', encoding='utf-8') as f:
+            json.dump(parcels, f, indent=4, default=convertDateToStr)
+
+
+
+def resultsFromPre(folderName):
+
+    for i in range(numRuns):
+        for numDrivers in driversRange:
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print(f'iteration #{i} | #drivers {numDrivers} | Current Time = {current_time}')
+
+            with open(f'{folderName}/driversDB/{numDrivers}/{i}.json') as json_file:
+                drivers = json.load(json_file, object_hook=convertStrToDate)
+
+            graphSimulator = Simulator(routes=drivers, numberOfSP=sp.numOfSP, numDrivers=numDrivers, stopTime=stopTime,
+                                       maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,
+                                       costDistance=costDistance, costDrivers=costDrivers)
+
+
+            for numParcels in parcelsRange:
+                path = f'{folderName}/results/{numParcels}parcels/{numDrivers}drivers'
+                isExist = os.path.exists(path)
+                if not isExist:
+                    os.makedirs(path)
+
+                with open(f'{folderName}/parcelsDB/{numParcels}.json') as json_file:
+                    parcels = json.load(json_file, object_hook=convertStrToDate)
+
+                results = graphSimulator.sendParcelsByRandomWeight(parcels)
+                with open(f'{path}/{i}.json', 'w', encoding='utf-8') as f:
+                    json.dump(results.getResult(), f, indent=4,default=convertDateToStr)
+
+                letter='a'
+                for nameOfWeight in graphSimulator.namesOfWeights:
+                    results = graphSimulator.sendParcelsBySameWeight(parcels,nameOfWeight)
+                    with open(f'{path}/{i}{letter}.json', 'w', encoding='utf-8') as f:
+                        json.dump(results.getResult(), f, indent=4,default=convertDateToStr)
+                    letter = chr(ord(letter) + 1) #the next letter in alphbet
+
+
+
+
+
 if __name__=='__main__':
     costDistance = 0.001
     costDrivers = 3
     stopTime = 1
-    maxTimeMin = minutesInDay*2
+    maxTimeMin = minutesInDay
     maxDistanceMeters = 60000000
 
-    numParcels=300
-    folderName='resultsUniform'
+    folderName='allResults/resultsUniform2days'
+    numRuns=50
+    driversRange=range(100,501,100)
+    parcelsRange=range(100,1001,100)
 
-
+    # numParcels=300
     # ################DONT CALL THIS FUNCTION
-    buildDBsameParcels(numParcels,folderName)
+    # buildDBsameParcels(numParcels,folderName)
 
     # DBpsucc(numParcels,folderName)
     # DBpduration(numParcels,folderName)
     # DBpdistance(numParcels,folderName)
     # DBpdiffCost(numParcels,folderName)
 
-    numDrivers=200
+    # numDrivers=200/
     # ################DONT CALL THIS FUNCTION buildDBsameDrivers(numDrivers,folderName)
     # DBddiffCost(numDrivers,folderName)
 
+    resultsFromPre(folderName)
 
 
-
+    #
     # numDrivers=50
     # numParcels=100
     # # parcels=chooseParcels(numParcels)
@@ -530,8 +598,8 @@ if __name__=='__main__':
     # for i, route in enumerate(sampleParcels):
     #     route['idParcel'] = i + 1
     # parcels= sampleParcels
-    # print("-------parcels------")
-    # pprint(parcels)
+    # # print("-------parcels------")
+    # # pprint(parcels)
     # # drivers = chooseRoutes(numDrivers)
     # with open(f'paths/uniformDistribution10000.json') as json_file:
     #     routes = json.load(json_file, object_hook=convertStrToDate)
@@ -539,13 +607,17 @@ if __name__=='__main__':
     # for i, route in enumerate(sampleRoutes):
     #     route['driver'] = i + 1
     # drivers= sampleRoutes
-    # print("-------drivers------")
+    # # print("-------drivers------")
     # pprint(drivers)
     #
     # graphSimulator = Simulator(routes=drivers, numberOfSP=sp.numOfSP, numDrivers=numDrivers, stopTime=stopTime,
     #                            maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,
     #                            costDistance=costDistance, costDrivers=costDrivers)
     # resultsNonUniform = graphSimulator.sendParcelsBySameWeight(parcels,'weightPriortyDistanceDriverTime')
-    # pprint(resultsNonUniform.getResult())
+    # # pprint(resultsNonUniform.getResult())
     # print(resultsNonUniform.getAmountOfSucc())
 
+    # with open(f'drivers50Ruthi.json', 'w', encoding='utf-8') as f:
+    #     json.dump(drivers, f, indent=4, default=convertDateToStr)
+    # with open(f'resultsRuthi.json', 'w', encoding='utf-8') as f:
+    #     json.dump(resultsNonUniform.getResult(), f, indent=4, default=convertDateToStr)

@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="demo files for the cilent side">
-      <change afterPath="$PROJECT_DIR$/flasker/demoParcelsFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/createGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createGraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/simulationNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulationNew.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,14 +63,14 @@
       <recent name="C:\Users\student\Desktop\web" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\student\Desktop\web\flasker\allResults" />
       <recent name="C:\Users\student\Desktop\web\flasker" />
       <recent name="C:\Users\student\Desktop\web\flasker\results\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\paths\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
-      <recent name="C:\Users\student\Desktop\web\flasker\paths" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.helpers">
+  <component name="RunManager" selected="Python.simulationNew (1)">
     <configuration name="helpers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -184,8 +185,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.helpers" />
         <item itemvalue="Python.simulationNew (1)" />
+        <item itemvalue="Python.helpers" />
         <item itemvalue="Python.plots" />
         <item itemvalue="Python.simulation2.1-copyForShabbat (1)" />
         <item itemvalue="Python.simulation2.1-copyForShabbat" />
@@ -370,7 +371,13 @@
       <option name="presentableId" value="LOCAL‎00028" />
       <updated>1647776837403</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL‎00029" summary="demo files for the cilent side">
+      <created>1647876730168</created>
+      <option name="number" value="LOCAL‎00029" />
+      <option name="presentableId" value="LOCAL‎00029" />
+      <updated>1647876730168</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

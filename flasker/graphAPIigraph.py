@@ -3,8 +3,7 @@ import igraph
 import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-from flasker.helpers import addMin
-
+from flasker.helpers import addMin, minutesInDay
 
 
 class Graph(object):
@@ -242,7 +241,8 @@ class Graph(object):
         startNode=self._addStartNodeEdges(spId=source,time=minTime,otherNodes=sameSpSource,weightName=weight)
         sourceIndex=self._g.vs.find(ID_eq=startNode,type_eq='startNode').index
 
-        maxTime=addMin(minTime,1440)
+        # find nodes that are before 24 hours after the parcel sent
+        maxTime=addMin(minTime,minutesInDay)
         sameSpTarget=self._g.vs.select(spId_eq=target,type_eq='eventNode',time_le=maxTime)
         destNode=self._addDestinationNodeEdgesTime(spId=target,time=maxTime,otherNodes=sameSpTarget,weightName=weight)
         targetIndex=self._g.vs.find(ID_eq=destNode,type_eq='destinationTimeNode').index
@@ -324,12 +324,15 @@ class Graph(object):
         :return: the actual cost of the parcel
         '''
         indexes=[]
-        for spId,driverId in pathSpDriver:
+        for spId,driverId in pathSpDriver[1:-1]:
             indexes.append(self._g.vs.find(spId_eq=spId,driverId=driverId).index)
         cost=0
-        for id1, id2 in zip(indexes[1:-1], indexes[2:]):
+        for id1, id2 in zip(indexes[0:-1], indexes[1:]):
             #parcel pay
             edge=self._g.es.find(_source=id1,_target=id2)
+            # print(id1,id2)
+            # print(self._g.vs[id1])
+            # print(edge)
             distance=edge['distance']
             parcels=edge['parcels']
             division=0
