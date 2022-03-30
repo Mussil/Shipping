@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="demo files for the cilent side">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="simulation for 2days paths">
+      <change afterPath="$PROJECT_DIR$/flasker/simulationNewParallel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/createGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createGraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/graphAPIigraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/graphAPIigraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/simulationNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/simulationNew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/SPutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/SPutils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/createPaths.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/createPaths.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/demo300drivers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/demo300driversResults.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/spFile.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +55,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flasker" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/flasker/allResults/resultsUniform2daysParallel" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\student\Desktop\web\flasker\allResults\resultsUniform2daysParallel" />
       <recent name="C:\Users\student\Desktop\web\flasker" />
       <recent name="C:\Users\student\Desktop\web" />
     </key>
@@ -70,7 +74,28 @@
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simulationNew (1)">
+  <component name="RunManager" selected="Python.createPaths">
+    <configuration name="createPaths" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/createPaths.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="helpers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,48 +138,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="simulation2.1-copyForShabbat (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/simulation2.1-copyForShabbat.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="simulation2.1-copyForShabbat" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\student\Desktop\web\flasker\simulation2.1-copyForShabbat.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="simulationNew (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,20 +159,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="simulationNewParallel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flasker" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/simulationNewParallel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.simulation2.1-copyForShabbat" />
-      <item itemvalue="Python.simulation2.1-copyForShabbat (1)" />
       <item itemvalue="Python.simulationNew (1)" />
       <item itemvalue="Python.plots" />
       <item itemvalue="Python.helpers" />
+      <item itemvalue="Python.simulationNewParallel" />
+      <item itemvalue="Python.createPaths" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.createPaths" />
+        <item itemvalue="Python.simulationNewParallel" />
         <item itemvalue="Python.simulationNew (1)" />
         <item itemvalue="Python.helpers" />
         <item itemvalue="Python.plots" />
-        <item itemvalue="Python.simulation2.1-copyForShabbat (1)" />
-        <item itemvalue="Python.simulation2.1-copyForShabbat" />
       </list>
     </recent_temporary>
   </component>
@@ -377,7 +381,13 @@
       <option name="presentableId" value="LOCAL‎00029" />
       <updated>1647876730168</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL‎00030" summary="simulation for 2days paths">
+      <created>1648127812951</created>
+      <option name="number" value="LOCAL‎00030" />
+      <option name="presentableId" value="LOCAL‎00030" />
+      <updated>1648127812951</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,7 +429,8 @@
     <MESSAGE value="analyze" />
     <MESSAGE value="simulations analyze" />
     <MESSAGE value="demo files for the cilent side" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo files for the cilent side" />
+    <MESSAGE value="simulation for 2days paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="simulation for 2days paths" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2,21 +2,13 @@ import datetime
 import json
 import random
 import time
-from collections import OrderedDict
-from pprint import pprint
-import os.path
 
-import networkx as nx
 from collections import defaultdict
 
-import numpy as np
 import requests
-from shapely.ops import nearest_points
 
 from flasker.helpers import addMin, initialDate, minutesInDay, access_token, listCorrdsToString, convertDateToStr
-import igraph
 from flasker.pathCalc import calcDistTime
-import pickle
 from shapely.geometry import Point, LineString
 from mapbox import Directions
 
@@ -40,8 +32,7 @@ def createRandomPaths(numDrivers,numSP,maxStops):
                          "?access_token="+
                          access_token)
         waypoints = x.json()['waypoints']
-        #todo: check what fid is each point,
-        #todo: check the order of the optimizion
+
         locs = list(map(lambda x: x['location'], sorted(waypoints, key=lambda x: x['waypoint_index'])))
 
 
@@ -163,114 +154,25 @@ def getPathMapBoxKM(origin,destination):
     spNames=list(map(lambda x: x[1],total))
     return spNames
 
-    # print(line)
-    # pointDistFromStart=[]
-    # # originPoint=Point(origin['geometry']['coordinates'])
-    # originPoint=Point(origin)
-    #
-    # for id,point in coordList:
-    #     point2 = Point(point)
-    #     if line.distance(point2) < 1e-3 :
-    #         pointDistFromStart.append((point,id,originPoint.distance(point2)))
-    #
-    # sortedPoints=sorted(pointDistFromStart,key=lambda x: x[2])
-    # spNames=list(map(lambda x: x[1],sortedPoints))
-    # return spNames
+
+class createOriginDest():
+
+    def __init__(self,sp):
+        self.numSP=sp.numOfSP
+        self.industrial_areaSP=sp.getIndustrial_areaSP()
+
+    def createOriginDestRandom(self):
+        originSp,destinationSp= random.sample(range(1,self.numSP+1), 2)
+        return originSp,destinationSp
+
+    def createOrigin_IA_Dest_Rest(self):
+        originSp = random.choice(self.industrial_areaSP)
+        restSp=[sp for sp in range(1,self.numSP+1) if sp not in self.industrial_areaSP]
+        destinationSp = random.choice(restSp)
+        return originSp,destinationSp
 
 
-
-# def distanceMatrix(line,coordDict):
-#     '''
-#     :param line: list of coords
-#     :param coordList: dict of fid: [coords]
-#     :return: matrix of distance between line to coordList
-#     '''
-#
-#     spFid=coordDict.keys()
-#     spCoords=coordDict.values()
-#
-#     resultDict=defaultdict(list)
-#     lineLength= len(line)
-#     for sp,coords in coordDict.items():
-#         count=0
-#         tempLine=[coords]
-#         for tempCoords in line:
-#             count+=1
-#             tempLine.append(tempCoords)
-#             if count%24==0 or count>=lineLength:
-#                 stringPoints = listCorrdsToString(tempLine)
-#                 curb="curb"
-#                 curb+=";curb"*(len(tempLine)-1)
-#                 res = requests.get("https://api.mapbox.com/directions-matrix/v1/mapbox/driving/"
-#                                  + stringPoints
-#                                  + "?access_token="
-#                                  + access_token
-#                                  + "&annotations=distance"
-#                                  + "&approaches="+curb
-#                                  + "&destinations=0"
-#                                  + "&sources=all"
-#                                  )
-#                 if not res.ok:
-#                     time.sleep(120)
-#                 res = requests.get("https://api.mapbox.com/directions-matrix/v1/mapbox/driving/"
-#                                  + stringPoints
-#                                  + "?access_token="
-#                                  + access_token
-#                                  + "&annotations=distance"
-#                                  + "&approaches="+curb
-#                                  + "&destinations=0"
-#                                  + "&sources=all"
-#                                  )
-#                 # res.raise_for_status()
-#                 res=res.json()
-#                 print(res)
-#
-#                 sources=list(map(lambda x:x['location'],res['sources']))
-#                 destinations=list(map(lambda x:x['location'],res['destinations']))
-#                 distanceMatrix=list(map(lambda x:x[0],res['distances']))
-#                 resultDict[sp]+=distanceMatrix[1:]
-#                 #
-#                 # print("*")
-#                 # print(sources)
-#                 # print(destinations)
-#                 #
-#                 # print(tempLine)
-#                 # print('-')
-#                 # pprint(distanceMatrix)
-#
-#                 tempLine=[]
-#
-#     return resultDict
-#
-#
-#
-#
-#
-#
-# def getPathMapBoxKMNew(origin,destination):
-#     '''
-#     :param origin: coords of orignal point
-#     :param destination: coords of destination point
-#     :return: stations that are around the path between orgin and dest
-#     the calc is based on stations that are closed (by km) to points in the paths
-#     '''
-#     service = Directions(access_token=access_token)
-#     response = service.directions([origin, destination],'mapbox/driving',overview='full')
-#     driving_routes = response.geojson()
-#     line=driving_routes['features'][0]['geometry']['coordinates']
-#     coordDict=sp.getDictFidCoords()
-#     # print(line)
-#     # print(coordDict)
-#     dictMatrix=distanceMatrix(line,coordDict)
-#     print(dictMatrix)
-
-
-
-
-
-
-
-def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
+def createPaths(numDrivers,numSP,funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName='uniformDistribution2days'):
     print('CREATING PATHS')
     paths=[]
 
@@ -279,10 +181,7 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
         path={}
         path['driver']=i+1 #the name of the driver
         path['start']=addMin(initialDate,random.randint(0, minutesInDay*2)) #add to inital day some random minutes
-        originSp,destinationSp=random.sample(range(1,numSP+1), 2)
-
-        # origin = getStationDeatils(originSp)
-        # destination = getStationDeatils(destinationSp)
+        originSp,destinationSp=funcDecideOriginDest()
 
         origin = sp.getStationCoords(originSp)
         destination = sp.getStationCoords(destinationSp)
@@ -318,7 +217,7 @@ def createPaths(numDrivers,numSP,funGetPathMapBox=getPathMapBoxLine):
     # return paths
 
     #one big file
-    with open(f'paths/uniformDistribution2days{numDrivers}.json', 'w', encoding='utf-8') as f:
+    with open(f'paths/{fileName}{numDrivers}.json', 'w', encoding='utf-8') as f:
         json.dump(paths, f, indent=4, default=convertDateToStr)
     return paths
 
@@ -336,8 +235,6 @@ def getTimesOfPath(path,startTime):
         duration, _ = calcDistTime(path[i], path[i+1],tempTime )
         new_time = addMin(tempTime,duration)
         times.append(new_time)
-    # print(path)
-    # print(times)
     return times
 
 def optimize(wayFid):
@@ -349,12 +246,9 @@ def optimize(wayFid):
                      + access_token
                      + "&roundtrip=false&source=first&destination=last"
                      )
-    # print(x.status_code)
 
-    # errors:
     while (x.status_code!=200):
         print(x.json())
-        # time.sleep(2)
         x = requests.get("https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
                          + stringPoints
                          + "?access_token="
@@ -376,7 +270,13 @@ def optimize(wayFid):
 if __name__=='__main__':
     numberOfSP=sp.numOfSP
     numDrivers=10000
+    decideOriginDest=createOriginDest(sp)
 
 
 
-    createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)
+    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)
+
+    funcDecideOriginDest=decideOriginDest.createOrigin_IA_Dest_Rest
+    fileName='2days_Source_IA_Dest_Rest'
+    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
+

@@ -7,6 +7,8 @@ minutesInDay=1440
 # access_token = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ' #Mussi
 access_token='pk.eyJ1IjoicmxldmkxMjkzIiwiYSI6ImNrenh0bnh0MjA0eG0ydm8zajJ6ZW9odXcifQ.loa-SroNLMPU0Px4LkBOzA' #Rachel
 
+
+
 def addMin(tm, min):
     """ get a dateTime object and minutes
     :return their sum"""
