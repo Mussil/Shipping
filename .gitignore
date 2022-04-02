@@ -17,3 +17,6 @@ build/
 /flasker/resultsNonUniform
 /flasker/resultsUniform
 /flasker/results2days
+
+
+node_modules/

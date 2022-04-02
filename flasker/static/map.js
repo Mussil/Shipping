@@ -1,18 +1,45 @@
 let stations = JSON.parse(document.getElementById("map").dataset.stations);
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoicnV0aTEyMzQiLCJhIjoiY2wwMTMwY3FyMDBzNTNrbzB1YWp3aXJ4dSJ9.rRm6gErVoryz85FThkRiDQ";
-// mapbox map creation
+
 L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 3, 39, 0, 0); // 2.1.2022
+let INITIAL_DATE = new Date(2021, 12, 2, 0, 0, 0, 0); // 2.1.2022
 const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
 let map = L.mapbox.map('map')
-    .setView([31.790432720080467 , 34.63724819562294 ], 14)
-    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+    .setView([31.790432720080467 , 34.63724819562294 ], 13.9)
+    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'))
+    .addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+L.control.layers({
+    'streets view': L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'),
+    'light view': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'),
+    'outdoors view': L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11'),
+    'satellite view': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9')
+}).addTo(map);
+
+const CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
+"Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta",
+"DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet",
+"DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","ForestGreen","Fuchsia","Gainsboro","Gold","GoldenRod",
+"Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue",
+"LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray",
+"LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen",
+"MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive",
+"OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue",
+"Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray",
+"SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","Yellow","YellowGreen"];
+
+/**
+ * returns random color in css
+ */
+function getRandomColor() {
+    return CSS_COLOR_NAMES[Math.floor(Math.random()*CSS_COLOR_NAMES.length)];
+}
 
 /**
  * @param {*} date 
@@ -35,7 +62,7 @@ function addStations2map(stations, stationsMarkers){
         const layer = new L.marker(coord, {
                         icon: L.mapbox.marker.icon({
                             'marker-color': '#f86767',
-                            'marker-symbol'	: station, // TODO: 'post' symbol for packages :)
+                            'marker-symbol'	: station,
                             'marker-size': 'small'
                         })}).addTo(map);
         
@@ -95,12 +122,15 @@ async function getRoutCoordinates(points) {
 /**
  * @param {Array<[]number, number>[]} polyLine 
  */
-function displayRoute(coordinates) {
+function displayRoute(coordinates, colorRoute) {
     let allRoute = [];
     coordinates.map(path => {
         for (let index = 0; index < path.coordinates.length - 1; index++) {
             const geojson = {'coordinates': [path.coordinates[index], path.coordinates[index+1]], 'type': 'LineString'}; 
-            allRoute.push(new L.geoJson(geojson).addTo(map));    
+            const layer = new L.geoJson(geojson).setStyle({
+                color: colorRoute,
+            }).addTo(map);
+            allRoute.push(layer);    
         }
     });
     return allRoute;
@@ -110,13 +140,16 @@ function displayRoute(coordinates) {
  * @param {[number-lat, number-lon]} coords
  */
 function displayDriver(coords, driverNum) {
-    return new L.marker(new L.LatLng(coords[1], coords[0]), {
+    const markerColor = getRandomColor();
+    const marker = new L.marker(new L.LatLng(coords[1], coords[0]), {
         icon: L.mapbox.marker.icon({
             'marker-size': 'medium',
-            'marker-symbol': driverNum,
-            'marker-color': 'yellow',
+            'marker-symbol': 'car',
+            'marker-color': markerColor,
         })
     }).addTo(map);
+    marker.bindPopup(String(driverNum));
+    return [marker, markerColor];
 }
 
 /**
@@ -124,15 +157,15 @@ function displayDriver(coords, driverNum) {
  * @param {*} parcelNum  
  */
 function displayParcel(coords, parcelNum) {
-    const num = parcelNum;
-    const marker = new L.marker(new L.LatLng(coords[0], coords[1]), {
-        icon: L.mapbox.marker.icon({
-            'marker-size': 'small',
-            'marker-symbol': 'post', //'post' for packages symbol
-            'marker-color': 'white'
-        })
-    }).addTo(map);
-    marker.bindPopup(num);
+    var cssIcon = L.divIcon({
+        className: 'svg-marker',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="pink" width="20" height="50"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm0 8L24 26 8 16v-4l16 10 16-10v4z"></path>',
+        iconSize: [24, 24],
+    });
+    
+    marker = L.marker([coords[0], coords[1]], {icon: cssIcon}).addTo(map);
+
+    marker.bindPopup(parcelNum);
     return marker;  
 }
 
@@ -144,19 +177,10 @@ function displayParcel(coords, parcelNum) {
 function newActiveRoutes(routes, activeDrivers) {
     const now = INITIAL_DATE.getTime();
     return routes.filter((route) => {
-                    return route.times[0] <= now &&
+                    return new Date(route.times[0]).setSeconds(0, 0) === now &&
                     now < route.times[route.times.length - 1] &&
                     !(activeDrivers.findIndex(d => d.driver === route.driver) > -1)
                 });
-}
-
-/**
- * @param {Array<[]>} layers 
- */
-function removeCompleteRoutes(layers) {
-    layers.forEach((layer) =>
-        map.removeLayer(layer)
-    );
 }
 
 /**
@@ -198,33 +222,33 @@ async function navigateFromPointToPoint(driver, geojson, time, parcels2Pass, lay
  * @param {*} activeDrivers 
  * @param {*} driver 
  */
-function removeOutdatedDriver(activeDrivers, driver) {
+async function removeOutdatedDriver(activeDrivers, driver) {
     const now = INITIAL_DATE.getTime();
 
     const driverIndex = activeDrivers.findIndex((d) => {
         d.driver === driver.driver;
     });
 
-    setTimeout(function(){
+    await new Promise(res => {
         activeDrivers.splice(driverIndex, 1);
-    }, 1000);
-
+        res();
+    });
+    
+    console.log(`removed ${driver.driver} from active >>>>`);
+    console.log(activeDrivers);
 }
 
 /**
  * @param {{driver: x, path: Array(4), start:--, times: Array(4)}} route 
  * @param {{driver: x, layers: Array(y), driverIcon: e, coordinates: Array[[],[],...]}} newDriver 
  */
-async function animateRoutes(route, newDriver, activeParcels, activeDrivers, stationsMarkers) {
+async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
 
     for (let index = 0; index < route.path.length - 1; index++) {
         const timeDelta = (route.times[index+1] - route.times[index]);
         const coordDelta = newDriver.coordinates[index];
         const travelTimeRatio = Math.floor(timeDelta/coordDelta.coordinates.length);
 
-        // update current stations with new parcels 
-        const s1 = route.path[index];
-        const s2 = route.path[index+1];
 
         let parcels2Pass = activeParcels.filter((parcel) => {
             const driverNum = route.driver;
@@ -243,18 +267,39 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers, sta
         });
         
         await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio, parcels2Pass, newDriver.layers);
-
-        // TODO: write here an await function of updating stations popup current parcels using s1, s2, parcels2pass, stationsMarkers
     }
 
-    console.log("harrrayyyyy");
+    console.log(`harrrayyyyy driver ${newDriver.driver} finished his path !!!`);
 
     // after all route animation - delete route & thier drivers icons
     removeIcon(newDriver.driverIcon);
     removeOutdatedDriver(activeDrivers, newDriver);
 }
 
-async function refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers) {
+async function smoothPath(coords) {
+    return new Promise(res => {
+        
+        for (let index = 0; index < coords.length; index++) {
+            const path = coords[index].coordinates;
+
+            for (let coord = 0; coord < path.length; coord++) {
+                
+                if(coord != path.length - 1){
+                    const point1 = path[coord];
+                    const point2 = path[coord+1];
+                    const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
+
+                    path.splice(coord, 0, middle);
+                }
+                
+            } 
+        }
+
+        res();
+    });
+}
+
+async function refreshRoutes(routes, activeDrivers, activeParcels) {
     const newActive = newActiveRoutes(routes, activeDrivers);
 
     // console.log("***active drivers:", activeDrivers);
@@ -262,11 +307,14 @@ async function refreshRoutes(routes, activeDrivers, activeParcels, stationsMarke
 
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
-        const coordinates = await getRoutCoordinates(points);
+        let coordinates = await getRoutCoordinates(points);
+        await smoothPath(coordinates);
 
-        // add path & car icon to the map
-        const layers = displayRoute(coordinates);
-        const driverIcon = displayDriver(coordinates[0].coordinates[0], route.driver);
+        const driverData = displayDriver(coordinates[0].coordinates[0], route.driver);
+        const driverIcon = driverData[0];
+        const driverColor = driverData[1];
+
+        const layers = displayRoute(coordinates, driverColor);
         
         const newDriver = {
             driver: route.driver,
@@ -274,22 +322,45 @@ async function refreshRoutes(routes, activeDrivers, activeParcels, stationsMarke
             driverIcon,
             coordinates,
         };
-        activeDrivers.push(newDriver);
 
-        animateRoutes(route, newDriver, activeParcels, activeDrivers, stationsMarkers);
+        await new Promise(res => {
+            activeDrivers.push(newDriver);
+            res();
+        });
+
+        console.log(`added ${newDriver.driver} to active >>>>`);
+        console.log(activeDrivers);
+
+        animateRoutes(route, newDriver, activeParcels, activeDrivers);
     });
+}
+
+/**
+ * return parcel removal time
+ * @param {*} routes 
+ * @param {*} parcel 
+ */
+function getParcelFinishedTime(routes, parcelName, results) {
+
+    const lastParcelDriver = results[parcelName].path[results[parcelName].path.length - 2][1];
+    const lastParcelDriverStation = results[parcelName].path[results[parcelName].path.length - 2][0];
+    const parcelDriver = routes.filter(d => d.driver === lastParcelDriver)[0]; //{routes[driver]}
+    const driverStationTimeIndex = parcelDriver.path.findIndex(station => station === lastParcelDriverStation);
+
+    return parcelDriver.times[driverStationTimeIndex]; 
 }
 
 /**
  * find new parcels to move on map
  * @param {*} parcels 
  */
-function newActiveParcels(parcels, newActiveParcels) {
+function newActiveParcels(results, newActiveParcels, routes) {
     const now = INITIAL_DATE.getTime();
-    return Object.keys(parcels).filter((parcelNum) => {        
-        return parcels[parcelNum]["startTime"] <= now &&
+    return Object.keys(results).filter((parcelNum) => {   
+        return  results[parcelNum]["path"].length != 0 && // TODO: fix that - Mussi  
+        results[parcelNum]["startTime"] <= now &&
+        now < getParcelFinishedTime(routes, parcelNum, results) &&
         !(newActiveParcels.findIndex(p => p.num === parcelNum) > -1);
-        // parcels[parcelNum]["path"] > 1; // TODO: fix that - Mussi 
     });
 }
 
@@ -297,28 +368,26 @@ function newActiveParcels(parcels, newActiveParcels) {
  * show parcels on map in specific time
  * @param {*} results
  */
-function refreshParcels(results, activeParcels, routes) {
-    const newActive =  newActiveParcels(results, activeParcels);
+async function refreshParcels(results, activeParcels, routes) {
+    const newActive =  newActiveParcels(results, activeParcels, routes);
     
-    newActive.forEach((parcelName) => {
-        const parcelIcon = displayParcel(SP2Coords(results[parcelName].path[0][0]), parcelName);
+    newActive.forEach(async (parcelName) => {
+        await new Promise(res => {
+            const parcelIcon = displayParcel(SP2Coords(results[parcelName].path[0][0]), parcelName);
+            const newParcel = {
+                num: parcelName,
+                parcelIcon: parcelIcon,
+                path: results[parcelName].path,
+                finishPathTime: getParcelFinishedTime(routes, parcelName, results) + 2000, // remove parcel 2 sec later ... 
+                currentStation: (results[parcelName].path.length > 0) ? results[parcelName].path[0][0] : null,
+            };
 
-        // extract parcel transfer end time 
-        const lastParcelDriver = results[parcelName].path[results[parcelName].path.length - 2][1];
-        const lastParcelDriverStation = results[parcelName].path[results[parcelName].path.length - 2][0];
-        const parcelDriver = routes.filter(d => d.driver === lastParcelDriver)[0]; //{routes[driver]}
-        const driverStationTimeIndex = parcelDriver.path.findIndex(station => station === lastParcelDriverStation);
-        const parcelFinishTime = parcelDriver.times[driverStationTimeIndex] + 2000; // remove parcel 2 sec later ... 
+            activeParcels.push(newParcel);
+            // console.log(`added ${newParcel.num} to parcels ****`);
 
-        const newParcel = {
-            num: parcelName,
-            parcelIcon: parcelIcon,
-            path: results[parcelName].path,
-            finishPathTime: parcelFinishTime,
-            currentStation: (results[parcelName].path.length > 0) ? results[parcelName].path[0][0] : null,
-        };
+            res();
+        });
 
-        activeParcels.push(newParcel);
     });
 }
 
@@ -333,60 +402,48 @@ function clockTime() {
     const month = INITIAL_DATE.getUTCMonth() + 1;
     const year = INITIAL_DATE.getFullYear();
 
-    document.getElementById("clock").innerHTML =`${hour}:${min}  ${day}/${month}/${year}`;
-    setTimeout(clockTime, 1000);
+    document.getElementById("clock").innerHTML =`${hour}:${min} ${day}/${month}/${year}`;
 }
 
 /**
  * this function remove all parcels when they finish path
  * @param {*} activeParcels 
  */
-function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
+async function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
     const now = INITIAL_DATE.getTime();
     const removedParcels = activeParcels.filter(p => p.finishPathTime < now);
     
-    removedParcels.forEach(p => {
-        removeIcon(p.parcelIcon);
-        const parcelIndex = activeParcels.findIndex(parcel => parcel.num === p.num);
-
-        // add a parcel only if doesnt exist 
-        if(arrivedSuccessfullyParcels.findIndex(parcel => p.num === parcel.num) === -1){
+    removedParcels.forEach(async (p) => {
+        await new Promise(res => {
+            removeIcon(p.parcelIcon);
+            const parcelIndex = activeParcels.findIndex(parcel => parcel.num === p.num);
+            
+            activeParcels.splice(parcelIndex, 1);
             arrivedSuccessfullyParcels.push(p);
-        }
-        
-        activeParcels.splice(parcelIndex, 1);
+            // console.log(`removed ${p.num} from parcels ****`);
+            res();
+        })
     });
 }
-
 
 /**
  * update the text-box on map to show activeDrivers
  * @param {*} activeDrivers 
  */
-function updateHTML(activeDrivers, results, arrivedSuccessfullyParcels) {
+ function updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels) {
 
-    // console.log(results);
-    
-    // active drivers
-    const driversNow = activeDrivers.length;
-
-    // arrived parcels
-    const arrivedParcels = arrivedSuccessfullyParcels.length;
-
-    // active parcels
-    const unArrivedParcels = Object.keys(results).length - arrivedParcels;
-
-    const data1 = `<h4>① active drivers : ${driversNow}</h4><br/>`; 
-    const data2 = `<h4>② unarrived parcels : ${unArrivedParcels}</h4><br/>`; 
-    const data3 = `<h4>③ arrived parcels : ${arrivedParcels}</h4>`; 
+    const data1 = `<h4>① active drivers : ${activeDrivers.length} </h4><br/>`; 
+    const data2 = `<h4>② parcels during shipment : ${activeParcels.length}</h4><br/>`; 
+    const data3 = `<h4>③ parcels successfully shipped : ${arrivedSuccessfullyParcels.length}</h4>`; 
 
     document.getElementById("active-data").innerHTML = data1 + data2 + data3;
 }
 
-const main = async () => {
 
-    let routes = JSON.parse(document.getElementById("map").dataset.routes);
-    let results = JSON.parse(document.getElementById("map").dataset.results);
+async function main(){
+
+    let routes = JSON.parse(document.getElementById("map").dataset.routes); // all drivers
+    let results = JSON.parse(document.getElementById("map").dataset.results); // all parcels
     
     let stationsMarkers = [];
     let activeDrivers = [];
@@ -394,8 +451,9 @@ const main = async () => {
     let arrivedSuccessfullyParcels = [];
 
     addStations2map(stations, stationsMarkers);
-    refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers);
+    refreshRoutes(routes, activeDrivers, activeParcels);
     refreshParcels(results, activeParcels, routes);
+    updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels);
     clockTime();
 
     // console.table(stations);
@@ -404,20 +462,18 @@ const main = async () => {
 
         INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
 
-        refreshRoutes(routes, activeDrivers, activeParcels, stationsMarkers);
+        refreshRoutes(routes, activeDrivers, activeParcels);
         refreshParcels(results, activeParcels, routes);
         removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels);
         
-        // update html data
-        updateHTML(activeDrivers, results, arrivedSuccessfullyParcels);
+        updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels);
         clockTime();
         
-        // console.log(activeParcels, '----');
-        // console.log(activeDrivers, '^^^^^^');
+        // console.log('activeParcels:', activeParcels, '---------');
+        // console.log('activeDrivers:', activeDrivers, '^^^^^^^^^^^');
         // console.log(arrivedSuccessfullyParcels, '++++');
 
-    }, 1000 * MIN_TO_SEC_RATIO);
-    
+    }, 1000 * MIN_TO_SEC_RATIO);   
 
 }; 
 
