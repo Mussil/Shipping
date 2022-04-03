@@ -88,7 +88,7 @@ if __name__=='__main__':
 
     route1 = {
         'driver': 1,
-        'start': datetime.datetime(2022, 1, 1, 23, 21),
+        'start': datetime.datetime(2022, 1, 1, 17, 21),
         'path': [1,3,2, 4]
     }
     createTravelEdges(g,route1)
@@ -105,11 +105,23 @@ if __name__=='__main__':
         }
     createTravelEdges(g,route3)
     createStayEdges(g)
-    createDestinationEdges(g)
+    # createDestinationEdges(g)
     g.addWeights(nameOfWeight='weightPriortyTimeDriverDistance',A='time',B='driver',C='distance',alph=0,beta=0)
+    g.addWeights(nameOfWeight='weightPriortyDistanceDriverTime',C='time',B='driver',A='distance',alph=0,beta=0)
+
     # g.draw()
-    path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 11, 50),weight='weightPriortyTimeDriverDistance')
+    # path=g.getDetailsShortestPath(4,3,datetime.datetime(2022, 1, 1, 12, 10),weight='weightPriortyTimeDriverDistance')
+    # print(path)
+
+
+
+    # path=g.getDetailsShortestPath(4,1,datetime.datetime(2022, 1, 1, 11, 50),weight='weightPriortyTimeDriverDistance')
+    # print(path)
+
+    path = g.getDetailsShortestPath(4, 1, datetime.datetime(2022, 1, 1, 11, 50), weight='weightPriortyDistanceDriverTime')
     print(path)
+
+
     # path=g.getDetailsShortestPath(4,2,datetime.datetime(2022, 1, 1, 1, 0),weight='weightPriortyTimeDriverDistance')
     # print(path)
 #################

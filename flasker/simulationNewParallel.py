@@ -14,8 +14,27 @@ random.seed()
 from flasker.createGraph import buildGraph
 from flasker.helpers import convertStrToDate, convertDateToStr, minutesInDay
 
-
 import concurrent.futures
+
+costDistanceG = 0.001
+costDriversG = 3
+stopTimeG = 1
+maxTimeMinG = minutesInDay
+maxDistanceMetersG = 60000000
+numRunsG = 50
+
+folderNameG = 'allResults/results2days_Source_50IA_Dest_ALL'
+routesFolderName = f'paths/2days_Source_50IA_Dest_ALL10000'
+
+
+# driversRangeG = range(100, 501, 100)
+# parcelsRangeG = range(100, 1001, 100)
+
+
+driversRangeG = [300]
+parcelsRangeG = [500]
+
+
 
 
 def chooseParcels(numParcels):
@@ -30,7 +49,7 @@ def chooseParcels(numParcels):
     return sampleParcels
 
 def chooseRoutes(numDrivers):
-    with open(f'paths/uniformDistribution2days10000.json') as json_file:
+    with open(f'{routesFolderName}.json') as json_file:
         routes = json.load(json_file, object_hook=convertStrToDate)
 
     sampleRoutes = random.sample(routes, numDrivers)
@@ -157,8 +176,8 @@ class Result():
 
 def createPreDrivers(folderName):
     # create all pre drivers
-    for i in range(numRuns):
-        for numDrivers in driversRange:
+    for i in range(numRunsG):
+        for numDrivers in driversRangeG:
             drivers = chooseRoutes(numDrivers)
             # Check whether the specified path exists or not
             path = f'{folderName}/driversDB/{numDrivers}'
@@ -175,22 +194,22 @@ def createPreParcels(folderName):
     isExist = os.path.exists(path)
     if not isExist:
         os.makedirs(path)
-    for numParcels in parcelsRange:
+    for numParcels in parcelsRangeG:
         parcels=chooseParcels(numParcels)
         with open(f'{path}/{numParcels}.json', 'w', encoding='utf-8') as f:
             json.dump(parcels, f, indent=4, default=convertDateToStr)
 
 
 def iterate(i):
-    costDistance = 0.001
-    costDrivers = 3
-    stopTime = 1
+    costDistance = costDistanceG
+    costDrivers = costDriversG
+    stopTime = stopTimeG
     maxTimeMin = minutesInDay
-    maxDistanceMeters = 60000000
+    maxDistanceMeters = maxDistanceMetersG
 
-    folderName = 'allResults/resultsUniform2days'
-    driversRange = range(100, 501, 100)
-    parcelsRange = range(100, 1001, 100)
+    folderName = folderNameG
+    driversRange = driversRangeG
+    parcelsRange = parcelsRangeG
 
     for numDrivers in driversRange:
         now = datetime.now()
@@ -210,7 +229,7 @@ def iterate(i):
             if not isExist:
                 os.makedirs(path)
 
-            with open(f'{folderName}/parcelsDB/{numParcels}.json') as json_file:
+            with open(f'{folderName}/../parcelsDB/{numParcels}.json') as json_file:
                 parcels = json.load(json_file, object_hook=convertStrToDate)
 
             results = graphSimulator.sendParcelsByRandomWeight(parcels)
@@ -225,11 +244,58 @@ def iterate(i):
                 letter = chr(ord(letter) + 1)  # the next letter in alphbet
     return i
 
+
+
+# def iterateOneNumDrivers(i):
+#     costDistance = costDistanceG
+#     costDrivers = costDriversG
+#     stopTime = stopTimeG
+#     maxTimeMin = minutesInDay
+#     maxDistanceMeters = maxDistanceMetersG
+#
+#     folderName = folderNameG
+#
+#     numDrivers =300
+#     numParcels= 500
+#
+#
+#     now = datetime.now()
+#     current_time = now.strftime("%H:%M:%S")
+#     print(f'iteration #{i} | #drivers {numDrivers} | Current Time = {current_time}')
+#
+#     with open(f'{folderName}/driversDB/{numDrivers}/{i}.json') as json_file:
+#         drivers = json.load(json_file, object_hook=convertStrToDate)
+#
+#     graphSimulator = Simulator(routes=drivers, numberOfSP=sp.numOfSP, numDrivers=numDrivers, stopTime=stopTime,
+#                                maxTimeMin=maxTimeMin, maxDistanceMeters=maxDistanceMeters,
+#                                costDistance=costDistance, costDrivers=costDrivers)
+#
+#     path = f'{folderName}/results/{numParcels}parcels/{numDrivers}drivers'
+#     isExist = os.path.exists(path)
+#     if not isExist:
+#         os.makedirs(path)
+#
+#     with open(f'{folderName}/../parcelsDB/{numParcels}.json') as json_file:
+#         parcels = json.load(json_file, object_hook=convertStrToDate)
+#
+#     results = graphSimulator.sendParcelsByRandomWeight(parcels)
+#     with open(f'{path}/{i}.json', 'w', encoding='utf-8') as f:
+#         json.dump(results.getResult(), f, indent=4, default=convertDateToStr)
+#
+#     letter = 'a'
+#     for nameOfWeight in graphSimulator.namesOfWeights:
+#         results = graphSimulator.sendParcelsBySameWeight(parcels, nameOfWeight)
+#         with open(f'{path}/{i}{letter}.json', 'w', encoding='utf-8') as f:
+#             json.dump(results.getResult(), f, indent=4, default=convertDateToStr)
+#         letter = chr(ord(letter) + 1)  # the next letter in alphbet
+#     return i
+
+
 def resultsFromPre():
     with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
 
-        numRuns = 50
-        runsRange=range(30,numRuns)
+        numRuns = numRunsG
+        runsRange=range(numRuns)
         for i in executor.map(iterate, runsRange):
             print(f"-----------Done iteration #{i}------------\n")
 
@@ -238,5 +304,7 @@ def resultsFromPre():
 
 if __name__=='__main__':
 
-    resultsFromPre()
+    folderName=folderNameG
 
+    createPreDrivers(folderName)
+    resultsFromPre()

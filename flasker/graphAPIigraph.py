@@ -303,6 +303,7 @@ class Graph(object):
                 edge['parcels']+=1
                 # print(edge)
 
+        # self.draw()
 
         #TODO : delete temp node and edges
         self._g.delete_vertices(self._findNodeIndexById(startNode))
@@ -430,13 +431,15 @@ class Graph(object):
         # print(color_node_dict)
         # print(igraph.drawing.colors.known_colors)
 
-        color_node_dict = {'John': 'blue', 'Dani': 'green', 'Mia':'pink',None:'grey'}
+        color_node_dict = {1: 'blue', 2: 'green', 3:'pink',None:'grey'}
 
 
-        shape_node_dict={'eventNode':'circle', 'destinationNode' :'rectangle'}
+        shape_node_dict={'eventNode':'circle', 'destinationNode' :'rectangle',
+                         'destinationTimeNode' :'rectangle', 'startNode' :'triangle'}
 
-        color_edge_dict={'travelEdge':'black', 'stayEdge':'gold', 'destinationEdge':'grey'}
-        layout = g.layout("tree")
+        color_edge_dict={'travelEdge':'black', 'stayEdge':'gold', 'destinationEdge':'grey',
+                         'destinationTimeEdge':'grey','startEdge':'grey'}
+        layout = g.layout("fr")
 
         visual_style = {}
         #vetrex
@@ -463,5 +466,6 @@ class Graph(object):
         visual_style["layout"] = layout
 
         igraph.plot(g, **visual_style,target='graphImage.svg',margin = 70)
+        igraph.plot(g, **visual_style,target='graphImage.png',margin = 70)
 
 

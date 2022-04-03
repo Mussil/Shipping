@@ -171,6 +171,34 @@ class createOriginDest():
         destinationSp = random.choice(restSp)
         return originSp,destinationSp
 
+    def createOrigin_Rest_Dest_IA(self):
+        destinationSp,originSp =self.createOrigin_IA_Dest_Rest()
+        return originSp, destinationSp
+
+    def createOrigin_IA_Dest_IA(self):
+        originSp,destinationSp= random.sample(self.industrial_areaSP, 2)
+        return originSp,destinationSp
+
+    def _Origin_PercentageIA_Dest_All(self,choice):
+        if choice == 'IA':
+            originSp= random.choice(self.industrial_areaSP)
+        else:
+            restSp = [sp for sp in range(1, self.numSP + 1) if sp not in self.industrial_areaSP]
+            originSp = random.choice(restSp)
+
+        destinationSp=originSp
+        while(destinationSp==originSp):
+            destinationSp = random.choice(range(1,self.numSP+1))
+
+        return originSp,destinationSp
+
+    def createOrigin_80IA_Dest_All(self):
+        choice=random.choices(['IA','rest'], weights=(80,20), k=1)[0]
+        return self._Origin_PercentageIA_Dest_All(choice)
+
+    def createOrigin_50IA_Dest_All(self):
+        choice=random.choices(['IA','rest'], weights=(50,50), k=1)[0]
+        return self._Origin_PercentageIA_Dest_All(choice)
 
 def createPaths(numDrivers,numSP,funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName='uniformDistribution2days'):
     print('CREATING PATHS')
@@ -276,7 +304,8 @@ if __name__=='__main__':
 
     # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)
 
-    funcDecideOriginDest=decideOriginDest.createOrigin_IA_Dest_Rest
-    fileName='2days_Source_IA_Dest_Rest'
-    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
+    funcDecideOriginDest=decideOriginDest.createOrigin_50IA_Dest_All
+    # print(funcDecideOriginDest())
+    fileName='2days_Source_50IA_Dest_ALL'
+    createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
 

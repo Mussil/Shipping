@@ -1,5 +1,6 @@
 import json
 import statistics
+import matplotlib.patches as mpatches
 
 import matplotlib.pyplot as plt
 
@@ -201,6 +202,27 @@ def plotDBSucc(numParcels,dictDriversList):
     plt.plot(x,median,label='Median')
     plt.errorbar(x, avg ,stdev, linestyle='None', marker='^' ,label='Stdev')
 
+    mins=list(map(lambda lis:min(lis),y))
+    maxes=list(map(lambda lis:max(lis),y))
+
+    print('avg')
+    print(avg)
+    print('median')
+    print(median)
+    print('stdev')
+    print(stdev)
+    print('mins')
+    print(mins)
+    print('maxes')
+    print(maxes)
+
+    for valueX,valueY,i in zip(x,y,range(len(x))):
+        plt.vlines(x=valueX, ymin=min(valueY), ymax=max(valueY),color='grey',linewidth=1,linestyle='dashed')
+
+    plt.scatter(x, mins,color='grey',marker='_',label='Minimum & maximum')
+    plt.scatter(x, maxes,color='grey',marker='_')
+
+
     plt.legend()
     plt.show()
 
@@ -291,6 +313,32 @@ def plotDBddiffCost(numDrivers,dictWeightDriversList):
     plt.show()
 
 
+def barGraphDistrubation():
+
+    dict={
+        'All -> All':(0.7006,0.696),
+        'Industrial area -> All the rest' :(0.23472,0.23),
+        'All the rest -> Industrial area': (0.19848,0.2),
+        'Industrial area -> Industrial area': (0.05,0.05),
+        '80% Industrial area -> All': (0.44088,0.43),
+        '50% Industrial area -> All': (0.6322, 0.628),
+
+    }
+    categories=dict.keys()
+    successAvg=list(map(lambda x: x[0], dict.values()))
+    successMedian=list(map(lambda x: x[1], dict.values()))
+    plt.bar(categories, successAvg,edgecolor='black')
+    # plt.bar(categories, successMedian,fill=False,linewidth=0.8)
+
+
+    plt.tick_params(axis='x', labelsize=6)
+    # plt.xlabel("Dismissal of drivers")
+    plt.ylabel("Success rates")
+    plt.title("500 parcels, 300 drivers")
+
+    plt.show()
+
+
 if __name__=='__main__':
 
     # averageDrivers()
@@ -299,5 +347,7 @@ if __name__=='__main__':
     # medianFunc1()
     # avgFunc1()
 
-    plotDiffPriority('Difference between a maximum cost and a actual cost', 'Diff')
-    plotDiffPriority('Relative profit between between a maximum cost and a actual cost', 'Ratio')
+    # plotDiffPriority('Difference between a maximum cost and a actual cost', 'Diff')
+    # plotDiffPriority('Relative profit between between a maximum cost and a actual cost', 'Ratio')
+
+    barGraphDistrubation()
