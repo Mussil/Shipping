@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 from flasker.SPutils import sp
 from flasker.helpers import getDemoFiles
 
@@ -19,13 +19,11 @@ def start():
     return render_template('userInputs.html')
 
 
-@app.route('/UserInputs/<int:drivers>/<int:parcels>', methods=['POST'])
-def ProcessUserinfo(drivers: int, parcels: int):
-    print()
-    print(drivers, parcels)
-    print()
-    
-    # drivers, results, parcels = getDemoFiles()
-    # return render_template('map.html', stations=sp.stations, paths=drivers, results=results)
-    
-    return('/')
+@app.route('/map',methods = ['POST', 'GET'])
+def result():
+   if request.method == 'POST':
+        result = request.form.to_dict()
+        print(result, result['Name'], '-----')
+
+        drivers, results, parcels = getDemoFiles()
+        return render_template('map.html', stations=sp.stations, paths=drivers, results=results)

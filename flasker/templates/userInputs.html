@@ -8,13 +8,14 @@
   <title>Passing JavaScript Variables</title>
 </head>
 <body>
-    <form>
-        <label>drivers num</label>
-        <input type='text' name="drivers" id="drivers"><br/>
-        <label>parcels num</label>
-        <input type='text' name="parcels" id="parcels" ><br/>
-        <button type="button" onclick="sendUserinfo()">Submit</button>
+
+    <form action = "http://localhost:5000/map" method = "POST">
+      <p>Drivers <input type = "text" name = "Name" /></p>
+      <p>Parcels <input type = "text" name = "Physics" /></p>
+      <p><input type = "submit" value = "submit" /></p>
     </form>
+
     <script src="static/userInputs.js"></script>
 </body>
 </html>
+

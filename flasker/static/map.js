@@ -19,7 +19,8 @@ L.control.layers({
     'streets view': L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'),
     'light view': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'),
     'outdoors view': L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11'),
-    'satellite view': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9')
+    'satellite view': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'),
+    'black view':L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
 }).addTo(map);
 
 const CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
@@ -61,7 +62,7 @@ function addStations2map(stations, stationsMarkers){
 
         const layer = new L.marker(coord, {
                         icon: L.mapbox.marker.icon({
-                            'marker-color': '#f86767',
+                            'marker-color': 'black',
                             'marker-symbol'	: station,
                             'marker-size': 'small'
                         })}).addTo(map);
@@ -249,7 +250,6 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
         const coordDelta = newDriver.coordinates[index];
         const travelTimeRatio = Math.floor(timeDelta/coordDelta.coordinates.length);
 
-
         let parcels2Pass = activeParcels.filter((parcel) => {
             const driverNum = route.driver;
             const station1 = route.path[index];
@@ -276,39 +276,35 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
     removeOutdatedDriver(activeDrivers, newDriver);
 }
 
-async function smoothPath(coords) {
-    return new Promise(res => {
+// async function smoothPath(coords) {
+//     return new Promise(res => {
         
-        for (let index = 0; index < coords.length; index++) {
-            const path = coords[index].coordinates;
+//         for (let index = 0; index < coords.length; index++) {
+//             const path = coords[index].coordinates;
 
-            for (let coord = 0; coord < path.length; coord++) {
+//             for (let coord = 0; coord < path.length; coord++) {
                 
-                if(coord != path.length - 1){
-                    const point1 = path[coord];
-                    const point2 = path[coord+1];
-                    const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
+//                 if(coord != path.length - 1){
+//                     const point1 = path[coord];
+//                     const point2 = path[coord+1];
+//                     const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
 
-                    path.splice(coord, 0, middle);
-                }
+//                     path.splice(coord, 0, middle);
+//                 }
                 
-            } 
-        }
+//             } 
+//         }
 
-        res();
-    });
-}
+//         res();
+//     });
+// }
 
 async function refreshRoutes(routes, activeDrivers, activeParcels) {
     const newActive = newActiveRoutes(routes, activeDrivers);
 
-    // console.log("***active drivers:", activeDrivers);
-    // console.log("**new active:", newActive);
-
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
         let coordinates = await getRoutCoordinates(points);
-        await smoothPath(coordinates);
 
         const driverData = displayDriver(coordinates[0].coordinates[0], route.driver);
         const driverIcon = driverData[0];
@@ -378,12 +374,12 @@ async function refreshParcels(results, activeParcels, routes) {
                 num: parcelName,
                 parcelIcon: parcelIcon,
                 path: results[parcelName].path,
-                finishPathTime: getParcelFinishedTime(routes, parcelName, results) + 2000, // remove parcel 2 sec later ... 
-                currentStation: (results[parcelName].path.length > 0) ? results[parcelName].path[0][0] : null,
+                finishPathTime: getParcelFinishedTime(routes, parcelName, results) + 1000, // remove parcel 2 sec later ...  
+                distance: results[parcelName].totalDistance,
+                startTime: results[parcelName].startTime
             };
 
             activeParcels.push(newParcel);
-            // console.log(`added ${newParcel.num} to parcels ****`);
 
             res();
         });
@@ -420,7 +416,7 @@ async function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
             
             activeParcels.splice(parcelIndex, 1);
             arrivedSuccessfullyParcels.push(p);
-            // console.log(`removed ${p.num} from parcels ****`);
+            updateArrivedParcels(p);
             res();
         })
     });
@@ -439,6 +435,23 @@ async function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
     document.getElementById("active-data").innerHTML = data1 + data2 + data3;
 }
 
+function updateArrivedParcels(parcel) {
+
+    const table = document.getElementById("myTable");
+    const row = table.insertRow(-1);
+
+    let parcelNum = row.insertCell(0);
+    let parcelStart = row.insertCell(1);
+    let parcelEnd = row.insertCell(2);
+    let parcelDistance = row.insertCell(3);
+    let parcelDrivers = row.insertCell(4);
+
+    parcelNum.innerHTML = parcel.num;
+    parcelStart.innerHTML = parcel.startTime;
+    parcelEnd.innerHTML = parcel.finishPathTime;
+    parcelDistance.innerHTML = parcel.distance;
+    parcelDrivers.innerHTML = parcel.path.length - 2;
+}
 
 async function main(){
 
