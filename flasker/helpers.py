@@ -56,9 +56,9 @@ def convertStrToDateJSForamt(json_dict):
     return json_dict
 
 def getDemoFiles():
-    with open(f'demo300drivers.json') as json_file:
+    with open(f'0.json') as json_file:
         drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
-    with open(f'demo300driversResults.json') as json_file:
+    with open(f'0results.json') as json_file:
         results = json.load(json_file,object_hook=convertStrToDateJSForamt)
     with open(f'demoParcelsFile.json') as json_file:
         parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)

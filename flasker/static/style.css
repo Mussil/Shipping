@@ -1,75 +1,90 @@
-body { 
-    margin: 0; 
-    padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
-#map { 
-    position: absolute;
-    top: 0; 
-    bottom: 0;
-    width: 100%; 
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 .map-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #fff;
-    margin-right: 20px;
-    font-family: sans-serif;
-    overflow: auto;
-    border-radius: 3px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  margin-right: 20px;
+  font-family: sans-serif;
+  overflow: auto;
+  border-radius: 3px;
 }
 #clock {
-    padding: 10px;
-    top: 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    height: 20px;
-    margin-top: 20px;
-    width: 8%;
-    font-size: small; 
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    background-color: black;
-
+  padding: 10px;
+  top: -8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  height: 20px;
+  margin-top: 20px;
+  right: 30px;
+  width: 8%;
+  font-size: small;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  background-color: black;
 }
 #active-data {
-    display:block;
-    position:absolute;
-    bottom:30px;
-    left:10px;
-    padding:5px 10px;
-    background:rgba(0,0,0,0.5);
-    color:#fff;
-    font-size:11px;
-    line-height:18px;
-    border-radius:3px;
-    max-height:50%;
-    max-width:25%;
-    overflow:auto;
-    word-wrap: break-word;
-    white-space:pre-wrap;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  max-height: 50%;
+  max-width: 25%;
+  overflow: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 #active-parcels {
-    padding: 10px;
-    height: 25%;
-    margin-top: 40px;
-    margin-bottom: 150px;
-    color:#fff;
-    left: 10px;
-    max-width:25%;
-    font-size:11px;
-    overflow:auto;
-    word-wrap: break-word;
-    background:rgba(0,0,0,0.5);
+  padding: 10px;
+  height: 25%;
+  margin-top: 40px;
+  margin-bottom: 150px;
+  color: #fff;
+  left: 10px;
+  max-width: 25%;
+  font-size: 11px;
+  overflow: auto;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+}
+#parcels-in-system {
+  padding: 10px;
+  height: 15%;
+  margin-top: 40px;
+  margin-bottom: 365px;
+  color: #fff;
+  left: 10px;
+  max-width: 25%;
+  /* font-size:11px; */
+  overflow: auto;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
 }
 h4 {
-    font: 16px Arial, Geneva, Helvetica, sans-serif;
-    margin: 0px 0px 0px 0px; 
-    padding: 0px 0px 0px 0px;
+  font: 16px Arial, Geneva, Helvetica, sans-serif;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
-table, td {
-    border: 0.5px solid white;
-    border-collapse: collapse;
-    padding: 6px;
-    text-align:center;
+table,
+td {
+  border: 0.5px solid white;
+  border-collapse: collapse;
+  padding: 6px;
+  text-align: center;
 }
 
+/* ---------------------------------------- */

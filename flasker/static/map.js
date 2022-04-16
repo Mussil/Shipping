@@ -6,7 +6,7 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 0, 0, 0, 0); // 2.1.2022
+let INITIAL_DATE = new Date(2021, 12, 2, 21, 25, 0, 0); // 2.1.2022
 const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
@@ -20,7 +20,7 @@ L.control.layers({
     'light view': L.mapbox.styleLayer('mapbox://styles/mapbox/light-v10'),
     'outdoors view': L.mapbox.styleLayer('mapbox://styles/mapbox/outdoors-v11'),
     'satellite view': L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-v9'),
-    'black view':L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
+    'dark view':L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
 }).addTo(map);
 
 const CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
@@ -150,6 +150,7 @@ function displayDriver(coords, driverNum) {
         })
     }).addTo(map);
     marker.bindPopup(String(driverNum));
+    // marker.openPopup();
     return [marker, markerColor];
 }
 
@@ -160,7 +161,7 @@ function displayDriver(coords, driverNum) {
 function displayParcel(coords, parcelNum) {
     var cssIcon = L.divIcon({
         className: 'svg-marker',
-        html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="pink" width="20" height="50"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm0 8L24 26 8 16v-4l16 10 16-10v4z"></path>',
+        html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="red" width="20" height="50"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm0 8L24 26 8 16v-4l16 10 16-10v4z"></path>',
         iconSize: [24, 24],
     });
     
@@ -381,6 +382,7 @@ async function refreshParcels(results, activeParcels, routes) {
 
             activeParcels.push(newParcel);
 
+            updateParcelsWhenStart(newParcel);
             res();
         });
 
@@ -394,8 +396,8 @@ function clockTime() {
 
     const hour = (INITIAL_DATE.getHours() < 10) ? ("0" + INITIAL_DATE.getHours()) : INITIAL_DATE.getHours();
     const min = (INITIAL_DATE.getMinutes() < 10) ? ("0" + INITIAL_DATE.getMinutes()) : INITIAL_DATE.getMinutes();
-    const day = INITIAL_DATE.getUTCDate();
-    const month = INITIAL_DATE.getUTCMonth() + 1;
+    const day = INITIAL_DATE.getDate();
+    const month = INITIAL_DATE.getMonth() + 1;
     const year = INITIAL_DATE.getFullYear();
 
     document.getElementById("clock").innerHTML =`${hour}:${min} ${day}/${month}/${year}`;
@@ -435,10 +437,14 @@ async function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
     document.getElementById("active-data").innerHTML = data1 + data2 + data3;
 }
 
+/**
+ * update table of parcels when finish their path
+ * @param {*} parcel 
+ */
 function updateArrivedParcels(parcel) {
 
     const table = document.getElementById("myTable");
-    const row = table.insertRow(-1);
+    const row = table.insertRow(1);
 
     let parcelNum = row.insertCell(0);
     let parcelStart = row.insertCell(1);
@@ -447,10 +453,31 @@ function updateArrivedParcels(parcel) {
     let parcelDrivers = row.insertCell(4);
 
     parcelNum.innerHTML = parcel.num;
-    parcelStart.innerHTML = parcel.startTime;
-    parcelEnd.innerHTML = parcel.finishPathTime;
+    parcelStart.innerHTML = `${new Date(parcel.startTime).getHours()}:${new Date(parcel.startTime).getMinutes()}`;
+    parcelEnd.innerHTML = `${new Date(parcel.finishPathTime).getHours()}:${new Date(parcel.finishPathTime).getMinutes()}`;
     parcelDistance.innerHTML = parcel.distance;
-    parcelDrivers.innerHTML = parcel.path.length - 2;
+    parcelDrivers.innerHTML = [... new Set(parcel.path.map(p => {
+        return p[1];
+    }))].length - 1;
+
+    document.getElementById("myTable").style.color = "white";
+}
+
+/**
+ * update 'parcels-in-system' table
+ * @param {} params 
+ */
+function updateParcelsWhenStart(parcel) {
+    let h = new Date(parcel.startTime).getHours();
+    let m = new Date(parcel.startTime).getMinutes();
+
+    h = (h < 10) ? ("0" + h) : h;
+    m = (m < 10) ? ("0" + m) : m;
+
+    // const zone = (h.startsWith("0")) ? "am" : "pm";
+
+    const parcelsData = `⦿ parcel ${parcel.num} enetered to station # ${parcel.path[0][0]} at ${h}:${m}<br/><br/>`;    
+    document.getElementById("parcels-in-system").innerHTML = parcelsData + document.getElementById("parcels-in-system").innerHTML;  
 }
 
 async function main(){
@@ -474,6 +501,7 @@ async function main(){
     setInterval(() => {
 
         INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
+        console.log(INITIAL_DATE, '^^^^^^^^^^^^^^');
 
         refreshRoutes(routes, activeDrivers, activeParcels);
         refreshParcels(results, activeParcels, routes);
