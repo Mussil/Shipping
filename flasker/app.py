@@ -21,9 +21,16 @@ def start():
 
 @app.route('/map',methods = ['POST', 'GET'])
 def result():
-   if request.method == 'POST':
+   if request.method == 'POST': #TODO: remove GET & if statement
         result = request.form.to_dict()
         print(result, result['Name'], '-----')
 
         drivers, results, parcels = getDemoFiles()
         return render_template('map.html', stations=sp.stations, paths=drivers, results=results)
+
+@app.route('/end',methods = ['POST'])
+def end():
+    result = request.form.to_dict()
+    print(result)
+    return render_template('end.html')
+    

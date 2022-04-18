@@ -69,7 +69,6 @@ body {
   color: #fff;
   left: 10px;
   max-width: 25%;
-  /* font-size:11px; */
   overflow: auto;
   word-wrap: break-word;
   background: rgba(0, 0, 0, 0.5);
@@ -85,6 +84,15 @@ td {
   border-collapse: collapse;
   padding: 6px;
   text-align: center;
+}
+
+#end-button {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    left: 10px;
+    margin-bottom: 575px;
+    border: 1px solid rgba(0, 0, 0, 0.505);
 }
 
 /* ---------------------------------------- */

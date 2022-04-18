@@ -35,6 +35,59 @@ const CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure",
 "Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray",
 "SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","Yellow","YellowGreen"];
 
+document.getElementById('end-button').addEventListener('click', function(){
+    const parcels = JSON.parse(document.getElementById("map").dataset.results); 
+    const routes = JSON.parse(document.getElementById("map").dataset.routes); 
+
+    const successfullParcels = Object.keys(parcels).filter(p => 
+        parcels[p].path.length != 0
+    );
+
+    const failedParcels = Object.keys(parcels).filter(p => 
+        parcels[p].path.length === 0
+    );
+    
+    let avgParcelTime = Object.keys(parcels).map(p =>{
+        if(successfullParcels.includes(p)){
+            return (getParcelFinishedTime(routes, p, parcels) - parcels[p].startTime)/1000;
+        }
+    });
+    avgParcelTime = avgParcelTime.filter(time => time != undefined);
+    avgParcelTime =avgParcelTime.reduce((a,b) => a + b, 0) / avgParcelTime.length;
+
+    swal({
+        title: "FINAL RESULTS",
+        text: `➼ Average parcesl time in system: ${convertHMS(avgParcelTime)}\n\n➼ Successfull parcels: ${successfullParcels.length}\n\n➼ Failed parcels: ${failedParcels.length}\n`,
+        // type: "success",
+        showCancelButton: "Back",
+        confirmButtonText: "End simulation",
+        showConfirmButton: 'false',
+        confirmButtonColor: "#ff0055",
+        cancelButtonColor: "#999999",
+        focusConfirm: false,
+        focusCancel: true,
+      }, function(){
+            window.location.href = "/try";
+    });
+});
+
+/**
+ * this func converts sec in js to HH:MM:SS
+ * @param {*} value 
+ * @returns 
+ */
+function convertHMS(value) {
+    const sec = parseInt(value, 10); 
+    let hours   = Math.floor(sec / 3600); 
+    let minutes = Math.floor((sec - (hours * 3600)) / 60);
+    let seconds = sec - (hours * 3600) - (minutes * 60);
+    
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
+
 /**
  * returns random color in css
  */
@@ -236,8 +289,8 @@ async function removeOutdatedDriver(activeDrivers, driver) {
         res();
     });
     
-    console.log(`removed ${driver.driver} from active >>>>`);
-    console.log(activeDrivers);
+    // console.log(`removed ${driver.driver} from active >>>>`);
+    // console.log(activeDrivers);
 }
 
 /**
@@ -270,7 +323,7 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
         await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio, parcels2Pass, newDriver.layers);
     }
 
-    console.log(`harrrayyyyy driver ${newDriver.driver} finished his path !!!`);
+    // console.log(`harrrayyyyy driver ${newDriver.driver} finished his path !!!`);
 
     // after all route animation - delete route & thier drivers icons
     removeIcon(newDriver.driverIcon);
@@ -325,8 +378,8 @@ async function refreshRoutes(routes, activeDrivers, activeParcels) {
             res();
         });
 
-        console.log(`added ${newDriver.driver} to active >>>>`);
-        console.log(activeDrivers);
+        // console.log(`added ${newDriver.driver} to active >>>>`);
+        // console.log(activeDrivers);
 
         animateRoutes(route, newDriver, activeParcels, activeDrivers);
     });
@@ -480,8 +533,11 @@ function updateParcelsWhenStart(parcel) {
     document.getElementById("parcels-in-system").innerHTML = parcelsData + document.getElementById("parcels-in-system").innerHTML;  
 }
 
-async function main(){
+function endSimulation() {
+    console.log("mmmmmmmmmmmmmmmmmm");
+}
 
+async function main(){
     let routes = JSON.parse(document.getElementById("map").dataset.routes); // all drivers
     let results = JSON.parse(document.getElementById("map").dataset.results); // all parcels
     
@@ -501,7 +557,7 @@ async function main(){
     setInterval(() => {
 
         INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
-        console.log(INITIAL_DATE, '^^^^^^^^^^^^^^');
+        // console.log(INITIAL_DATE, '^^^^^^^^^^^^^^');
 
         refreshRoutes(routes, activeDrivers, activeParcels);
         refreshParcels(results, activeParcels, routes);
@@ -519,3 +575,4 @@ async function main(){
 }; 
 
 main();
+
