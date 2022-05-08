@@ -7,6 +7,8 @@ minutesInDay=1440
 # access_token = 'pk.eyJ1IjoibXVzc2lsIiwiYSI6ImNreGFhMHk0czF6aWgycG81NHBicmZuOGkifQ.Ki0DCgxNto32avvcUQWJxQ' #Mussi
 access_token='pk.eyJ1IjoicmxldmkxMjkzIiwiYSI6ImNrenh0bnh0MjA0eG0ydm8zajJ6ZW9odXcifQ.loa-SroNLMPU0Px4LkBOzA' #Rachel
 
+
+
 def addMin(tm, min):
     """ get a dateTime object and minutes
     :return their sum"""
@@ -59,6 +61,20 @@ def getDemoFiles():
     with open(f'0.json') as json_file:
         drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
     with open(f'0results.json') as json_file:
+        results = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    with open(f'demoParcelsFile.json') as json_file:
+        parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)
+    return drivers,results,parcels
+
+def getFiles(numDrivers,numParcels,userChoice):
+    if userChoice=='random':
+        userChoice='0'
+    else:
+        userChoice='0'+userChoice
+    path=f'resultsFile'
+    with open(f'{path}/driversDB/.json') as json_file:
+        drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    with open(f'demo300driversResults.json') as json_file:
         results = json.load(json_file,object_hook=convertStrToDateJSForamt)
     with open(f'demoParcelsFile.json') as json_file:
         parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)

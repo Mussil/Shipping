@@ -10,6 +10,8 @@ class SP:
         self.stations = self._json2DictSP(path)
         self.numOfSP=len(self.stations)
 
+        self.industrial_areaSP = [7, 8, 9, 10, 13, 17, 18, 19, 20, 21, 22, 23, 24, 27]
+
     def _json2DictSP(self, path):
         with open(path, 'r') as stationsFile:
             jsonObj = json.load(stationsFile)
@@ -38,6 +40,8 @@ class SP:
         listCoords = list(map(lambda x: sp.getStationCoords(x), listFid))
         return listCoords
 
+    def getIndustrial_areaSP(self):
+        return self.industrial_areaSP
 
 
 
