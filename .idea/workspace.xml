@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files" />
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files">
+      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/100" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/100.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/200" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/200.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/300" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/300.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/400" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/400.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/500" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/500.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -403,7 +410,13 @@
       <option name="presentableId" value="LOCAL‎00034" />
       <updated>1652032769588</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL‎00035" summary="add files">
+      <created>1652033123896</created>
+      <option name="number" value="LOCAL‎00035" />
+      <option name="presentableId" value="LOCAL‎00035" />
+      <updated>1652033123896</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

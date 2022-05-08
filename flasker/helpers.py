@@ -65,3 +65,17 @@ def getDemoFiles():
     with open(f'demoParcelsFile.json') as json_file:
         parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)
     return drivers,results,parcels
+
+def getFiles(numDrivers,numParcels,userChoice):
+    if userChoice=='random':
+        userChoice='0'
+    else:
+        userChoice='0'+userChoice
+    path=f'resultsFile'
+    with open(f'{path}/driversDB/.json') as json_file:
+        drivers = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    with open(f'demo300driversResults.json') as json_file:
+        results = json.load(json_file,object_hook=convertStrToDateJSForamt)
+    with open(f'demoParcelsFile.json') as json_file:
+        parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)
+    return drivers,results,parcels
