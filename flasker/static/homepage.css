@@ -1,0 +1,130 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container{
+    position: relative;
+    background: #c7efff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.road img {
+    height: 25vh;
+    width: 200vw;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    animation: moving 3s linear infinite 1s;
+}
+
+@keyframes moving {
+    100% {
+        transform: translateX(-100vw);
+    }
+}
+
+.trees {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200vw;
+    display: flex;
+    z-index: 5;
+    animation: moving 2s linear infinite 1s;
+}
+.trees img {
+    width: 100vw;
+    height: 80vh;
+}
+
+.car-body {
+    height: 130px;
+    position: absolute;
+    left: 38.5vw;
+    bottom: 13.5vh;
+    z-index: 30;
+}
+
+.wheel-1 {
+    height: 70px;
+    position: absolute;
+    left: 642px;
+    top: 560px;
+    z-index: 30;
+    animation:  rotate 0.2s linear infinite 2s;
+}
+
+.wheel-2 {
+    position: absolute;
+    height: 70px;
+    left: 922px;
+    top: 560px;
+    z-index: 30;
+    animation:  rotate 0.2s linear infinite 2s;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bicycle {
+    height: 110px;
+    position: absolute;
+    left: 63.5vw;
+    bottom: 23.5vh;
+    z-index: 60;
+    animation: moving 25s linear infinite 2s;
+}
+
+.bicycle img {
+    width: 35vw;
+    height: 50vh;
+}
+
+.bike {
+    height: 110px;
+    position: absolute;
+    left: 100.5vw;
+    bottom: 27.5vh;
+    z-index: 50;
+    animation: moving 15s linear infinite 3s;
+}
+
+.bike img {
+    width: 18vw;
+    height: 36vh;
+}
+
+.bus {
+    height: 110px;
+    position: absolute;
+    left: 70vw;
+    bottom: 53.5vh;
+    z-index: 15;
+    animation: moving 8s linear infinite 3s;
+}
+
+.bus img {
+    width: 55vw;
+    height: 70vh;
+}
+
+.lorry {
+    height: 110px;
+    position: absolute;
+    left: 100vw;
+    bottom: 37.5vh;
+    z-index: 12;
+    animation: moving 30s linear infinite 3s;
+}
+
+.lorry img {
+    width: 25vw;
+    height: 40vh;
+}

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <main>
+        
+        <form id="login_form" class="form_class" action="/menu2" method="POST">
+            <h2>Simulation details 🚘</h2><br/><br/>
+
+            <div class="form_div">
+
+                <!--  -->
+                <label>Drivers amount :</label>
+                <div class="range-wrap">
+                    <input type="range" class="range" name="drivers-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="500"><br/>
+                    <output class="bubble"></output>
+                </div>
+
+                <!--  -->
+                <label>Parcels amount :</label>
+                <div class="range-wrap">
+                    <input type="range" class="range" name="parcels-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="1000"><br/>
+                    <output class="bubble"></output>
+                </div>
+
+                <button class="submit_class" type="submit" form="login_form">NEXT</button>
+            </div>
+        </form>
+
+    </main>
+
+    <script src="static/menu1.js"></script>
+    
+    
+</body>
+</html>

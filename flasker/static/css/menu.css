@@ -1,0 +1,39 @@
+.input-class{
+    display: flex;
+    justify-content :center;
+  }
+  .input-class .user-choice-input{
+    display: flex;
+    flex-direction: row;
+    align-items :center;
+  }
+  .input-class .user-choice-input.radio-btn-random{
+    margin-right: 40px;
+  }
+  .input-class .user-choice-input.radio-btn-user-choice{
+    margin-left: 40px;
+  }
+  .input-class .user-choice-input .radio-btn-text{
+    padding-left: 5px;
+  }
+
+#show-me{
+    display:none; 
+}
+#show-me .table{
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+#show-me .priority-tr .priority-td{
+    border: 1px solid rgb(86, 227, 223);;
+    padding: 10px 80px;
+    text-align: center;
+    border-radius: 5px;
+    color: rgb(86, 227, 223);
+}
+#show-me .priority-tr .priority-td:hover{
+    background-color: rgb(86, 227, 223);;
+    color: white;
+    transition: 1.2s ease-out;
+}

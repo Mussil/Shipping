@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link href="https://getbootstrap.com/docs/4.0/examples/starter-template/starter-template.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>      
+
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/css/menu.css">
+  <link rel="stylesheet" href="static/css/loader.css">
+
+
+</head>
+<body>
+
+    <div id="lock-modal"></div>
+    <div id="loading-circle"></div>
+
+    <div id="mydiv" data-drivers='{{ driver_num|tojson }}' data-parcels='{{ parcels_num|tojson }}'></div>
+
+    <main>
+        
+        <form class="form_class">
+            <h2>General priority of drivers 🚴 </h2><br/><br/>
+            <div class="form_div">
+                
+                <div class="input-class">
+                    <div class="user-choice-input radio-btn-random">
+                        <input id="random-choice" name='radio-btn' type='radio' value="" checked/><span class="radio-btn-text"> I don't care </span> 
+                    </div>
+                    
+                    <div class="user-choice-input radio-btn-user-choice">
+                        <input id="user-choice" name='radio-btn' type='radio'><span class="radio-btn-text"> Let me choose</span><br/><br/>
+                    </div>
+                </div>
+
+                <div id='show-me'>
+                    <table class="table table-striped table-hover" id="tbl">
+                        <tbody>
+                            <tr class="priority-tr">
+                                <td class="priority-td">Time</td>
+                            </tr>
+                            <tr class="priority-tr">
+                                <td class="priority-td">Drivers</td>
+                            </tr>
+                            <tr class="priority-tr">
+                                <td class="priority-td">Distance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+                <br/> 
+                <!-- 🕛 🚴  🛣-->
+
+                <div class="info_div">
+                    <p>⦿ Replacing a driver cost : 3 ₪ </p>
+                    <p>⦿ Parcel transfer per meter cost : 0.001 ₪ </p>
+                </div>
+
+                <button class="submit_class" type="submit" form="login_form" onclick="sendUserInfo()">NEXT</button>
+               
+            </div>
+        </form>
+
+    </main>
+
+    <script src="static/menu2.js"></script>
+    <script src="static/js/app.js"></script>
+    
+</body>
+</html>
+
