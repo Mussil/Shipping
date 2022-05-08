@@ -160,6 +160,9 @@ class createOriginDest():
     def __init__(self,sp):
         self.numSP=sp.numOfSP
         self.industrial_areaSP=sp.getIndustrial_areaSP()
+        self.sourcePrec=0
+        self.destPrec=0
+
 
     def createOriginDestRandom(self):
         originSp,destinationSp= random.sample(range(1,self.numSP+1), 2)
@@ -199,6 +202,40 @@ class createOriginDest():
     def createOrigin_50IA_Dest_All(self):
         choice=random.choices(['IA','rest'], weights=(50,50), k=1)[0]
         return self._Origin_PercentageIA_Dest_All(choice)
+
+    # -----------------------------------------------------------
+
+    def setSourcePrec(self,sourcePrec):
+        self.sourcePrec=sourcePrec
+
+    def setDestPrec(self,destPrec):
+        self.destPrec=destPrec
+
+    def _getStationByPrec(self,choice):
+        if choice == 'IA':
+            station= random.choice(self.industrial_areaSP)
+        else:
+            restSp = [sp for sp in range(1, self.numSP + 1) if sp not in self.industrial_areaSP]
+            station = random.choice(restSp)
+        return station
+
+
+    def createOrigin_precIA_Dest_precIA(self):
+        # print(self.sourcePrec)
+        choiceSource=random.choices(['IA','rest'], weights=(self.sourcePrec,100-self.sourcePrec), k=1)[0]
+        originSp= self._getStationByPrec(choiceSource)
+        # print(choiceSource)
+
+        choiceDest=random.choices(['IA','rest'], weights=(self.destPrec,100-self.destPrec), k=1)[0]
+        # print(choiceDest)
+
+        destinationSp=originSp
+        while(destinationSp==originSp):
+            destinationSp =  self._getStationByPrec(choiceDest)
+
+        return originSp,destinationSp
+
+
 
 def createPaths(numDrivers,numSP,funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName='uniformDistribution2days'):
     print('CREATING PATHS')
@@ -298,14 +335,32 @@ def optimize(wayFid):
 if __name__=='__main__':
     numberOfSP=sp.numOfSP
     numDrivers=10000
-    decideOriginDest=createOriginDest(sp)
+    # decideOriginDest=createOriginDest(sp)
 
 
 
     # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funGetPathMapBox=getPathMapBoxLine)
 
-    funcDecideOriginDest=decideOriginDest.createOrigin_50IA_Dest_All
+    # funcDecideOriginDest=decideOriginDest.createOrigin_50IA_Dest_All
     # print(funcDecideOriginDest())
-    fileName='2days_Source_50IA_Dest_ALL'
-    createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
+    # fileName='2days_Source_80IA_Dest_80IA'
+    # createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
+
+
+
+
+    decideOriginDest=createOriginDest(sp)
+    funcDecideOriginDest=decideOriginDest.createOrigin_precIA_Dest_precIA
+    precIA=[20,40,60,80]
+    precIA=[100]
+
+    for sourcePrec in [20,40,60,80,100]:
+        decideOriginDest.setSourcePrec(sourcePrec)
+        for destPrec in [0]:
+            decideOriginDest.setDestPrec(destPrec)
+            fileName=f'2days_Source_{sourcePrec}IA_Dest_{destPrec}IA'
+            createPaths(numDrivers=numDrivers, numSP=numberOfSP,funcDecideOriginDest=funcDecideOriginDest, funGetPathMapBox=getPathMapBoxLine,fileName=fileName)
+
+
+
 

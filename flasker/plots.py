@@ -3,6 +3,8 @@ import statistics
 import matplotlib.patches as mpatches
 
 import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
 
 prettyNames = {'weightPriortyTimeDriverDistance': 'Time, Drivers, Distance',
                'weightPriortyTimeDistanceDriver': 'Time, Distance, Drivers',
@@ -338,6 +340,42 @@ def barGraphDistrubation():
 
     plt.show()
 
+def heatMapDistDriversAvg():
+    source20={'dest20':0.68946 , 'dest40': 0.6587000000000001, 'dest60': 0.56856, 'dest80': 0.41558, 'dest100': 0.22018000000000001 }.values()
+    source40={'dest20':0.65572 , 'dest40': 0.65222, 'dest60':0.56824, 'dest80': 0.46302, 'dest100': 0.20894 }.values()
+    source60={'dest20':0.57452 , 'dest40': 0.57882, 'dest60': 0.53108, 'dest80': 0.42976, 'dest100': 0.18576 }.values()
+    source80={'dest20':0.42708 , 'dest40': 0.45928, 'dest60': 0.4254, 'dest80': 0.35464, 'dest100': 0.14608  }.values()
+    source100={'dest20':0.23020000000000002 , 'dest40': 0.21812, 'dest60': 0.19466, 'dest80': 0.14828, 'dest100': 0.041  }.values()
+    A=[
+        list(source20), list(source40), list(source60), list(source80) , list(source100)
+    ][::-1]
+    print(A)
+
+
+    # for i in range(len(A)):
+    #     A[i].append(0.7037)
+    # lis=[0.7037 for i in range(6)]
+    # A.append(lis)
+
+    # plt.imshow(A, cmap='coolwarm', interpolation='nearest')
+    # plt.colorbar()
+    # plt.show()
+
+
+    # Create a dataset
+    df = pd.DataFrame(A)
+
+    # Default heatmap
+    cmap = sns.cm.rocket_r
+    cmap= sns.palplot(sns.dark_palette("purple"))
+
+    p1 = sns.heatmap(df, cmap=cmap,xticklabels=[20,40,60,80,100],yticklabels=[20,40,60,80,100][::-1],annot=True)
+
+    plt.title('Average parcels successes in different drivers distribution\n 300 drivers & 1000 parcels')
+    plt.ylabel('% of origin stations from the north')
+    plt.xlabel('% of destination stations from the north')
+
+    plt.show()
 
 if __name__=='__main__':
 
@@ -350,4 +388,6 @@ if __name__=='__main__':
     # plotDiffPriority('Difference between a maximum cost and a actual cost', 'Diff')
     # plotDiffPriority('Relative profit between between a maximum cost and a actual cost', 'Ratio')
 
-    barGraphDistrubation()
+    # barGraphDistrubation()
+
+    heatMapDistDriversAvg()
