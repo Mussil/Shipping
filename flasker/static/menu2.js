@@ -26,16 +26,12 @@ $('input[name=radio-btn]').click(function () {
 $('tbody').sortable();
 function sendUserInfo() {
     
-    // get the table user priority
     var table = document.getElementById("tbl");
     var noOfrows=table.rows.length;
     var res = new Array(noOfrows);
     for (var i=0;i<noOfrows;i++){
         res[i]=table.rows[i].cells[0].innerHTML;
     }
-
-    console.log(res);
-    console.log(user_choice);
 
     if(user_choice != "random"){
         if (res.every((value, index) => value === user_choice_a[index])) {
@@ -58,11 +54,8 @@ function sendUserInfo() {
         }
     }
     
-    console.log(user_choice, '-----');
-
     const request = new XMLHttpRequest();
     request.open('POST',"/map");
-    console.log(request, '+++');
 
     request.onreadystatechange = function() {
         if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
@@ -70,7 +63,6 @@ function sendUserInfo() {
         }
     }
 
-    // request.open('POST',`/map/${drivers_num}/${parcels_num}/${user_choice}`);
     request.send();
 
     showspinner();
