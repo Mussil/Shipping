@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
   
   <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/css/map.css">
 
   <title>JavaScript Mapbox Project</title>
 </head>
@@ -28,13 +29,13 @@
     <div class="map-overlay" id="active-data"></div>
 
     <div class="map-overlay" id="active-parcels">
-      <table id="myTable">
+      <table id="myTable" class="map-table">
         <tr>
-          <td style="color:white">Parcel</td>
-          <td style="color:white">Start time</td>
-          <td style="color:white">End time</td>
-          <td style="color:white">Total distance</td>
-          <td style="color:white">Total drivers</td>
+          <td class="td-map">Parcel</td>
+          <td class="td-map">Start time</td>
+          <td class="td-map">End time</td>
+          <td class="td-map">Total distance</td>
+          <td class="td-map">Total drivers</td>
         </tr>
       </table>
     </div>

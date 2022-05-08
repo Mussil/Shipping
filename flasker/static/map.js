@@ -6,7 +6,7 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 21, 25, 0, 0); // 2.1.2022
+let INITIAL_DATE = new Date(2021, 12, 2, 15, 25, 0, 0); // 2.1.2022
 const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
@@ -53,12 +53,13 @@ document.getElementById('end-button').addEventListener('click', function(){
         }
     });
     avgParcelTime = avgParcelTime.filter(time => time != undefined);
-    avgParcelTime =avgParcelTime.reduce((a,b) => a + b, 0) / avgParcelTime.length;
+    avgParcelTime = avgParcelTime.reduce((a,b) => a + b, 0) / avgParcelTime.length;
+    HMSObj = convertHMS(avgParcelTime);
 
     swal({
-        title: "FINAL RESULTS",
-        text: `➼ Average parcesl time in system: ${convertHMS(avgParcelTime)}\n\n➼ Successfull parcels: ${successfullParcels.length}\n\n➼ Failed parcels: ${failedParcels.length}\n`,
-        // type: "success",
+        title: "SIMULATION FINAL RESULTS",
+        text: `➼ Average parcesl time in system: ${HMSObj[0]} hours and ${HMSObj[1]} min\n\n➼ Successfull parcels: ${successfullParcels.length}\n\n➼ Failed parcels: ${failedParcels.length}\n`,
+        type: "success",
         showCancelButton: "Back",
         confirmButtonText: "End simulation",
         showConfirmButton: 'false',
@@ -67,7 +68,7 @@ document.getElementById('end-button').addEventListener('click', function(){
         focusConfirm: false,
         focusCancel: true,
       }, function(){
-            window.location.href = "/try";
+            window.location.href = "/";
     });
 });
 
@@ -80,12 +81,10 @@ function convertHMS(value) {
     const sec = parseInt(value, 10); 
     let hours   = Math.floor(sec / 3600); 
     let minutes = Math.floor((sec - (hours * 3600)) / 60);
-    let seconds = sec - (hours * 3600) - (minutes * 60);
     
     if (hours   < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return hours+':'+minutes+':'+seconds;
+    return [hours,minutes];
 }
 
 /**
@@ -499,11 +498,17 @@ function updateArrivedParcels(parcel) {
     const table = document.getElementById("myTable");
     const row = table.insertRow(1);
 
-    let parcelNum = row.insertCell(0);
-    let parcelStart = row.insertCell(1);
-    let parcelEnd = row.insertCell(2);
-    let parcelDistance = row.insertCell(3);
-    let parcelDrivers = row.insertCell(4);
+    const parcelNum = row.insertCell(0);
+    const parcelStart = row.insertCell(1);
+    const parcelEnd = row.insertCell(2);
+    const parcelDistance = row.insertCell(3);
+    const parcelDrivers = row.insertCell(4);
+
+    parcelNum.className="td-map";
+    parcelStart.className="td-map";
+    parcelEnd.className="td-map";
+    parcelDistance.className="td-map";
+    parcelDrivers.className="td-map";
 
     parcelNum.innerHTML = parcel.num;
     parcelStart.innerHTML = `${new Date(parcel.startTime).getHours()}:${new Date(parcel.startTime).getMinutes()}`;
@@ -513,7 +518,6 @@ function updateArrivedParcels(parcel) {
         return p[1];
     }))].length - 1;
 
-    document.getElementById("myTable").style.color = "white";
 }
 
 /**
