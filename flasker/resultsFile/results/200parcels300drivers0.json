@@ -1,0 +1,6983 @@
+{
+    "1": {
+        "path": [],
+        "startTime": "2022-01-02 21:56:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "2": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                17
+            ],
+            [
+                14,
+                17
+            ],
+            [
+                14,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:12:00",
+        "totalDistance": 4254.0,
+        "totalDuration": 46.833333333333336,
+        "totalDrivers": 1,
+        "payMax": 7.2540000000000004,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.709
+    },
+    "3": {
+        "path": [],
+        "startTime": "2022-01-02 00:00:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "4": {
+        "path": [
+            [
+                50,
+                null
+            ],
+            [
+                50,
+                148
+            ],
+            [
+                19,
+                148
+            ],
+            [
+                24,
+                148
+            ],
+            [
+                22,
+                148
+            ],
+            [
+                22,
+                87
+            ],
+            [
+                27,
+                87
+            ],
+            [
+                6,
+                87
+            ],
+            [
+                4,
+                87
+            ],
+            [
+                8,
+                87
+            ],
+            [
+                8,
+                141
+            ],
+            [
+                7,
+                141
+            ],
+            [
+                7,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:21:00",
+        "totalDistance": 7032.0,
+        "totalDuration": 1423.1999999999998,
+        "totalDrivers": 3,
+        "payMax": 16.032,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 15.8045
+    },
+    "5": {
+        "path": [],
+        "startTime": "2022-01-02 06:14:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "6": {
+        "path": [],
+        "startTime": "2022-01-02 08:05:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "7": {
+        "path": [],
+        "startTime": "2022-01-02 21:53:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "8": {
+        "path": [
+            [
+                36,
+                null
+            ],
+            [
+                36,
+                41
+            ],
+            [
+                46,
+                41
+            ],
+            [
+                46,
+                146
+            ],
+            [
+                16,
+                146
+            ],
+            [
+                16,
+                164
+            ],
+            [
+                39,
+                164
+            ],
+            [
+                39,
+                31
+            ],
+            [
+                42,
+                31
+            ],
+            [
+                42,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:55:00",
+        "totalDistance": 4108.0,
+        "totalDuration": 1112.4,
+        "totalDrivers": 4,
+        "payMax": 16.108,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 14.913925925925927
+    },
+    "9": {
+        "path": [
+            [
+                56,
+                null
+            ],
+            [
+                56,
+                53
+            ],
+            [
+                57,
+                53
+            ],
+            [
+                30,
+                53
+            ],
+            [
+                30,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 13:31:00",
+        "totalDistance": 2484.0,
+        "totalDuration": 427.3333333333333,
+        "totalDrivers": 1,
+        "payMax": 5.484,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 4.461
+    },
+    "10": {
+        "path": [
+            [
+                40,
+                null
+            ],
+            [
+                40,
+                289
+            ],
+            [
+                41,
+                289
+            ],
+            [
+                41,
+                295
+            ],
+            [
+                46,
+                295
+            ],
+            [
+                46,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:55:00",
+        "totalDistance": 1118.0,
+        "totalDuration": 447.56666666666666,
+        "totalDrivers": 2,
+        "payMax": 7.118,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 7.118
+    },
+    "11": {
+        "path": [],
+        "startTime": "2022-01-02 14:56:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 0.0
+    },
+    "12": {
+        "path": [
+            [
+                55,
+                null
+            ],
+            [
+                55,
+                228
+            ],
+            [
+                25,
+                228
+            ],
+            [
+                25,
+                12
+            ],
+            [
+                3,
+                12
+            ],
+            [
+                3,
+                227
+            ],
+            [
+                33,
+                227
+            ],
+            [
+                33,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:06:00",
+        "totalDistance": 8476.0,
+        "totalDuration": 1383.35,
+        "totalDrivers": 3,
+        "payMax": 17.476,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 14.66575
+    },
+    "13": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                2
+            ],
+            [
+                14,
+                2
+            ],
+            [
+                14,
+                233
+            ],
+            [
+                15,
+                233
+            ],
+            [
+                32,
+                233
+            ],
+            [
+                32,
+                239
+            ],
+            [
+                37,
+                239
+            ],
+            [
+                37,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:19:00",
+        "totalDistance": 10792.0,
+        "totalDuration": 1051.0500000000002,
+        "totalDrivers": 3,
+        "payMax": 19.792,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 16.3748
+    },
+    "14": {
+        "path": [],
+        "startTime": "2022-01-02 14:15:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 0.0
+    },
+    "15": {
+        "path": [],
+        "startTime": "2022-01-02 19:30:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "16": {
+        "path": [
+            [
+                35,
+                null
+            ],
+            [
+                35,
+                81
+            ],
+            [
+                19,
+                81
+            ],
+            [
+                19,
+                186
+            ],
+            [
+                27,
+                186
+            ],
+            [
+                27,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:49:00",
+        "totalDistance": 4409.0,
+        "totalDuration": 492.43333333333334,
+        "totalDrivers": 2,
+        "payMax": 10.408999999999999,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 10.408999999999999
+    },
+    "17": {
+        "path": [],
+        "startTime": "2022-01-02 15:14:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "18": {
+        "path": [
+            [
+                43,
+                null
+            ],
+            [
+                43,
+                18
+            ],
+            [
+                46,
+                18
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                6,
+                46
+            ],
+            [
+                4,
+                46
+            ],
+            [
+                15,
+                46
+            ],
+            [
+                14,
+                46
+            ],
+            [
+                14,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:17:00",
+        "totalDistance": 5412.0,
+        "totalDuration": 734.2833333333332,
+        "totalDrivers": 3,
+        "payMax": 14.411999999999999,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 12.614666666666666
+    },
+    "19": {
+        "path": [
+            [
+                40,
+                null
+            ],
+            [
+                40,
+                45
+            ],
+            [
+                38,
+                45
+            ],
+            [
+                37,
+                45
+            ],
+            [
+                37,
+                12
+            ],
+            [
+                36,
+                12
+            ],
+            [
+                25,
+                12
+            ],
+            [
+                3,
+                12
+            ],
+            [
+                3,
+                30
+            ],
+            [
+                1,
+                30
+            ],
+            [
+                2,
+                30
+            ],
+            [
+                2,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 17:05:00",
+        "totalDistance": 8210.0,
+        "totalDuration": 1420.0666666666668,
+        "totalDrivers": 3,
+        "payMax": 17.21,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 10.36486111111111
+    },
+    "20": {
+        "path": [
+            [
+                44,
+                null
+            ],
+            [
+                44,
+                174
+            ],
+            [
+                46,
+                174
+            ],
+            [
+                46,
+                253
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                17,
+                253
+            ],
+            [
+                18,
+                253
+            ],
+            [
+                10,
+                253
+            ],
+            [
+                10,
+                256
+            ],
+            [
+                14,
+                256
+            ],
+            [
+                15,
+                256
+            ],
+            [
+                64,
+                256
+            ],
+            [
+                64,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:01:00",
+        "totalDistance": 10338.0,
+        "totalDuration": 724.0833333333333,
+        "totalDrivers": 3,
+        "payMax": 19.338,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 12.582149789823703
+    },
+    "21": {
+        "path": [
+            [
+                65,
+                null
+            ],
+            [
+                65,
+                101
+            ],
+            [
+                14,
+                101
+            ],
+            [
+                14,
+                230
+            ],
+            [
+                7,
+                230
+            ],
+            [
+                7,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 17:54:00",
+        "totalDistance": 5430.0,
+        "totalDuration": 934.4333333333334,
+        "totalDrivers": 2,
+        "payMax": 11.43,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 7.5946428571428575
+    },
+    "22": {
+        "path": [
+            [
+                64,
+                null
+            ],
+            [
+                64,
+                247
+            ],
+            [
+                14,
+                247
+            ],
+            [
+                14,
+                199
+            ],
+            [
+                52,
+                199
+            ],
+            [
+                15,
+                199
+            ],
+            [
+                4,
+                199
+            ],
+            [
+                5,
+                199
+            ],
+            [
+                5,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:45:00",
+        "totalDistance": 7574.0,
+        "totalDuration": 1301.35,
+        "totalDrivers": 2,
+        "payMax": 13.574,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 8.46131954887218
+    },
+    "23": {
+        "path": [
+            [
+                63,
+                null
+            ],
+            [
+                63,
+                13
+            ],
+            [
+                14,
+                13
+            ],
+            [
+                14,
+                91
+            ],
+            [
+                58,
+                91
+            ],
+            [
+                58,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:18:00",
+        "totalDistance": 9028.0,
+        "totalDuration": 585.5500000000001,
+        "totalDrivers": 2,
+        "payMax": 15.028,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 6.9028
+    },
+    "24": {
+        "path": [
+            [
+                54,
+                null
+            ],
+            [
+                54,
+                295
+            ],
+            [
+                11,
+                295
+            ],
+            [
+                59,
+                295
+            ],
+            [
+                59,
+                49
+            ],
+            [
+                14,
+                49
+            ],
+            [
+                14,
+                256
+            ],
+            [
+                15,
+                256
+            ],
+            [
+                64,
+                256
+            ],
+            [
+                64,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:33:00",
+        "totalDistance": 6698.0,
+        "totalDuration": 1112.0833333333333,
+        "totalDrivers": 3,
+        "payMax": 15.698,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 14.948
+    },
+    "25": {
+        "path": [
+            [
+                54,
+                null
+            ],
+            [
+                54,
+                69
+            ],
+            [
+                37,
+                69
+            ],
+            [
+                37,
+                78
+            ],
+            [
+                38,
+                78
+            ],
+            [
+                42,
+                78
+            ],
+            [
+                6,
+                78
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                4,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 17:28:00",
+        "totalDistance": 6494.0,
+        "totalDuration": 576.6833333333334,
+        "totalDrivers": 3,
+        "payMax": 15.494,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 12.005352646321686
+    },
+    "26": {
+        "path": [],
+        "startTime": "2022-01-02 21:53:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "27": {
+        "path": [
+            [
+                7,
+                null
+            ],
+            [
+                7,
+                78
+            ],
+            [
+                8,
+                78
+            ],
+            [
+                8,
+                179
+            ],
+            [
+                17,
+                179
+            ],
+            [
+                17,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:15:00",
+        "totalDistance": 391.0,
+        "totalDuration": 796.9333333333333,
+        "totalDrivers": 2,
+        "payMax": 6.391,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 6.130333333333334
+    },
+    "28": {
+        "path": [
+            [
+                36,
+                null
+            ],
+            [
+                36,
+                78
+            ],
+            [
+                37,
+                78
+            ],
+            [
+                38,
+                78
+            ],
+            [
+                42,
+                78
+            ],
+            [
+                42,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 01:41:00",
+        "totalDistance": 1100.0,
+        "totalDuration": 1426.2666666666667,
+        "totalDrivers": 1,
+        "payMax": 4.1,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.275254901960784
+    },
+    "29": {
+        "path": [],
+        "startTime": "2022-01-02 11:49:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "30": {
+        "path": [
+            [
+                58,
+                null
+            ],
+            [
+                58,
+                166
+            ],
+            [
+                30,
+                166
+            ],
+            [
+                30,
+                53
+            ],
+            [
+                32,
+                53
+            ],
+            [
+                37,
+                53
+            ],
+            [
+                37,
+                189
+            ],
+            [
+                36,
+                189
+            ],
+            [
+                36,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:23:00",
+        "totalDistance": 6656.0,
+        "totalDuration": 535.6999999999999,
+        "totalDrivers": 3,
+        "payMax": 15.656,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.41454956140351
+    },
+    "31": {
+        "path": [
+            [
+                62,
+                null
+            ],
+            [
+                62,
+                207
+            ],
+            [
+                55,
+                207
+            ],
+            [
+                55,
+                197
+            ],
+            [
+                37,
+                197
+            ],
+            [
+                38,
+                197
+            ],
+            [
+                42,
+                197
+            ],
+            [
+                16,
+                197
+            ],
+            [
+                39,
+                197
+            ],
+            [
+                39,
+                260
+            ],
+            [
+                17,
+                260
+            ],
+            [
+                17,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 19:11:00",
+        "totalDistance": 8679.0,
+        "totalDuration": 1340.6833333333334,
+        "totalDrivers": 3,
+        "payMax": 17.679000000000002,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 13.841333333333335
+    },
+    "32": {
+        "path": [
+            [
+                32,
+                null
+            ],
+            [
+                32,
+                252
+            ],
+            [
+                33,
+                252
+            ],
+            [
+                33,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 15:38:00",
+        "totalDistance": 1958.0,
+        "totalDuration": 1199.4666666666667,
+        "totalDrivers": 1,
+        "payMax": 4.958,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 4.958
+    },
+    "33": {
+        "path": [
+            [
+                56,
+                null
+            ],
+            [
+                56,
+                115
+            ],
+            [
+                14,
+                115
+            ],
+            [
+                14,
+                107
+            ],
+            [
+                46,
+                107
+            ],
+            [
+                46,
+                206
+            ],
+            [
+                54,
+                206
+            ],
+            [
+                11,
+                206
+            ],
+            [
+                69,
+                206
+            ],
+            [
+                69,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 21:36:00",
+        "totalDistance": 10644.0,
+        "totalDuration": 1330.4,
+        "totalDrivers": 3,
+        "payMax": 19.644,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 14.799600000000002
+    },
+    "34": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                130
+            ],
+            [
+                24,
+                130
+            ],
+            [
+                22,
+                130
+            ],
+            [
+                23,
+                130
+            ],
+            [
+                23,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 07:10:00",
+        "totalDistance": 1752.0,
+        "totalDuration": 403.95,
+        "totalDrivers": 1,
+        "payMax": 4.752,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 4.462666666666667
+    },
+    "35": {
+        "path": [
+            [
+                51,
+                null
+            ],
+            [
+                51,
+                250
+            ],
+            [
+                66,
+                250
+            ],
+            [
+                66,
+                162
+            ],
+            [
+                24,
+                162
+            ],
+            [
+                22,
+                162
+            ],
+            [
+                22,
+                31
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                39,
+                31
+            ],
+            [
+                42,
+                31
+            ],
+            [
+                38,
+                31
+            ],
+            [
+                37,
+                31
+            ],
+            [
+                36,
+                31
+            ],
+            [
+                36,
+                12
+            ],
+            [
+                25,
+                12
+            ],
+            [
+                25,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:54:00",
+        "totalDistance": 15110.0,
+        "totalDuration": 1224.7,
+        "totalDrivers": 4,
+        "payMax": 27.11,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 12.825177193433179
+    },
+    "36": {
+        "path": [
+            [
+                23,
+                null
+            ],
+            [
+                23,
+                106
+            ],
+            [
+                22,
+                106
+            ],
+            [
+                19,
+                106
+            ],
+            [
+                39,
+                106
+            ],
+            [
+                42,
+                106
+            ],
+            [
+                42,
+                158
+            ],
+            [
+                38,
+                158
+            ],
+            [
+                37,
+                158
+            ],
+            [
+                36,
+                158
+            ],
+            [
+                35,
+                158
+            ],
+            [
+                35,
+                16
+            ],
+            [
+                70,
+                16
+            ],
+            [
+                70,
+                121
+            ],
+            [
+                14,
+                121
+            ],
+            [
+                15,
+                121
+            ],
+            [
+                15,
+                70
+            ],
+            [
+                46,
+                70
+            ],
+            [
+                46,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:26:00",
+        "totalDistance": 13962.0,
+        "totalDuration": 620.6333333333332,
+        "totalDrivers": 5,
+        "payMax": 28.962,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 16.713300712281324
+    },
+    "37": {
+        "path": [],
+        "startTime": "2022-01-02 13:31:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "38": {
+        "path": [
+            [
+                56,
+                null
+            ],
+            [
+                56,
+                300
+            ],
+            [
+                14,
+                300
+            ],
+            [
+                15,
+                300
+            ],
+            [
+                15,
+                2
+            ],
+            [
+                43,
+                2
+            ],
+            [
+                46,
+                2
+            ],
+            [
+                46,
+                253
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                17,
+                253
+            ],
+            [
+                17,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:52:00",
+        "totalDistance": 10970.0,
+        "totalDuration": 661.9166666666667,
+        "totalDrivers": 3,
+        "payMax": 19.97,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 11.980525464731347
+    },
+    "39": {
+        "path": [],
+        "startTime": "2022-01-02 14:59:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "40": {
+        "path": [
+            [
+                37,
+                null
+            ],
+            [
+                37,
+                37
+            ],
+            [
+                36,
+                37
+            ],
+            [
+                32,
+                37
+            ],
+            [
+                30,
+                37
+            ],
+            [
+                63,
+                37
+            ],
+            [
+                63,
+                86
+            ],
+            [
+                15,
+                86
+            ],
+            [
+                14,
+                86
+            ],
+            [
+                10,
+                86
+            ],
+            [
+                10,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 09:06:00",
+        "totalDistance": 13626.0,
+        "totalDuration": 424.06666666666666,
+        "totalDrivers": 2,
+        "payMax": 19.625999999999998,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 14.989833333333333
+    },
+    "41": {
+        "path": [],
+        "startTime": "2022-01-02 12:26:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "42": {
+        "path": [
+            [
+                8,
+                null
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                9,
+                33
+            ],
+            [
+                14,
+                33
+            ],
+            [
+                15,
+                33
+            ],
+            [
+                65,
+                33
+            ],
+            [
+                65,
+                299
+            ],
+            [
+                25,
+                299
+            ],
+            [
+                25,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 08:14:00",
+        "totalDistance": 7822.0,
+        "totalDuration": 626.8666666666667,
+        "totalDrivers": 3,
+        "payMax": 16.822,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 13.084
+    },
+    "43": {
+        "path": [
+            [
+                18,
+                null
+            ],
+            [
+                18,
+                129
+            ],
+            [
+                39,
+                129
+            ],
+            [
+                42,
+                129
+            ],
+            [
+                38,
+                129
+            ],
+            [
+                37,
+                129
+            ],
+            [
+                37,
+                235
+            ],
+            [
+                36,
+                235
+            ],
+            [
+                32,
+                235
+            ],
+            [
+                30,
+                235
+            ],
+            [
+                30,
+                50
+            ],
+            [
+                56,
+                50
+            ],
+            [
+                56,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 16:01:00",
+        "totalDistance": 9155.0,
+        "totalDuration": 1422.15,
+        "totalDrivers": 3,
+        "payMax": 18.155,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 12.34224652014652
+    },
+    "44": {
+        "path": [
+            [
+                47,
+                null
+            ],
+            [
+                47,
+                200
+            ],
+            [
+                3,
+                200
+            ],
+            [
+                3,
+                181
+            ],
+            [
+                32,
+                181
+            ],
+            [
+                32,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 08:00:00",
+        "totalDistance": 8186.0,
+        "totalDuration": 1390.1166666666666,
+        "totalDrivers": 2,
+        "payMax": 14.186,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.242333333333333
+    },
+    "45": {
+        "path": [
+            [
+                40,
+                null
+            ],
+            [
+                40,
+                45
+            ],
+            [
+                38,
+                45
+            ],
+            [
+                38,
+                57
+            ],
+            [
+                42,
+                57
+            ],
+            [
+                16,
+                57
+            ],
+            [
+                39,
+                57
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 21:59:00",
+        "totalDistance": 2711.0,
+        "totalDuration": 825.8000000000001,
+        "totalDrivers": 2,
+        "payMax": 8.711,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 6.938833333333333
+    },
+    "46": {
+        "path": [
+            [
+                30,
+                null
+            ],
+            [
+                30,
+                255
+            ],
+            [
+                32,
+                255
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                6,
+                210
+            ],
+            [
+                17,
+                210
+            ],
+            [
+                18,
+                210
+            ],
+            [
+                18,
+                109
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                5,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:15:00",
+        "totalDistance": 9745.0,
+        "totalDuration": 1037.75,
+        "totalDrivers": 3,
+        "payMax": 18.745,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 12.5837125
+    },
+    "47": {
+        "path": [
+            [
+                40,
+                null
+            ],
+            [
+                40,
+                45
+            ],
+            [
+                38,
+                45
+            ],
+            [
+                37,
+                45
+            ],
+            [
+                36,
+                45
+            ],
+            [
+                36,
+                14
+            ],
+            [
+                62,
+                14
+            ],
+            [
+                62,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:21:00",
+        "totalDistance": 5393.0,
+        "totalDuration": 80.66666666666667,
+        "totalDrivers": 2,
+        "payMax": 11.393,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 6.9002083333333335
+    },
+    "48": {
+        "path": [
+            [
+                62,
+                null
+            ],
+            [
+                62,
+                80
+            ],
+            [
+                14,
+                80
+            ],
+            [
+                15,
+                80
+            ],
+            [
+                15,
+                101
+            ],
+            [
+                7,
+                101
+            ],
+            [
+                7,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:32:00",
+        "totalDistance": 7076.0,
+        "totalDuration": 826.5166666666667,
+        "totalDrivers": 2,
+        "payMax": 13.076,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 10.271
+    },
+    "49": {
+        "path": [
+            [
+                55,
+                null
+            ],
+            [
+                55,
+                228
+            ],
+            [
+                25,
+                228
+            ],
+            [
+                14,
+                228
+            ],
+            [
+                15,
+                228
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                51
+            ],
+            [
+                54,
+                51
+            ],
+            [
+                54,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:34:00",
+        "totalDistance": 8696.0,
+        "totalDuration": 974.5333333333332,
+        "totalDrivers": 3,
+        "payMax": 17.695999999999998,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.39208997584541
+    },
+    "50": {
+        "path": [
+            [
+                30,
+                null
+            ],
+            [
+                30,
+                255
+            ],
+            [
+                32,
+                255
+            ],
+            [
+                32,
+                201
+            ],
+            [
+                14,
+                201
+            ],
+            [
+                14,
+                49
+            ],
+            [
+                15,
+                49
+            ],
+            [
+                24,
+                49
+            ],
+            [
+                22,
+                49
+            ],
+            [
+                22,
+                195
+            ],
+            [
+                23,
+                195
+            ],
+            [
+                23,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:06:00",
+        "totalDistance": 10273.0,
+        "totalDuration": 371.6,
+        "totalDrivers": 4,
+        "payMax": 22.273,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 17.449483333333333
+    },
+    "51": {
+        "path": [],
+        "startTime": "2022-01-02 00:34:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "52": {
+        "path": [],
+        "startTime": "2022-01-02 17:37:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "53": {
+        "path": [
+            [
+                57,
+                null
+            ],
+            [
+                57,
+                53
+            ],
+            [
+                30,
+                53
+            ],
+            [
+                30,
+                149
+            ],
+            [
+                32,
+                149
+            ],
+            [
+                25,
+                149
+            ],
+            [
+                3,
+                149
+            ],
+            [
+                12,
+                149
+            ],
+            [
+                12,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 18:17:00",
+        "totalDistance": 9181.0,
+        "totalDuration": 1109.3,
+        "totalDrivers": 2,
+        "payMax": 15.181000000000001,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 9.731595238095238
+    },
+    "54": {
+        "path": [
+            [
+                25,
+                null
+            ],
+            [
+                25,
+                228
+            ],
+            [
+                14,
+                228
+            ],
+            [
+                15,
+                228
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:28:00",
+        "totalDistance": 5745.0,
+        "totalDuration": 226.66666666666666,
+        "totalDrivers": 2,
+        "payMax": 11.745000000000001,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 6.226763888888889
+    },
+    "55": {
+        "path": [
+            [
+                64,
+                null
+            ],
+            [
+                64,
+                247
+            ],
+            [
+                14,
+                247
+            ],
+            [
+                14,
+                33
+            ],
+            [
+                15,
+                33
+            ],
+            [
+                65,
+                33
+            ],
+            [
+                65,
+                299
+            ],
+            [
+                25,
+                299
+            ],
+            [
+                25,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 01:04:00",
+        "totalDistance": 7604.0,
+        "totalDuration": 1056.8666666666666,
+        "totalDrivers": 3,
+        "payMax": 16.604,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 11.544
+    },
+    "56": {
+        "path": [],
+        "startTime": "2022-01-02 06:40:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "57": {
+        "path": [
+            [
+                5,
+                null
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                6,
+                109
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 05:11:00",
+        "totalDistance": 6143.0,
+        "totalDuration": 1323.6666666666665,
+        "totalDrivers": 2,
+        "payMax": 12.143,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 6.389096681096681
+    },
+    "58": {
+        "path": [],
+        "startTime": "2022-01-02 16:28:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "59": {
+        "path": [
+            [
+                67,
+                null
+            ],
+            [
+                67,
+                199
+            ],
+            [
+                14,
+                199
+            ],
+            [
+                14,
+                178
+            ],
+            [
+                15,
+                178
+            ],
+            [
+                57,
+                178
+            ],
+            [
+                57,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:42:00",
+        "totalDistance": 5830.0,
+        "totalDuration": 1387.1166666666668,
+        "totalDrivers": 2,
+        "payMax": 11.83,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 6.756232142857143
+    },
+    "60": {
+        "path": [],
+        "startTime": "2022-01-02 15:10:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "61": {
+        "path": [],
+        "startTime": "2022-01-02 23:46:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "62": {
+        "path": [
+            [
+                8,
+                null
+            ],
+            [
+                8,
+                35
+            ],
+            [
+                7,
+                35
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                17,
+                4
+            ],
+            [
+                17,
+                241
+            ],
+            [
+                18,
+                241
+            ],
+            [
+                19,
+                241
+            ],
+            [
+                24,
+                241
+            ],
+            [
+                22,
+                241
+            ],
+            [
+                22,
+                104
+            ],
+            [
+                23,
+                104
+            ],
+            [
+                23,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:22:00",
+        "totalDistance": 3016.0,
+        "totalDuration": 602.5999999999999,
+        "totalDrivers": 4,
+        "payMax": 15.016,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 13.328691666666668
+    },
+    "63": {
+        "path": [],
+        "startTime": "2022-01-02 19:46:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "64": {
+        "path": [
+            [
+                2,
+                null
+            ],
+            [
+                2,
+                220
+            ],
+            [
+                12,
+                220
+            ],
+            [
+                17,
+                220
+            ],
+            [
+                18,
+                220
+            ],
+            [
+                18,
+                158
+            ],
+            [
+                39,
+                158
+            ],
+            [
+                42,
+                158
+            ],
+            [
+                38,
+                158
+            ],
+            [
+                37,
+                158
+            ],
+            [
+                36,
+                158
+            ],
+            [
+                35,
+                158
+            ],
+            [
+                35,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 08:04:00",
+        "totalDistance": 9257.0,
+        "totalDuration": 410.06666666666666,
+        "totalDrivers": 2,
+        "payMax": 15.257,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 6.596265055715666
+    },
+    "65": {
+        "path": [
+            [
+                29,
+                null
+            ],
+            [
+                29,
+                22
+            ],
+            [
+                30,
+                22
+            ],
+            [
+                30,
+                50
+            ],
+            [
+                56,
+                50
+            ],
+            [
+                56,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 21:03:00",
+        "totalDistance": 4443.0,
+        "totalDuration": 1120.15,
+        "totalDrivers": 2,
+        "payMax": 10.443000000000001,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 9.1645
+    },
+    "66": {
+        "path": [
+            [
+                31,
+                null
+            ],
+            [
+                31,
+                105
+            ],
+            [
+                15,
+                105
+            ],
+            [
+                15,
+                33
+            ],
+            [
+                65,
+                33
+            ],
+            [
+                65,
+                299
+            ],
+            [
+                25,
+                299
+            ],
+            [
+                25,
+                248
+            ],
+            [
+                51,
+                248
+            ],
+            [
+                51,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:54:00",
+        "totalDistance": 12897.0,
+        "totalDuration": 965.4,
+        "totalDrivers": 4,
+        "payMax": 24.897,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 18.1175
+    },
+    "67": {
+        "path": [],
+        "startTime": "2022-01-02 16:14:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "68": {
+        "path": [
+            [
+                18,
+                null
+            ],
+            [
+                18,
+                258
+            ],
+            [
+                6,
+                258
+            ],
+            [
+                6,
+                221
+            ],
+            [
+                4,
+                221
+            ],
+            [
+                14,
+                221
+            ],
+            [
+                15,
+                221
+            ],
+            [
+                15,
+                230
+            ],
+            [
+                52,
+                230
+            ],
+            [
+                52,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 15:06:00",
+        "totalDistance": 4463.0,
+        "totalDuration": 1095.833333333333,
+        "totalDrivers": 3,
+        "payMax": 13.463000000000001,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 9.49096011904762
+    },
+    "69": {
+        "path": [
+            [
+                27,
+                null
+            ],
+            [
+                27,
+                97
+            ],
+            [
+                17,
+                97
+            ],
+            [
+                17,
+                129
+            ],
+            [
+                18,
+                129
+            ],
+            [
+                39,
+                129
+            ],
+            [
+                42,
+                129
+            ],
+            [
+                38,
+                129
+            ],
+            [
+                37,
+                129
+            ],
+            [
+                36,
+                129
+            ],
+            [
+                36,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 17:31:00",
+        "totalDistance": 4407.0,
+        "totalDuration": 232.14999999999998,
+        "totalDrivers": 2,
+        "payMax": 10.407,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 6.4503020757020755
+    },
+    "70": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                7
+            ],
+            [
+                39,
+                7
+            ],
+            [
+                42,
+                7
+            ],
+            [
+                38,
+                7
+            ],
+            [
+                37,
+                7
+            ],
+            [
+                36,
+                7
+            ],
+            [
+                32,
+                7
+            ],
+            [
+                30,
+                7
+            ],
+            [
+                30,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:40:00",
+        "totalDistance": 7238.0,
+        "totalDuration": 824.0166666666665,
+        "totalDrivers": 1,
+        "payMax": 10.238,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 6.619
+    },
+    "71": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                2
+            ],
+            [
+                14,
+                2
+            ],
+            [
+                14,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:26:00",
+        "totalDistance": 4254.0,
+        "totalDuration": 333.4166666666667,
+        "totalDrivers": 1,
+        "payMax": 7.2540000000000004,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 3.8508
+    },
+    "72": {
+        "path": [
+            [
+                39,
+                null
+            ],
+            [
+                39,
+                31
+            ],
+            [
+                42,
+                31
+            ],
+            [
+                38,
+                31
+            ],
+            [
+                37,
+                31
+            ],
+            [
+                36,
+                31
+            ],
+            [
+                32,
+                31
+            ],
+            [
+                32,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 17:42:00",
+        "totalDistance": 4806.0,
+        "totalDuration": 111.85000000000001,
+        "totalDrivers": 1,
+        "payMax": 7.806,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 3.7189203315203314
+    },
+    "73": {
+        "path": [
+            [
+                21,
+                null
+            ],
+            [
+                21,
+                274
+            ],
+            [
+                20,
+                274
+            ],
+            [
+                20,
+                77
+            ],
+            [
+                14,
+                77
+            ],
+            [
+                14,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 15:15:00",
+        "totalDistance": 2353.0,
+        "totalDuration": 536.65,
+        "totalDrivers": 2,
+        "payMax": 8.353,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 6.406333333333333
+    },
+    "74": {
+        "path": [
+            [
+                46,
+                null
+            ],
+            [
+                46,
+                188
+            ],
+            [
+                41,
+                188
+            ],
+            [
+                41,
+                27
+            ],
+            [
+                6,
+                27
+            ],
+            [
+                17,
+                27
+            ],
+            [
+                18,
+                27
+            ],
+            [
+                18,
+                241
+            ],
+            [
+                19,
+                241
+            ],
+            [
+                19,
+                104
+            ],
+            [
+                39,
+                104
+            ],
+            [
+                42,
+                104
+            ],
+            [
+                38,
+                104
+            ],
+            [
+                38,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 21:28:00",
+        "totalDistance": 6641.0,
+        "totalDuration": 726.2999999999998,
+        "totalDrivers": 4,
+        "payMax": 18.641,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 14.377258578431373
+    },
+    "75": {
+        "path": [],
+        "startTime": "2022-01-02 10:53:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "76": {
+        "path": [
+            [
+                49,
+                null
+            ],
+            [
+                49,
+                83
+            ],
+            [
+                28,
+                83
+            ],
+            [
+                28,
+                279
+            ],
+            [
+                14,
+                279
+            ],
+            [
+                14,
+                77
+            ],
+            [
+                15,
+                77
+            ],
+            [
+                53,
+                77
+            ],
+            [
+                53,
+                286
+            ],
+            [
+                56,
+                286
+            ],
+            [
+                56,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:21:00",
+        "totalDistance": 9612.0,
+        "totalDuration": 1097.6833333333334,
+        "totalDrivers": 4,
+        "payMax": 21.612000000000002,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 14.497444078947368
+    },
+    "77": {
+        "path": [],
+        "startTime": "2022-01-02 17:29:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "78": {
+        "path": [],
+        "startTime": "2022-01-02 09:43:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "79": {
+        "path": [],
+        "startTime": "2022-01-02 15:42:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 0.0
+    },
+    "80": {
+        "path": [
+            [
+                15,
+                null
+            ],
+            [
+                15,
+                292
+            ],
+            [
+                4,
+                292
+            ],
+            [
+                41,
+                292
+            ],
+            [
+                40,
+                292
+            ],
+            [
+                40,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:43:00",
+        "totalDistance": 4162.0,
+        "totalDuration": 197.86666666666667,
+        "totalDrivers": 1,
+        "payMax": 7.162,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 3.613486111111111
+    },
+    "81": {
+        "path": [
+            [
+                27,
+                null
+            ],
+            [
+                27,
+                46
+            ],
+            [
+                8,
+                46
+            ],
+            [
+                6,
+                46
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:40:00",
+        "totalDistance": 6772.0,
+        "totalDuration": 214.6666666666667,
+        "totalDrivers": 2,
+        "payMax": 12.772,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 6.640763347763348
+    },
+    "82": {
+        "path": [
+            [
+                46,
+                null
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                6,
+                210
+            ],
+            [
+                17,
+                210
+            ],
+            [
+                18,
+                210
+            ],
+            [
+                20,
+                210
+            ],
+            [
+                20,
+                152
+            ],
+            [
+                21,
+                152
+            ],
+            [
+                21,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 15:25:00",
+        "totalDistance": 5229.0,
+        "totalDuration": 752.4833333333332,
+        "totalDrivers": 3,
+        "payMax": 14.229,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 10.06592450980392
+    },
+    "83": {
+        "path": [],
+        "startTime": "2022-01-02 15:41:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "84": {
+        "path": [],
+        "startTime": "2022-01-02 19:15:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "85": {
+        "path": [
+            [
+                61,
+                null
+            ],
+            [
+                61,
+                18
+            ],
+            [
+                14,
+                18
+            ],
+            [
+                15,
+                18
+            ],
+            [
+                43,
+                18
+            ],
+            [
+                46,
+                18
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                6,
+                164
+            ],
+            [
+                67,
+                164
+            ],
+            [
+                67,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:15:00",
+        "totalDistance": 11300.0,
+        "totalDuration": 879.6499999999999,
+        "totalDrivers": 3,
+        "payMax": 20.3,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 13.035795238095238
+    },
+    "86": {
+        "path": [
+            [
+                44,
+                null
+            ],
+            [
+                44,
+                174
+            ],
+            [
+                46,
+                174
+            ],
+            [
+                46,
+                253
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                51
+            ],
+            [
+                54,
+                51
+            ],
+            [
+                11,
+                51
+            ],
+            [
+                11,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:51:00",
+        "totalDistance": 10705.0,
+        "totalDuration": 1018.5333333333333,
+        "totalDrivers": 4,
+        "payMax": 22.705,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 12.599369593450028
+    },
+    "87": {
+        "path": [
+            [
+                3,
+                null
+            ],
+            [
+                3,
+                196
+            ],
+            [
+                55,
+                196
+            ],
+            [
+                55,
+                228
+            ],
+            [
+                25,
+                228
+            ],
+            [
+                14,
+                228
+            ],
+            [
+                15,
+                228
+            ],
+            [
+                15,
+                114
+            ],
+            [
+                24,
+                114
+            ],
+            [
+                22,
+                114
+            ],
+            [
+                22,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:04:00",
+        "totalDistance": 12428.0,
+        "totalDuration": 1239.1666666666665,
+        "totalDrivers": 3,
+        "payMax": 21.428,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 10.093625
+    },
+    "88": {
+        "path": [],
+        "startTime": "2022-01-02 21:51:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "89": {
+        "path": [],
+        "startTime": "2022-01-02 23:28:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "90": {
+        "path": [
+            [
+                14,
+                null
+            ],
+            [
+                14,
+                49
+            ],
+            [
+                15,
+                49
+            ],
+            [
+                24,
+                49
+            ],
+            [
+                22,
+                49
+            ],
+            [
+                22,
+                195
+            ],
+            [
+                23,
+                195
+            ],
+            [
+                19,
+                195
+            ],
+            [
+                39,
+                195
+            ],
+            [
+                39,
+                109
+            ],
+            [
+                17,
+                109
+            ],
+            [
+                17,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 19:50:00",
+        "totalDistance": 9884.0,
+        "totalDuration": 100.15,
+        "totalDrivers": 3,
+        "payMax": 18.884,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 11.15755
+    },
+    "91": {
+        "path": [
+            [
+                10,
+                null
+            ],
+            [
+                10,
+                9
+            ],
+            [
+                9,
+                9
+            ],
+            [
+                22,
+                9
+            ],
+            [
+                22,
+                31
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                19,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 13:48:00",
+        "totalDistance": 3609.0,
+        "totalDuration": 334.21666666666664,
+        "totalDrivers": 2,
+        "payMax": 9.609,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 6.436801754385965
+    },
+    "92": {
+        "path": [
+            [
+                29,
+                null
+            ],
+            [
+                29,
+                8
+            ],
+            [
+                68,
+                8
+            ],
+            [
+                14,
+                8
+            ],
+            [
+                15,
+                8
+            ],
+            [
+                15,
+                267
+            ],
+            [
+                7,
+                267
+            ],
+            [
+                8,
+                267
+            ],
+            [
+                27,
+                267
+            ],
+            [
+                27,
+                79
+            ],
+            [
+                6,
+                79
+            ],
+            [
+                6,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:01:00",
+        "totalDistance": 10658.0,
+        "totalDuration": 317.05,
+        "totalDrivers": 3,
+        "payMax": 19.658,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 16.55075
+    },
+    "93": {
+        "path": [
+            [
+                49,
+                null
+            ],
+            [
+                49,
+                83
+            ],
+            [
+                28,
+                83
+            ],
+            [
+                28,
+                279
+            ],
+            [
+                14,
+                279
+            ],
+            [
+                15,
+                279
+            ],
+            [
+                15,
+                101
+            ],
+            [
+                7,
+                101
+            ],
+            [
+                8,
+                101
+            ],
+            [
+                8,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 09:42:00",
+        "totalDistance": 7107.0,
+        "totalDuration": 516.6,
+        "totalDrivers": 3,
+        "payMax": 16.107,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 11.3035
+    },
+    "94": {
+        "path": [],
+        "startTime": "2022-01-02 18:30:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "95": {
+        "path": [],
+        "startTime": "2022-01-02 05:47:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "96": {
+        "path": [],
+        "startTime": "2022-01-02 20:42:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "97": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                97
+            ],
+            [
+                27,
+                97
+            ],
+            [
+                17,
+                97
+            ],
+            [
+                17,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:00:00",
+        "totalDistance": 1497.0,
+        "totalDuration": 952.1,
+        "totalDrivers": 1,
+        "payMax": 4.497,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.3487142857142858
+    },
+    "98": {
+        "path": [
+            [
+                27,
+                null
+            ],
+            [
+                27,
+                97
+            ],
+            [
+                17,
+                97
+            ],
+            [
+                17,
+                109
+            ],
+            [
+                18,
+                109
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                5,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:51:00",
+        "totalDistance": 2006.0,
+        "totalDuration": 641.75,
+        "totalDrivers": 2,
+        "payMax": 8.006,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 6.251026785714286
+    },
+    "99": {
+        "path": [],
+        "startTime": "2022-01-02 19:59:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "100": {
+        "path": [
+            [
+                30,
+                null
+            ],
+            [
+                30,
+                168
+            ],
+            [
+                32,
+                168
+            ],
+            [
+                14,
+                168
+            ],
+            [
+                70,
+                168
+            ],
+            [
+                15,
+                168
+            ],
+            [
+                15,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:17:00",
+        "totalDistance": 8861.0,
+        "totalDuration": 107.85000000000001,
+        "totalDrivers": 1,
+        "payMax": 11.861,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 8.664333333333333
+    },
+    "101": {
+        "path": [
+            [
+                24,
+                null
+            ],
+            [
+                24,
+                80
+            ],
+            [
+                22,
+                80
+            ],
+            [
+                22,
+                106
+            ],
+            [
+                19,
+                106
+            ],
+            [
+                19,
+                97
+            ],
+            [
+                27,
+                97
+            ],
+            [
+                17,
+                97
+            ],
+            [
+                17,
+                109
+            ],
+            [
+                18,
+                109
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                5,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:09:00",
+        "totalDistance": 4846.0,
+        "totalDuration": 1283.75,
+        "totalDrivers": 4,
+        "payMax": 16.846,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 13.075390422077922
+    },
+    "102": {
+        "path": [
+            [
+                34,
+                null
+            ],
+            [
+                34,
+                186
+            ],
+            [
+                19,
+                186
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                39,
+                31
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:16:00",
+        "totalDistance": 5538.0,
+        "totalDuration": 309.16666666666663,
+        "totalDrivers": 2,
+        "payMax": 11.538,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 10.092375
+    },
+    "103": {
+        "path": [
+            [
+                64,
+                null
+            ],
+            [
+                64,
+                15
+            ],
+            [
+                32,
+                15
+            ],
+            [
+                32,
+                149
+            ],
+            [
+                25,
+                149
+            ],
+            [
+                3,
+                149
+            ],
+            [
+                12,
+                149
+            ],
+            [
+                12,
+                287
+            ],
+            [
+                7,
+                287
+            ],
+            [
+                17,
+                287
+            ],
+            [
+                18,
+                287
+            ],
+            [
+                18,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:05:00",
+        "totalDistance": 13975.0,
+        "totalDuration": 953.5500000000001,
+        "totalDrivers": 3,
+        "payMax": 22.975,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 16.75792857142857
+    },
+    "104": {
+        "path": [
+            [
+                47,
+                null
+            ],
+            [
+                47,
+                177
+            ],
+            [
+                55,
+                177
+            ],
+            [
+                55,
+                197
+            ],
+            [
+                37,
+                197
+            ],
+            [
+                38,
+                197
+            ],
+            [
+                42,
+                197
+            ],
+            [
+                16,
+                197
+            ],
+            [
+                39,
+                197
+            ],
+            [
+                39,
+                260
+            ],
+            [
+                17,
+                260
+            ],
+            [
+                17,
+                264
+            ],
+            [
+                18,
+                264
+            ],
+            [
+                10,
+                264
+            ],
+            [
+                10,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 21:10:00",
+        "totalDistance": 11481.0,
+        "totalDuration": 1434.3166666666668,
+        "totalDrivers": 4,
+        "payMax": 23.481,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 18.620666666666665
+    },
+    "105": {
+        "path": [
+            [
+                70,
+                null
+            ],
+            [
+                70,
+                247
+            ],
+            [
+                15,
+                247
+            ],
+            [
+                15,
+                2
+            ],
+            [
+                43,
+                2
+            ],
+            [
+                43,
+                170
+            ],
+            [
+                38,
+                170
+            ],
+            [
+                38,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 05:45:00",
+        "totalDistance": 4843.0,
+        "totalDuration": 1211.7833333333335,
+        "totalDrivers": 3,
+        "payMax": 13.843,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 11.496333333333332
+    },
+    "106": {
+        "path": [
+            [
+                55,
+                null
+            ],
+            [
+                55,
+                75
+            ],
+            [
+                35,
+                75
+            ],
+            [
+                35,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 16:03:00",
+        "totalDistance": 1318.0,
+        "totalDuration": 511.6666666666667,
+        "totalDrivers": 1,
+        "payMax": 4.318,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 4.318
+    },
+    "107": {
+        "path": [
+            [
+                10,
+                null
+            ],
+            [
+                10,
+                9
+            ],
+            [
+                9,
+                9
+            ],
+            [
+                22,
+                9
+            ],
+            [
+                22,
+                31
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                19,
+                150
+            ],
+            [
+                46,
+                150
+            ],
+            [
+                54,
+                150
+            ],
+            [
+                11,
+                150
+            ],
+            [
+                69,
+                150
+            ],
+            [
+                69,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 18:07:00",
+        "totalDistance": 9209.0,
+        "totalDuration": 1235.1833333333334,
+        "totalDrivers": 3,
+        "payMax": 18.209,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 10.54415492898914
+    },
+    "108": {
+        "path": [
+            [
+                54,
+                null
+            ],
+            [
+                54,
+                51
+            ],
+            [
+                11,
+                51
+            ],
+            [
+                53,
+                51
+            ],
+            [
+                53,
+                286
+            ],
+            [
+                56,
+                286
+            ],
+            [
+                56,
+                115
+            ],
+            [
+                14,
+                115
+            ],
+            [
+                15,
+                115
+            ],
+            [
+                15,
+                114
+            ],
+            [
+                24,
+                114
+            ],
+            [
+                24,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:43:00",
+        "totalDistance": 15202.0,
+        "totalDuration": 658.4166666666666,
+        "totalDrivers": 4,
+        "payMax": 27.201999999999998,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 14.539210714285714
+    },
+    "109": {
+        "path": [
+            [
+                4,
+                null
+            ],
+            [
+                4,
+                221
+            ],
+            [
+                14,
+                221
+            ],
+            [
+                14,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 07:58:00",
+        "totalDistance": 2317.0,
+        "totalDuration": 998.1333333333333,
+        "totalDrivers": 1,
+        "payMax": 5.317,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.11585
+    },
+    "110": {
+        "path": [
+            [
+                36,
+                null
+            ],
+            [
+                36,
+                78
+            ],
+            [
+                37,
+                78
+            ],
+            [
+                38,
+                78
+            ],
+            [
+                42,
+                78
+            ],
+            [
+                6,
+                78
+            ],
+            [
+                17,
+                78
+            ],
+            [
+                18,
+                78
+            ],
+            [
+                18,
+                241
+            ],
+            [
+                19,
+                241
+            ],
+            [
+                19,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:44:00",
+        "totalDistance": 5201.0,
+        "totalDuration": 1158.1833333333332,
+        "totalDrivers": 2,
+        "payMax": 11.201,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 6.60233478917883
+    },
+    "111": {
+        "path": [
+            [
+                65,
+                null
+            ],
+            [
+                65,
+                101
+            ],
+            [
+                14,
+                101
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                51
+            ],
+            [
+                54,
+                51
+            ],
+            [
+                11,
+                51
+            ],
+            [
+                11,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 07:42:00",
+        "totalDistance": 8654.0,
+        "totalDuration": 1207.5333333333333,
+        "totalDrivers": 3,
+        "payMax": 17.654,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 9.673907832988268
+    },
+    "112": {
+        "path": [
+            [
+                51,
+                null
+            ],
+            [
+                51,
+                250
+            ],
+            [
+                66,
+                250
+            ],
+            [
+                66,
+                162
+            ],
+            [
+                24,
+                162
+            ],
+            [
+                22,
+                162
+            ],
+            [
+                22,
+                221
+            ],
+            [
+                27,
+                221
+            ],
+            [
+                8,
+                221
+            ],
+            [
+                6,
+                221
+            ],
+            [
+                6,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:30:00",
+        "totalDistance": 8600.0,
+        "totalDuration": 1259.5166666666667,
+        "totalDrivers": 3,
+        "payMax": 17.6,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.348622329749103
+    },
+    "113": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                2
+            ],
+            [
+                14,
+                2
+            ],
+            [
+                14,
+                95
+            ],
+            [
+                15,
+                95
+            ],
+            [
+                41,
+                95
+            ],
+            [
+                41,
+                156
+            ],
+            [
+                16,
+                156
+            ],
+            [
+                39,
+                156
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 10:21:00",
+        "totalDistance": 8425.0,
+        "totalDuration": 841.0333333333334,
+        "totalDrivers": 3,
+        "payMax": 17.425,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 10.403746428571429
+    },
+    "114": {
+        "path": [],
+        "startTime": "2022-01-02 22:39:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "115": {
+        "path": [
+            [
+                65,
+                null
+            ],
+            [
+                65,
+                101
+            ],
+            [
+                14,
+                101
+            ],
+            [
+                15,
+                101
+            ],
+            [
+                15,
+                49
+            ],
+            [
+                24,
+                49
+            ],
+            [
+                22,
+                49
+            ],
+            [
+                22,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:14:00",
+        "totalDistance": 7718.0,
+        "totalDuration": 1077.3333333333333,
+        "totalDrivers": 2,
+        "payMax": 13.718,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 7.193059523809524
+    },
+    "116": {
+        "path": [],
+        "startTime": "2022-01-02 17:35:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "117": {
+        "path": [
+            [
+                44,
+                null
+            ],
+            [
+                44,
+                271
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                47,
+                271
+            ],
+            [
+                47,
+                200
+            ],
+            [
+                3,
+                200
+            ],
+            [
+                3,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:56:00",
+        "totalDistance": 4847.0,
+        "totalDuration": 1113.95,
+        "totalDrivers": 2,
+        "payMax": 10.847000000000001,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 7.8507
+    },
+    "118": {
+        "path": [
+            [
+                23,
+                null
+            ],
+            [
+                23,
+                221
+            ],
+            [
+                22,
+                221
+            ],
+            [
+                27,
+                221
+            ],
+            [
+                8,
+                221
+            ],
+            [
+                6,
+                221
+            ],
+            [
+                4,
+                221
+            ],
+            [
+                4,
+                292
+            ],
+            [
+                41,
+                292
+            ],
+            [
+                40,
+                292
+            ],
+            [
+                40,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 16:39:00",
+        "totalDistance": 3901.0,
+        "totalDuration": 621.8666666666667,
+        "totalDrivers": 2,
+        "payMax": 9.901,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 6.463989841269841
+    },
+    "119": {
+        "path": [
+            [
+                67,
+                null
+            ],
+            [
+                67,
+                199
+            ],
+            [
+                14,
+                199
+            ],
+            [
+                52,
+                199
+            ],
+            [
+                15,
+                199
+            ],
+            [
+                4,
+                199
+            ],
+            [
+                4,
+                156
+            ],
+            [
+                41,
+                156
+            ],
+            [
+                41,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:39:00",
+        "totalDistance": 6895.0,
+        "totalDuration": 1239.9333333333336,
+        "totalDrivers": 2,
+        "payMax": 12.895,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 7.459642857142858
+    },
+    "120": {
+        "path": [],
+        "startTime": "2022-01-02 15:20:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "121": {
+        "path": [],
+        "startTime": "2022-01-02 21:58:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "122": {
+        "path": [],
+        "startTime": "2022-01-02 15:45:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 0.0
+    },
+    "123": {
+        "path": [],
+        "startTime": "2022-01-02 14:46:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "124": {
+        "path": [
+            [
+                15,
+                null
+            ],
+            [
+                15,
+                86
+            ],
+            [
+                14,
+                86
+            ],
+            [
+                10,
+                86
+            ],
+            [
+                10,
+                9
+            ],
+            [
+                9,
+                9
+            ],
+            [
+                22,
+                9
+            ],
+            [
+                22,
+                31
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                19,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 09:50:00",
+        "totalDistance": 7338.0,
+        "totalDuration": 572.2166666666667,
+        "totalDrivers": 3,
+        "payMax": 16.338,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 10.374301754385964
+    },
+    "125": {
+        "path": [],
+        "startTime": "2022-01-02 08:03:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "126": {
+        "path": [
+            [
+                3,
+                null
+            ],
+            [
+                3,
+                223
+            ],
+            [
+                58,
+                223
+            ],
+            [
+                58,
+                137
+            ],
+            [
+                14,
+                137
+            ],
+            [
+                14,
+                70
+            ],
+            [
+                15,
+                70
+            ],
+            [
+                46,
+                70
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                47,
+                271
+            ],
+            [
+                47,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:45:00",
+        "totalDistance": 13906.0,
+        "totalDuration": 1229.8,
+        "totalDrivers": 4,
+        "payMax": 25.906,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 18.696013636363638
+    },
+    "127": {
+        "path": [],
+        "startTime": "2022-01-02 11:09:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "128": {
+        "path": [],
+        "startTime": "2022-01-02 14:55:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "129": {
+        "path": [
+            [
+                60,
+                null
+            ],
+            [
+                60,
+                98
+            ],
+            [
+                14,
+                98
+            ],
+            [
+                15,
+                98
+            ],
+            [
+                4,
+                98
+            ],
+            [
+                4,
+                87
+            ],
+            [
+                8,
+                87
+            ],
+            [
+                47,
+                87
+            ],
+            [
+                47,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:38:00",
+        "totalDistance": 7801.0,
+        "totalDuration": 1411.2833333333333,
+        "totalDrivers": 2,
+        "payMax": 13.801,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 11.191277777777778
+    },
+    "130": {
+        "path": [],
+        "startTime": "2022-01-02 09:14:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "131": {
+        "path": [
+            [
+                5,
+                null
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                6,
+                109
+            ],
+            [
+                6,
+                94
+            ],
+            [
+                17,
+                94
+            ],
+            [
+                18,
+                94
+            ],
+            [
+                12,
+                94
+            ],
+            [
+                12,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 18:09:00",
+        "totalDistance": 7361.0,
+        "totalDuration": 487.3666666666667,
+        "totalDrivers": 2,
+        "payMax": 13.361,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 13.207
+    },
+    "132": {
+        "path": [
+            [
+                6,
+                null
+            ],
+            [
+                6,
+                266
+            ],
+            [
+                17,
+                266
+            ],
+            [
+                18,
+                266
+            ],
+            [
+                18,
+                158
+            ],
+            [
+                39,
+                158
+            ],
+            [
+                42,
+                158
+            ],
+            [
+                38,
+                158
+            ],
+            [
+                37,
+                158
+            ],
+            [
+                36,
+                158
+            ],
+            [
+                36,
+                195
+            ],
+            [
+                34,
+                195
+            ],
+            [
+                34,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:48:00",
+        "totalDistance": 6047.0,
+        "totalDuration": 1003.3333333333333,
+        "totalDrivers": 3,
+        "payMax": 15.047,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 11.254992833493443
+    },
+    "133": {
+        "path": [],
+        "startTime": "2022-01-02 16:06:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "134": {
+        "path": [],
+        "startTime": "2022-01-02 07:45:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "135": {
+        "path": [],
+        "startTime": "2022-01-02 11:54:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "136": {
+        "path": [
+            [
+                47,
+                null
+            ],
+            [
+                47,
+                177
+            ],
+            [
+                55,
+                177
+            ],
+            [
+                55,
+                197
+            ],
+            [
+                37,
+                197
+            ],
+            [
+                38,
+                197
+            ],
+            [
+                42,
+                197
+            ],
+            [
+                16,
+                197
+            ],
+            [
+                39,
+                197
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:28:00",
+        "totalDistance": 5852.0,
+        "totalDuration": 876.1333333333333,
+        "totalDrivers": 2,
+        "payMax": 11.852,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 7.950666666666667
+    },
+    "137": {
+        "path": [],
+        "startTime": "2022-01-02 14:02:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "138": {
+        "path": [
+            [
+                32,
+                null
+            ],
+            [
+                32,
+                149
+            ],
+            [
+                25,
+                149
+            ],
+            [
+                25,
+                74
+            ],
+            [
+                46,
+                74
+            ],
+            [
+                46,
+                150
+            ],
+            [
+                54,
+                150
+            ],
+            [
+                11,
+                150
+            ],
+            [
+                11,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:45:00",
+        "totalDistance": 6392.0,
+        "totalDuration": 893.8833333333333,
+        "totalDrivers": 3,
+        "payMax": 15.392,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 9.810656746031746
+    },
+    "139": {
+        "path": [
+            [
+                41,
+                null
+            ],
+            [
+                41,
+                95
+            ],
+            [
+                4,
+                95
+            ],
+            [
+                4,
+                221
+            ],
+            [
+                14,
+                221
+            ],
+            [
+                14,
+                63
+            ],
+            [
+                15,
+                63
+            ],
+            [
+                60,
+                63
+            ],
+            [
+                60,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:51:00",
+        "totalDistance": 5566.0,
+        "totalDuration": 1041.3833333333332,
+        "totalDrivers": 3,
+        "payMax": 14.565999999999999,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 9.55846111111111
+    },
+    "140": {
+        "path": [
+            [
+                20,
+                null
+            ],
+            [
+                20,
+                145
+            ],
+            [
+                51,
+                145
+            ],
+            [
+                51,
+                250
+            ],
+            [
+                66,
+                250
+            ],
+            [
+                66,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:26:00",
+        "totalDistance": 4161.0,
+        "totalDuration": 484.4,
+        "totalDrivers": 2,
+        "payMax": 10.161000000000001,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 9.181611111111112
+    },
+    "141": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                2
+            ],
+            [
+                14,
+                2
+            ],
+            [
+                15,
+                2
+            ],
+            [
+                43,
+                2
+            ],
+            [
+                43,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:38:00",
+        "totalDistance": 7091.0,
+        "totalDuration": 569.1666666666666,
+        "totalDrivers": 1,
+        "payMax": 10.091000000000001,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 4.330633333333333
+    },
+    "142": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                267
+            ],
+            [
+                14,
+                267
+            ],
+            [
+                15,
+                267
+            ],
+            [
+                7,
+                267
+            ],
+            [
+                8,
+                267
+            ],
+            [
+                27,
+                267
+            ],
+            [
+                27,
+                79
+            ],
+            [
+                6,
+                79
+            ],
+            [
+                6,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:02:00",
+        "totalDistance": 8945.0,
+        "totalDuration": 76.05,
+        "totalDrivers": 2,
+        "payMax": 14.945,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 8.98775
+    },
+    "143": {
+        "path": [
+            [
+                33,
+                null
+            ],
+            [
+                33,
+                186
+            ],
+            [
+                34,
+                186
+            ],
+            [
+                34,
+                125
+            ],
+            [
+                37,
+                125
+            ],
+            [
+                37,
+                284
+            ],
+            [
+                36,
+                284
+            ],
+            [
+                36,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:49:00",
+        "totalDistance": 3502.0,
+        "totalDuration": 78.73333333333333,
+        "totalDrivers": 3,
+        "payMax": 12.502,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 10.55735
+    },
+    "144": {
+        "path": [
+            [
+                60,
+                null
+            ],
+            [
+                60,
+                98
+            ],
+            [
+                14,
+                98
+            ],
+            [
+                14,
+                230
+            ],
+            [
+                7,
+                230
+            ],
+            [
+                17,
+                230
+            ],
+            [
+                18,
+                230
+            ],
+            [
+                18,
+                179
+            ],
+            [
+                39,
+                179
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:06:00",
+        "totalDistance": 6731.0,
+        "totalDuration": 1348.5166666666669,
+        "totalDrivers": 3,
+        "payMax": 15.731,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 12.202277777777777
+    },
+    "145": {
+        "path": [],
+        "startTime": "2022-01-02 18:31:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "146": {
+        "path": [
+            [
+                30,
+                null
+            ],
+            [
+                30,
+                255
+            ],
+            [
+                32,
+                255
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                8,
+                255
+            ],
+            [
+                17,
+                255
+            ],
+            [
+                18,
+                255
+            ],
+            [
+                18,
+                273
+            ],
+            [
+                41,
+                273
+            ],
+            [
+                41,
+                216
+            ],
+            [
+                19,
+                216
+            ],
+            [
+                19,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 04:45:00",
+        "totalDistance": 10432.0,
+        "totalDuration": 974.3333333333334,
+        "totalDrivers": 3,
+        "payMax": 19.432000000000002,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 14.123416666666667
+    },
+    "147": {
+        "path": [
+            [
+                24,
+                null
+            ],
+            [
+                24,
+                49
+            ],
+            [
+                22,
+                49
+            ],
+            [
+                22,
+                221
+            ],
+            [
+                27,
+                221
+            ],
+            [
+                8,
+                221
+            ],
+            [
+                6,
+                221
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                15,
+                35
+            ],
+            [
+                59,
+                35
+            ],
+            [
+                59,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:23:00",
+        "totalDistance": 7955.0,
+        "totalDuration": 891.6666666666666,
+        "totalDrivers": 3,
+        "payMax": 16.955,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 9.522177792207792
+    },
+    "148": {
+        "path": [],
+        "startTime": "2022-01-02 16:23:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "149": {
+        "path": [],
+        "startTime": "2022-01-02 09:49:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "150": {
+        "path": [
+            [
+                22,
+                null
+            ],
+            [
+                22,
+                7
+            ],
+            [
+                23,
+                7
+            ],
+            [
+                19,
+                7
+            ],
+            [
+                39,
+                7
+            ],
+            [
+                42,
+                7
+            ],
+            [
+                38,
+                7
+            ],
+            [
+                37,
+                7
+            ],
+            [
+                36,
+                7
+            ],
+            [
+                32,
+                7
+            ],
+            [
+                30,
+                7
+            ],
+            [
+                30,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:54:00",
+        "totalDistance": 9081.0,
+        "totalDuration": 90.01666666666665,
+        "totalDrivers": 1,
+        "payMax": 12.081,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 8.462
+    },
+    "151": {
+        "path": [],
+        "startTime": "2022-01-02 17:27:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "152": {
+        "path": [
+            [
+                54,
+                null
+            ],
+            [
+                54,
+                51
+            ],
+            [
+                11,
+                51
+            ],
+            [
+                53,
+                51
+            ],
+            [
+                53,
+                286
+            ],
+            [
+                56,
+                286
+            ],
+            [
+                56,
+                115
+            ],
+            [
+                14,
+                115
+            ],
+            [
+                14,
+                91
+            ],
+            [
+                58,
+                91
+            ],
+            [
+                58,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:29:00",
+        "totalDistance": 15077.0,
+        "totalDuration": 694.5500000000001,
+        "totalDrivers": 4,
+        "payMax": 27.076999999999998,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 14.662535714285715
+    },
+    "153": {
+        "path": [
+            [
+                27,
+                null
+            ],
+            [
+                27,
+                221
+            ],
+            [
+                8,
+                221
+            ],
+            [
+                6,
+                221
+            ],
+            [
+                4,
+                221
+            ],
+            [
+                14,
+                221
+            ],
+            [
+                15,
+                221
+            ],
+            [
+                15,
+                102
+            ],
+            [
+                13,
+                102
+            ],
+            [
+                13,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:27:00",
+        "totalDistance": 8541.0,
+        "totalDuration": 660.1333333333333,
+        "totalDrivers": 2,
+        "payMax": 14.541,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 8.507541230158731
+    },
+    "154": {
+        "path": [
+            [
+                44,
+                null
+            ],
+            [
+                44,
+                271
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                46,
+                113
+            ],
+            [
+                50,
+                113
+            ],
+            [
+                50,
+                65
+            ],
+            [
+                54,
+                65
+            ],
+            [
+                11,
+                65
+            ],
+            [
+                11,
+                254
+            ],
+            [
+                15,
+                254
+            ],
+            [
+                15,
+                39
+            ],
+            [
+                26,
+                39
+            ],
+            [
+                26,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:59:00",
+        "totalDistance": 8546.0,
+        "totalDuration": 820.1333333333333,
+        "totalDrivers": 5,
+        "payMax": 23.546,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 18.11328382352941
+    },
+    "155": {
+        "path": [],
+        "startTime": "2022-01-02 04:06:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "156": {
+        "path": [
+            [
+                36,
+                null
+            ],
+            [
+                36,
+                78
+            ],
+            [
+                37,
+                78
+            ],
+            [
+                37,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 23:44:00",
+        "totalDistance": 261.0,
+        "totalDuration": 100.76666666666667,
+        "totalDrivers": 1,
+        "payMax": 3.261,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 3.087
+    },
+    "157": {
+        "path": [
+            [
+                17,
+                null
+            ],
+            [
+                17,
+                255
+            ],
+            [
+                18,
+                255
+            ],
+            [
+                9,
+                255
+            ],
+            [
+                9,
+                9
+            ],
+            [
+                22,
+                9
+            ],
+            [
+                22,
+                31
+            ],
+            [
+                19,
+                31
+            ],
+            [
+                19,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 05:16:00",
+        "totalDistance": 4986.0,
+        "totalDuration": 846.2166666666667,
+        "totalDrivers": 3,
+        "payMax": 13.986,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 10.385701754385964
+    },
+    "158": {
+        "path": [],
+        "startTime": "2022-01-02 23:35:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 0.0
+    },
+    "159": {
+        "path": [
+            [
+                18,
+                null
+            ],
+            [
+                18,
+                274
+            ],
+            [
+                39,
+                274
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:36:00",
+        "totalDistance": 902.0,
+        "totalDuration": 31.183333333333334,
+        "totalDrivers": 1,
+        "payMax": 3.902,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 3.451
+    },
+    "160": {
+        "path": [
+            [
+                46,
+                null
+            ],
+            [
+                46,
+                253
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                17,
+                253
+            ],
+            [
+                18,
+                253
+            ],
+            [
+                18,
+                158
+            ],
+            [
+                39,
+                158
+            ],
+            [
+                42,
+                158
+            ],
+            [
+                38,
+                158
+            ],
+            [
+                37,
+                158
+            ],
+            [
+                36,
+                158
+            ],
+            [
+                35,
+                158
+            ],
+            [
+                35,
+                16
+            ],
+            [
+                70,
+                16
+            ],
+            [
+                70,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:08:00",
+        "totalDistance": 11262.0,
+        "totalDuration": 267.06666666666666,
+        "totalDrivers": 3,
+        "payMax": 20.262,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.685631512206037
+    },
+    "161": {
+        "path": [
+            [
+                37,
+                null
+            ],
+            [
+                37,
+                36
+            ],
+            [
+                36,
+                36
+            ],
+            [
+                36,
+                173
+            ],
+            [
+                25,
+                173
+            ],
+            [
+                3,
+                173
+            ],
+            [
+                1,
+                173
+            ],
+            [
+                1,
+                220
+            ],
+            [
+                2,
+                220
+            ],
+            [
+                12,
+                220
+            ],
+            [
+                17,
+                220
+            ],
+            [
+                18,
+                220
+            ],
+            [
+                6,
+                220
+            ],
+            [
+                41,
+                220
+            ],
+            [
+                41,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:27:00",
+        "totalDistance": 13698.0,
+        "totalDuration": 580.8666666666666,
+        "totalDrivers": 3,
+        "payMax": 22.698,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 13.950382936507935
+    },
+    "162": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                224
+            ],
+            [
+                46,
+                224
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                47,
+                271
+            ],
+            [
+                47,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 09:59:00",
+        "totalDistance": 2891.0,
+        "totalDuration": 795.8,
+        "totalDrivers": 2,
+        "payMax": 8.891,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 7.8254
+    },
+    "163": {
+        "path": [
+            [
+                38,
+                null
+            ],
+            [
+                38,
+                195
+            ],
+            [
+                37,
+                195
+            ],
+            [
+                36,
+                195
+            ],
+            [
+                36,
+                12
+            ],
+            [
+                25,
+                12
+            ],
+            [
+                3,
+                12
+            ],
+            [
+                3,
+                30
+            ],
+            [
+                1,
+                30
+            ],
+            [
+                2,
+                30
+            ],
+            [
+                2,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 19:31:00",
+        "totalDistance": 7177.0,
+        "totalDuration": 1274.0666666666668,
+        "totalDrivers": 3,
+        "payMax": 16.177,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 10.098527777777777
+    },
+    "164": {
+        "path": [
+            [
+                14,
+                null
+            ],
+            [
+                14,
+                70
+            ],
+            [
+                15,
+                70
+            ],
+            [
+                46,
+                70
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                47,
+                271
+            ],
+            [
+                47,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:15:00",
+        "totalDistance": 3663.0,
+        "totalDuration": 1019.8,
+        "totalDrivers": 2,
+        "payMax": 9.663,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 6.65665
+    },
+    "165": {
+        "path": [
+            [
+                40,
+                null
+            ],
+            [
+                40,
+                216
+            ],
+            [
+                41,
+                216
+            ],
+            [
+                41,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 09:45:00",
+        "totalDistance": 521.0,
+        "totalDuration": 672.55,
+        "totalDrivers": 1,
+        "payMax": 3.521,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 3.13025
+    },
+    "166": {
+        "path": [],
+        "startTime": "2022-01-02 18:05:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "167": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                195
+            ],
+            [
+                39,
+                195
+            ],
+            [
+                42,
+                195
+            ],
+            [
+                38,
+                195
+            ],
+            [
+                37,
+                195
+            ],
+            [
+                36,
+                195
+            ],
+            [
+                34,
+                195
+            ],
+            [
+                34,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 16:43:00",
+        "totalDistance": 5160.0,
+        "totalDuration": 228.33333333333331,
+        "totalDrivers": 1,
+        "payMax": 8.16,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 4.9819
+    },
+    "168": {
+        "path": [],
+        "startTime": "2022-01-02 01:25:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "169": {
+        "path": [
+            [
+                43,
+                null
+            ],
+            [
+                43,
+                18
+            ],
+            [
+                46,
+                18
+            ],
+            [
+                46,
+                255
+            ],
+            [
+                6,
+                255
+            ],
+            [
+                6,
+                164
+            ],
+            [
+                67,
+                164
+            ],
+            [
+                67,
+                199
+            ],
+            [
+                14,
+                199
+            ],
+            [
+                14,
+                228
+            ],
+            [
+                15,
+                228
+            ],
+            [
+                28,
+                228
+            ],
+            [
+                28,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 14:50:00",
+        "totalDistance": 8584.0,
+        "totalDuration": 541.0166666666667,
+        "totalDrivers": 5,
+        "payMax": 23.584,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 18.105452380952382
+    },
+    "170": {
+        "path": [
+            [
+                65,
+                null
+            ],
+            [
+                65,
+                60
+            ],
+            [
+                32,
+                60
+            ],
+            [
+                31,
+                60
+            ],
+            [
+                31,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 16:37:00",
+        "totalDistance": 2864.0,
+        "totalDuration": 637.9,
+        "totalDrivers": 1,
+        "payMax": 5.864,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 5.864
+    },
+    "171": {
+        "path": [
+            [
+                18,
+                null
+            ],
+            [
+                18,
+                258
+            ],
+            [
+                6,
+                258
+            ],
+            [
+                6,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 12:53:00",
+        "totalDistance": 699.0,
+        "totalDuration": 162.93333333333334,
+        "totalDrivers": 1,
+        "payMax": 3.699,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 3.17475
+    },
+    "172": {
+        "path": [],
+        "startTime": "2022-01-02 01:26:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 0.0
+    },
+    "173": {
+        "path": [],
+        "startTime": "2022-01-02 22:25:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "174": {
+        "path": [
+            [
+                51,
+                null
+            ],
+            [
+                51,
+                250
+            ],
+            [
+                66,
+                250
+            ],
+            [
+                66,
+                28
+            ],
+            [
+                3,
+                28
+            ],
+            [
+                3,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:46:00",
+        "totalDistance": 2364.0,
+        "totalDuration": 1165.4666666666667,
+        "totalDrivers": 2,
+        "payMax": 8.364,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 7.384611111111111
+    },
+    "175": {
+        "path": [
+            [
+                62,
+                null
+            ],
+            [
+                62,
+                249
+            ],
+            [
+                54,
+                249
+            ],
+            [
+                54,
+                55
+            ],
+            [
+                11,
+                55
+            ],
+            [
+                46,
+                55
+            ],
+            [
+                46,
+                253
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                6,
+                164
+            ],
+            [
+                67,
+                164
+            ],
+            [
+                67,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:41:00",
+        "totalDistance": 10750.0,
+        "totalDuration": 1033.6499999999999,
+        "totalDrivers": 4,
+        "payMax": 22.75,
+        "weightName": "weightPriortyDistanceTimeDriver",
+        "payActual": 15.828214285714285
+    },
+    "176": {
+        "path": [],
+        "startTime": "2022-01-02 07:50:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "177": {
+        "path": [
+            [
+                66,
+                null
+            ],
+            [
+                66,
+                162
+            ],
+            [
+                24,
+                162
+            ],
+            [
+                22,
+                162
+            ],
+            [
+                22,
+                106
+            ],
+            [
+                19,
+                106
+            ],
+            [
+                19,
+                97
+            ],
+            [
+                27,
+                97
+            ],
+            [
+                17,
+                97
+            ],
+            [
+                6,
+                97
+            ],
+            [
+                6,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 00:05:00",
+        "totalDistance": 9440.0,
+        "totalDuration": 1127.4499999999998,
+        "totalDrivers": 3,
+        "payMax": 18.439999999999998,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 9.777258029604804
+    },
+    "178": {
+        "path": [],
+        "startTime": "2022-01-02 22:15:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "179": {
+        "path": [
+            [
+                31,
+                null
+            ],
+            [
+                31,
+                105
+            ],
+            [
+                15,
+                105
+            ],
+            [
+                15,
+                2
+            ],
+            [
+                43,
+                2
+            ],
+            [
+                43,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:19:00",
+        "totalDistance": 7394.0,
+        "totalDuration": 588.1666666666667,
+        "totalDrivers": 2,
+        "payMax": 13.394,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 7.995333333333333
+    },
+    "180": {
+        "path": [],
+        "startTime": "2022-01-02 04:14:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "181": {
+        "path": [
+            [
+                44,
+                null
+            ],
+            [
+                44,
+                271
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                46,
+                188
+            ],
+            [
+                41,
+                188
+            ],
+            [
+                41,
+                292
+            ],
+            [
+                40,
+                292
+            ],
+            [
+                40,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:12:00",
+        "totalDistance": 1579.0,
+        "totalDuration": 408.8666666666667,
+        "totalDrivers": 3,
+        "payMax": 10.579,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.254404166666667
+    },
+    "182": {
+        "path": [
+            [
+                25,
+                null
+            ],
+            [
+                25,
+                170
+            ],
+            [
+                37,
+                170
+            ],
+            [
+                37,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:00:00",
+        "totalDistance": 2465.0,
+        "totalDuration": 1372.3,
+        "totalDrivers": 1,
+        "payMax": 5.465,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.1896153846153847
+    },
+    "183": {
+        "path": [
+            [
+                41,
+                null
+            ],
+            [
+                41,
+                253
+            ],
+            [
+                6,
+                253
+            ],
+            [
+                6,
+                97
+            ],
+            [
+                8,
+                97
+            ],
+            [
+                8,
+                184
+            ],
+            [
+                27,
+                184
+            ],
+            [
+                27,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:50:00",
+        "totalDistance": 2895.0,
+        "totalDuration": 572.3333333333334,
+        "totalDrivers": 3,
+        "payMax": 11.895,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 10.90275
+    },
+    "184": {
+        "path": [],
+        "startTime": "2022-01-02 17:38:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "185": {
+        "path": [],
+        "startTime": "2022-01-02 17:42:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "186": {
+        "path": [
+            [
+                19,
+                null
+            ],
+            [
+                19,
+                106
+            ],
+            [
+                39,
+                106
+            ],
+            [
+                39,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:37:00",
+        "totalDistance": 1542.0,
+        "totalDuration": 477.25,
+        "totalDrivers": 1,
+        "payMax": 4.542,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 3.1542
+    },
+    "187": {
+        "path": [
+            [
+                5,
+                null
+            ],
+            [
+                5,
+                132
+            ],
+            [
+                46,
+                132
+            ],
+            [
+                46,
+                294
+            ],
+            [
+                32,
+                294
+            ],
+            [
+                32,
+                105
+            ],
+            [
+                31,
+                105
+            ],
+            [
+                15,
+                105
+            ],
+            [
+                15,
+                225
+            ],
+            [
+                69,
+                225
+            ],
+            [
+                69,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:00:00",
+        "totalDistance": 13343.0,
+        "totalDuration": 497.83333333333337,
+        "totalDrivers": 4,
+        "payMax": 25.343,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 22.291
+    },
+    "188": {
+        "path": [
+            [
+                18,
+                null
+            ],
+            [
+                18,
+                274
+            ],
+            [
+                39,
+                274
+            ],
+            [
+                39,
+                94
+            ],
+            [
+                6,
+                94
+            ],
+            [
+                6,
+                35
+            ],
+            [
+                4,
+                35
+            ],
+            [
+                14,
+                35
+            ],
+            [
+                14,
+                91
+            ],
+            [
+                58,
+                91
+            ],
+            [
+                58,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 22:59:00",
+        "totalDistance": 9146.0,
+        "totalDuration": 544.5500000000001,
+        "totalDrivers": 4,
+        "payMax": 21.146,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 13.682907792207793
+    },
+    "189": {
+        "path": [
+            [
+                68,
+                null
+            ],
+            [
+                68,
+                2
+            ],
+            [
+                14,
+                2
+            ],
+            [
+                15,
+                2
+            ],
+            [
+                15,
+                102
+            ],
+            [
+                13,
+                102
+            ],
+            [
+                13,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:23:00",
+        "totalDistance": 8903.0,
+        "totalDuration": 844.1333333333334,
+        "totalDrivers": 2,
+        "payMax": 14.903,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 9.1753
+    },
+    "190": {
+        "path": [
+            [
+                58,
+                null
+            ],
+            [
+                58,
+                166
+            ],
+            [
+                30,
+                166
+            ],
+            [
+                32,
+                166
+            ],
+            [
+                32,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 11:34:00",
+        "totalDistance": 2964.0,
+        "totalDuration": 495.45,
+        "totalDrivers": 1,
+        "payMax": 5.964,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 3.2541
+    },
+    "191": {
+        "path": [
+            [
+                61,
+                null
+            ],
+            [
+                61,
+                18
+            ],
+            [
+                14,
+                18
+            ],
+            [
+                15,
+                18
+            ],
+            [
+                15,
+                63
+            ],
+            [
+                60,
+                63
+            ],
+            [
+                60,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:59:00",
+        "totalDistance": 5176.0,
+        "totalDuration": 1333.3833333333332,
+        "totalDrivers": 2,
+        "payMax": 11.176,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 6.539477777777778
+    },
+    "192": {
+        "path": [],
+        "startTime": "2022-01-02 04:49:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDriverDistance",
+        "payActual": 0.0
+    },
+    "193": {
+        "path": [
+            [
+                42,
+                null
+            ],
+            [
+                42,
+                214
+            ],
+            [
+                16,
+                214
+            ],
+            [
+                39,
+                214
+            ],
+            [
+                17,
+                214
+            ],
+            [
+                18,
+                214
+            ],
+            [
+                18,
+                255
+            ],
+            [
+                9,
+                255
+            ],
+            [
+                9,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 02:46:00",
+        "totalDistance": 5508.0,
+        "totalDuration": 831.7666666666668,
+        "totalDrivers": 2,
+        "payMax": 11.508,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 10.5515
+    },
+    "194": {
+        "path": [],
+        "startTime": "2022-01-02 11:50:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyTimeDistanceDriver",
+        "payActual": 0.0
+    },
+    "195": {
+        "path": [],
+        "startTime": "2022-01-02 23:17:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 0.0
+    },
+    "196": {
+        "path": [
+            [
+                14,
+                null
+            ],
+            [
+                14,
+                95
+            ],
+            [
+                15,
+                95
+            ],
+            [
+                41,
+                95
+            ],
+            [
+                41,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 03:36:00",
+        "totalDistance": 3504.0,
+        "totalDuration": 757.15,
+        "totalDrivers": 1,
+        "payMax": 6.504,
+        "weightName": "weightPriortyDriverTimeDistance",
+        "payActual": 3.5001964285714284
+    },
+    "197": {
+        "path": [
+            [
+                56,
+                null
+            ],
+            [
+                56,
+                300
+            ],
+            [
+                14,
+                300
+            ],
+            [
+                15,
+                300
+            ],
+            [
+                15,
+                70
+            ],
+            [
+                46,
+                70
+            ],
+            [
+                46,
+                271
+            ],
+            [
+                47,
+                271
+            ],
+            [
+                47,
+                177
+            ],
+            [
+                55,
+                177
+            ],
+            [
+                55,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 07:45:00",
+        "totalDistance": 9904.0,
+        "totalDuration": 1357.05,
+        "totalDrivers": 4,
+        "payMax": 21.904,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 15.526733333333333
+    },
+    "198": {
+        "path": [],
+        "startTime": "2022-01-02 12:46:00",
+        "totalDistance": 0,
+        "totalDuration": 0,
+        "totalDrivers": 0,
+        "payMax": 0.0,
+        "weightName": "weightPriortyDistanceDriverTime",
+        "payActual": 0.0
+    },
+    "199": {
+        "path": [
+            [
+                20,
+                null
+            ],
+            [
+                20,
+                152
+            ],
+            [
+                21,
+                152
+            ],
+            [
+                21,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 06:58:00",
+        "totalDistance": 252.0,
+        "totalDuration": 1259.4833333333333,
+        "totalDrivers": 1,
+        "payMax": 3.252,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 3.01575
+    },
+    "200": {
+        "path": [
+            [
+                5,
+                null
+            ],
+            [
+                5,
+                109
+            ],
+            [
+                6,
+                109
+            ],
+            [
+                6,
+                226
+            ],
+            [
+                14,
+                226
+            ],
+            [
+                15,
+                226
+            ],
+            [
+                15,
+                242
+            ],
+            [
+                54,
+                242
+            ],
+            [
+                54,
+                null
+            ]
+        ],
+        "startTime": "2022-01-02 20:35:00",
+        "totalDistance": 3790.0,
+        "totalDuration": 1397.2166666666667,
+        "totalDrivers": 3,
+        "payMax": 12.79,
+        "weightName": "weightPriortyDriverDistanceTime",
+        "payActual": 9.7472
+    }
+}

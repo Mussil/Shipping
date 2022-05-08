@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files">
-      <change afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/100" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/200" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/300" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/400" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/500" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -404,7 +397,13 @@
       <option name="presentableId" value="LOCAL‎00033" />
       <updated>1652032238118</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL‎00034" summary="add files">
+      <created>1652032769588</created>
+      <option name="number" value="LOCAL‎00034" />
+      <option name="presentableId" value="LOCAL‎00034" />
+      <updated>1652032769588</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
