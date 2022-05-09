@@ -6,6 +6,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/css/menu.css">
+  <link rel="stylesheet" href="static/css/speedBtn.css">
+  
 </head>
 <body>
 
@@ -17,17 +20,51 @@
             <div class="form_div">
 
                 <!--  -->
-                <label>Drivers amount :</label>
+                <label class="menu-label">Drivers amount :</label>
                 <div class="range-wrap">
                     <input type="range" class="range" name="drivers-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="500"><br/>
                     <output class="bubble"></output>
                 </div>
 
                 <!--  -->
-                <label>Parcels amount :</label>
+                <label class="menu-label">Parcels amount :</label>
                 <div class="range-wrap">
                     <input type="range" class="range" name="parcels-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="1000"><br/>
                     <output class="bubble"></output>
+                </div>
+
+                <!--  -->
+                <label class="menu-label">Simulation speed :</label>
+
+                <div class="speeds-wrap">
+
+                    <label class="speed-wrap">
+                        <input type="radio" name="speed" class="radio-speed" id="speed-0.5" value="0.5">
+                            <div class="design">
+                                0.5
+                            </div>
+                    </label>
+
+                    <label class="speed-wrap">
+                        <input type="radio" name="speed" class="radio-speed" id="speed-1" value="1" checked>
+                            <div class="design">
+                                1
+                            </div>
+                    </label>
+
+                    <label class="speed-wrap">
+                        <input type="radio" name="speed" class="radio-speed" id="speed-1.5" value="1.5">
+                            <div class="design">
+                                1.5
+                            </div>
+                    </label>
+
+                    <label class="speed-wrap">
+                        <input type="radio" name="speed" class="radio-speed" id="speed-2" value="2">
+                            <div class="design">
+                                2
+                            </div>
+                    </label>
                 </div>
 
                 <button class="submit_class" type="submit" form="login_form">NEXT</button>

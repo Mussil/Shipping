@@ -1,12 +1,15 @@
 from flask import Flask, request, render_template, request
 from flasker.SPutils import sp
-from flasker.helpers import getDemoFiles
+from flasker.helpers import getFiles
 
 
 app = Flask(__name__)
 
-
 @app.route('/')
+def homepage():
+    return render_template('homepage.html')
+
+@app.route('/menu1')
 def start():
     return render_template('menu1.html')
 
@@ -18,7 +21,7 @@ def result():
 
     args = request.args.to_dict()
     print("----", args)
-    drivers, results, parcels = getDemoFiles()
+    drivers, results, parcels = getFiles(args['driversNum'], args['parcelsNum'], args['userChoice'])
     return render_template('map.html', stations=sp.stations, paths=drivers, results=results)
 
 

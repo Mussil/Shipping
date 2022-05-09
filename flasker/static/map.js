@@ -6,7 +6,7 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 15, 25, 0, 0); // 2.1.2022
+let INITIAL_DATE = new Date(2021, 12, 2, 0, 0, 0, 0); // 2.1.2022
 const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
@@ -68,7 +68,7 @@ document.getElementById('end-button').addEventListener('click', function(){
         focusConfirm: false,
         focusCancel: true,
       }, function(){
-            window.location.href = "/";
+            window.location.href = "/menu1";
     });
 });
 
@@ -556,12 +556,9 @@ async function main(){
     updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels);
     clockTime();
 
-    // console.table(stations);
-
     setInterval(() => {
 
         INITIAL_DATE = add_minutes(INITIAL_DATE, 1);
-        // console.log(INITIAL_DATE, '^^^^^^^^^^^^^^');
 
         refreshRoutes(routes, activeDrivers, activeParcels);
         refreshParcels(results, activeParcels, routes);
@@ -569,10 +566,6 @@ async function main(){
         
         updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels);
         clockTime();
-        
-        // console.log('activeParcels:', activeParcels, '---------');
-        // console.log('activeDrivers:', activeDrivers, '^^^^^^^^^^^');
-        // console.log(arrivedSuccessfullyParcels, '++++');
 
     }, 1000 * MIN_TO_SEC_RATIO);   
 

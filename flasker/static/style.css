@@ -61,10 +61,9 @@ main {
 .info_div {
   border: 2px solid rgb(86, 227, 223);
   width: 50%;
-  border-radius: 1px;
+  border-radius: 4px;
   background-color: white;
   padding: 8px 20px;
-  display: block;
   margin: auto;
   margin-top: 10px;
 }
