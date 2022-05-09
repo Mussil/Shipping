@@ -1,0 +1,21 @@
+.speed-wrap{
+
+}
+
+.speed-wrap .radio-speed{
+    display: none;
+}
+
+.speed-wrap .design{
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.speed-wrap .radio-speed:checked ~.design{
+    background: rgb(86, 227, 223);
+}

@@ -1,0 +1,29 @@
+.radio-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 15px 20px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .radio {
+    display: none;
+  }
+  
+  .design {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    outline-offset: 3px;
+    outline: 3px solid #888888;
+    margin-right: 20px;
+  }
+  
+  .radio:checked~.design {
+    outline-color: rgb(86, 227, 223);
+    background: rgb(86, 227, 223);
+  }
+  
+  .radio:checked~.value {
+    color: rgb(86, 227, 223);
+  }
+  

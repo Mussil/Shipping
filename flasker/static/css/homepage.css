@@ -1,0 +1,49 @@
+body{
+    overflow: hidden;
+}
+.video{
+    width: 100%;
+    /* -webkit-filter: blur(2px); */
+    height: 100%;
+}
+.video-wrapper{
+    width: 100vw;
+    height: 100%;
+    position: relative;
+}
+.video-wrapper .video-title{
+    position: fixed;
+    top:3vw;
+    right:0;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-size: 90px;
+    font-family: 'Segoe UI', sans-serif;
+}
+.video-wrapper .start-btn{
+    position: fixed;
+    top:27vw;
+    right:50%;
+    transform: translate(50%,0%);
+    color:white;
+    font-size: 50px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: black;
+    border-radius: 80px;
+    font-weight: bold;
+    padding: 2.9vw 22vw; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.video-wrapper .start-btn:hover{
+    animation: pulsate 1s ease-in-out;
+}
+
+@keyframes pulsate {
+    0%{
+      box-shadow:0 0 25px blue, 0 0 50px rgb(35, 196, 78);
+    }
+}
+  
