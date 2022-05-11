@@ -1,97 +1,118 @@
 #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  .map-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #fff;
-    margin-right: 20px;
-    font-family: sans-serif;
-    overflow: auto;
-    border-radius: 3px;
-  }
-  #clock {
-    padding: 10px;
-    top: -8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    height: 20px;
-    margin-top: 20px;
-    right: 30px;
-    width: 8%;
-    font-size: small;
-    font-family: "Orbitron", sans-serif;
-    color: white;
-    background-color: black;
-  }
-  #active-data {
-    display: block;
-    position: absolute;
-    bottom: 30px;
-    left: 10px;
-    padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    font-size: 11px;
-    line-height: 18px;
-    border-radius: 3px;
-    max-height: 50%;
-    max-width: 25%;
-    overflow: auto;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-  }
-  #active-parcels {
-    padding: 10px;
-    height: 25%;
-    margin-top: 40px;
-    margin-bottom: 150px;
-    color: #fff;
-    left: 10px;
-    max-width: 25%;
-    font-size: 11px;
-    overflow: auto;
-    word-wrap: break-word;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  #parcels-in-system {
-    padding: 10px;
-    height: 15%;
-    margin-top: 40px;
-    margin-bottom: 365px;
-    color: #fff;
-    left: 10px;
-    max-width: 25%;
-    overflow: auto;
-    word-wrap: break-word;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .map-overlay .map-table{
-    border: 0.5px solid white;
-    border-collapse: collapse;
-    padding: 6px;
-    text-align: center;
-    color: white;
-  }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
-  .map-overlay .map-table .td-map{
-    border: 0.5px solid white;
-    border-collapse: collapse;
-    padding: 6px;
-    text-align: center;
-    color: white;
-  }
+.data-wrapper {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  bottom: 0.52083vw;
+  left: 0.52083vw;
+}
 
-  #end-button {
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      left: 10px;
-      margin-bottom: 575px;
-      border: 1px solid rgba(0, 0, 0, 0.505);
-  }
-  
+.map-overlay {
+  background: #fff;
+  margin-right: 1.04167vw;
+  font-family: sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+.map-overlay#clock {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: vw_szie(10, 1920);
+  top: -0.41667vw;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  height: 1.04167vw;
+  margin-top: 1.04167vw;
+  right: 1.5625vw;
+  width: 8%;
+  font-size: small;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  background-color: black;
+}
+
+.map-overlay#active-data {
+  display: block;
+  padding: 0.26042vw 0.52083vw;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 3px;
+  height: 100px;
+  max-width: 25vw;
+  overflow: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.map-overlay#active-parcels {
+  padding: 0.52083vw;
+  height: 170px;
+  color: #fff;
+  max-width: 25vw;
+  font-size: 12px;
+  overflow: auto;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  margin-bottom: 2.08333vw;
+}
+
+.map-overlay#parcels-in-system {
+  padding: 0.52083vw;
+  height: 150px;
+  color: #fff;
+  max-width: 25vw;
+  overflow: auto;
+  word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  margin-bottom: 2.08333vw;
+}
+
+.map-overlay#end-button {
+  cursor: pointer;
+  width: 30px;
+  height: 26px;
+  position: fixed;
+  top: 118px;
+  left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.505);
+}
+
+.map-overlay .map-table {
+  border: 0.5px solid white;
+  border-collapse: collapse;
+  padding: 0.3125vw;
+  text-align: center;
+  color: white;
+}
+
+.map-overlay .map-table .td-map {
+  border: 0.5px solid white;
+  border-collapse: collapse;
+  padding: 0.3125vw;
+  text-align: center;
+  color: white;
+}

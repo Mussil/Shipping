@@ -79,3 +79,12 @@ def getFiles(numDrivers,numParcels,userChoice):
     with open(f'{path}/parcelsDB/{numParcels}.json') as json_file:
         parcels = json.load(json_file, object_hook=convertStrToDateJSForamt)
     return drivers,results,parcels
+
+def convertSpeedToRatio(speed):
+    if speed == '0.5': #7
+        return 7
+    elif speed == '1': #5
+        return 5
+    elif speed == '1.5': #3
+        return 3
+    return 1

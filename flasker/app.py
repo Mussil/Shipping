@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, request
 from flasker.SPutils import sp
-from flasker.helpers import getFiles
+from flasker.helpers import getFiles, convertSpeedToRatio
 
 
 app = Flask(__name__)
@@ -8,6 +8,10 @@ app = Flask(__name__)
 @app.route('/')
 def homepage():
     return render_template('homepage.html')
+
+@app.route('/introduction')
+def intro():
+    return render_template('introduction.html')
 
 @app.route('/menu1')
 def start():
@@ -21,12 +25,13 @@ def result():
 
     args = request.args.to_dict()
     print("----", args)
+
     drivers, results, parcels = getFiles(args['driversNum'], args['parcelsNum'], args['userChoice'])
-    return render_template('map.html', stations=sp.stations, paths=drivers, results=results)
+    return render_template('map.html', stations=sp.stations, paths=drivers, results=results, speedRatio=convertSpeedToRatio(args['speed']))
 
 
 @app.route('/menu2', methods=['POST'])
 def end():
     result = request.form.to_dict()
     print(result)
-    return render_template('menu2.html',driver_num=result["drivers-amount"],parcels_num=result["parcels-amount"])
+    return render_template('menu2.html',driver_num=result["drivers-amount"],parcels_num=result["parcels-amount"],speed=result["speed"])

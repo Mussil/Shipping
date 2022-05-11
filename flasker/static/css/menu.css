@@ -27,9 +27,5 @@
     display: flex;
     justify-content: space-between;
     width: 75%;
-    margin: 0 auto;
-}
-
-.menu-label{
-    margin-bottom: 100px;
+    margin: 20px auto 15px;
 }

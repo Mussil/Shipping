@@ -23,25 +23,25 @@
 </head>
 <body>
     
-    <div id="map" data-stations='{{stations|tojson}}' data-routes='{{paths|tojson}}' data-results='{{results|tojson}}'></div>
+    <div id="map" data-stations='{{stations|tojson}}' data-routes='{{paths|tojson}}' data-results='{{results|tojson}}' data-speed='{{speedRatio|tojson}}'></div>
     <div class="map-overlay" id="clock"></div>
 
-    <div class="map-overlay" id="active-data"></div>
+    <div class="data-wrapper">
+      <div class="map-overlay" id="active-data"></div>
 
-    <div class="map-overlay" id="active-parcels">
-      <table id="myTable" class="map-table">
-        <tr>
-          <td class="td-map">Parcel</td>
-          <td class="td-map">Start time</td>
-          <td class="td-map">End time</td>
-          <td class="td-map">Total distance</td>
-          <td class="td-map">Total drivers</td>
-        </tr>
-      </table>
-    </div>
-    
-    <div class="map-overlay" id="parcels-in-system"></div>
-
+      <div class="map-overlay" id="active-parcels">
+        <table id="myTable" class="map-table">
+          <tr>
+            <td class="td-map">Parcel</td>
+            <td class="td-map">Start time</td>
+            <td class="td-map">End time</td>
+            <td class="td-map">Total distance</td>
+            <td class="td-map">Total drivers</td>
+          </tr>
+        </table>
+      </div>
+      <div class="map-overlay" id="parcels-in-system"></div>
+  </div>
     <button class="map-overlay" id="end-button">🖐</button>
 
     <script src="static/map.js"></script>

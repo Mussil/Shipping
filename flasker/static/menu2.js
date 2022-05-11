@@ -4,6 +4,9 @@ console.log(drivers_num);
 var parcels_num = JSON.parse(document.getElementById("mydiv").dataset.parcels);
 console.log(parcels_num);
 
+var speed = JSON.parse(document.getElementById("mydiv").dataset.speed);
+console.log(speed);
+
 var user_choice = "random";
 
 const user_choice_a = ['Time', 'Drivers', 'Distance'];
@@ -59,7 +62,7 @@ function sendUserInfo() {
 
     request.onreadystatechange = function() {
         if(request.readyState == XMLHttpRequest.DONE && request.status == 200) {
-          window.location.href = `/map?driversNum=${drivers_num}&parcelsNum=${parcels_num}&userChoice=${user_choice}`;
+          window.location.href = `/map?driversNum=${drivers_num}&parcelsNum=${parcels_num}&userChoice=${user_choice}&speed=${speed}`;
         }
     }
 

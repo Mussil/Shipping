@@ -1,0 +1,106 @@
+@import "./main.scss";
+
+$current:$desktop_max;
+
+#map{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.data-wrapper{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    bottom: vw_size(10, $current);
+    left:vw_size(10, $current);
+}
+.map-overlay {
+  
+    background: #fff;
+    margin-right: vw_size(20, $current);
+    font-family: sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+    &#clock {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: vw_szie(10, $current);
+        top: vw_size(-8, $current);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        height: vw_size(20, $current);
+        margin-top: vw_size(20, $current);
+        right: vw_size(30, $current);
+        width: 8%;
+        font-size: small;
+        font-family: "Orbitron", sans-serif;
+        color: white;
+        background-color: black;
+      }
+     &#active-data {
+        display: block;
+        padding: vw_size(5, $current) vw_size(10, $current);
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 12px;
+        line-height: 18px;
+        border-radius: 3px;
+        height: 100px;
+        max-width: 25vw;
+        overflow: auto;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        order:3;
+      }
+      &#active-parcels {
+        padding: vw_size(10, $current);
+        height: 170px;
+        color: #fff;
+        max-width:25vw;
+        font-size: 12px;
+        overflow: auto;
+        word-wrap: break-word;
+        background: rgba(0, 0, 0, 0.5);
+        order:2;
+        margin-bottom: vw_size(40, $current);
+
+      }
+      &#parcels-in-system {
+        padding: vw_size(10, $current);
+        height: 150px;
+        color: #fff;
+        max-width: 25vw;
+        overflow: auto;
+        word-wrap: break-word;
+        background: rgba(0, 0, 0, 0.5);
+        order:1;
+        margin-bottom: vw_size(40, $current);
+      }
+      &#end-button {
+          cursor: pointer;
+          width: 30px;
+          height: 26px;
+          position: fixed;
+          top: 118px;
+          left: 10px; 
+          border: 1px solid rgba(0, 0, 0, 0.505);
+      }
+      
+      .map-table{
+        border: 0.5px solid white;
+        border-collapse: collapse;
+        padding: vw_size(6, $current);
+        text-align: center;
+        color: white;
+        .td-map{
+            border: 0.5px solid white;
+            border-collapse: collapse;
+            padding: vw_size(6, $current);
+            text-align: center;
+            color: white;
+          }
+      }
+
+  }
+

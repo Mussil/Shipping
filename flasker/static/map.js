@@ -7,7 +7,7 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
 let INITIAL_DATE = new Date(2021, 12, 2, 0, 0, 0, 0); // 2.1.2022
-const MIN_TO_SEC_RATIO = 1; //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
+const MIN_TO_SEC_RATIO = JSON.parse(document.getElementById("map").dataset.speed); //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
 let map = L.mapbox.map('map')
@@ -52,6 +52,7 @@ document.getElementById('end-button').addEventListener('click', function(){
             return (getParcelFinishedTime(routes, p, parcels) - parcels[p].startTime)/1000;
         }
     });
+    
     avgParcelTime = avgParcelTime.filter(time => time != undefined);
     avgParcelTime = avgParcelTime.reduce((a,b) => a + b, 0) / avgParcelTime.length;
     HMSObj = convertHMS(avgParcelTime);
