@@ -8,12 +8,13 @@
 
 .speed-wrap .design{
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid rgb(86, 227, 223);
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color:darkcyan;
 }
 
 .speed-wrap .radio-speed:checked ~.design{

@@ -25,6 +25,7 @@
     
     <div id="map" data-stations='{{stations|tojson}}' data-routes='{{paths|tojson}}' data-results='{{results|tojson}}' data-speed='{{speedRatio|tojson}}'></div>
     <div class="map-overlay" id="clock"></div>
+    <div class="map-overlay" id="date"></div>
 
     <div class="data-wrapper">
       <div class="map-overlay" id="active-data"></div>
@@ -37,6 +38,7 @@
             <td class="td-map">End time</td>
             <td class="td-map">Total distance</td>
             <td class="td-map">Total drivers</td>
+            <td class="td-map">Total cost</td>
           </tr>
         </table>
       </div>
@@ -44,7 +46,7 @@
   </div>
     <button class="map-overlay" id="end-button">🖐</button>
 
-    <script src="static/map.js"></script>
+    <script src="static/js/map.js"></script>
   
 </body>
 </html>

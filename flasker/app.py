@@ -13,7 +13,7 @@ def homepage():
 def intro():
     return render_template('introduction.html')
 
-@app.route('/menu1')
+@app.route('/simulation-details')
 def start():
     return render_template('menu1.html')
 
@@ -30,7 +30,7 @@ def result():
     return render_template('map.html', stations=sp.stations, paths=drivers, results=results, speedRatio=convertSpeedToRatio(args['speed']))
 
 
-@app.route('/menu2', methods=['POST'])
+@app.route('/drivers-details', methods=['POST'])
 def end():
     result = request.form.to_dict()
     print(result)

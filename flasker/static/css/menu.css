@@ -26,6 +26,6 @@
 .speeds-wrap{
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 50%;
     margin: 20px auto 15px;
 }
