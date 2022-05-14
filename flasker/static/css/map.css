@@ -4,7 +4,9 @@
   bottom: 0;
   width: 100%;
 }
-
+h4{
+  font-family: "Comic Sans MS", "Comic Sans";
+}
 .data-wrapper {
   position: fixed;
   display: -webkit-box;
@@ -77,6 +79,7 @@
 .map-overlay#active-data {
   display: block;
   padding: 0.26042vw 0.52083vw;
+  margin-bottom: 2vh;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 12px;
@@ -90,6 +93,7 @@
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
 
 .map-overlay#active-parcels {
@@ -105,6 +109,7 @@
       -ms-flex-order: 2;
           order: 2;
   margin-bottom: 2.08333vw;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
 
 .map-overlay#parcels-in-system {
@@ -119,6 +124,7 @@
       -ms-flex-order: 1;
           order: 1;
   margin-bottom: 2.08333vw;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
 
 .map-overlay#end-button {
@@ -137,6 +143,7 @@
   padding: 0.3125vw;
   text-align: center;
   color: white;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
 
 .map-overlay .map-table .td-map {
@@ -145,4 +152,5 @@
   padding: 0.3125vw;
   text-align: center;
   color: white;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
