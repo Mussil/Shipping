@@ -1,0 +1,25 @@
+.aqua-btn{
+    width: 120px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: rgb(86, 227, 223);
+    padding: 8px 20px;
+    font-family: "Comic Sans MS", "Comic Sans";
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    display: block;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
+.actions .aqua-btn-left{
+    margin-right: 20px;
+}
+.actions .aqua-btn-right{
+    margin-left: 20px;
+}
