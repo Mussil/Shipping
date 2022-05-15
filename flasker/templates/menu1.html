@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="static/style.css">
   <link rel="stylesheet" href="static/css/menu.css">
   <link rel="stylesheet" href="static/css/speedBtn.css">
+  <link rel="stylesheet" href="static/css/button.css">
   
 </head>
 <body>
 
     <main>
-        
         <form id="login_form" class="form_class" action="/drivers-details" method="POST">
             <h2>Simulation details 🚘</h2><br/><br/>
 
@@ -22,14 +22,14 @@
                 <!--  -->
                 <label class="menu-label">Drivers amount :</label>
                 <div class="range-wrap">
-                    <input type="range" class="range" name="drivers-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="500"><br/>
+                    <input type="range" class="range" id="drivers-num" name="drivers-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="500"><br/>
                     <output class="bubble"></output>
                 </div>
 
                 <!--  -->
                 <label class="menu-label">Parcels amount :</label>
                 <div class="range-wrap">
-                    <input type="range" class="range" name="parcels-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="1000"><br/>
+                    <input type="range" class="range" id="parcels-num" name="parcels-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="1000"><br/>
                     <output class="bubble"></output>
                 </div>
 
@@ -67,14 +67,23 @@
                     </label>
                 </div>
 
-                <button class="submit_class" type="submit" form="login_form">NEXT ></button>
+                <div class="actions">
+                    <button class="aqua-btn aqua-btn-left" type="button" onclick="back()"> < BACK</button>
+                    <button class="aqua-btn aqua-btn-right" type="submit" form="login_form">NEXT ></button>
+                </div>
+                
             </div>
         </form>
 
     </main>
 
+    <script src="static/js/app.js"></script>
+    <script>
+        const driversNum = '{{ driversNum }}';
+        const parcelsNum = '{{ parcelsNum }}';
+        const speed = '{{ speed }}';
+    </script>
     <script src="static/js/menu1.js"></script>
-    
     
 </body>
 </html>

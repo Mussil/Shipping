@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="static/css/introduction.css" />
+    <link rel="stylesheet" href="static/css/button.css">
 
     <title>Simulator introduction</title>
   </head>
@@ -55,16 +56,16 @@
             the distance a package travels depending on the route<br />
             And more…<br />
           </p>
-          <button
-            class="intro-btn"
-            type="submit"
-            form="login_form"
-            onclick="window.location.href='/simulation-details'"
-          >
-            NEXT >
-          </button>
+
+          <div class="actions">
+            <button class="aqua-btn aqua-btn-left" type="button" onclick="back()"> < BACK</button>
+            <button class="aqua-btn aqua-btn-right" onclick="window.location.href='/simulation-details'">NEXT ></button>
+          </div>
+
         </div>
       </div>
     </main>
+    
+    <script src="static/js/app.js"></script>
   </body>
 </html>

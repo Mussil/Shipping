@@ -1,2 +1,4 @@
-
+function back() {
+    history.back();
+}
   

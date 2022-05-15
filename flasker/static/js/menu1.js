@@ -1,13 +1,23 @@
-const allRanges = document.querySelectorAll(".range-wrap");
-allRanges.forEach(wrap => {
-  const range = wrap.querySelector(".range");
-  const bubble = wrap.querySelector(".bubble");
+window.onload = onload();
 
-  range.addEventListener("input", () => {
+function onload() {
+  document.getElementById("drivers-num").value = driversNum;
+  document.getElementById("parcels-num").value = parcelsNum;
+  setRangeValues();
+}
+
+function setRangeValues() {
+  const allRanges = document.querySelectorAll(".range-wrap");
+  allRanges.forEach(wrap => {
+    const range = wrap.querySelector(".range");
+    const bubble = wrap.querySelector(".bubble");
+
+    range.addEventListener("input", () => {
+      setBubble(range, bubble);
+    });
     setBubble(range, bubble);
   });
-  setBubble(range, bubble);
-});
+}
 
 function setBubble(range, bubble) {
   const val = range.value;

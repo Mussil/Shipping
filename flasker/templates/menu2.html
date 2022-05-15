@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="static/css/menu.css">
   <link rel="stylesheet" href="static/css/loader.css">
   <link rel="stylesheet" href="static/css/radio.css">
+  <link rel="stylesheet" href="static/css/button.css">
 
 </head>
 <body id="body">
@@ -60,11 +61,14 @@
                     <!-- 🕛 🚴  🛣-->
 
                     <div class="info_div">
-                        <p class="info-div-text">💰 Replacing a driver cost : 3 ₪ </p>
-                        <p class="info-div-text">📦 Parcel transfer per meter cost : 0.001 ₪ </p>
+                        <p class="info-div-text">💰 The cost of replacing a driver : 3 ₪ </p>
+                        <p class="info-div-text">📦 The cost of transfering a parcel per meter : 0.001 ₪ </p>
                     </div><br/>
 
-                    <button class="submit_class" type="submit" form="login_form" onclick="sendUserInfo()">NEXT ></button>
+                    <div class="actions">
+                        <button class="aqua-btn aqua-btn-left" type="button" onclick="back()"> < BACK</button>
+                        <button class="aqua-btn aqua-btn-right" type="submit" form="login_form" onclick="sendUserInfo()">NEXT ></button>
+                    </div>
                 
                 </div>
             </form>
@@ -73,7 +77,8 @@
 
     <script src="static/js/menu2.js"></script>
     <script src="static/js/loader.js"></script>
-    
+    <script src="static/js/app.js"></script>
+
 </body>
 </html>
 
