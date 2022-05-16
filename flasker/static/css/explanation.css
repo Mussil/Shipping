@@ -1,0 +1,61 @@
+.explanation-bubble-wrap{
+    position: relative;
+}
+
+.explanation-bubble-wrap .bubble-wrap{
+    position: absolute;
+    top: 30px;
+    left: -87px;
+    border: 1px solid #cccccc;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: none;
+}
+
+.explanation-bubble-wrap .bubble-wrap .bubble-content{
+    position: relative;
+    width: 150px;
+}
+
+.explanation-bubble-wrap .bubble-wrap .bubble-content .bubble-text{
+    /* text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; */
+    display: block;
+    word-wrap: break-word;
+}
+
+.explanation-bubble-wrap .bubble-wrap .bubble-content .arrow{
+    top: -12px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform-origin: left;
+    position: absolute;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    transform:  rotate(-45deg);
+    background-color: white;
+}
+
+.explanation-icon-wrap{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
+.explanation-icon-wrap .explanation-icon{
+    color: gray;
+
+}
+
+.explanation-icon-wrap .explanation-icon:hover{
+    color: black;
+}
+
+.explanation-icon-wrap:hover ~ .bubble-wrap{
+    display: block;
+    /* background-color: blue; */
+}
