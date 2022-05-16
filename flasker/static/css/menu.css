@@ -29,3 +29,9 @@
     width: 50%;
     margin: 20px auto 15px;
 }
+
+.label-and-explantion-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
