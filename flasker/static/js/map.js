@@ -330,27 +330,36 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
     removeOutdatedDriver(activeDrivers, newDriver);
 }
 
-async function smoothPath(coords) {
-    return new Promise(res => {
+function smoothPath(coords) {
+
+    let newCoords = [];
+
+    for (let index = 0; index < coords.length; index++) {
+        const newPath = [];
+        const path = [...coords[index].coordinates];
+        const pathLength = coords[index].coordinates.length;
         
-        for (let index = 0; index < coords.length; index++) {
-            const path = coords[index].coordinates;
+        for (let coord = 0; coord < pathLength; coord++) {
+            const point1 = path[coord];
+            const point2 = path[coord+1];
 
-            for (let coord = 0; coord < path.length; coord++) {
-                
-                if(coord != path.length - 1){
-                    const point1 = path[coord];
-                    const point2 = path[coord+1];
-                    const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
+            if(coord === 1){
+                newPath.push(point1);
+            }
+            else if(coord === pathLength - 1){
+                break;
+            }
 
-                    path.splice(coord, 0, middle);
-                }
-                
-            } 
-        }
+            const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
 
-        res();
-    });
+            newPath.push(middle);
+            newPath.push(point2);
+        } 
+
+        newCoords[index] = {'coordinates': [], 'type': 'LineString'}; 
+        newCoords[index].coordinates = newPath;
+    }
+    return newCoords;
 }
 
 async function refreshRoutes(routes, activeDrivers, activeParcels) {
@@ -359,7 +368,9 @@ async function refreshRoutes(routes, activeDrivers, activeParcels) {
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
         let coordinates = await getRoutCoordinates(points);
-        console.log(coordinates, '-------------');
+        coordinates = smoothPath(coordinates);
+        coordinates = smoothPath(coordinates);
+        coordinates = smoothPath(coordinates);
 
         const driverData = displayDriver(coordinates[0].coordinates[0], route.driver);
         const driverIcon = driverData[0];
