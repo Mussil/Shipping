@@ -26,11 +26,24 @@
         <main>
             
             <form class="form_class">
-                <h2>General priority of drivers 🚴 </h2><br/><br/>
-                <div class="form_div">
+                <h2>General priority of drivers 🚴</h2><br/><br/>
+                <div class="form_div"> 
+                    
+                    <div class="radios-and-explanation">
+                        <div class="input-class">
+                            <label class="radio-wrapper" >
+                                <input type="radio" name="radio-btn" value="" class="radio" id="random-choice" checked> 
+                                <span class="design"></span>
+                                <span class="value">I don't care</span>
+                            </label>
 
-                    <div class="label-and-explantion-icon"> 
-                        <label class="menu-label"></label>
+                            <label class="radio-wrapper">
+                                <input type="radio" name="radio-btn" value="" class="radio" id="user-choice"> 
+                                <span class="design"></span>
+                                <span class="value">Let me choose</span>
+                            </label>
+                        </div>
+
                         <div class="explanation-bubble-wrap">
                             <div class="explanation-icon-wrap">
                                 <i class='bx bx-question-mark explanation-icon'></i>
@@ -38,26 +51,16 @@
                             <div class="bubble-wrap">
                                 <div class="bubble-content">
                                     <div class="arrow"></div>
-                                    <p class="bubble-text">hjhjfjdksfjaldsjfldjslafjkdls----dfajdkfjldsakfldsjfl</p>
+                                    <p class="bubble-text"><strong>I don't care:</strong> get the default priority for all parcels
+                                        (time,distance,parcels)<br /><strong>Let me choose:</strong> drag & drop the
+                                        priority in the bricks so that the higher brick is the most
+                                        significant priority
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="input-class">
-                        <label class="radio-wrapper" >
-                            <input type="radio" name="radio-btn" value="" class="radio" id="random-choice" checked> 
-                            <span class="design"></span>
-                            <span class="value">I don't care</span>
-                        </label>
 
-                        <label class="radio-wrapper" >
-                            <input type="radio" name="radio-btn" value="" class="radio" id="user-choice"> 
-                            <span class="design"></span>
-                            <span class="value">Let me choose</span>
-                        </label>
                     </div>
-  
                 
 
                     <div id='show-me'>

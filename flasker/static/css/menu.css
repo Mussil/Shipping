@@ -35,3 +35,13 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.radios-and-explanation{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radios-and-explanation .input-class{
+    margin: 0 auto;
+}

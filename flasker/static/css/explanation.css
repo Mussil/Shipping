@@ -5,7 +5,7 @@
 .explanation-bubble-wrap .bubble-wrap{
     position: absolute;
     top: 30px;
-    left: -87px;
+    left: -114px;
     border: 1px solid #cccccc;
     padding: 10px 20px;
     background-color: white;
@@ -15,15 +15,13 @@
 
 .explanation-bubble-wrap .bubble-wrap .bubble-content{
     position: relative;
-    width: 150px;
+    width: 200px;
 }
 
 .explanation-bubble-wrap .bubble-wrap .bubble-content .bubble-text{
-    /* text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden; */
     display: block;
     word-wrap: break-word;
+    font-size: medium;
 }
 
 .explanation-bubble-wrap .bubble-wrap .bubble-content .arrow{
@@ -48,7 +46,6 @@
 
 .explanation-icon-wrap .explanation-icon{
     color: gray;
-
 }
 
 .explanation-icon-wrap .explanation-icon:hover{
@@ -57,5 +54,4 @@
 
 .explanation-icon-wrap:hover ~ .bubble-wrap{
     display: block;
-    /* background-color: blue; */
 }

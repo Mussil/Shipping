@@ -330,28 +330,28 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
     removeOutdatedDriver(activeDrivers, newDriver);
 }
 
-// async function smoothPath(coords) {
-//     return new Promise(res => {
+async function smoothPath(coords) {
+    return new Promise(res => {
         
-//         for (let index = 0; index < coords.length; index++) {
-//             const path = coords[index].coordinates;
+        for (let index = 0; index < coords.length; index++) {
+            const path = coords[index].coordinates;
 
-//             for (let coord = 0; coord < path.length; coord++) {
+            for (let coord = 0; coord < path.length; coord++) {
                 
-//                 if(coord != path.length - 1){
-//                     const point1 = path[coord];
-//                     const point2 = path[coord+1];
-//                     const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
+                if(coord != path.length - 1){
+                    const point1 = path[coord];
+                    const point2 = path[coord+1];
+                    const middle = [(point1[0]+point2[0])/2, (point1[1]+point2[1])/2];
 
-//                     path.splice(coord, 0, middle);
-//                 }
+                    path.splice(coord, 0, middle);
+                }
                 
-//             } 
-//         }
+            } 
+        }
 
-//         res();
-//     });
-// }
+        res();
+    });
+}
 
 async function refreshRoutes(routes, activeDrivers, activeParcels) {
     const newActive = newActiveRoutes(routes, activeDrivers);
@@ -359,6 +359,7 @@ async function refreshRoutes(routes, activeDrivers, activeParcels) {
     newActive.forEach(async (route) => {
         const points = servicePointsToCoordinates(route.path);
         let coordinates = await getRoutCoordinates(points);
+        console.log(coordinates, '-------------');
 
         const driverData = displayDriver(coordinates[0].coordinates[0], route.driver);
         const driverIcon = driverData[0];
