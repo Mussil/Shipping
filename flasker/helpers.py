@@ -81,10 +81,12 @@ def getFiles(numDrivers,numParcels,userChoice):
     return drivers,results,parcels
 
 def convertSpeedToRatio(speed):
-    if speed == '0.5': #7
-        return 7
-    elif speed == '1': #5
+    if speed == '1': #5
         return 5
     elif speed == '1.5': #3
         return 3
-    return 1
+    elif speed == '2':
+        return 1
+    elif speed == '2.5':
+        return 0.5
+    return 0.3
