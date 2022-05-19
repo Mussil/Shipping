@@ -6,7 +6,7 @@ L.mapbox.accessToken = MAPBOX_ACCESS_TOKEN;
 
 const MAPBOX_DRIVING_API = "https://api.mapbox.com/directions/v5/mapbox/";
 
-let INITIAL_DATE = new Date(2021, 12, 2, 0, 5, 0, 0); // 2.1.2022
+let INITIAL_DATE = new Date(2021, 12, 2, 0, 0, 0, 0); // 2.1.2022
 const MIN_TO_SEC_RATIO = JSON.parse(document.getElementById("map").dataset.speed); //MIN_TO_SEC_RATIO [sec] reality = 60 [sec] simulator
 const SEC_IN_MIN = 60; // each min has 60 sec in reality
 
@@ -23,8 +23,8 @@ L.control.layers({
     'dark view':L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
 }).addTo(map);
 
-const CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
-"Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta",
+const CSS_COLOR_NAMES = ["AntiqueWhite","Aqua","Aquamarine","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
+"Chartreuse","Chocolate","Coral","CornflowerBlue","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta",
 "DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet",
 "DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","ForestGreen","Fuchsia","Gainsboro","Gold","GoldenRod",
 "Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue",
@@ -115,7 +115,7 @@ function addStations2map(stations, stationsMarkers){
 
         const layer = new L.marker(coord, {
                         icon: L.mapbox.marker.icon({
-                            'marker-color': 'black',
+                            'marker-color':"black",
                             'marker-symbol'	: station,
                             'marker-size': 'small'
                         })}).addTo(map);

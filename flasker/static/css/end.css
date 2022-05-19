@@ -74,14 +74,11 @@ h2 {
 	 top: 50%;
 	 transform: translate(-50%, -50%);
 	 position: absolute;
-	 width: 50vw;
+	 width: 45vw;
 	 height: 80vh;
 	 left: 50%;
-	 /* background: linear-gradient(to bottom right, #b0db7d 40%, #99dbb4 100%); */
 	 background-color: aliceblue;
 	 border-radius: 20px;
-	 /* box-shadow: 5px 5px 20px rgba(203, 205, 211, 10); */
-	 /* perspective: 40px; */
 	 transition: none;
 }
  .dot {
