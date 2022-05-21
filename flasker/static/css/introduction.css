@@ -24,10 +24,15 @@ body{
 .intro-page-wrapper .intro-wrapper .intro-title{
     letter-spacing: 0.4vw;
     text-align: center;
+    font-size: 30px;
 }
 
 .intro-page-wrapper .intro-wrapper .intro-content{
 
+} 
+
+.intro-page-wrapper .intro-wrapper .intro-content .intro-content-p{
+    font-size: 22px;
 } 
 
 .intro-page-wrapper .img-props{

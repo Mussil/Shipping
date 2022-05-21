@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="static/css/introduction.css" />
-    <link rel="stylesheet" href="static/css/button.css">
+    <link rel="stylesheet" href="static/css/button.css" />
 
     <title>Smart Delivery Service</title>
   </head>
@@ -15,57 +15,38 @@
       <img src="static\img\app.PNG" class="img-props" />
 
       <div class="intro-wrapper">
-        <h2 class="intro-title">Introduction**</h2>
+        <h2 class="intro-title">Introduction</h2>
 
         <div class="intro-content">
-          <p>
+          <p class="intro-content-p">
             This simulation introduces an innovative delivery system based on
-            the crowds which are already on the road, so they collect packages
-            from stations around the city and drop them off at other stations
-            towards the destination.<br />
-            In this simulation, it is possible to control the number of drivers
-            participating in the system as well as the number of packages that
-            are expected to be sent and possible customer preferences, thus
-            giving it:<br />
-            <strong>1.</strong> of packages are shipped<br />
-            <strong>2.</strong>number of packages were not shipped<br />
-            <strong>3.</strong>cost<br />
-            <strong>4.</strong>number of drivers<br />
-
-            This simulation was created as part of a research project in
-            software engineering where algo develops an innovative delivery
-            system based on packages being delivered by more than one driver, as
-            well as the masses - the drivers who travel on the roads anyway at
-            another station that brings the package closer to its
-            destination.<br />
-
-            In the following pages you can control the parameters that determine
-            the number of drivers who will participate in the trip for the next
-            2 coming days as well as the number of packages that are expected to
-            be sent.<br />
-            You can then view the package routes transmitted by the drivers
-            according to the above algorithm and get the data describing:<br />
-            the amount of packages that managed / failed to reach their
-            destination<br />
-            the number of drivers who participated in the transfer of each and
-            every package<br />
-            estimated cost to the customer for a package depending on the
-            route<br />
-            the length of time it takes for a package to reach its
-            destination<br />
-            the distance a package travels depending on the route<br />
-            And more…<br />
+            the crowds which are already on the road.<br/>
+            Parcels can be delivered by more than one driver so that drivers collect parcels from
+            stations around the city and drop them off at other stations towards
+            the destination.<br/><br/>
+            In this simulation you can control the paramaters of the amount of drivers for the next two days, parcels and customer
+            preferences.<br/>During the simulation run you will be able to view the
+            parcels transferred and get the information about them.
           </p>
-
           <div class="actions">
-            <button class="aqua-btn aqua-btn-left" type="button" onclick="back()"> < BACK</button>
-            <button class="aqua-btn aqua-btn-right" onclick="window.location.href='/simulation-details'">NEXT ></button>
+            <button
+              class="aqua-btn aqua-btn-left"
+              type="button"
+              onclick="back()"
+            >
+              < BACK
+            </button>
+            <button
+              class="aqua-btn aqua-btn-right"
+              onclick="window.location.href='/simulation-details'"
+            >
+              NEXT >
+            </button>
           </div>
-
         </div>
       </div>
     </main>
-    
+
     <script src="static/js/app.js"></script>
   </body>
 </html>
