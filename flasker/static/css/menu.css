@@ -36,6 +36,10 @@
     align-items: center;
 }
 
+.label-and-explantion-icon .menu-label{
+    font-size: 19.5px;
+}
+
 .radios-and-explanation{
     display:flex;
     align-items: center;

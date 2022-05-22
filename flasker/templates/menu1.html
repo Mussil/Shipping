@@ -24,14 +24,29 @@
             <div class="form_div">
 
                 <!--  -->
-                <label class="menu-label">Drivers amount :</label>
+                <div class="label-and-explantion-icon"> 
+                    <label class="menu-label">Amount of drivers:</label>
+                    <div class="explanation-bubble-wrap">
+                        <div class="explanation-icon-wrap">
+                            <i class='bx bx-question-mark explanation-icon'></i>
+                        </div>
+                        <div class="bubble-wrap">
+                            <div class="bubble-content">
+                                <div class="arrow"></div>
+                                <p class="bubble-text">
+                                    The number of drivers is for the next two days and has a uniform distribution
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="range-wrap">
                     <input type="range" class="range" id="drivers-num" name="drivers-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="500"><br/>
                     <output class="bubble"></output>
                 </div>
 
                 <!--  -->
-                <label class="menu-label">Parcels amount :</label>
+                <label class="menu-label">Amount of parcels:</label>
                 <div class="range-wrap">
                     <input type="range" class="range" id="parcels-num" name="parcels-amount" style="accent-color: rgb(86, 227, 223)" step="100" min="100" max="1000"><br/>
                     <output class="bubble"></output>
@@ -49,9 +64,9 @@
                                 <div class="arrow"></div>
                                 <p class="bubble-text">
                                     Each minute in the simulator will be represented by _ seconds in reality:
-                                    <br/><strong>x1</strong> → 5 seconds<br/><strong>x1.5</strong>
+                                    <br/><strong>x1</strong> → 6 seconds<br/><strong>x1.5</strong>
                                     → 3 seconds<br/><strong>x2</strong> → 1 second<br/>
-                                    <strong>x2.5</strong> → 0.5 second <br/><strong>x3</strong> → 1/3 second 
+                                    <strong>x2.5</strong> → 0.5 second <br/><strong>x3</strong> → 0.25 second 
                                 </p>
                             </div>
                         </div>

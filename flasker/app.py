@@ -31,7 +31,6 @@ def menu1():
 @app.route('/drivers-details', methods=['POST'])
 def menu2():
     result = request.form.to_dict()
-    print(result)
     session["drivers-details"] = result
     return render_template('menu2.html',driver_num=result["drivers-amount"],parcels_num=result["parcels-amount"],speed=result["speed"])
 
@@ -41,7 +40,6 @@ def map():
         return ('/map') 
 
     args = request.args.to_dict()
-    print("----", args)
 
     drivers, results, parcels = getFiles(args['driversNum'], args['parcelsNum'], args['userChoice'])
     return render_template('map.html', stations=sp.stations, paths=drivers, results=results, speedRatio=convertSpeedToRatio(args['speed']))
