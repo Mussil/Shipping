@@ -58,7 +58,7 @@ document.getElementById('end-button').addEventListener('click', function(){
     HMSObj = convertHMS(avgParcelTime);
 
     swal({
-        title: "SIMULATION FINAL RESULTS",
+        title: "FINAL SIMULATION RESULTS",
         text: `➼ Average parcesl time in system: ${HMSObj[0]} hours and ${HMSObj[1]} min\n\n➼ Successfull parcels: ${successfullParcels.length}\n\n➼ Failed parcels: ${failedParcels.length}\n`,
         type: "success",
         showCancelButton: "Back",
@@ -215,8 +215,6 @@ function displayParcel(coords, parcelNum) {
     var cssIcon = L.divIcon({
         className: 'svg-marker',
         html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="red" width="20" height="50"><path d="M40 8H8c-2.21 0-3.98 1.79-3.98 4L4 36c0 2.21 1.79 4 4 4h32c2.21 0 4-1.79 4-4V12c0-2.21-1.79-4-4-4zm0 8L24 26 8 16v-4l16 10 16-10v4z"></path>',
-        // html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="red" width="60" height="150"><path d="M1 4.27v7.47c0 .45.3.84.75.97l6.5 1.73c.16.05.34.05.5 0l6.5-1.73c.45-.13.75-.52.75-.97V4.27c0-.45-.3-.84-.75-.97l-6.5-1.74a1.4 1.4 0 0 0-.5 0L1.75 3.3c-.45.13-.75.52-.75.97zm7 9.09l-6-1.59V5l6 1.61v6.75zM2 4l2.5-.67L11 5.06l-2.5.67L2 4zm13 7.77l-6 1.59V6.61l2-.55V8.5l2-.53V5.53L15 5v6.77zm-2-7.24L6.5 2.8l2-.53L15 4l-2 .53z"></path></svg>',
-        // html:'<svg viewBox="0 0 2091 2091" xmlns="http://www.w3.org/2000/svg" fill="#C71585" width="20" height="20"><path d="M1906.333 1664l35 313q3 28-16 50-19 21-48 21h-1664q-29 0-48-21-19-22-16-50l35-313h1722zm-93-839l86 775h-1708l86-775q3-24 21-40.5t43-16.5h256v128q0 53 37.5 90.5t90.5 37.5 90.5-37.5 37.5-90.5V768h384v128q0 53 37.5 90.5t90.5 37.5 90.5-37.5 37.5-90.5V768h256q25 0 43 16.5t21 40.5zm-384-185v256q0 26-19 45t-45 19-45-19-19-45V640q0-106-75-181t-181-75-181 75-75 181v256q0 26-19 45t-45 19-45-19-19-45V640q0-159 112.5-271.5t271.5-112.5 271.5 112.5 112.5 271.5z"></path></svg>',
         iconSize: [24, 24],
     });
     
