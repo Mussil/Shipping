@@ -23,17 +23,17 @@ L.control.layers({
     'dark view':L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10')
 }).addTo(map);
 
-const CSS_COLOR_NAMES = ["AntiqueWhite","Aqua","Aquamarine","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
+const CSS_COLOR_NAMES = ["Aqua","Aquamarine","Black","Blue","BlueViolet","Brown","BurlyWood","CadetBlue",
 "Chartreuse","Chocolate","Coral","CornflowerBlue","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta",
 "DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet",
-"DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","ForestGreen","Fuchsia","Gainsboro","Gold","GoldenRod",
-"Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue",
+"DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","ForestGreen","Gold","GoldenRod",
+"Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Khaki","LawnGreen","LightBlue",
 "LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray",
 "LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen",
 "MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive",
-"OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue",
+"OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleVioletRed","PapayaWhip","Peru","Pink","Plum","PowderBlue",
 "Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray",
-"SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","Yellow","YellowGreen"];
+"SlateGrey","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Yellow","YellowGreen"];
 
 document.getElementById('end-button').addEventListener('click', function(){
     const parcels = JSON.parse(document.getElementById("map").dataset.results); 
@@ -203,7 +203,6 @@ function displayDriver(coords, driverNum) {
         })
     }).addTo(map);
     marker.bindPopup(String(driverNum));
-    // marker.openPopup();
     return [marker, markerColor];
 }
 
@@ -288,9 +287,6 @@ async function removeOutdatedDriver(activeDrivers, driver) {
         activeDrivers.splice(driverIndex, 1);
         res();
     });
-    
-    // console.log(`removed ${driver.driver} from active >>>>`);
-    // console.log(activeDrivers);
 }
 
 /**
@@ -322,8 +318,6 @@ async function animateRoutes(route, newDriver, activeParcels, activeDrivers) {
         
         await navigateFromPointToPoint(newDriver.driverIcon, coordDelta, travelTimeRatio, parcels2Pass, newDriver.layers);
     }
-
-    // console.log(`harrrayyyyy driver ${newDriver.driver} finished his path !!!`);
 
     // after all route animation - delete route & thier drivers icons
     removeIcon(newDriver.driverIcon);
@@ -389,9 +383,6 @@ async function refreshRoutes(routes, activeDrivers, activeParcels) {
             res();
         });
 
-        // console.log(`added ${newDriver.driver} to active >>>>`);
-        // console.log(activeDrivers);
-
         animateRoutes(route, newDriver, activeParcels, activeDrivers);
     });
 }
@@ -418,7 +409,7 @@ function getParcelFinishedTime(routes, parcelName, results) {
 function newActiveParcels(results, newActiveParcels, routes) {
     const now = INITIAL_DATE.getTime();
     return Object.keys(results).filter((parcelNum) => {   
-        return  results[parcelNum]["path"].length != 0 && // TODO: fix that - Mussi  
+        return  results[parcelNum]["path"].length != 0 && 
         results[parcelNum]["startTime"] <= now &&
         now < getParcelFinishedTime(routes, parcelNum, results) &&
         !(newActiveParcels.findIndex(p => p.num === parcelNum) > -1);

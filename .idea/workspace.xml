@@ -28,6 +28,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -189,10 +190,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.simulationNewParallel" />
-      <item itemvalue="Python.createPaths" />
       <item itemvalue="Python.analyzeResults" />
+      <item itemvalue="Python.createPaths" />
       <item itemvalue="Python.plots" />
+      <item itemvalue="Python.simulationNewParallel" />
       <item itemvalue="Python.stam" />
     </list>
     <recent_temporary>
