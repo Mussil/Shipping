@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files">
-      <change beforePath="$PROJECT_DIR$/flasker/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/helpers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/100" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/100.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/200" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/200.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/300" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/300.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/400" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/400.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flasker/resultsFile/driversDB/500" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/resultsFile/driversDB/500.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +50,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/flasker/resultsFile" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -75,6 +69,18 @@
       <recent name="C:\Users\student\Desktop\web\flasker\paths\temp" />
       <recent name="C:\Users\student\Desktop\web\flasker\parcels" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.stam">
     <configuration name="analyzeResults" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -161,7 +167,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-
     <configuration name="stam" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,7 +179,6 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flasker/stam.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -185,7 +189,6 @@
       <method v="2" />
     </configuration>
     <list>
-
       <item itemvalue="Python.simulationNewParallel" />
       <item itemvalue="Python.createPaths" />
       <item itemvalue="Python.analyzeResults" />
