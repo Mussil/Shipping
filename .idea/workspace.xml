@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="add files">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/flask_session/1e976f87976d60c4942416a6d0778b2f" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/flask_session/1e976f87976d60c4942416a6d0778b2f" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -439,7 +438,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654077765780</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="delete procfile">
+      <created>1654079937286</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1654079937286</updated>
+    </task>
+    <task id="LOCAL-00038" summary="delete">
+      <created>1654080094104</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1654080094104</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,8 +472,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created stay edges for demo paths" />
-    <MESSAGE value="add destination nodes and edges, and shortest path function" />
     <MESSAGE value="add weight function" />
     <MESSAGE value="add duration and distance to edges" />
     <MESSAGE value="some fixes" />
@@ -484,7 +495,9 @@
     <MESSAGE value="simulation for diffrents distrubations" />
     <MESSAGE value="add files" />
     <MESSAGE value="adding procfile file" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding procfile file" />
+    <MESSAGE value="delete procfile" />
+    <MESSAGE value="delete" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
