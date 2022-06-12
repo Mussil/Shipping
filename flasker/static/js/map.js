@@ -433,7 +433,8 @@ async function refreshParcels(results, activeParcels, routes) {
                 finishPathTime: getParcelFinishedTime(routes, parcelName, results) + 1000, // remove parcel 2 sec later ...  
                 distance: results[parcelName].totalDistance,
                 startTime: results[parcelName].startTime,
-                cost: results[parcelName].payActual
+                cost: results[parcelName].payActual,
+                maxCost: results[parcelName].payMax
             };
 
             activeParcels.push(newParcel);
@@ -487,9 +488,9 @@ async function removeParcelWhenEnds(activeParcels, arrivedSuccessfullyParcels) {
  */
  function updateHTML(activeDrivers, activeParcels, arrivedSuccessfullyParcels) {
 
-    const data1 = `<h4>① active drivers : ${activeDrivers.length} </h4><br/>`; 
-    const data2 = `<h4>② parcels during shipment : ${activeParcels.length}</h4><br/>`; 
-    const data3 = `<h4>③ parcels successfully shipped : ${arrivedSuccessfullyParcels.length}</h4>`; 
+    const data1 = `<h4>① Active drivers : ${activeDrivers.length} </h4><br/>`; 
+    const data2 = `<h4>② Parcels during shipment : ${activeParcels.length}</h4><br/>`; 
+    const data3 = `<h4>③ Parcels successfully shipped : ${arrivedSuccessfullyParcels.length}</h4>`; 
 
     document.getElementById("active-data").innerHTML = data1 + data2 + data3;
 }
@@ -508,7 +509,9 @@ function updateArrivedParcels(parcel) {
     const parcelEnd = row.insertCell(2);
     const parcelDistance = row.insertCell(3);
     const parcelDrivers = row.insertCell(4);
-    const parcelsCost = row.insertCell(5);
+    const parcelsMaxCost = row.insertCell(5);
+    const parcelsCost = row.insertCell(6);
+    
 
     parcelNum.className="td-map";
     parcelStart.className="td-map";
@@ -516,6 +519,7 @@ function updateArrivedParcels(parcel) {
     parcelDistance.className="td-map";
     parcelDrivers.className="td-map";
     parcelsCost.className="td-map";
+    parcelsMaxCost.className="td-map";
 
     parcelNum.innerHTML = parcel.num;
     parcelStart.innerHTML = `${new Date(parcel.startTime).getHours()}:${new Date(parcel.startTime).getMinutes()}`;
@@ -524,7 +528,8 @@ function updateArrivedParcels(parcel) {
     parcelDrivers.innerHTML = [... new Set(parcel.path.map(p => {
         return p[1];
     }))].length - 1;
-    parcelsCost.innerHTML = parcel.cost.toFixed(3);
+    parcelsCost.innerHTML = parcel.cost.toFixed(2);
+    parcelsMaxCost.innerHTML = parcel.maxCost.toFixed(2);
 
 }
 
@@ -539,7 +544,7 @@ function updateParcelsWhenStart(parcel) {
     h = (h < 10) ? ("0" + h) : h;
     m = (m < 10) ? ("0" + m) : m;
 
-    const parcelsData = `⦿ parcel <strong>${parcel.num}</strong> enetered to station #${parcel.path[0][0]} at ${h}:${m}<br/><br/>`;    
+    const parcelsData = `⦿ Parcel <strong>${parcel.num}</strong> entered to station #${parcel.path[0][0]} at ${h}:${m}<br/><br/>`;    
     document.getElementById("parcels-in-system").innerHTML = parcelsData + document.getElementById("parcels-in-system").innerHTML;  
 }
 
