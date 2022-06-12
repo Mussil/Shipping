@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c672f06d-fc8a-423c-b232-bf6761551a09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flasker/flask_session/1e976f87976d60c4942416a6d0778b2f" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/flask_session/1e976f87976d60c4942416a6d0778b2f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/static/css/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/static/css/map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/static/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/static/js/map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/templates/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flasker/templates/menu2.html" beforeDir="false" afterPath="$PROJECT_DIR$/flasker/templates/menu2.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

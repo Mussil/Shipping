@@ -24,6 +24,7 @@ h4{
   font-family: sans-serif;
   overflow: auto;
   border-radius: 3px;
+  /* overflow-x: hidden; */
 }
 
 .map-overlay#clock {
@@ -75,7 +76,7 @@ h4{
 }
 
 .map-overlay#active-data {
-  width: 35vw;
+  width: 31vw;
   display: block;
   padding: 0.26042vw 0.52083vw;
   margin-bottom: 2vh;
@@ -96,7 +97,7 @@ h4{
 }
 
 .map-overlay#active-parcels {
-  width: 35vw;
+  width: 31vw;
   padding: 0.52083vw;
   height: 170px;
   color: #fff;
@@ -110,10 +111,11 @@ h4{
           order: 2;
   margin-bottom: 2.08333vw;
   font-family: "Comic Sans MS", "Comic Sans";
+  overflow-x: hidden;
 }
 
 .map-overlay#parcels-in-system {
-  width: 35vw;
+  width: 31vw;
   padding: 0.52083vw;
   height: 150px;
   color: #fff;
@@ -139,7 +141,7 @@ h4{
 }
 
 .map-overlay .map-table {
-  width: 35vw;
+  width: 31vw;
   border: 0.5px solid white;
   border-collapse: collapse;
   padding: 0.3125vw;
