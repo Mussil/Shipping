@@ -524,12 +524,12 @@ function updateArrivedParcels(parcel) {
     parcelNum.innerHTML = parcel.num;
     parcelStart.innerHTML = `${new Date(parcel.startTime).getHours()}:${new Date(parcel.startTime).getMinutes()}`;
     parcelEnd.innerHTML = `${new Date(parcel.finishPathTime).getHours()}:${new Date(parcel.finishPathTime).getMinutes()}`;
-    parcelDistance.innerHTML = parcel.distance;
+    parcelDistance.innerHTML = parcel.distance.toFixed(1);
     parcelDrivers.innerHTML = [... new Set(parcel.path.map(p => {
         return p[1];
     }))].length - 1;
-    parcelsCost.innerHTML = parcel.cost.toFixed(2);
-    parcelsMaxCost.innerHTML = parcel.maxCost.toFixed(2);
+    parcelsCost.innerHTML = parcel.cost.toFixed(1);
+    parcelsMaxCost.innerHTML = parcel.maxCost.toFixed(1);
 
 }
 
