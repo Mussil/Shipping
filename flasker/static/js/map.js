@@ -434,7 +434,8 @@ async function refreshParcels(results, activeParcels, routes) {
                 distance: results[parcelName].totalDistance,
                 startTime: results[parcelName].startTime,
                 cost: results[parcelName].payActual,
-                maxCost: results[parcelName].payMax
+                maxCost: results[parcelName].payMax,
+                drivers: results[parcelName].totalDrivers
             };
 
             activeParcels.push(newParcel);
@@ -521,16 +522,17 @@ function updateArrivedParcels(parcel) {
     parcelsCost.className="td-map";
     parcelsMaxCost.className="td-map";
 
+    const startTimeDate = new Date(parcel.startTime);
+    const endTimeDate = new Date(parcel.finishPathTime);
+
     parcelNum.innerHTML = parcel.num;
-    parcelStart.innerHTML = `${new Date(parcel.startTime).getHours()}:${new Date(parcel.startTime).getMinutes()}`;
-    parcelEnd.innerHTML = `${new Date(parcel.finishPathTime).getHours()}:${new Date(parcel.finishPathTime).getMinutes()}`;
+    parcelStart.innerHTML = `${(startTimeDate.getHours()<10?'0':'') + startTimeDate.getHours()}:${(startTimeDate.getMinutes()<10?'0':'') + startTimeDate.getMinutes()}`;
+    parcelEnd.innerHTML = `${(endTimeDate.getHours()<10?'0':'') + endTimeDate.getHours()}:${(endTimeDate.getMinutes()<10?'0':'') + endTimeDate.getMinutes()}`;
     parcelDistance.innerHTML = parcel.distance.toFixed(1);
-    parcelDrivers.innerHTML = [... new Set(parcel.path.map(p => {
-        return p[1];
-    }))].length - 1;
+    parcelDrivers.innerHTML = parcel.drivers;
     parcelsCost.innerHTML = parcel.cost.toFixed(1);
     parcelsMaxCost.innerHTML = parcel.maxCost.toFixed(1);
-
+    
 }
 
 /**
